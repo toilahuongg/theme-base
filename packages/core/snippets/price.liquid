@@ -1,0 +1,16 @@
+{% comment %}
+  @param price {number}
+  @param compare_at_price {number}
+{% endcomment %}
+
+{% assign current_price = price | default: 0 | plus: 0 %}
+{% assign compare_price = compare_at_price | default: 0 | plus: 0 %}
+
+{% if compare_price > current_price %}
+  <span class="tb-price tb-price--sale">
+    <span class="tb-price__current">{{ current_price | money }}</span>
+    <s class="tb-price__compare">{{ compare_price | money }}</s>
+  </span>
+{% else %}
+  <span class="tb-price">{{ current_price | money }}</span>
+{% endif %}
