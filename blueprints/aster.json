@@ -1,0 +1,71 @@
+{
+  "theme": {
+    "name": "Aster",
+    "handle": "aster",
+    "version": "0.1.0",
+    "author": "Miso",
+    "documentationUrl": "https://example.com/aster/docs",
+    "supportUrl": "https://example.com/aster/support"
+  },
+  "presets": [
+    {
+      "name": "Aster",
+      "handle": "aster",
+      "industries": ["Beauty", "Wellness"],
+      "catalogSize": "Some (11-100+)",
+      "positioning": "A premium clinical skincare storefront for brands that sell by routine, concern, and ingredient proof."
+    }
+  ],
+  "market": {
+    "merchantProfile": "Independent skincare and wellness brands with education-led buying journeys.",
+    "productModel": "Serums, cleansers, creams, supplements, kits, and curated routines.",
+    "buyingBehavior": "Customers compare benefits, concerns, ingredients, and routine fit before purchasing.",
+    "catalogStrategy": "Some catalog with guided discovery, editorial education, and curated bundles."
+  },
+  "visual": {
+    "tokens": {
+      "background": "#F8F5EF",
+      "text": "#171512",
+      "accent": "#496F5D",
+      "surface": "#FFFFFF",
+      "border": "#D8D0C4",
+      "radius": "8px"
+    },
+    "typography": "Editorial headings with calm readable body copy for clinical premium commerce.",
+    "imagery": "Bright product and lifestyle photography with clean ingredient and routine context.",
+    "density": "spacious",
+    "motion": "restrained"
+  },
+  "components": ["drawer", "accordion", "tabs", "quantity-stepper", "variant-controller", "media-gallery"],
+  "sections": ["main-hero", "featured-products", "rich-content"],
+  "templates": ["index", "product", "collection", "cart", "search", "blog", "article", "page"],
+  "content": {
+    "homeHeroHeading": "Build a routine that feels clear from the first step",
+    "homeHeroText": "A clinical-soft storefront for skincare rituals, ingredient education, and curated product discovery.",
+    "emptyStateText": "No products are available in this view yet.",
+    "newsletterHeading": "Skin notes, launch updates, and routine guidance"
+  },
+  "listing": {
+    "summary": "Aster is a premium skincare and wellness theme built for routine-led discovery, ingredient education, and calm conversion.",
+    "featureBullets": [
+      "Routine-led homepage and product storytelling",
+      "Ingredient and benefit-forward product cards",
+      "Generated merchant docs, QA checklist, and listing draft"
+    ],
+    "screenshotPlan": "Capture desktop and mobile home pages with hero, routine story, featured products, and editorial content visible.",
+    "releaseNotes": [
+      "Initial generated Aster proof theme with core Theme Base structure."
+    ]
+  },
+  "docs": {
+    "merchantTopics": ["Homepage setup", "Featured products", "Editorial content", "Theme settings"],
+    "aiNotes": ["Aster proves beauty and wellness support for the Theme Base factory."]
+  },
+  "qa": {
+    "scenarios": ["Home page renders", "Product card renders", "Collection template exists", "Theme docs generated"],
+    "lighthouse": {
+      "performance": 60,
+      "accessibility": 90
+    }
+  }
+}
