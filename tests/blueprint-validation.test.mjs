@@ -1,9 +1,13 @@
 import assert from 'node:assert/strict';
+import { execFile } from 'node:child_process';
 import os from 'node:os';
 import path from 'node:path';
 import fs from 'node:fs/promises';
+import { promisify } from 'node:util';
 import test from 'node:test';
 import { validateBlueprint } from '../packages/generator/src/validate-blueprint.mjs';
+
+const execFileAsync = promisify(execFile);
 
 test('validates the Aster blueprint', async () => {
   const blueprint = await validateBlueprint('aster');
@@ -23,6 +27,14 @@ test('rejects unsafe blueprint handles before resolving files', async () => {
     () => validateBlueprint('../package'),
     /Invalid blueprint handle/
   );
+});
+
+test('can be imported from node eval without running the CLI entrypoint', async () => {
+  const { stdout } = await execFileAsync(process.execPath, [
+    '-e',
+    "import('./packages/generator/src/validate-blueprint.mjs').then(async (m) => { try { await m.validateBlueprint('../package') } catch (error) { console.log(error.message) } })"
+  ]);
+  assert.match(stdout, /Invalid blueprint handle/);
 });
 
 test('rejects a blueprint missing required schema fields', async () => {

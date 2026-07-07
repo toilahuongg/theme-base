@@ -35,7 +35,11 @@ export async function validateBlueprint(handle, options = {}) {
   return blueprint;
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+function isCliEntrypoint() {
+  return Boolean(process.argv[1]) && import.meta.url === pathToFileURL(process.argv[1]).href;
+}
+
+if (isCliEntrypoint()) {
   const handle = process.argv[2];
   if (!handle) {
     throw new Error('Usage: npm run validate:blueprint -- <handle>');
