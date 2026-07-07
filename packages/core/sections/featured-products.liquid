@@ -7,9 +7,9 @@
     <div class="tb-section__header">
       <h2 class="tb-section__heading">
         {% if section.settings.heading != blank %}
-          {{ section.settings.heading }}
+          {{ section.settings.heading | escape }}
         {% elsif featured_collection != blank %}
-          {{ featured_collection.title }}
+          {{ featured_collection.title | escape }}
         {% else %}
           Featured products
         {% endif %}

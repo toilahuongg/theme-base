@@ -2,7 +2,7 @@
   <div class="tb-page-width">
     <div class="tb-section__header">
       {% if section.settings.heading != blank %}
-        <h2 class="tb-section__heading">{{ section.settings.heading }}</h2>
+        <h2 class="tb-section__heading">{{ section.settings.heading | escape }}</h2>
       {% endif %}
       {% if section.settings.text != blank %}
         <div class="tb-section__text rte">{{ section.settings.text }}</div>

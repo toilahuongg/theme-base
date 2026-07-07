@@ -12,7 +12,7 @@
 {% endif %}
 
 {% if url != blank %}
-  <a class="{{ button_classes }}" href="{{ url }}">{{ button_label }}</a>
+  <a class="{{ button_classes }}" href="{{ url }}">{{ button_label | escape }}</a>
 {% else %}
-  <button class="{{ button_classes }}" type="button">{{ button_label }}</button>
+  <button class="{{ button_classes }}" type="button">{{ button_label | escape }}</button>
 {% endif %}

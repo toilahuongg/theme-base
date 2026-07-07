@@ -1,18 +1,18 @@
 <section class="tb-section tb-hero">
   <div class="tb-page-width tb-hero__inner">
     {% if section.settings.eyebrow != blank %}
-      <p class="tb-hero__eyebrow">{{ section.settings.eyebrow }}</p>
+      <p class="tb-hero__eyebrow">{{ section.settings.eyebrow | escape }}</p>
     {% endif %}
 
     {% if section.settings.heading != blank %}
-      <h1 class="tb-hero__heading">{{ section.settings.heading }}</h1>
+      <h1 class="tb-hero__heading">{{ section.settings.heading | escape }}</h1>
     {% endif %}
 
     {% if section.settings.text != blank %}
       <div class="tb-hero__text rte">{{ section.settings.text }}</div>
     {% endif %}
 
-    {% if section.settings.button_label != blank %}
+    {% if section.settings.button_label != blank and section.settings.button_url != blank %}
       <div>
         {% render 'button',
           label: section.settings.button_label,

@@ -1,7 +1,6 @@
 class ThemeBaseDisclosure extends HTMLElement {
   connectedCallback() {
     if (this._connected) return;
-    this._connected = true;
 
     this.toggleButton = this.querySelector('[data-disclosure-toggle]') || this.querySelector('button');
     this.panel = this.querySelector('[data-disclosure-panel]') || this.querySelector('[hidden]');
@@ -11,6 +10,13 @@ class ThemeBaseDisclosure extends HTMLElement {
     this.toggleButton.setAttribute('aria-expanded', this.open ? 'true' : 'false');
     this.panel.hidden = !this.open;
     this.toggleButton.addEventListener('click', this);
+    this._connected = true;
+  }
+
+  disconnectedCallback() {
+    if (!this._connected) return;
+    this.toggleButton?.removeEventListener('click', this);
+    this._connected = false;
   }
 
   get open() {
@@ -38,9 +44,14 @@ class ThemeBaseDisclosure extends HTMLElement {
 }
 
 class ThemeBaseQuantity extends HTMLElement {
+  constructor() {
+    super();
+    this.decrease = () => this.step(-1);
+    this.increase = () => this.step(1);
+  }
+
   connectedCallback() {
     if (this._connected) return;
-    this._connected = true;
 
     this.input = this.querySelector('input[type="number"]');
     this.decreaseButton = this.querySelector('[data-quantity-decrease]');
@@ -48,8 +59,16 @@ class ThemeBaseQuantity extends HTMLElement {
 
     if (!this.input) return;
 
-    this.decreaseButton?.addEventListener('click', () => this.step(-1));
-    this.increaseButton?.addEventListener('click', () => this.step(1));
+    this.decreaseButton?.addEventListener('click', this.decrease);
+    this.increaseButton?.addEventListener('click', this.increase);
+    this._connected = true;
+  }
+
+  disconnectedCallback() {
+    if (!this._connected) return;
+    this.decreaseButton?.removeEventListener('click', this.decrease);
+    this.increaseButton?.removeEventListener('click', this.increase);
+    this._connected = false;
   }
 
   step(direction) {
