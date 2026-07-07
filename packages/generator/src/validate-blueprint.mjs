@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import { pathToFileURL } from 'node:url';
 import Ajv from 'ajv/dist/2020.js';
 import { blueprintPath, schemaPath } from './paths.mjs';
 
@@ -6,10 +7,10 @@ export async function loadJson(filePath) {
   return JSON.parse(await fs.readFile(filePath, 'utf8'));
 }
 
-export async function validateBlueprint(handle) {
+export async function validateBlueprint(handle, options = {}) {
   const [schema, blueprint] = await Promise.all([
     loadJson(schemaPath),
-    loadJson(blueprintPath(handle))
+    loadJson(blueprintPath(handle, options.blueprintRoot))
   ]);
   const ajv = new Ajv({ allErrors: true, strict: true });
   ajv.addFormat('uri', {
@@ -34,7 +35,7 @@ export async function validateBlueprint(handle) {
   return blueprint;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const handle = process.argv[2];
   if (!handle) {
     throw new Error('Usage: npm run validate:blueprint -- <handle>');

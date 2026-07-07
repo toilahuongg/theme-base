@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
+import os from 'node:os';
+import path from 'node:path';
 import fs from 'node:fs/promises';
 import test from 'node:test';
-import { blueprintPath } from '../packages/generator/src/paths.mjs';
 import { validateBlueprint } from '../packages/generator/src/validate-blueprint.mjs';
 
 test('validates the Aster blueprint', async () => {
@@ -17,9 +18,17 @@ test('rejects a missing blueprint handle', async () => {
   );
 });
 
+test('rejects unsafe blueprint handles before resolving files', async () => {
+  await assert.rejects(
+    () => validateBlueprint('../package'),
+    /Invalid blueprint handle/
+  );
+});
+
 test('rejects a blueprint missing required schema fields', async () => {
-  const invalidHandle = '__invalid-missing-fields-test';
-  const invalidPath = blueprintPath(invalidHandle);
+  const invalidHandle = 'invalid-missing-fields-test';
+  const blueprintRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'theme-base-blueprints-'));
+  const invalidPath = path.join(blueprintRoot, `${invalidHandle}.json`);
   const invalidBlueprint = {
     theme: {
       name: 'Invalid',
@@ -34,10 +43,10 @@ test('rejects a blueprint missing required schema fields', async () => {
   await fs.writeFile(invalidPath, JSON.stringify(invalidBlueprint, null, 2));
   try {
     await assert.rejects(
-      () => validateBlueprint(invalidHandle),
-      /Blueprint __invalid-missing-fields-test is invalid:[\s\S]*must have required property 'presets'/
+      () => validateBlueprint(invalidHandle, { blueprintRoot }),
+      /Blueprint invalid-missing-fields-test is invalid:[\s\S]*must have required property 'presets'/
     );
   } finally {
-    await fs.rm(invalidPath, { force: true });
+    await fs.rm(blueprintRoot, { recursive: true, force: true });
   }
 });
