@@ -1,0 +1,53 @@
+{
+  "current": {
+    "theme": {
+      "name": "Aster",
+      "handle": "aster",
+      "version": "0.1.0",
+      "author": "Miso",
+      "documentation_url": "https://example.com/aster/docs",
+      "support_url": "https://example.com/aster/support"
+    },
+    "preset": {
+      "name": "Aster",
+      "handle": "aster",
+      "industries": [
+        "Beauty",
+        "Wellness"
+      ],
+      "catalog_size": "Some (11-100+)",
+      "positioning": "A premium clinical skincare storefront for brands that sell by routine, concern, and ingredient proof."
+    },
+    "visual": {
+      "background": "#F8F5EF",
+      "text": "#171512",
+      "accent": "#496F5D",
+      "surface": "#FFFFFF",
+      "border": "#D8D0C4",
+      "radius": "8px",
+      "typography": "Editorial headings with calm readable body copy for clinical premium commerce.",
+      "imagery": "Bright product and lifestyle photography with clean ingredient and routine context.",
+      "density": "spacious",
+      "motion": "restrained"
+    },
+    "market": {
+      "merchantProfile": "Independent skincare and wellness brands with education-led buying journeys.",
+      "productModel": "Serums, cleansers, creams, supplements, kits, and curated routines.",
+      "buyingBehavior": "Customers compare benefits, concerns, ingredients, and routine fit before purchasing.",
+      "catalogStrategy": "Some catalog with guided discovery, editorial education, and curated bundles."
+    },
+    "content": {
+      "homeHeroHeading": "Build a routine that feels clear from the first step",
+      "homeHeroText": "A clinical-soft storefront for skincare rituals, ingredient education, and curated product discovery.",
+      "emptyStateText": "No products are available in this view yet.",
+      "newsletterHeading": "Skin notes, launch updates, and routine guidance"
+    }
+  },
+  "generated": {
+    "blueprint_handle": "aster",
+    "source_of_truth": [
+      "blueprints",
+      "packages/core"
+    ]
+  }
+}

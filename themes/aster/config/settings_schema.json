@@ -1,0 +1,108 @@
+[
+  {
+    "name": "Theme identity",
+    "settings": [
+      {
+        "type": "text",
+        "id": "theme_name",
+        "label": "Theme name",
+        "default": "Aster"
+      },
+      {
+        "type": "text",
+        "id": "theme_handle",
+        "label": "Theme handle",
+        "default": "aster"
+      },
+      {
+        "type": "text",
+        "id": "theme_version",
+        "label": "Theme version",
+        "default": "0.1.0"
+      },
+      {
+        "type": "text",
+        "id": "theme_author",
+        "label": "Theme author",
+        "default": "Miso"
+      },
+      {
+        "type": "url",
+        "id": "theme_documentation_url",
+        "label": "Documentation URL",
+        "default": "https://example.com/aster/docs"
+      },
+      {
+        "type": "url",
+        "id": "theme_support_url",
+        "label": "Support URL",
+        "default": "https://example.com/aster/support"
+      }
+    ]
+  },
+  {
+    "name": "Visual tokens",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background",
+        "default": "#F8F5EF"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "label": "Surface",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#171512"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent",
+        "default": "#496F5D"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Border",
+        "default": "#D8D0C4"
+      },
+      {
+        "type": "text",
+        "id": "radius",
+        "label": "Radius",
+        "default": "8px"
+      },
+      {
+        "type": "text",
+        "id": "typography",
+        "label": "Typography",
+        "default": "Editorial headings with calm readable body copy for clinical premium commerce."
+      },
+      {
+        "type": "text",
+        "id": "imagery",
+        "label": "Imagery",
+        "default": "Bright product and lifestyle photography with clean ingredient and routine context."
+      },
+      {
+        "type": "text",
+        "id": "density",
+        "label": "Density",
+        "default": "spacious"
+      },
+      {
+        "type": "text",
+        "id": "motion",
+        "label": "Motion",
+        "default": "restrained"
+      }
+    ]
+  }
+]

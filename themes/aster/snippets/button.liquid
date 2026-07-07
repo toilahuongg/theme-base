@@ -1,0 +1,18 @@
+{% comment %}
+  @param label {string}
+  @param url {string}
+  @param secondary {boolean}
+{% endcomment %}
+
+{% assign button_label = label | default: 'Learn more' %}
+{% assign button_classes = 'tb-button' %}
+
+{% if secondary %}
+  {% assign button_classes = button_classes | append: ' tb-button--secondary' %}
+{% endif %}
+
+{% if url != blank %}
+  <a class="{{ button_classes }}" href="{{ url }}">{{ button_label | escape }}</a>
+{% else %}
+  <button class="{{ button_classes }}" type="button">{{ button_label | escape }}</button>
+{% endif %}
