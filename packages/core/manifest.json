@@ -1,0 +1,8 @@
+{
+  "assets": ["theme-base.css", "theme-components.js"],
+  "layouts": ["theme.liquid"],
+  "snippets": ["button.liquid", "responsive-image.liquid", "price.liquid", "product-card.liquid"],
+  "sections": ["main-hero.liquid", "featured-products.liquid", "rich-content.liquid"],
+  "templates": ["index.json", "product.json", "collection.json"],
+  "locales": ["en.default.json"]
+}

@@ -9,4 +9,7 @@ ehthumbs.db
 Thumbs.db
 .shopify
 node_modules
+node_modules/
+dist/
 *.zip
+themes/*/.shopify/

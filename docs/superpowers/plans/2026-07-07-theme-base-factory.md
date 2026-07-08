@@ -118,10 +118,7 @@ Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/package.json`:
   "type": "module",
   "description": "Shopify-native theme factory with blueprint-driven generation.",
   "scripts": {
-    "generate": "node packages/generator/src/generate-theme.mjs",
-    "validate:blueprint": "node packages/generator/src/validate-blueprint.mjs",
-    "check:theme-structure": "node packages/generator/src/check-theme-structure.mjs",
-    "test": "node --test tests/*.test.mjs",
+    "test": "node --test",
     "theme:check": "shopify theme check --path",
     "theme:package": "shopify theme package --path"
   },
@@ -173,6 +170,7 @@ Expected: commit succeeds with only root workspace files staged.
 - Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/schemas/blueprint.schema.json`
 - Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/paths.mjs`
 - Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/validate-blueprint.mjs`
+- Modify: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/package.json`
 - Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/blueprints/aster.json`
 - Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/tests/blueprint-validation.test.mjs`
 
@@ -391,7 +389,19 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 }
 ```
 
-- [ ] **Step 4: Add Aster blueprint**
+- [ ] **Step 4: Add validation script**
+
+Update `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/package.json` scripts:
+
+```json
+{
+  "scripts": {
+    "validate:blueprint": "node packages/generator/src/validate-blueprint.mjs"
+  }
+}
+```
+
+- [ ] **Step 5: Add Aster blueprint**
 
 Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/blueprints/aster.json`:
 
@@ -469,7 +479,7 @@ Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/blueprints/aster
 }
 ```
 
-- [ ] **Step 5: Add schema tests**
+- [ ] **Step 6: Add schema tests**
 
 Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/tests/blueprint-validation.test.mjs`:
 
@@ -492,7 +502,7 @@ test('rejects a missing blueprint handle', async () => {
 });
 ```
 
-- [ ] **Step 6: Run validation tests**
+- [ ] **Step 7: Run validation tests**
 
 Run:
 
@@ -509,12 +519,12 @@ Blueprint aster is valid
 
 and Node test output reports passing tests.
 
-- [ ] **Step 7: Commit schema and validation**
+- [ ] **Step 8: Commit schema and validation**
 
 Run:
 
 ```bash
-git add packages/core/schemas/blueprint.schema.json packages/generator/src/paths.mjs packages/generator/src/validate-blueprint.mjs blueprints/aster.json tests/blueprint-validation.test.mjs
+git add packages/core/schemas/blueprint.schema.json packages/generator/src/paths.mjs packages/generator/src/validate-blueprint.mjs blueprints/aster.json tests/blueprint-validation.test.mjs package.json
 git commit -m "feat: add blueprint schema and validator"
 ```
 
@@ -986,6 +996,7 @@ Expected: commit succeeds with only `packages/core` changes.
 ### Task 4: Generator Implementation
 
 **Files:**
+- Modify: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/package.json`
 - Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/theme-writer.mjs`
 - Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/docs-writer.mjs`
 - Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/generate-theme.mjs`
@@ -1242,7 +1253,20 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 }
 ```
 
-- [ ] **Step 5: Add generator tests**
+- [ ] **Step 5: Add generator scripts**
+
+Update `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/package.json` scripts:
+
+```json
+{
+  "scripts": {
+    "generate": "node packages/generator/src/generate-theme.mjs",
+    "check:theme-structure": "node packages/generator/src/check-theme-structure.mjs"
+  }
+}
+```
+
+- [ ] **Step 6: Add generator tests**
 
 Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/tests/generator.test.mjs`:
 
@@ -1267,7 +1291,7 @@ test('generates the Aster theme structure', async () => {
 });
 ```
 
-- [ ] **Step 6: Run generator tests**
+- [ ] **Step 7: Run generator tests**
 
 Run:
 
@@ -1284,12 +1308,12 @@ Generated aster at /Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/theme
 Theme aster has the required generated structure
 ```
 
-- [ ] **Step 7: Commit generator implementation**
+- [ ] **Step 8: Commit generator implementation**
 
 Run:
 
 ```bash
-git add packages/generator tests/generator.test.mjs themes/aster
+git add packages/generator tests/generator.test.mjs themes/aster package.json
 git commit -m "feat: generate Shopify theme output from blueprint"
 ```
 

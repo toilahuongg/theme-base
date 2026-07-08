@@ -1,0 +1,14 @@
+{
+  "current": {
+    "color_background": "#F8F5EF",
+    "color_surface": "#FFFFFF",
+    "color_text": "#171512",
+    "color_accent": "#496F5D",
+    "color_border": "#D8D0C4",
+    "radius": "8px",
+    "typography": "Editorial headings with calm readable body copy for clinical premium commerce.",
+    "imagery": "Bright product and lifestyle photography with clean ingredient and routine context.",
+    "density": "spacious",
+    "motion": "restrained"
+  }
+}

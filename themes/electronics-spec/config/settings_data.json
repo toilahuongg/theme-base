@@ -1,0 +1,14 @@
+{
+  "current": {
+    "color_background": "#F5F7FA",
+    "color_surface": "#FFFFFF",
+    "color_text": "#10151F",
+    "color_accent": "#2357D6",
+    "color_border": "#D6DCE7",
+    "radius": "6px",
+    "typography": "Utility-forward headings and compact body copy for specification browsing.",
+    "imagery": "Clean product photography with device context and close-up detail shots.",
+    "density": "balanced",
+    "motion": "restrained"
+  }
+}

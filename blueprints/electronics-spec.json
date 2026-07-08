@@ -1,0 +1,71 @@
+{
+  "theme": {
+    "name": "Spec",
+    "handle": "electronics-spec",
+    "version": "0.1.0",
+    "author": "Miso",
+    "documentationUrl": "https://example.com/spec/docs",
+    "supportUrl": "https://example.com/spec/support"
+  },
+  "presets": [
+    {
+      "name": "Spec",
+      "handle": "spec",
+      "industries": ["Electronics"],
+      "catalogSize": "Some (11-100+)",
+      "positioning": "A precise electronics storefront for specification-heavy products, comparison-led browsing, and confident purchasing."
+    }
+  ],
+  "market": {
+    "merchantProfile": "Electronics merchants selling products where specs, compatibility, and warranty details matter.",
+    "productModel": "Cameras, audio gear, accessories, bundles, and device-compatible products.",
+    "buyingBehavior": "Customers compare specifications, price, warranty, compatibility, and availability.",
+    "catalogStrategy": "Some catalog with structured collection browsing and product detail clarity."
+  },
+  "visual": {
+    "tokens": {
+      "background": "#F5F7FA",
+      "text": "#10151F",
+      "accent": "#2357D6",
+      "surface": "#FFFFFF",
+      "border": "#D6DCE7",
+      "radius": "6px"
+    },
+    "typography": "Utility-forward headings and compact body copy for specification browsing.",
+    "imagery": "Clean product photography with device context and close-up detail shots.",
+    "density": "balanced",
+    "motion": "restrained"
+  },
+  "components": ["drawer", "accordion", "tabs", "quantity-stepper", "variant-controller", "media-gallery"],
+  "sections": ["main-hero", "featured-products", "rich-content"],
+  "templates": ["index", "product", "collection", "cart", "search", "blog", "article", "page"],
+  "content": {
+    "homeHeroHeading": "Compare the details before you buy",
+    "homeHeroText": "A precise commerce experience for spec-heavy electronics and accessory catalogs.",
+    "emptyStateText": "No products are available in this view yet.",
+    "newsletterHeading": "Product updates, launch notes, and buying guides"
+  },
+  "listing": {
+    "summary": "Spec is an electronics theme direction built for specification-led browsing, comparison, and confident purchasing.",
+    "featureBullets": [
+      "Structured browsing for specification-heavy catalogs",
+      "Clean product cards for fast comparison",
+      "Generated merchant docs, QA checklist, and listing draft"
+    ],
+    "screenshotPlan": "Capture desktop and mobile home pages with product comparison framing and featured products visible.",
+    "releaseNotes": [
+      "Initial generated electronics proof theme for Theme Base generality."
+    ]
+  },
+  "docs": {
+    "merchantTopics": ["Homepage setup", "Featured products", "Product specs", "Theme settings"],
+    "aiNotes": ["Spec proves electronics support for the Theme Base factory."]
+  },
+  "qa": {
+    "scenarios": ["Home page renders", "Product card renders", "Collection template exists", "Theme docs generated"],
+    "lighthouse": {
+      "performance": 60,
+      "accessibility": 90
+    }
+  }
+}
