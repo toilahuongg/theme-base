@@ -27,6 +27,10 @@ Section content should be predictable and merchant-editable.
 
 Section schema changes must stay consistent with the blueprint and core source:
 
+- use clear merchant-facing labels,
+- keep controls shallow,
+- provide presets for reusable sections,
+- use `block.shopify_attributes` on block wrappers,
 - update the blueprint when the section needs new content or behavior,
 - update `packages/core` when the section is shared behavior,
 - regenerate `themes/<handle>` after the source change,

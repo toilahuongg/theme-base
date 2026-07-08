@@ -18,7 +18,7 @@ Theme Store demos should show how the theme works in a real store, not a synthet
 
 ## Payments And Checkout
 
-- Use test payments where appropriate.
+- Use the test payment setup required by Shopify demo store rules.
 - Make sure the demo flow can be exercised without breaking checkout expectations.
 - Verify product pages, cart behavior, and key conversion paths before recording or sharing the demo.
 

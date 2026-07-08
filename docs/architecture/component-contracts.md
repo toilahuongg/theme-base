@@ -13,6 +13,8 @@ Web components must expose a narrow, predictable API:
 - Internal DOM shape can change if the public API stays stable.
 - Components must not depend on generated theme-only state.
 - Inputs should come from settings, section data, or explicit attributes.
+- Behavior hooks should use `data-*` attributes so Liquid markup stays readable.
+- Selectors should stay local to the component and avoid page-wide coupling.
 
 Keep the API backward compatible whenever possible. If a prop or attribute changes, update the source docs and regenerate the theme.
 
