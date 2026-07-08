@@ -1,0 +1,38 @@
+<so-sticky-header class="so-site-header" role="banner">
+  <div class="so-page-width so-site-header__inner">
+    <a class="so-site-header__brand" href="{{ routes.root_url }}">{{ shop.name | escape }}</a>
+
+    <so-predictive-search
+      class="so-site-header__search"
+      data-loading-text="{{ 'search.predictive.loading' | t | escape }}"
+      data-empty-text="{{ 'search.predictive.empty' | t | escape }}"
+      data-error-text="{{ 'search.predictive.error' | t | escape }}"
+      data-ready-text=""
+    >
+      <form class="so-predictive-search" action="{{ routes.search_url }}" method="get" role="search">
+        <input
+          class="so-predictive-search__input"
+          type="search"
+          name="q"
+          autocomplete="off"
+          placeholder="{{ 'search.general.placeholder' | t }}"
+          data-predictive-search-input
+        >
+        <button class="so-button so-predictive-search__submit" type="submit">{{ 'search.general.submit' | t }}</button>
+      </form>
+      <p class="so-predictive-search__status" data-predictive-search-status role="status"></p>
+      <ul class="so-predictive-search__results" data-predictive-search-results role="list" hidden></ul>
+    </so-predictive-search>
+
+    <a class="so-site-header__cart" href="{{ routes.cart_url }}" data-cart-drawer-trigger aria-controls="cart-drawer" aria-expanded="false">
+      {{ 'cart.general.title' | t }}
+      <span data-cart-count>{{ cart.item_count }}</span>
+    </a>
+  </div>
+</so-sticky-header>
+
+{% schema %}
+{
+  "name": "Header"
+}
+{% endschema %}

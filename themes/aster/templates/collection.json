@@ -1,13 +1,10 @@
 {
   "sections": {
-    "featured_products": {
-      "type": "featured-products",
-      "settings": {
-        "heading": "Collection"
-      }
+    "main": {
+      "type": "main-collection-product-grid"
     }
   },
   "order": [
-    "featured_products"
+    "main"
   ]
 }

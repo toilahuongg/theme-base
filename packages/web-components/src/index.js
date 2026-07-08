@@ -1,91 +1,60 @@
-(() => {
-if (!customElements.get('so-disclosure')) {
-  customElements.define('so-disclosure', class SoDisclosure extends HTMLElement {
-    connectedCallback() {
-      if (this._connected) return;
+import { registerElement } from './register.js';
+import { SoDisclosure } from './components/disclosure.js';
+import { SoAccordion } from './components/accordion.js';
+import { SoDrawer } from './components/drawer.js';
+import { SoLiveRegion } from './components/live-region.js';
+import { SoModal } from './components/modal.js';
+import { SoQuantity } from './components/quantity.js';
+import { SoTabs } from './components/tabs.js';
+import { SoToast } from './components/toast.js';
+import { SoVariantController } from './components/variant-controller.js';
+import { SoProductForm } from './components/product-form.js';
+import { SoMediaGallery } from './components/media-gallery.js';
+import { SoStickyBuyBar } from './components/sticky-buy-bar.js';
+import { SoStickyHeader } from './components/sticky-header.js';
+import { SoLocalization } from './components/localization.js';
+import { SoCartDrawer } from './components/cart-drawer.js';
+import { SoCartItems } from './components/cart-items.js';
+import { SoPredictiveSearch } from './components/predictive-search.js';
+import { SoFacets } from './components/facets.js';
+import { SoSort } from './components/sort.js';
+import { SoQuickAdd } from './components/quick-add.js';
+import { SoCarousel } from './components/carousel.js';
+import { SoQuickView } from './components/quick-view.js';
+import { SoProductCard } from './components/product-card.js';
+import { SoSwatches } from './components/swatches.js';
+import { SoInfiniteList } from './components/infinite-list.js';
+import { SoDeferredMedia } from './components/deferred-media.js';
+import { SoRecipientForm } from './components/recipient-form.js';
+import { SoPickupAvailability } from './components/pickup-availability.js';
+import { SoShare } from './components/share.js';
 
-      this.toggleButton = this.querySelector('[data-disclosure-toggle]') || this.querySelector('button');
-      this.panel = this.querySelector('[data-disclosure-panel]') || this.querySelector('[hidden]');
-
-      if (!this.toggleButton || !this.panel) return;
-
-      this.toggleButton.setAttribute('aria-expanded', this.open ? 'true' : 'false');
-      this.panel.hidden = !this.open;
-      this.toggleButton.addEventListener('click', this);
-      this._connected = true;
-    }
-
-    disconnectedCallback() {
-      if (!this._connected) return;
-      this.toggleButton?.removeEventListener('click', this);
-      this._connected = false;
-    }
-
-    get open() {
-      return this.hasAttribute('open');
-    }
-
-    handleEvent(event) {
-      if (event.type === 'click') {
-        this.toggle();
-      }
-    }
-
-    toggle() {
-      const nextState = !this.open;
-
-      if (nextState) {
-        this.setAttribute('open', '');
-      } else {
-        this.removeAttribute('open');
-      }
-
-      this.panel.hidden = !nextState;
-      this.toggleButton.setAttribute('aria-expanded', nextState ? 'true' : 'false');
-    }
-  });
-}
-
-if (!customElements.get('so-quantity')) {
-  customElements.define('so-quantity', class SoQuantity extends HTMLElement {
-    constructor() {
-      super();
-      this.decrease = () => this.step(-1);
-      this.increase = () => this.step(1);
-    }
-
-    connectedCallback() {
-      if (this._connected) return;
-
-      this.input = this.querySelector('input[type="number"]');
-      this.decreaseButton = this.querySelector('[data-quantity-decrease]');
-      this.increaseButton = this.querySelector('[data-quantity-increase]');
-
-      if (!this.input) return;
-
-      this.decreaseButton?.addEventListener('click', this.decrease);
-      this.increaseButton?.addEventListener('click', this.increase);
-      this._connected = true;
-    }
-
-    disconnectedCallback() {
-      if (!this._connected) return;
-      this.decreaseButton?.removeEventListener('click', this.decrease);
-      this.increaseButton?.removeEventListener('click', this.increase);
-      this._connected = false;
-    }
-
-    step(direction) {
-      const step = Number(this.input.step) || 1;
-      const min = this.input.min === '' ? -Infinity : Number(this.input.min);
-      const max = this.input.max === '' ? Infinity : Number(this.input.max);
-      const current = Number(this.input.value) || 0;
-      const nextValue = Math.min(max, Math.max(min, current + direction * step));
-
-      this.input.value = String(nextValue);
-      this.input.dispatchEvent(new Event('input', { bubbles: true }));
-      this.input.dispatchEvent(new Event('change', { bubbles: true }));
-    }
-  });
-}
-})();
+registerElement('so-disclosure', SoDisclosure);
+registerElement('so-quantity', SoQuantity);
+registerElement('so-drawer', SoDrawer);
+registerElement('so-modal', SoModal);
+registerElement('so-accordion', SoAccordion);
+registerElement('so-tabs', SoTabs);
+registerElement('so-toast', SoToast);
+registerElement('so-live-region', SoLiveRegion);
+registerElement('so-variant-controller', SoVariantController);
+registerElement('so-product-form', SoProductForm);
+registerElement('so-media-gallery', SoMediaGallery);
+registerElement('so-sticky-buy-bar', SoStickyBuyBar);
+registerElement('so-sticky-header', SoStickyHeader);
+registerElement('so-localization', SoLocalization);
+registerElement('so-cart-drawer', SoCartDrawer);
+registerElement('so-cart-items', SoCartItems);
+registerElement('so-predictive-search', SoPredictiveSearch);
+registerElement('so-facets', SoFacets);
+registerElement('so-sort', SoSort);
+registerElement('so-quick-add', SoQuickAdd);
+registerElement('so-carousel', SoCarousel);
+registerElement('so-quick-view', SoQuickView);
+registerElement('so-product-card', SoProductCard);
+registerElement('so-swatches', SoSwatches);
+registerElement('so-infinite-list', SoInfiniteList);
+registerElement('so-deferred-media', SoDeferredMedia);
+registerElement('so-recipient-form', SoRecipientForm);
+registerElement('so-pickup-availability', SoPickupAvailability);
+registerElement('so-share', SoShare);

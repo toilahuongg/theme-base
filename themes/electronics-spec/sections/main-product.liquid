@@ -1,0 +1,53 @@
+{% liquid
+  assign current_variant = product.selected_or_first_available_variant
+%}
+
+<section class="so-section so-product-section">
+  <div class="so-page-width so-product">
+    <div class="so-product__media">
+      {% render 'media-gallery', product: product %}
+    </div>
+
+    <div class="so-product__summary" id="so-product-summary-{{ section.id }}">
+      {% if section.settings.show_vendor and product.vendor != blank %}
+        <p class="so-product__vendor">{{ product.vendor | escape }}</p>
+      {% endif %}
+
+      <h1 class="so-product__title">{{ product.title | escape }}</h1>
+
+      <div class="so-product__price">
+        {% render 'price', price: current_variant.price, compare_at_price: current_variant.compare_at_price %}
+      </div>
+
+      {% render 'variant-picker', product: product, section_id: section.id %}
+      {% render 'product-form', product: product, section_id: section.id, ajax: true %}
+
+      {% if product.description != blank %}
+        <div class="so-product__description rte">
+          {{ product.description }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <so-sticky-buy-bar class="so-sticky-buy-bar" target-selector="#so-product-summary-{{ section.id }}">
+    <div class="so-page-width so-sticky-buy-bar__inner">
+      <span class="so-sticky-buy-bar__title">{{ product.title | escape }}</span>
+      <a class="so-button" href="#so-product-summary-{{ section.id }}">{{ 'products.product.view_options' | t }}</a>
+    </div>
+  </so-sticky-buy-bar>
+</section>
+
+{% schema %}
+{
+  "name": "Main product",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

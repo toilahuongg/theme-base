@@ -21,6 +21,7 @@ Use this checklist when preparing a SO output theme for Shopify Theme Store revi
 
 - [ ] Performance is acceptable for the target catalog and page mix.
 - [ ] Accessibility is checked on key templates and interactive controls.
+- [ ] Generated storefront code uses the `so-` prefix for custom elements, CSS classes, and CSS variables. New source must not introduce `theme-base-`, `tb-`, or `--tb-`.
 - [ ] Theme structure passes the repo checks.
 - [ ] Shopify CLI checks pass against the generated theme.
 

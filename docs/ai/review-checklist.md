@@ -15,6 +15,7 @@ Use this checklist before declaring a SO change complete.
 - [ ] The change lives in source, not only in `themes/<handle>`.
 - [ ] Blueprint intent matches the generated output.
 - [ ] Section and component contracts still line up with the callers.
+- [ ] Generated storefront code uses the `so-` prefix for custom elements, CSS classes, and CSS variables. New source must not introduce `theme-base-`, `tb-`, or `--tb-`.
 - [ ] No generated file was used as the durable fix for a source problem.
 
 ## UX And Accessibility

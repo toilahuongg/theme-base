@@ -1,13 +1,10 @@
 {
   "sections": {
-    "rich_content": {
-      "type": "rich-content",
-      "settings": {
-        "heading": "Product details"
-      }
+    "main": {
+      "type": "main-product"
     }
   },
   "order": [
-    "rich_content"
+    "main"
   ]
 }

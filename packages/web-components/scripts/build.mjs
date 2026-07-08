@@ -15,12 +15,45 @@ async function writeFile(filePath, contents) {
   await fs.writeFile(filePath, contents);
 }
 
+function toModulePath(specifier, fromFile) {
+  return path.resolve(path.dirname(fromFile), specifier);
+}
+
+async function collectModules(entryFile, seen = new Set(), ordered = []) {
+  if (seen.has(entryFile)) return ordered;
+  seen.add(entryFile);
+
+  const source = await fs.readFile(entryFile, 'utf8');
+  const importRe = /^\s*import\s+{([^}]+)}\s+from\s+['"](.+)['"];\s*$/gm;
+  let match;
+  while ((match = importRe.exec(source))) {
+    const dependency = toModulePath(match[2], entryFile);
+    await collectModules(dependency, seen, ordered);
+  }
+
+  ordered.push({ file: entryFile, source });
+  return ordered;
+}
+
+function transformModule(source) {
+  const withoutImports = source.replace(/^\s*import\s+{[^}]+}\s+from\s+['"][^'"]+['"];\s*$/gm, '');
+  return withoutImports
+    .replace(/^\s*export\s+function\s+/gm, 'function ')
+    .replace(/^\s*export\s+class\s+/gm, 'class ')
+    .replace(/^\s*export\s+(const|let|var)\s+/gm, '$1 ');
+}
+
+async function bundle(entryFile) {
+  const modules = await collectModules(entryFile);
+  const body = modules.map((module) => transformModule(module.source).trim()).filter(Boolean).join('\n\n');
+  return `${generatedBanner}(() => {\n${body}\n})();\n`;
+}
+
 export async function buildWebComponents(options = {}) {
   const distFile = options.distFile ?? defaultDistFile;
   const coreAssetFile = options.coreAssetFile ?? defaultCoreAssetFile;
   const syncCoreAsset = options.syncCoreAsset ?? true;
-  const source = await fs.readFile(sourceFile, 'utf8');
-  const output = `${generatedBanner}${source}`;
+  const output = await bundle(sourceFile);
 
   await writeFile(distFile, output);
 

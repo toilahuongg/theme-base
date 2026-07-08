@@ -1,0 +1,59 @@
+<section class="so-section so-search-page">
+  <div class="so-page-width">
+    <header class="so-section__header">
+      <h1 class="so-section__heading">{{ 'search.general.title' | t }}</h1>
+      <form class="so-search-page__form" action="{{ routes.search_url }}" method="get" role="search">
+        <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'search.general.placeholder' | t }}">
+        <button class="so-button" type="submit">{{ 'search.general.submit' | t }}</button>
+      </form>
+    </header>
+
+    <div class="so-collection__toolbar">
+      {% render 'facets', results: search %}
+      {% render 'sort', results: search %}
+    </div>
+
+    {% paginate search.results by section.settings.results_per_page %}
+      {% if search.performed and search.results_count > 0 %}
+        <div class="so-grid so-product-grid">
+          {% for item in search.results %}
+            {% if item.object_type == 'product' %}
+              {% render 'product-card', product: item %}
+            {% else %}
+              <article class="so-card so-search-result">
+                <div class="so-card__content">
+                  <h2 class="so-card__title"><a href="{{ item.url }}">{{ item.title | escape }}</a></h2>
+                </div>
+              </article>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% elsif search.performed %}
+        <p class="so-section__text">{{ 'search.general.empty' | t }}</p>
+      {% endif %}
+
+      {% if paginate.pages > 1 %}
+        <nav class="so-pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+          {{ paginate | default_pagination }}
+        </nav>
+      {% endif %}
+    {% endpaginate %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Search results",
+  "settings": [
+    {
+      "type": "range",
+      "id": "results_per_page",
+      "label": "Results per page",
+      "min": 8,
+      "max": 24,
+      "step": 4,
+      "default": 12
+    }
+  ]
+}
+{% endschema %}

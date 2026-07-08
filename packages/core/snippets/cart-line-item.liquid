@@ -1,0 +1,54 @@
+{% comment %}
+  @param item {line_item}
+  @param line_index {number}
+{% endcomment %}
+
+{% if item != blank %}
+  <li class="so-cart-line" data-cart-line-item data-cart-line="{{ line_index }}">
+    <a class="so-cart-line__media" href="{{ item.url }}" aria-label="{{ item.product.title | escape }}">
+      {% render 'responsive-image', image: item.image, class: 'so-cart-line__image', alt: item.product.title %}
+    </a>
+
+    <div class="so-cart-line__content">
+      <div class="so-cart-line__header">
+        <a class="so-cart-line__title" href="{{ item.url }}">{{ item.product.title | escape }}</a>
+        <div data-cart-line-price>
+          {% render 'price', price: item.final_line_price, compare_at_price: item.original_line_price %}
+        </div>
+      </div>
+
+      {% unless item.product.has_only_default_variant %}
+        <p class="so-cart-line__variant">{{ item.variant.title | escape }}</p>
+      {% endunless %}
+
+      <form class="so-cart-line__quantity" action="{{ routes.cart_change_url }}" method="post">
+        <input type="hidden" name="line" value="{{ line_index }}">
+        <button
+          class="so-cart-line__quantity-button"
+          type="submit"
+          name="quantity"
+          value="{{ item.quantity | minus: 1 }}"
+          data-cart-line="{{ line_index }}"
+          data-cart-quantity="{{ item.quantity | minus: 1 }}"
+          data-cart-quantity-decrease
+          aria-label="{{ 'cart.general.decrease_quantity' | t: item: item.product.title | escape }}"
+        >
+          -
+        </button>
+        <span class="so-cart-line__quantity-value" data-cart-line-quantity-value>{{ item.quantity }}</span>
+        <button
+          class="so-cart-line__quantity-button"
+          type="submit"
+          name="quantity"
+          value="{{ item.quantity | plus: 1 }}"
+          data-cart-line="{{ line_index }}"
+          data-cart-quantity="{{ item.quantity | plus: 1 }}"
+          data-cart-quantity-increase
+          aria-label="{{ 'cart.general.increase_quantity' | t: item: item.product.title | escape }}"
+        >
+          +
+        </button>
+      </form>
+    </div>
+  </li>
+{% endif %}

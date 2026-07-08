@@ -1,0 +1,33 @@
+{% comment %}
+  @param product {product}
+  @param section_id {string}
+  @param ajax {boolean}
+{% endcomment %}
+
+{% if product != blank %}
+  {% assign current_variant = product.selected_or_first_available_variant %}
+  {% assign product_form_id = 'so-product-form-' | append: section_id %}
+
+  <so-product-form{% if ajax %} ajax{% endif %}>
+    {% form 'product', product, id: product_form_id, class: 'so-product-form' %}
+      <input type="hidden" name="id" value="{{ current_variant.id }}">
+
+      <div class="so-product-form__actions">
+        <button
+          class="so-button so-product-form__submit"
+          type="submit"
+          data-add-to-cart-text="{{ 'products.product.add_to_cart' | t | escape }}"
+          data-sold-out-text="{{ 'products.product.sold_out' | t | escape }}"
+          data-unavailable-text="{{ 'products.product.unavailable' | t | escape }}"
+          {% unless current_variant.available %}disabled{% endunless %}
+        >
+          {% if current_variant.available %}
+            {{ 'products.product.add_to_cart' | t }}
+          {% else %}
+            {{ 'products.product.sold_out' | t }}
+          {% endif %}
+        </button>
+      </div>
+    {% endform %}
+  </so-product-form>
+{% endif %}

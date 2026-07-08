@@ -14,6 +14,8 @@ A section contract includes:
 
 Treat these as public API. Renaming ids, changing setting types, or removing presets can break blueprints and generated themes.
 
+Generated storefront code uses the `so-` prefix for custom elements, CSS classes, and CSS variables. New source must not introduce `theme-base-`, `tb-`, or `--tb-`.
+
 ## Content Rules
 
 Section content should be predictable and merchant-editable.

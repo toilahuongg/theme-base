@@ -10,6 +10,7 @@ SO uses reusable components as stable contracts. This doc covers two kinds of co
 
 Web components must expose a narrow, predictable API:
 
+- Generated storefront code uses the `so-` prefix for custom elements, CSS classes, and CSS variables. New source must not introduce `theme-base-`, `tb-`, or `--tb-`.
 - Public attributes and properties are the contract.
 - Internal DOM shape can change if the public API stays stable.
 - Components must not depend on generated theme-only state.

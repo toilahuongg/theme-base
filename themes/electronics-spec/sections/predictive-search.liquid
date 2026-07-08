@@ -1,0 +1,26 @@
+<section class="so-section">
+  <div class="so-page-width">
+    <div class="so-section__header">
+      <h2 class="so-section__heading">{{ 'search.general.title' | t }}</h2>
+    </div>
+    <so-predictive-search
+      data-loading-text="{{ 'search.predictive.loading' | t | escape }}"
+      data-empty-text="{{ 'search.predictive.empty' | t | escape }}"
+      data-error-text="{{ 'search.predictive.error' | t | escape }}"
+      data-ready-text=""
+    >
+      <form class="so-predictive-search" action="{{ routes.search_url }}" method="get" role="search">
+        <input class="so-predictive-search__input" type="search" name="q" data-predictive-search-input>
+        <button class="so-button" type="submit">{{ 'search.general.submit' | t }}</button>
+      </form>
+      <p class="so-predictive-search__status" data-predictive-search-status role="status"></p>
+      <ul class="so-predictive-search__results" data-predictive-search-results role="list" hidden></ul>
+    </so-predictive-search>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Predictive search"
+}
+{% endschema %}

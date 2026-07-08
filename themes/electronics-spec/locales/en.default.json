@@ -6,5 +6,56 @@
     "featured_products": {
       "empty": "No products were found for this collection."
     }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "media_gallery": "Product media gallery",
+      "view_options": "View options"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Cart",
+      "close": "Close cart",
+      "empty": "Your cart is empty.",
+      "subtotal": "Subtotal",
+      "view_cart": "View cart",
+      "checkout": "Checkout",
+      "continue_shopping": "Continue shopping",
+      "decrease_quantity": "Decrease quantity for {{ item }}",
+      "increase_quantity": "Increase quantity for {{ item }}"
+    }
+  },
+  "collections": {
+    "general": {
+      "empty": "No products were found."
+    },
+    "facets": {
+      "apply": "Apply filters"
+    },
+    "sorting": {
+      "label": "Sort by"
+    }
+  },
+  "search": {
+    "general": {
+      "title": "Search",
+      "placeholder": "Search products",
+      "submit": "Search",
+      "empty": "No results were found."
+    },
+    "predictive": {
+      "loading": "Searching...",
+      "empty": "No suggestions found.",
+      "error": "Search is unavailable."
+    }
+  },
+  "general": {
+    "pagination": {
+      "label": "Pagination"
+    }
   }
 }

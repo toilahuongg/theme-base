@@ -1,0 +1,18 @@
+{% comment %}
+  @param results {collection|search}
+{% endcomment %}
+
+{% if results.sort_options != blank %}
+  <so-sort class="so-sort">
+    <form method="get">
+      <label class="so-sort__label" for="SortBy">{{ 'collections.sorting.label' | t }}</label>
+      <select id="SortBy" name="sort_by">
+        {% for option in results.sort_options %}
+          <option value="{{ option.value }}" {% if option.value == results.sort_by %}selected{% endif %}>
+            {{ option.name | escape }}
+          </option>
+        {% endfor %}
+      </select>
+    </form>
+  </so-sort>
+{% endif %}
