@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "main_hero": {
+      "type": "main-hero"
+    },
+    "featured_products": {
+      "type": "featured-products"
+    },
+    "rich_content": {
+      "type": "rich-content"
+    }
+  },
+  "order": [
+    "main_hero",
+    "featured_products",
+    "rich_content"
+  ]
+}
