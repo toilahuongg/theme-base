@@ -4,6 +4,7 @@ Theme Base uses reusable components as stable contracts. This doc covers two kin
 
 - Web components that ship as JavaScript-backed UI primitives.
 - Liquid snippets that render reusable storefront fragments.
+- Shopify theme blocks that merchants can compose inside block-enabled sections.
 
 ## Web Component Contract
 
@@ -26,6 +27,16 @@ Liquid snippets are reusable render units with explicit inputs.
 - Avoid hidden dependencies on global state unless that state is documented.
 - Keep naming stable so sections and templates can continue to call the snippet without churn.
 - When a snippet changes its expected inputs, update every caller in source, not in generated output.
+
+## Theme Block Contract
+
+Theme blocks are small merchant-editable modules under `packages/core/blocks`.
+
+- Each block must include a LiquidDoc header, a schema, and essential settings only.
+- Blocks that support nesting should render `{% content_for 'blocks' %}` and declare `@theme` and `@app` blocks in schema.
+- Block wrappers must include `{{ block.shopify_attributes }}` so the theme editor can target them.
+- Block-enabled sections should expose `@theme` and `@app` in schema and render a clear content area for merchant-composed blocks.
+- Generated themes must include a top-level `blocks/` directory so Shopify block support is visible in output structure.
 
 ## Shared Rules
 

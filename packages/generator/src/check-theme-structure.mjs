@@ -3,8 +3,10 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { themePath } from './paths.mjs';
 
-const REQUIRED_DIRECTORIES = ['assets', 'config', 'layout', 'locales', 'sections', 'snippets', 'templates', 'docs'];
+const REQUIRED_DIRECTORIES = ['assets', 'blocks', 'config', 'layout', 'locales', 'sections', 'snippets', 'templates', 'docs'];
 const REQUIRED_FILES = [
+  'blocks/callout-card.liquid',
+  'blocks/content-stack.liquid',
   'config/settings_schema.json',
   'config/settings_data.json',
   'layout/theme.liquid',

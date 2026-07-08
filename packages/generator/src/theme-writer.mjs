@@ -5,6 +5,7 @@ import { coreRoot, themePath } from './paths.mjs';
 const MANIFEST_PATH = path.join(coreRoot, 'manifest.json');
 const MANIFEST_DESTINATIONS = {
   assets: 'assets',
+  blocks: 'blocks',
   layouts: 'layout',
   snippets: 'snippets',
   sections: 'sections',

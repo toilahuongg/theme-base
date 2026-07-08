@@ -1,0 +1,24 @@
+<section class="tb-section tb-blocks-wrapper">
+  <div class="tb-page-width tb-blocks-wrapper__inner">
+    {% content_for 'blocks' %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blocks",
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blocks"
+    }
+  ]
+}
+{% endschema %}

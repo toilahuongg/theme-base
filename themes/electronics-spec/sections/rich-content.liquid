@@ -8,6 +8,10 @@
         <div class="tb-section__text rte">{{ section.settings.text }}</div>
       {% endif %}
     </div>
+
+    <div class="tb-section__blocks">
+      {% content_for 'blocks' %}
+    </div>
   </div>
 </section>
 
@@ -28,9 +32,32 @@
       "default": "<p>Add supporting copy, brand details, or educational content here.</p>"
     }
   ],
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    }
+  ],
   "presets": [
     {
-      "name": "Rich content"
+      "name": "Rich content",
+      "blocks": [
+        {
+          "type": "content-stack",
+          "blocks": [
+            {
+              "type": "callout-card",
+              "settings": {
+                "eyebrow": "Proof point",
+                "heading": "Merchandising that adapts to the story",
+                "text": "<p>Add compact trust, education, or comparison content without creating a new section.</p>"
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }

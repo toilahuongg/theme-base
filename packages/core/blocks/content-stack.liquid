@@ -1,0 +1,87 @@
+{% doc %}
+Renders a configurable stack that can nest theme and app blocks.
+@example
+{% content_for 'block', type: 'content-stack', id: 'content-stack' %}
+{% enddoc %}
+
+<div class="tb-content-stack tb-content-stack--{{ block.settings.alignment }}" style="--tb-content-stack-gap: {{ block.settings.gap }}px" {{ block.shopify_attributes }}>
+  {% content_for 'blocks' %}
+</div>
+
+{% stylesheet %}
+  .tb-content-stack {
+    display: grid;
+    gap: var(--tb-content-stack-gap);
+  }
+
+  .tb-content-stack--left {
+    justify-items: start;
+    text-align: left;
+  }
+
+  .tb-content-stack--center {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .tb-content-stack--stretch {
+    justify-items: stretch;
+    text-align: left;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Content stack",
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "settings": [
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "stretch",
+          "label": "Stretch"
+        }
+      ],
+      "default": "stretch"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Content stack",
+      "blocks": [
+        {
+          "type": "callout-card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

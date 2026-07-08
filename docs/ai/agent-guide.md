@@ -26,6 +26,7 @@ Make durable fixes in source:
 
 - blueprint changes in `blueprints/<handle>.json`,
 - shared logic in `packages/core`,
+- Shopify theme blocks in `packages/core/blocks`,
 - generator behavior in `packages/generator`.
 
 Do not make durable fixes only in `themes/<handle>`. If you need to patch generated output to understand a bug, move the real fix back into source before finishing.

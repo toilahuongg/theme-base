@@ -33,6 +33,14 @@ test('checkThemeStructure succeeds for Aster', async () => {
   await checkThemeStructure('aster', { themeRoot: tempThemesRoot });
 });
 
+test('generated theme includes Shopify theme blocks from core', async () => {
+  await generateTheme('aster', { themeRoot: tempThemesRoot });
+
+  const blockFiles = await fs.readdir(path.join(asterPath, 'blocks'));
+
+  assert.deepEqual(blockFiles.sort(), ['callout-card.liquid', 'content-stack.liquid']);
+});
+
 test('settings data matches generated settings schema ids', async () => {
   await generateTheme('aster', { themeRoot: tempThemesRoot });
   const schemaPath = path.join(asterPath, 'config/settings_schema.json');
@@ -73,6 +81,37 @@ test('checkThemeStructure rejects files where directories are required', async (
 
   try {
     await assert.rejects(() => checkThemeStructure(handle, { themeRoot: tempThemesRoot }), /Required directory is not a directory/);
+  } finally {
+    await fs.rm(root, { recursive: true, force: true });
+  }
+});
+
+test('checkThemeStructure rejects themes without a blocks directory', async () => {
+  const handle = 'missing-blocks-test';
+  const root = themePath(handle, tempThemesRoot);
+  const requiredDirectories = ['assets', 'config', 'layout', 'locales', 'sections', 'snippets', 'templates', 'docs'];
+  const requiredFiles = [
+    'config/settings_schema.json',
+    'config/settings_data.json',
+    'layout/theme.liquid',
+    'templates/index.json',
+    'docs/merchant.md',
+    'docs/ai-handoff.md',
+    'docs/listing-draft.md',
+    'docs/release-notes.md',
+    'docs/qa-checklist.md'
+  ];
+
+  await fs.rm(root, { recursive: true, force: true });
+  for (const directory of requiredDirectories) {
+    await fs.mkdir(path.join(root, directory), { recursive: true });
+  }
+  for (const file of requiredFiles) {
+    await fs.writeFile(path.join(root, file), '{}');
+  }
+
+  try {
+    await assert.rejects(() => checkThemeStructure(handle, { themeRoot: tempThemesRoot }), /Missing required directory: .*blocks/);
   } finally {
     await fs.rm(root, { recursive: true, force: true });
   }
