@@ -9,11 +9,11 @@ function isCliEntrypoint() {
   return Boolean(process.argv[1]) && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 }
 
-export async function generateTheme(handle) {
+export async function generateTheme(handle, options = {}) {
   const blueprint = await validateBlueprint(handle);
-  await writeTheme(handle, blueprint);
-  await writeDocs(handle, blueprint);
-  return themePath(handle);
+  await writeTheme(handle, blueprint, options);
+  await writeDocs(handle, blueprint, options);
+  return themePath(handle, options.themeRoot);
 }
 
 if (isCliEntrypoint()) {

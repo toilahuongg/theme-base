@@ -82,8 +82,8 @@ ${bulletList(blueprint.qa.scenarios)}
 `;
 }
 
-export async function writeDocs(handle, blueprint) {
-  const docsDir = path.join(themePath(handle), 'docs');
+export async function writeDocs(handle, blueprint, options = {}) {
+  const docsDir = path.join(themePath(handle, options.themeRoot), 'docs');
   await fs.rm(docsDir, { recursive: true, force: true });
   await fs.mkdir(docsDir, { recursive: true });
 

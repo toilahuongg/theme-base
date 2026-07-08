@@ -20,25 +20,41 @@ function isCliEntrypoint() {
   return Boolean(process.argv[1]) && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 }
 
-async function assertExists(filePath, description) {
+async function assertDirectory(directoryPath) {
+  let stat;
   try {
-    await fs.access(filePath);
+    stat = await fs.stat(directoryPath);
   } catch {
-    throw new Error(`Missing required ${description}: ${filePath}`);
+    throw new Error(`Missing required directory: ${directoryPath}`);
+  }
+  if (!stat.isDirectory()) {
+    throw new Error(`Required directory is not a directory: ${directoryPath}`);
   }
 }
 
-export async function checkThemeStructure(handle) {
-  const root = themePath(handle);
+async function assertFile(filePath) {
+  let stat;
+  try {
+    stat = await fs.stat(filePath);
+  } catch {
+    throw new Error(`Missing required file: ${filePath}`);
+  }
+  if (!stat.isFile()) {
+    throw new Error(`Required file is not a file: ${filePath}`);
+  }
+}
 
-  await assertExists(root, 'theme directory');
+export async function checkThemeStructure(handle, options = {}) {
+  const root = themePath(handle, options.themeRoot);
+
+  await assertDirectory(root);
 
   for (const directoryName of REQUIRED_DIRECTORIES) {
-    await assertExists(path.join(root, directoryName), 'directory');
+    await assertDirectory(path.join(root, directoryName));
   }
 
   for (const fileName of REQUIRED_FILES) {
-    await assertExists(path.join(root, fileName), 'file');
+    await assertFile(path.join(root, fileName));
   }
 
   return root;

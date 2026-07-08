@@ -1,44 +1,11 @@
 [
   {
-    "name": "Theme identity",
-    "settings": [
-      {
-        "type": "text",
-        "id": "theme_name",
-        "label": "Theme name",
-        "default": "Aster"
-      },
-      {
-        "type": "text",
-        "id": "theme_handle",
-        "label": "Theme handle",
-        "default": "aster"
-      },
-      {
-        "type": "text",
-        "id": "theme_version",
-        "label": "Theme version",
-        "default": "0.1.0"
-      },
-      {
-        "type": "text",
-        "id": "theme_author",
-        "label": "Theme author",
-        "default": "Miso"
-      },
-      {
-        "type": "url",
-        "id": "theme_documentation_url",
-        "label": "Documentation URL",
-        "default": "https://example.com/aster/docs"
-      },
-      {
-        "type": "url",
-        "id": "theme_support_url",
-        "label": "Support URL",
-        "default": "https://example.com/aster/support"
-      }
-    ]
+    "name": "theme_info",
+    "theme_name": "Aster",
+    "theme_version": "0.1.0",
+    "theme_author": "Miso",
+    "theme_documentation_url": "https://example.com/aster/docs",
+    "theme_support_url": "https://example.com/aster/support"
   },
   {
     "name": "Visual tokens",
