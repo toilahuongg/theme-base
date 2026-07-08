@@ -1,0 +1,16 @@
+{
+  "name": "@theme-base/web-components",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Browser custom elements shared by generated Theme Base Shopify themes.",
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs"
+  }
+}

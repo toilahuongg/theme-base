@@ -1,6 +1,3 @@
-// Generated from packages/web-components/src/index.js.
-// Run npm run build:web-components after editing web component source.
-
 (() => {
 if (!customElements.get('theme-base-disclosure')) {
   customElements.define('theme-base-disclosure', class ThemeBaseDisclosure extends HTMLElement {
