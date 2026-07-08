@@ -1,6 +1,6 @@
 # Industry Playbooks
 
-Theme Base should adapt to real industry behavior instead of using one generic storefront shape. These playbooks describe the default direction for common Theme Base presets.
+SO should adapt to real industry behavior instead of using one generic storefront shape. These playbooks describe the default direction for common SO presets.
 
 ## Beauty And Wellness
 

@@ -39,7 +39,7 @@ test('can be imported from node eval without running the CLI entrypoint', async 
 
 test('rejects a blueprint missing required schema fields', async () => {
   const invalidHandle = 'invalid-missing-fields-test';
-  const blueprintRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'theme-base-blueprints-'));
+  const blueprintRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'so-blueprints-'));
   const invalidPath = path.join(blueprintRoot, `${invalidHandle}.json`);
   const invalidBlueprint = {
     theme: {

@@ -2,10 +2,10 @@
   assign featured_collection = section.settings.collection | default: collection
 %}
 
-<section class="tb-section">
-  <div class="tb-page-width">
-    <div class="tb-section__header">
-      <h2 class="tb-section__heading">
+<section class="so-section">
+  <div class="so-page-width">
+    <div class="so-section__header">
+      <h2 class="so-section__heading">
         {% if section.settings.heading != blank %}
           {{ section.settings.heading | escape }}
         {% elsif featured_collection != blank %}
@@ -15,18 +15,18 @@
         {% endif %}
       </h2>
       {% if section.settings.text != blank %}
-        <div class="tb-section__text rte">{{ section.settings.text }}</div>
+        <div class="so-section__text rte">{{ section.settings.text }}</div>
       {% endif %}
     </div>
 
     {% if featured_collection != blank and featured_collection.products.size > 0 %}
-      <div class="tb-grid tb-product-grid">
+      <div class="so-grid so-product-grid">
         {% for product in featured_collection.products limit: section.settings.products_to_show %}
           {% render 'product-card', product: product %}
         {% endfor %}
       </div>
     {% else %}
-      <p class="tb-section__text">{{ 'sections.featured_products.empty' | t }}</p>
+      <p class="so-section__text">{{ 'sections.featured_products.empty' | t }}</p>
     {% endif %}
   </div>
 </section>

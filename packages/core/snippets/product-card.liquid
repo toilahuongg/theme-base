@@ -4,12 +4,12 @@
 
 {% if product != blank %}
   {% assign variant = product.selected_or_first_available_variant %}
-  <article class="tb-card product-card">
-    <a class="tb-card__media product-card__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
-      {% render 'responsive-image', image: product.featured_image, class: 'tb-card__image product-card__image', alt: product.title %}
+  <article class="so-card product-card">
+    <a class="so-card__media product-card__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+      {% render 'responsive-image', image: product.featured_image, class: 'so-card__image product-card__image', alt: product.title %}
     </a>
-    <div class="tb-card__content product-card__content">
-      <h3 class="tb-card__title product-card__title">
+    <div class="so-card__content product-card__content">
+      <h3 class="so-card__title product-card__title">
         <a href="{{ product.url }}">{{ product.title | escape }}</a>
       </h3>
       {% render 'price', price: variant.price, compare_at_price: variant.compare_at_price %}

@@ -1,6 +1,6 @@
 # Section Contracts
 
-Shopify sections are structured contracts, not freeform page fragments. In Theme Base, a section contract defines what content merchants can control, how the section renders, and what shape the generated schema must preserve.
+Shopify sections are structured contracts, not freeform page fragments. In SO, a section contract defines what content merchants can control, how the section renders, and what shape the generated schema must preserve.
 
 ## Contract Surface
 

@@ -1,6 +1,6 @@
 # Component Contracts
 
-Theme Base uses reusable components as stable contracts. This doc covers two kinds of components:
+SO uses reusable components as stable contracts. This doc covers two kinds of components:
 
 - Web components that ship as JavaScript-backed UI primitives.
 - Liquid snippets that render reusable storefront fragments.

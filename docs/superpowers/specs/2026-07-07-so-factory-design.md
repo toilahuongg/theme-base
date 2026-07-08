@@ -1,4 +1,4 @@
-# Theme Base Factory Design
+# SO Factory Design
 
 ## Context
 
@@ -10,9 +10,9 @@ The factory must help create new Shopify themes quickly for different industries
 
 ## Product Direction
 
-The product is a monorepo called **Theme Base**.
+The product is a monorepo called **SO**.
 
-Theme Base is an opinionated premium commerce factory for generating complete Shopify themes. It provides:
+SO is an opinionated premium commerce factory for generating complete Shopify themes. It provides:
 
 - A reusable core component and section system
 - A blueprint schema for describing child themes
@@ -23,7 +23,7 @@ Theme Base is an opinionated premium commerce factory for generating complete Sh
 - Release notes
 - QA and submission checklists
 
-Theme Base should support many industries and catalog sizes, including Beauty, Wellness, Clothing, Electronics, Home, Food and drink, B2B, Services, single-product brands, and large catalogs.
+SO should support many industries and catalog sizes, including Beauty, Wellness, Clothing, Electronics, Home, Food and drink, B2B, Services, single-product brands, and large catalogs.
 
 The first generated proof theme is **Aster**:
 
@@ -34,7 +34,7 @@ The first generated proof theme is **Aster**:
 
 ## Core Principles
 
-Theme Base must satisfy these principles:
+SO must satisfy these principles:
 
 - Shopify-native output: each generated theme must be a normal Shopify theme folder.
 - Strong source-of-truth boundaries: edit core and blueprints, then regenerate themes.
@@ -48,7 +48,7 @@ Theme Base must satisfy these principles:
 Target structure:
 
 ```text
-theme-base/
+so/
   packages/
     core/
       assets/
@@ -124,7 +124,7 @@ For multi-preset themes, generated output must include `/listings/<preset-name>`
 
 ## UI Component Layer
 
-Theme Base should use a strong UI component layer while keeping generated output Shopify-native.
+SO should use a strong UI component layer while keeping generated output Shopify-native.
 
 ### Web Components
 
@@ -395,7 +395,7 @@ Aster should prove that the core can support:
 
 Generate a second theme in a different industry, such as Electronics or Home.
 
-This phase proves that Theme Base is not beauty-specific. If the second generated theme requires extensive one-off hacks, the core and blueprint schema need refinement before Theme Base is considered successful.
+This phase proves that SO is not beauty-specific. If the second generated theme requires extensive one-off hacks, the core and blueprint schema need refinement before SO is considered successful.
 
 ## Validation Plan
 
@@ -425,7 +425,7 @@ Known current baseline:
 - `shopify theme check` exits successfully.
 - It reports 8 warnings across 7 files.
 - Current repo identity still says Dawn in README, `config/settings_schema.json`, and `config/settings_data.json`.
-- This baseline should be preserved as reference evidence, not accepted as Theme Base architecture.
+- This baseline should be preserved as reference evidence, not accepted as SO architecture.
 
 ## Approved Direction
 

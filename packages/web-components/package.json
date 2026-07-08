@@ -1,9 +1,9 @@
 {
-  "name": "@theme-base/web-components",
+  "name": "@so/web-components",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Browser custom elements shared by generated Theme Base Shopify themes.",
+  "description": "Browser custom elements shared by generated SO Shopify themes.",
   "files": [
     "dist",
     "src",

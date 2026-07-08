@@ -1,6 +1,6 @@
-# Theme Base Web Components
+# SO Web Components
 
-Browser-safe custom elements for generated Theme Base Shopify themes.
+Browser-safe custom elements for generated SO Shopify themes.
 
 The package keeps component source in `src/index.js`, builds a distributable browser asset to `dist/theme-components.js`, and syncs the same asset into `packages/core/assets/theme-components.js` so existing theme generation continues to copy `theme-components.js` from the core manifest.
 

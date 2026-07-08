@@ -54,12 +54,12 @@
     ],
     "screenshotPlan": "Capture desktop and mobile home pages with product comparison framing and featured products visible.",
     "releaseNotes": [
-      "Initial generated electronics proof theme for Theme Base generality."
+      "Initial generated electronics proof theme for SO generality."
     ]
   },
   "docs": {
     "merchantTopics": ["Homepage setup", "Featured products", "Product specs", "Theme settings"],
-    "aiNotes": ["Spec proves electronics support for the Theme Base factory."]
+    "aiNotes": ["Spec proves electronics support for the SO factory."]
   },
   "qa": {
     "scenarios": ["Home page renders", "Product card renders", "Collection template exists", "Theme docs generated"],

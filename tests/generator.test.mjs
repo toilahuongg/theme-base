@@ -10,7 +10,7 @@ import { generateTheme } from '../packages/generator/src/generate-theme.mjs';
 import { coreRoot, themePath } from '../packages/generator/src/paths.mjs';
 
 const execFileAsync = promisify(execFile);
-const tempThemesRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'theme-base-generated-'));
+const tempThemesRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'so-generated-'));
 const asterPath = themePath('aster', tempThemesRoot);
 
 test.after(async () => {
@@ -39,6 +39,36 @@ test('generated theme includes Shopify theme blocks from core', async () => {
   const blockFiles = await fs.readdir(path.join(asterPath, 'blocks'));
 
   assert.deepEqual(blockFiles.sort(), ['callout-card.liquid', 'content-stack.liquid']);
+});
+
+test('generated storefront contract uses the so prefix', async () => {
+  await generateTheme('aster', { themeRoot: tempThemesRoot });
+
+  const contractFiles = [
+    'assets/so.css',
+    'assets/theme-components.js',
+    'layout/theme.liquid',
+    'blocks/callout-card.liquid',
+    'blocks/content-stack.liquid',
+    'sections/_blocks.liquid',
+    'sections/featured-products.liquid',
+    'sections/main-hero.liquid',
+    'sections/rich-content.liquid',
+    'snippets/button.liquid',
+    'snippets/price.liquid',
+    'snippets/product-card.liquid'
+  ];
+  const contents = await Promise.all(
+    contractFiles.map(async (fileName) => fs.readFile(path.join(asterPath, fileName), 'utf8'))
+  );
+  const combined = contents.join('\n');
+
+  await assert.rejects(() => fs.stat(path.join(asterPath, 'assets/theme-base.css')), /ENOENT/);
+  assert.doesNotMatch(combined, /theme-base-/);
+  assert.doesNotMatch(combined, /\btb-/);
+  assert.doesNotMatch(combined, /--tb-/);
+  assert.match(combined, /so-/);
+  assert.match(combined, /--so-/);
 });
 
 test('settings data matches generated settings schema ids', async () => {

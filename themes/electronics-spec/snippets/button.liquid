@@ -5,10 +5,10 @@
 {% endcomment %}
 
 {% assign button_label = label | default: 'Learn more' %}
-{% assign button_classes = 'tb-button' %}
+{% assign button_classes = 'so-button' %}
 
 {% if secondary %}
-  {% assign button_classes = button_classes | append: ' tb-button--secondary' %}
+  {% assign button_classes = button_classes | append: ' so-button--secondary' %}
 {% endif %}
 
 {% if url != blank %}

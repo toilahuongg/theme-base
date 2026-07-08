@@ -9,4 +9,4 @@ Source of truth:
 
 ## Notes for future changes
 
-- Spec proves electronics support for the Theme Base factory.
+- Spec proves electronics support for the SO factory.

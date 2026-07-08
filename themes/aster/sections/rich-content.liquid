@@ -1,15 +1,15 @@
-<section class="tb-section">
-  <div class="tb-page-width">
-    <div class="tb-section__header">
+<section class="so-section">
+  <div class="so-page-width">
+    <div class="so-section__header">
       {% if section.settings.heading != blank %}
-        <h2 class="tb-section__heading">{{ section.settings.heading | escape }}</h2>
+        <h2 class="so-section__heading">{{ section.settings.heading | escape }}</h2>
       {% endif %}
       {% if section.settings.text != blank %}
-        <div class="tb-section__text rte">{{ section.settings.text }}</div>
+        <div class="so-section__text rte">{{ section.settings.text }}</div>
       {% endif %}
     </div>
 
-    <div class="tb-section__blocks">
+    <div class="so-section__blocks">
       {% content_for 'blocks' %}
     </div>
   </div>

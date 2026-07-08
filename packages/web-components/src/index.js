@@ -1,6 +1,6 @@
 (() => {
-if (!customElements.get('theme-base-disclosure')) {
-  customElements.define('theme-base-disclosure', class ThemeBaseDisclosure extends HTMLElement {
+if (!customElements.get('so-disclosure')) {
+  customElements.define('so-disclosure', class SoDisclosure extends HTMLElement {
     connectedCallback() {
       if (this._connected) return;
 
@@ -46,8 +46,8 @@ if (!customElements.get('theme-base-disclosure')) {
   });
 }
 
-if (!customElements.get('theme-base-quantity')) {
-  customElements.define('theme-base-quantity', class ThemeBaseQuantity extends HTMLElement {
+if (!customElements.get('so-quantity')) {
+  customElements.define('so-quantity', class SoQuantity extends HTMLElement {
     constructor() {
       super();
       this.decrease = () => this.step(-1);

@@ -1,6 +1,6 @@
 # AI Review Checklist
 
-Use this checklist before declaring a Theme Base change complete.
+Use this checklist before declaring a SO change complete.
 
 ## Validation
 

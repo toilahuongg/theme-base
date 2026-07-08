@@ -1,8 +1,8 @@
-# Theme Base Factory Implementation Plan
+# SO Factory Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build the first working vertical slice of the Theme Base monorepo factory: validated blueprint input, reusable core source files, a generator, generated Shopify-native Aster theme output, generated docs/listing/QA pack, and checks that prove the structure works.
+**Goal:** Build the first working vertical slice of the SO monorepo factory: validated blueprint input, reusable core source files, a generator, generated Shopify-native Aster theme output, generated docs/listing/QA pack, and checks that prove the structure works.
 
 **Architecture:** The repository becomes a Shopify-native monorepo where `packages/core` stores reusable Liquid, assets, schemas, and documentation; `blueprints/*.json` describes child themes; `packages/generator` validates blueprints and generates complete theme folders under `themes/<theme>`. Aster is the first generated proof theme, and a second non-beauty blueprint is added to prove that the system is not beauty-specific.
 
@@ -14,105 +14,105 @@
 
 Create and modify these files:
 
-- Modify: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/package.json`
+- Modify: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/package.json`
   Root scripts for generation, validation, tests, and Shopify CLI wrappers.
-- Modify: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/.gitignore`
+- Modify: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/.gitignore`
   Ignore generated archives and Node dependencies.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/schemas/blueprint.schema.json`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/schemas/blueprint.schema.json`
   JSON Schema for blueprint validation.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/manifest.json`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/manifest.json`
   Registry of core assets, layouts, snippets, sections, and templates the generator can use.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/assets/theme-base.css`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/assets/so.css`
   Token-driven CSS foundation.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/assets/theme-components.js`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/assets/theme-components.js`
   Vanilla custom elements for disclosure, drawer, tabs, and quantity behavior.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/layout/theme.liquid`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/layout/theme.liquid`
   Minimal Shopify layout shell.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/snippets/button.liquid`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/snippets/button.liquid`
   Button primitive.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/snippets/responsive-image.liquid`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/snippets/responsive-image.liquid`
   Image primitive.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/snippets/price.liquid`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/snippets/price.liquid`
   Price primitive.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/snippets/product-card.liquid`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/snippets/product-card.liquid`
   Product card primitive.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/sections/main-hero.liquid`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/sections/main-hero.liquid`
   Hero section.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/sections/featured-products.liquid`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/sections/featured-products.liquid`
   Featured collection grid section.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/sections/rich-content.liquid`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/sections/rich-content.liquid`
   Editorial content section.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/templates/index.json`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/templates/index.json`
   Base homepage template recipe.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/templates/product.json`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/templates/product.json`
   Base product template recipe.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/templates/collection.json`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/templates/collection.json`
   Base collection template recipe.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/locales/en.default.json`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/locales/en.default.json`
   Core English translations.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/paths.mjs`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/generator/src/paths.mjs`
   Repository path helpers.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/validate-blueprint.mjs`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/generator/src/validate-blueprint.mjs`
   Blueprint validation CLI.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/generate-theme.mjs`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/generator/src/generate-theme.mjs`
   Theme generator CLI.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/theme-writer.mjs`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/generator/src/theme-writer.mjs`
   Theme output writer.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/docs-writer.mjs`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/generator/src/docs-writer.mjs`
   Generated documentation writer.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/check-theme-structure.mjs`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/generator/src/check-theme-structure.mjs`
   Structure validator for generated output.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/blueprints/aster.json`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/blueprints/aster.json`
   First proof blueprint.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/blueprints/electronics-spec.json`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/blueprints/electronics-spec.json`
   Second non-beauty blueprint.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/tests/blueprint-validation.test.mjs`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/tests/blueprint-validation.test.mjs`
   Schema validation tests.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/tests/generator.test.mjs`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/tests/generator.test.mjs`
   Generator tests.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/architecture/overview.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/architecture/overview.md`
   Monorepo architecture docs.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/architecture/component-contracts.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/architecture/component-contracts.md`
   Component contracts.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/architecture/section-contracts.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/architecture/section-contracts.md`
   Section contracts.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/ai/agent-guide.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/ai/agent-guide.md`
   AI workflow guide.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/ai/blueprint-authoring.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/ai/blueprint-authoring.md`
   Blueprint authoring guide.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/ai/review-checklist.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/ai/review-checklist.md`
   AI review checklist.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/patterns/catalog-strategies.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/patterns/catalog-strategies.md`
   Catalog strategy guide.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/patterns/industry-playbooks.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/patterns/industry-playbooks.md`
   Industry playbooks.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/patterns/page-recipes.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/patterns/page-recipes.md`
   Page recipe docs.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/theme-store/submission-checklist.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/theme-store/submission-checklist.md`
   Theme Store submission checklist.
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/theme-store/demo-store-guide.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/theme-store/demo-store-guide.md`
   Demo store setup guide.
 
 Generated files after running the generator:
 
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/themes/aster/**`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/themes/electronics-spec/**`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/themes/aster/**`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/themes/electronics-spec/**`
 
 ---
 
 ### Task 1: Root Monorepo Scaffolding
 
 **Files:**
-- Modify: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/package.json`
-- Modify: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/.gitignore`
+- Modify: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/package.json`
+- Modify: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/.gitignore`
 
 - [ ] **Step 1: Add root package metadata**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/package.json`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/package.json`:
 
 ```json
 {
-  "name": "theme-base-factory",
+  "name": "so-factory",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -131,7 +131,7 @@ Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/package.json`:
 
 - [ ] **Step 2: Update ignored local artifacts**
 
-Append these lines to `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/.gitignore` if they are not already present:
+Append these lines to `/Users/devhugon/Desktop/Workspaces/miso-apps/so/.gitignore` if they are not already present:
 
 ```gitignore
 node_modules/
@@ -167,22 +167,22 @@ Expected: commit succeeds with only root workspace files staged.
 ### Task 2: Blueprint Schema And Validation
 
 **Files:**
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/schemas/blueprint.schema.json`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/paths.mjs`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/validate-blueprint.mjs`
-- Modify: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/package.json`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/blueprints/aster.json`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/tests/blueprint-validation.test.mjs`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/schemas/blueprint.schema.json`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/generator/src/paths.mjs`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/generator/src/validate-blueprint.mjs`
+- Modify: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/package.json`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/blueprints/aster.json`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/tests/blueprint-validation.test.mjs`
 
 - [ ] **Step 1: Add blueprint schema**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/schemas/blueprint.schema.json`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/schemas/blueprint.schema.json`:
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://miso.ai/theme-base/blueprint.schema.json",
-  "title": "Theme Base Blueprint",
+  "$id": "https://miso.ai/so/blueprint.schema.json",
+  "title": "SO Blueprint",
   "type": "object",
   "additionalProperties": false,
   "required": ["theme", "presets", "market", "visual", "components", "sections", "templates", "content", "listing", "docs", "qa"],
@@ -327,7 +327,7 @@ Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/sc
 
 - [ ] **Step 2: Add path helpers**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/paths.mjs`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/generator/src/paths.mjs`:
 
 ```js
 import { fileURLToPath } from 'node:url';
@@ -351,7 +351,7 @@ export function themePath(handle) {
 
 - [ ] **Step 3: Add blueprint validator**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/validate-blueprint.mjs`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/generator/src/validate-blueprint.mjs`:
 
 ```js
 import fs from 'node:fs/promises';
@@ -391,7 +391,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 
 - [ ] **Step 4: Add validation script**
 
-Update `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/package.json` scripts:
+Update `/Users/devhugon/Desktop/Workspaces/miso-apps/so/package.json` scripts:
 
 ```json
 {
@@ -403,7 +403,7 @@ Update `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/package.json` sc
 
 - [ ] **Step 5: Add Aster blueprint**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/blueprints/aster.json`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/blueprints/aster.json`:
 
 ```json
 {
@@ -462,12 +462,12 @@ Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/blueprints/aster
     ],
     "screenshotPlan": "Capture desktop and mobile home pages with hero, routine story, featured products, and editorial content visible.",
     "releaseNotes": [
-      "Initial generated Aster proof theme with core Theme Base structure."
+      "Initial generated Aster proof theme with core SO structure."
     ]
   },
   "docs": {
     "merchantTopics": ["Homepage setup", "Featured products", "Editorial content", "Theme settings"],
-    "aiNotes": ["Aster proves beauty and wellness support for the Theme Base factory."]
+    "aiNotes": ["Aster proves beauty and wellness support for the SO factory."]
   },
   "qa": {
     "scenarios": ["Home page renders", "Product card renders", "Collection template exists", "Theme docs generated"],
@@ -481,7 +481,7 @@ Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/blueprints/aster
 
 - [ ] **Step 6: Add schema tests**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/tests/blueprint-validation.test.mjs`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/tests/blueprint-validation.test.mjs`:
 
 ```js
 import assert from 'node:assert/strict';
@@ -535,29 +535,29 @@ Expected: commit succeeds with schema, validator, blueprint, and tests.
 ### Task 3: Core Theme Source Files
 
 **Files:**
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/manifest.json`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/assets/theme-base.css`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/assets/theme-components.js`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/layout/theme.liquid`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/snippets/button.liquid`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/snippets/responsive-image.liquid`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/snippets/price.liquid`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/snippets/product-card.liquid`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/sections/main-hero.liquid`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/sections/featured-products.liquid`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/sections/rich-content.liquid`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/templates/index.json`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/templates/product.json`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/templates/collection.json`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/locales/en.default.json`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/manifest.json`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/assets/so.css`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/assets/theme-components.js`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/layout/theme.liquid`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/snippets/button.liquid`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/snippets/responsive-image.liquid`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/snippets/price.liquid`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/snippets/product-card.liquid`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/sections/main-hero.liquid`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/sections/featured-products.liquid`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/sections/rich-content.liquid`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/templates/index.json`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/templates/product.json`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/templates/collection.json`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/locales/en.default.json`
 
 - [ ] **Step 1: Add core manifest**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/manifest.json`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/manifest.json`:
 
 ```json
 {
-  "assets": ["theme-base.css", "theme-components.js"],
+  "assets": ["so.css", "theme-components.js"],
   "layouts": ["theme.liquid"],
   "snippets": ["button.liquid", "responsive-image.liquid", "price.liquid", "product-card.liquid"],
   "sections": ["main-hero.liquid", "featured-products.liquid", "rich-content.liquid"],
@@ -568,23 +568,23 @@ Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/ma
 
 - [ ] **Step 2: Add token-driven CSS**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/assets/theme-base.css`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/assets/so.css`:
 
 ```css
 :root {
-  --tb-color-background: #ffffff;
-  --tb-color-text: #171512;
-  --tb-color-accent: #496f5d;
-  --tb-color-surface: #ffffff;
-  --tb-color-border: #d8d0c4;
-  --tb-radius-card: 8px;
-  --tb-page-width: 1200px;
-  --tb-space-1: 4px;
-  --tb-space-2: 8px;
-  --tb-space-3: 16px;
-  --tb-space-4: 24px;
-  --tb-space-5: 40px;
-  --tb-space-6: 64px;
+  --so-color-background: #ffffff;
+  --so-color-text: #171512;
+  --so-color-accent: #496f5d;
+  --so-color-surface: #ffffff;
+  --so-color-border: #d8d0c4;
+  --so-radius-card: 8px;
+  --so-page-width: 1200px;
+  --so-space-1: 4px;
+  --so-space-2: 8px;
+  --so-space-3: 16px;
+  --so-space-4: 24px;
+  --so-space-5: 40px;
+  --so-space-6: 64px;
 }
 
 * {
@@ -593,8 +593,8 @@ Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/as
 
 body {
   margin: 0;
-  background: var(--tb-color-background);
-  color: var(--tb-color-text);
+  background: var(--so-color-background);
+  color: var(--so-color-text);
   font-family: var(--font-body-family, system-ui, sans-serif);
   font-size: 16px;
   line-height: 1.5;
@@ -605,27 +605,27 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid var(--tb-color-accent);
+  outline: 2px solid var(--so-color-accent);
   outline-offset: 3px;
 }
 
-.tb-page-width {
-  width: min(100% - 32px, var(--tb-page-width));
+.so-page-width {
+  width: min(100% - 32px, var(--so-page-width));
   margin-inline: auto;
 }
 
-.tb-section {
-  padding-block: var(--tb-section-padding, var(--tb-space-6));
+.so-section {
+  padding-block: var(--so-section-padding, var(--so-space-6));
 }
 
-.tb-button {
+.so-button {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--tb-color-accent);
-  border-radius: var(--tb-radius-card);
-  background: var(--tb-color-accent);
+  border: 1px solid var(--so-color-accent);
+  border-radius: var(--so-radius-card);
+  background: var(--so-color-accent);
   color: #ffffff;
   padding: 12px 18px;
   text-decoration: none;
@@ -633,39 +633,39 @@ a {
   cursor: pointer;
 }
 
-.tb-button--secondary {
+.so-button--secondary {
   background: transparent;
-  color: var(--tb-color-accent);
+  color: var(--so-color-accent);
 }
 
-.tb-grid {
+.so-grid {
   display: grid;
-  gap: var(--tb-space-4);
+  gap: var(--so-space-4);
 }
 
-.tb-product-card {
+.so-product-card {
   display: grid;
-  gap: var(--tb-space-3);
+  gap: var(--so-space-3);
 }
 
-.tb-product-card__media {
+.so-product-card__media {
   overflow: hidden;
-  border-radius: var(--tb-radius-card);
-  background: var(--tb-color-surface);
-  border: 1px solid var(--tb-color-border);
+  border-radius: var(--so-radius-card);
+  background: var(--so-color-surface);
+  border: 1px solid var(--so-color-border);
 }
 
-.tb-product-card__title {
+.so-product-card__title {
   margin: 0;
   font-size: 1rem;
 }
 
-.tb-product-card__price {
+.so-product-card__price {
   font-weight: 600;
 }
 
 @media (min-width: 750px) {
-  .tb-grid--products {
+  .so-grid--products {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
@@ -673,10 +673,10 @@ a {
 
 - [ ] **Step 3: Add web components**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/assets/theme-components.js`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/assets/theme-components.js`:
 
 ```js
-class ThemeBaseDisclosure extends HTMLElement {
+class SoDisclosure extends HTMLElement {
   connectedCallback() {
     this.summary = this.querySelector('[data-disclosure-summary]');
     this.panel = this.querySelector('[data-disclosure-panel]');
@@ -689,7 +689,7 @@ class ThemeBaseDisclosure extends HTMLElement {
   }
 }
 
-class ThemeBaseQuantity extends HTMLElement {
+class SoQuantity extends HTMLElement {
   connectedCallback() {
     this.input = this.querySelector('input[type="number"]');
     this.minus = this.querySelector('[data-quantity-minus]');
@@ -707,13 +707,13 @@ class ThemeBaseQuantity extends HTMLElement {
   }
 }
 
-customElements.define('theme-base-disclosure', ThemeBaseDisclosure);
-customElements.define('theme-base-quantity', ThemeBaseQuantity);
+customElements.define('so-disclosure', SoDisclosure);
+customElements.define('so-quantity', SoQuantity);
 ```
 
 - [ ] **Step 4: Add Liquid layout**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/layout/theme.liquid`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/layout/theme.liquid`:
 
 ```liquid
 <!doctype html>
@@ -723,7 +723,7 @@ Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/la
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>{{ page_title }}</title>
     {{ content_for_header }}
-    {{ 'theme-base.css' | asset_url | stylesheet_tag }}
+    {{ 'so.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'theme-components.js' | asset_url }}" defer="defer"></script>
   </head>
   <body>
@@ -737,7 +737,7 @@ Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/la
 
 - [ ] **Step 5: Add Liquid snippets**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/snippets/button.liquid`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/snippets/button.liquid`:
 
 ```liquid
 {% doc %}
@@ -750,9 +750,9 @@ Renders a theme button.
 {% enddoc %}
 
 {% liquid
-  assign button_class = 'tb-button'
+  assign button_class = 'so-button'
   if secondary
-    assign button_class = button_class | append: ' tb-button--secondary'
+    assign button_class = button_class | append: ' so-button--secondary'
   endif
 %}
 
@@ -763,7 +763,7 @@ Renders a theme button.
 {% endif %}
 ```
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/snippets/responsive-image.liquid`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/snippets/responsive-image.liquid`:
 
 ```liquid
 {% doc %}
@@ -782,7 +782,7 @@ Renders a responsive Shopify image with fallback content.
 {% endif %}
 ```
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/snippets/price.liquid`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/snippets/price.liquid`:
 
 ```liquid
 {% doc %}
@@ -792,7 +792,7 @@ Renders product price.
 {% render 'price', product: product %}
 {% enddoc %}
 
-<span class="tb-product-card__price">
+<span class="so-product-card__price">
   {% if product.compare_at_price > product.price %}
     <span>{{ product.price | money }}</span>
     <s>{{ product.compare_at_price | money }}</s>
@@ -802,7 +802,7 @@ Renders product price.
 </span>
 ```
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/snippets/product-card.liquid`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/snippets/product-card.liquid`:
 
 ```liquid
 {% doc %}
@@ -812,12 +812,12 @@ Renders a product card.
 {% render 'product-card', product: product %}
 {% enddoc %}
 
-<article class="tb-product-card">
-  <a class="tb-product-card__media" href="{{ product.url }}">
-    {% render 'responsive-image', image: product.featured_image, class: 'tb-product-card__image', alt: product.featured_image.alt %}
+<article class="so-product-card">
+  <a class="so-product-card__media" href="{{ product.url }}">
+    {% render 'responsive-image', image: product.featured_image, class: 'so-product-card__image', alt: product.featured_image.alt %}
   </a>
   <div>
-    <h3 class="tb-product-card__title">
+    <h3 class="so-product-card__title">
       <a href="{{ product.url }}">{{ product.title | escape }}</a>
     </h3>
     {% render 'price', product: product %}
@@ -827,11 +827,11 @@ Renders a product card.
 
 - [ ] **Step 6: Add core sections**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/sections/main-hero.liquid`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/sections/main-hero.liquid`:
 
 ```liquid
-<section class="tb-section" style="--tb-section-padding: {{ section.settings.padding_top }}px;">
-  <div class="tb-page-width">
+<section class="so-section" style="--so-section-padding: {{ section.settings.padding_top }}px;">
+  <div class="so-page-width">
     <p>{{ section.settings.eyebrow | escape }}</p>
     <h1>{{ section.settings.heading | escape }}</h1>
     <div>{{ section.settings.text }}</div>
@@ -843,7 +843,7 @@ Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/se
 {
   "name": "Hero",
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Theme Base" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "SO" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Build a storefront with a clear point of view" },
     { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Compose premium commerce pages from reusable sections and components.</p>" },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop all" },
@@ -855,15 +855,15 @@ Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/se
 {% endschema %}
 ```
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/sections/featured-products.liquid`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/sections/featured-products.liquid`:
 
 ```liquid
-<section class="tb-section">
-  <div class="tb-page-width">
+<section class="so-section">
+  <div class="so-page-width">
     <h2>{{ section.settings.heading | escape }}</h2>
     {% assign featured_collection = section.settings.collection %}
     {% if featured_collection != blank and featured_collection.products_count > 0 %}
-      <div class="tb-grid tb-grid--products">
+      <div class="so-grid so-grid--products">
         {% for product in featured_collection.products limit: section.settings.products_to_show %}
           {% render 'product-card', product: product %}
         {% endfor %}
@@ -887,11 +887,11 @@ Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/se
 {% endschema %}
 ```
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/sections/rich-content.liquid`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/sections/rich-content.liquid`:
 
 ```liquid
-<section class="tb-section">
-  <div class="tb-page-width">
+<section class="so-section">
+  <div class="so-page-width">
     <h2>{{ section.settings.heading | escape }}</h2>
     <div>{{ section.settings.text }}</div>
   </div>
@@ -911,7 +911,7 @@ Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/se
 
 - [ ] **Step 7: Add base templates and locale**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/templates/index.json`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/templates/index.json`:
 
 ```json
 {
@@ -933,7 +933,7 @@ Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/te
 }
 ```
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/templates/product.json`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/templates/product.json`:
 
 ```json
 {
@@ -949,7 +949,7 @@ Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/te
 }
 ```
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/templates/collection.json`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/templates/collection.json`:
 
 ```json
 {
@@ -965,7 +965,7 @@ Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/te
 }
 ```
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/core/locales/en.default.json`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/core/locales/en.default.json`:
 
 ```json
 {
@@ -996,16 +996,16 @@ Expected: commit succeeds with only `packages/core` changes.
 ### Task 4: Generator Implementation
 
 **Files:**
-- Modify: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/package.json`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/theme-writer.mjs`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/docs-writer.mjs`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/generate-theme.mjs`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/check-theme-structure.mjs`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/tests/generator.test.mjs`
+- Modify: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/package.json`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/generator/src/theme-writer.mjs`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/generator/src/docs-writer.mjs`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/generator/src/generate-theme.mjs`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/generator/src/check-theme-structure.mjs`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/tests/generator.test.mjs`
 
 - [ ] **Step 1: Add theme writer**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/theme-writer.mjs`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/generator/src/theme-writer.mjs`:
 
 ```js
 import fs from 'node:fs/promises';
@@ -1068,7 +1068,7 @@ function buildSettingsSchema(blueprint) {
       "theme_support_url": blueprint.theme.supportUrl
     },
     {
-      "name": "Theme Base tokens",
+      "name": "SO tokens",
       "settings": [
         { "type": "color", "id": "color_background", "label": "Background", "default": blueprint.visual.tokens.background },
         { "type": "color", "id": "color_text", "label": "Text", "default": blueprint.visual.tokens.text },
@@ -1094,7 +1094,7 @@ function buildSettingsData(blueprint) {
 
 - [ ] **Step 2: Add docs writer**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/docs-writer.mjs`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/generator/src/docs-writer.mjs`:
 
 ```js
 import fs from 'node:fs/promises';
@@ -1180,7 +1180,7 @@ ${blueprint.qa.scenarios.map((scenario) => `- [ ] ${scenario}`).join('\n')}
 
 - [ ] **Step 3: Add generator CLI**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/generate-theme.mjs`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/generator/src/generate-theme.mjs`:
 
 ```js
 import { validateBlueprint } from './validate-blueprint.mjs';
@@ -1206,7 +1206,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 
 - [ ] **Step 4: Add structure checker**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/packages/generator/src/check-theme-structure.mjs`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/packages/generator/src/check-theme-structure.mjs`:
 
 ```js
 import fs from 'node:fs/promises';
@@ -1255,7 +1255,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 
 - [ ] **Step 5: Add generator scripts**
 
-Update `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/package.json` scripts:
+Update `/Users/devhugon/Desktop/Workspaces/miso-apps/so/package.json` scripts:
 
 ```json
 {
@@ -1268,7 +1268,7 @@ Update `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/package.json` sc
 
 - [ ] **Step 6: Add generator tests**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/tests/generator.test.mjs`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/tests/generator.test.mjs`:
 
 ```js
 import assert from 'node:assert/strict';
@@ -1304,7 +1304,7 @@ npm run check:theme-structure -- aster
 Expected:
 
 ```text
-Generated aster at /Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/themes/aster
+Generated aster at /Users/devhugon/Desktop/Workspaces/miso-apps/so/themes/aster
 Theme aster has the required generated structure
 ```
 
@@ -1324,26 +1324,26 @@ Expected: commit succeeds with generator, tests, and generated Aster output.
 ### Task 5: Factory Documentation
 
 **Files:**
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/architecture/overview.md`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/architecture/component-contracts.md`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/architecture/section-contracts.md`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/ai/agent-guide.md`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/ai/blueprint-authoring.md`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/ai/review-checklist.md`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/patterns/catalog-strategies.md`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/patterns/industry-playbooks.md`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/patterns/page-recipes.md`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/theme-store/submission-checklist.md`
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/theme-store/demo-store-guide.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/architecture/overview.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/architecture/component-contracts.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/architecture/section-contracts.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/ai/agent-guide.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/ai/blueprint-authoring.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/ai/review-checklist.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/patterns/catalog-strategies.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/patterns/industry-playbooks.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/patterns/page-recipes.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/theme-store/submission-checklist.md`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/theme-store/demo-store-guide.md`
 
 - [ ] **Step 1: Add architecture overview**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/architecture/overview.md`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/architecture/overview.md`:
 
 ```markdown
-# Theme Base Architecture
+# SO Architecture
 
-Theme Base is a Shopify-native theme factory.
+SO is a Shopify-native theme factory.
 
 ## Source Of Truth
 
@@ -1359,7 +1359,7 @@ Durable changes belong in `packages/core` or `blueprints`. Generated theme files
 
 - [ ] **Step 2: Add AI agent guide**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/ai/agent-guide.md`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/ai/agent-guide.md`:
 
 ```markdown
 # AI Agent Guide
@@ -1382,7 +1382,7 @@ Do not make durable fixes only inside `themes/<handle>`.
 
 Create the remaining docs with these headings and bullet lists:
 
-`/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/architecture/component-contracts.md`
+`/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/architecture/component-contracts.md`
 
 ```markdown
 # Component Contracts
@@ -1401,7 +1401,7 @@ Create the remaining docs with these headings and bullet lists:
 - Avoid hidden global dependencies unless Shopify requires them.
 ```
 
-`/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/architecture/section-contracts.md`
+`/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/architecture/section-contracts.md`
 
 ```markdown
 # Section Contracts
@@ -1420,7 +1420,7 @@ Create the remaining docs with these headings and bullet lists:
 - Keep Theme Store demo copy authentic.
 ```
 
-`/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/ai/blueprint-authoring.md`
+`/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/ai/blueprint-authoring.md`
 
 ```markdown
 # Blueprint Authoring
@@ -1437,7 +1437,7 @@ Blueprints describe theme intent and configuration. They do not contain arbitrar
 6. Add listing, docs, release notes, and QA scenarios.
 ```
 
-`/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/ai/review-checklist.md`
+`/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/ai/review-checklist.md`
 
 ```markdown
 # AI Review Checklist
@@ -1451,7 +1451,7 @@ Blueprints describe theme intent and configuration. They do not contain arbitrar
 - Durable changes are in source, not only generated output.
 ```
 
-`/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/patterns/catalog-strategies.md`
+`/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/patterns/catalog-strategies.md`
 
 ```markdown
 # Catalog Strategies
@@ -1473,7 +1473,7 @@ Use collection discovery, filters, editorial merchandising, and clear product ca
 Use dense filtering, search, category navigation, and highly scannable product grids.
 ```
 
-`/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/patterns/industry-playbooks.md`
+`/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/patterns/industry-playbooks.md`
 
 ```markdown
 # Industry Playbooks
@@ -1491,7 +1491,7 @@ Prioritize specifications, comparison, compatibility, warranty, inventory clarit
 Prioritize room context, materials, dimensions, lookbooks, collection grouping, and delivery details.
 ```
 
-`/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/patterns/page-recipes.md`
+`/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/patterns/page-recipes.md`
 
 ```markdown
 # Page Recipes
@@ -1509,7 +1509,7 @@ Media, title, price, variants, buy buttons, details, related products.
 Intro, filters, product grid, pagination, empty state.
 ```
 
-`/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/theme-store/submission-checklist.md`
+`/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/theme-store/submission-checklist.md`
 
 ```markdown
 # Theme Store Submission Checklist
@@ -1524,7 +1524,7 @@ Intro, filters, product grid, pagination, empty state.
 - Verify performance and accessibility targets.
 ```
 
-`/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/theme-store/demo-store-guide.md`
+`/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/theme-store/demo-store-guide.md`
 
 ```markdown
 # Demo Store Guide
@@ -1553,12 +1553,12 @@ Expected: commit succeeds with factory documentation files.
 ### Task 6: Second Blueprint To Prove Generality
 
 **Files:**
-- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/blueprints/electronics-spec.json`
-- Generated: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/themes/electronics-spec/**`
+- Create: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/blueprints/electronics-spec.json`
+- Generated: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/themes/electronics-spec/**`
 
 - [ ] **Step 1: Add electronics blueprint**
 
-Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/blueprints/electronics-spec.json`:
+Create `/Users/devhugon/Desktop/Workspaces/miso-apps/so/blueprints/electronics-spec.json`:
 
 ```json
 {
@@ -1617,12 +1617,12 @@ Create `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/blueprints/elect
     ],
     "screenshotPlan": "Capture desktop and mobile home pages with product comparison framing and featured products visible.",
     "releaseNotes": [
-      "Initial generated electronics proof theme for Theme Base generality."
+      "Initial generated electronics proof theme for SO generality."
     ]
   },
   "docs": {
     "merchantTopics": ["Homepage setup", "Featured products", "Product specs", "Theme settings"],
-    "aiNotes": ["Spec proves electronics support for the Theme Base factory."]
+    "aiNotes": ["Spec proves electronics support for the SO factory."]
   },
   "qa": {
     "scenarios": ["Home page renders", "Product card renders", "Collection template exists", "Theme docs generated"],
@@ -1648,7 +1648,7 @@ Expected:
 
 ```text
 Blueprint electronics-spec is valid
-Generated electronics-spec at /Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/themes/electronics-spec
+Generated electronics-spec at /Users/devhugon/Desktop/Workspaces/miso-apps/so/themes/electronics-spec
 Theme electronics-spec has the required generated structure
 ```
 
@@ -1668,8 +1668,8 @@ Expected: commit succeeds and proves the generator is not beauty-only.
 ### Task 7: Shopify Validation Pass
 
 **Files:**
-- Generated theme files under `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/themes/aster`
-- Generated theme files under `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/themes/electronics-spec`
+- Generated theme files under `/Users/devhugon/Desktop/Workspaces/miso-apps/so/themes/aster`
+- Generated theme files under `/Users/devhugon/Desktop/Workspaces/miso-apps/so/themes/electronics-spec`
 
 - [ ] **Step 1: Run Theme Check on Aster**
 
@@ -1727,8 +1727,8 @@ Expected: commit succeeds only if fixes were required. If no fixes were required
 ### Task 8: Final Review And Handoff
 
 **Files:**
-- Read: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/superpowers/specs/2026-07-07-theme-base-factory-design.md`
-- Read: `/Users/devhugon/Desktop/Workspaces/miso-apps/theme-base/docs/superpowers/plans/2026-07-07-theme-base-factory.md`
+- Read: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/superpowers/specs/2026-07-07-so-factory-design.md`
+- Read: `/Users/devhugon/Desktop/Workspaces/miso-apps/so/docs/superpowers/plans/2026-07-07-so-factory.md`
 
 - [ ] **Step 1: Run full local verification**
 
@@ -1764,7 +1764,7 @@ Expected: generated docs reflect the correct blueprint positioning and do not me
 Write a final execution summary with:
 
 ```markdown
-## Theme Base Factory Status
+## SO Factory Status
 
 - Blueprint schema: complete
 - Aster blueprint: complete

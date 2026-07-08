@@ -1,6 +1,6 @@
 # Theme Store Submission Checklist
 
-Use this checklist when preparing a Theme Base output theme for Shopify Theme Store review.
+Use this checklist when preparing a SO output theme for Shopify Theme Store review.
 
 ## Package And Build
 

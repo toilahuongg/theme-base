@@ -9,4 +9,4 @@ Source of truth:
 
 ## Notes for future changes
 
-- Aster proves beauty and wellness support for the Theme Base factory.
+- Aster proves beauty and wellness support for the SO factory.

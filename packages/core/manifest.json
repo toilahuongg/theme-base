@@ -1,5 +1,5 @@
 {
-  "assets": ["theme-base.css", "theme-components.js"],
+  "assets": ["so.css", "theme-components.js"],
   "blocks": ["callout-card.liquid", "content-stack.liquid"],
   "layouts": ["theme.liquid"],
   "snippets": ["button.liquid", "responsive-image.liquid", "price.liquid", "product-card.liquid"],

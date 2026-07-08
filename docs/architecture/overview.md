@@ -1,10 +1,10 @@
-# Theme Base Architecture
+# SO Architecture
 
-Theme Base is a Shopify-native monorepo theme factory. It exists to turn blueprint-driven theme intent into generated Shopify themes without losing source clarity, Theme Store quality, or repeatability.
+SO is a Shopify-native monorepo theme factory. It exists to turn blueprint-driven theme intent into generated Shopify themes without losing source clarity, Theme Store quality, or repeatability.
 
 ## Source Of Truth
 
-Theme Base has three distinct layers:
+SO has three distinct layers:
 
 - `packages/core` contains reusable source assets, Liquid, schemas, and component primitives.
 - `blueprints/<handle>.json` describes the theme-specific intent, market, content, and QA targets for one generated theme.

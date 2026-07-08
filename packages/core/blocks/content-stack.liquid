@@ -4,27 +4,27 @@ Renders a configurable stack that can nest theme and app blocks.
 {% content_for 'block', type: 'content-stack', id: 'content-stack' %}
 {% enddoc %}
 
-<div class="tb-content-stack tb-content-stack--{{ block.settings.alignment }}" style="--tb-content-stack-gap: {{ block.settings.gap }}px" {{ block.shopify_attributes }}>
+<div class="so-content-stack so-content-stack--{{ block.settings.alignment }}" style="--so-content-stack-gap: {{ block.settings.gap }}px" {{ block.shopify_attributes }}>
   {% content_for 'blocks' %}
 </div>
 
 {% stylesheet %}
-  .tb-content-stack {
+  .so-content-stack {
     display: grid;
-    gap: var(--tb-content-stack-gap);
+    gap: var(--so-content-stack-gap);
   }
 
-  .tb-content-stack--left {
+  .so-content-stack--left {
     justify-items: start;
     text-align: left;
   }
 
-  .tb-content-stack--center {
+  .so-content-stack--center {
     justify-items: center;
     text-align: center;
   }
 
-  .tb-content-stack--stretch {
+  .so-content-stack--stretch {
     justify-items: stretch;
     text-align: left;
   }

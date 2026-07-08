@@ -1,18 +1,18 @@
 :root {
-  --tb-color-background: #f7f4ef;
-  --tb-color-surface: #ffffff;
-  --tb-color-surface-muted: #f0ebe4;
-  --tb-color-text: #17212b;
-  --tb-color-text-soft: #5d6a75;
-  --tb-color-accent: #1f5f8b;
-  --tb-color-accent-strong: #164866;
-  --tb-color-border: #d9d1c6;
-  --tb-color-focus: #f59e0b;
-  --tb-shadow-soft: 0 10px 28px rgba(23, 33, 43, 0.08);
-  --tb-page-width: 72rem;
-  --tb-section-gap: clamp(2.5rem, 5vw, 5rem);
-  --tb-radius: 1rem;
-  --tb-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --so-color-background: #f7f4ef;
+  --so-color-surface: #ffffff;
+  --so-color-surface-muted: #f0ebe4;
+  --so-color-text: #17212b;
+  --so-color-text-soft: #5d6a75;
+  --so-color-accent: #1f5f8b;
+  --so-color-accent-strong: #164866;
+  --so-color-border: #d9d1c6;
+  --so-color-focus: #f59e0b;
+  --so-shadow-soft: 0 10px 28px rgba(23, 33, 43, 0.08);
+  --so-page-width: 72rem;
+  --so-section-gap: clamp(2.5rem, 5vw, 5rem);
+  --so-radius: 1rem;
+  --so-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 *,
@@ -28,9 +28,9 @@ html {
 
 body {
   margin: 0;
-  background: var(--tb-color-background);
-  color: var(--tb-color-text);
-  font-family: var(--tb-font-body);
+  background: var(--so-color-background);
+  color: var(--so-color-text);
+  font-family: var(--so-font-body);
   line-height: 1.5;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -54,49 +54,49 @@ a {
 }
 
 a:hover {
-  color: var(--tb-color-accent);
+  color: var(--so-color-accent);
 }
 
 :focus-visible {
-  outline: 3px solid var(--tb-color-focus);
+  outline: 3px solid var(--so-color-focus);
   outline-offset: 3px;
 }
 
-.tb-skip-link {
+.so-skip-link {
   position: absolute;
   left: 1rem;
   top: 1rem;
   z-index: 20;
   padding: 0.75rem 1rem;
   border-radius: 999px;
-  background: var(--tb-color-surface);
+  background: var(--so-color-surface);
   transform: translateY(-200%);
   transition: transform 0.2s ease;
 }
 
-.tb-skip-link:focus {
+.so-skip-link:focus {
   transform: translateY(0);
 }
 
-.tb-page-width {
-  width: min(100% - 2rem, var(--tb-page-width));
+.so-page-width {
+  width: min(100% - 2rem, var(--so-page-width));
   margin-inline: auto;
 }
 
-.tb-section {
-  padding-block: var(--tb-section-gap);
+.so-section {
+  padding-block: var(--so-section-gap);
 }
 
-.tb-button {
+.so-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   min-height: 44px;
   padding: 0.875rem 1.25rem;
-  border: 1px solid var(--tb-color-accent);
+  border: 1px solid var(--so-color-accent);
   border-radius: 999px;
-  background: var(--tb-color-accent);
+  background: var(--so-color-accent);
   color: #ffffff;
   font: inherit;
   font-weight: 600;
@@ -104,68 +104,68 @@ a:hover {
   transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
 }
 
-.tb-button:hover {
-  background: var(--tb-color-accent-strong);
-  border-color: var(--tb-color-accent-strong);
+.so-button:hover {
+  background: var(--so-color-accent-strong);
+  border-color: var(--so-color-accent-strong);
   color: #ffffff;
   transform: translateY(-1px);
 }
 
-.tb-button--secondary {
+.so-button--secondary {
   background: transparent;
-  border-color: var(--tb-color-border);
-  color: var(--tb-color-text);
+  border-color: var(--so-color-border);
+  color: var(--so-color-text);
 }
 
-.tb-button--secondary:hover {
-  background: var(--tb-color-surface-muted);
-  border-color: var(--tb-color-text-soft);
-  color: var(--tb-color-text);
+.so-button--secondary:hover {
+  background: var(--so-color-surface-muted);
+  border-color: var(--so-color-text-soft);
+  color: var(--so-color-text);
 }
 
-.tb-grid {
+.so-grid {
   display: grid;
   gap: 1.25rem;
 }
 
-.tb-product-grid {
+.so-product-grid {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
 }
 
-.tb-card {
+.so-card {
   overflow: clip;
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--tb-color-border);
-  border-radius: var(--tb-radius);
-  background: var(--tb-color-surface);
-  box-shadow: var(--tb-shadow-soft);
+  border: 1px solid var(--so-color-border);
+  border-radius: var(--so-radius);
+  background: var(--so-color-surface);
+  box-shadow: var(--so-shadow-soft);
 }
 
-.tb-card__media {
+.so-card__media {
   aspect-ratio: 1 / 1;
-  background: var(--tb-color-surface-muted);
+  background: var(--so-color-surface-muted);
 }
 
-.tb-card__media img {
+.so-card__media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.tb-card__content {
+.so-card__content {
   display: grid;
   gap: 0.5rem;
   padding: 1rem;
 }
 
-.tb-card__title {
+.so-card__title {
   margin: 0;
   font-size: 1rem;
   line-height: 1.35;
 }
 
-.tb-card__title a,
+.so-card__title a,
 .product-card__title a {
   text-decoration: none;
 }
@@ -185,67 +185,67 @@ a:hover {
   object-fit: cover;
 }
 
-.tb-price {
+.so-price {
   display: inline-flex;
   align-items: baseline;
   gap: 0.5rem;
   font-weight: 600;
 }
 
-.tb-price__compare {
-  color: var(--tb-color-text-soft);
+.so-price__compare {
+  color: var(--so-color-text-soft);
   font-weight: 500;
 }
 
-.tb-hero {
-  padding-top: calc(var(--tb-section-gap) * 1.25);
+.so-hero {
+  padding-top: calc(var(--so-section-gap) * 1.25);
 }
 
-.tb-hero__inner {
+.so-hero__inner {
   display: grid;
   gap: 1rem;
 }
 
-.tb-hero__eyebrow {
+.so-hero__eyebrow {
   margin: 0;
-  color: var(--tb-color-accent);
+  color: var(--so-color-accent);
   font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.tb-hero__heading,
-.tb-section__heading {
+.so-hero__heading,
+.so-section__heading {
   margin: 0;
   line-height: 1.05;
   letter-spacing: -0.03em;
 }
 
-.tb-hero__heading {
+.so-hero__heading {
   font-size: clamp(2.5rem, 6vw, 5rem);
   max-width: 12ch;
 }
 
-.tb-hero__text,
-.tb-section__text {
+.so-hero__text,
+.so-section__text {
   margin: 0;
   max-width: 62ch;
-  color: var(--tb-color-text-soft);
+  color: var(--so-color-text-soft);
 }
 
-.tb-section__header {
+.so-section__header {
   display: grid;
   gap: 0.75rem;
   margin-bottom: 1.5rem;
 }
 
-.tb-section__heading {
+.so-section__heading {
   font-size: clamp(1.75rem, 3vw, 2.5rem);
 }
 
 @media (min-width: 48rem) {
-  .tb-hero__inner {
+  .so-hero__inner {
     gap: 1.25rem;
   }
 }

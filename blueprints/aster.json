@@ -54,12 +54,12 @@
     ],
     "screenshotPlan": "Capture desktop and mobile home pages with hero, routine story, featured products, and editorial content visible.",
     "releaseNotes": [
-      "Initial generated Aster proof theme with core Theme Base structure."
+      "Initial generated Aster proof theme with core SO structure."
     ]
   },
   "docs": {
     "merchantTopics": ["Homepage setup", "Featured products", "Editorial content", "Theme settings"],
-    "aiNotes": ["Aster proves beauty and wellness support for the Theme Base factory."]
+    "aiNotes": ["Aster proves beauty and wellness support for the SO factory."]
   },
   "qa": {
     "scenarios": ["Home page renders", "Product card renders", "Collection template exists", "Theme docs generated"],

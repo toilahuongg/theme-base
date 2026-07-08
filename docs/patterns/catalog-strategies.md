@@ -1,6 +1,6 @@
 # Catalog Strategies
 
-Theme Base blueprints should reflect the merchant's real catalog size. Different catalog sizes need different navigation, merchandising, and template emphasis.
+SO blueprints should reflect the merchant's real catalog size. Different catalog sizes need different navigation, merchandising, and template emphasis.
 
 ## 1 Product
 
