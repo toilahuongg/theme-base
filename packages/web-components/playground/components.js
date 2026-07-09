@@ -528,13 +528,13 @@ export const componentCatalog = [
     variants: [
       {
         name: 'Event opened',
-        notes: 'Opens the modal shell on so:quick-view:open; product content is rendered by the consumer.',
+        notes: 'Opens the modal shell on so:quick-view:open; consumer renders product content into data-quick-view-content.',
         html: `<button class="so-button" type="button" onclick="document.dispatchEvent(new CustomEvent('so:quick-view:open', { detail: { productUrl: '/products/everyday-jacket' } }))">Open quick view</button>
 <so-quick-view class="so-quick-view">
   <div class="so-modal__panel" data-quick-view-content>
     <button class="so-modal__close" type="button" data-quick-view-close>Close</button>
-    <h3>Quick view shell</h3>
-    <p>Open state and product-url are managed by the component.</p>
+    <h3>Quick view</h3>
+    <p>Product content rendered by the consumer after so:quick-view:opened.</p>
   </div>
 </so-quick-view>`
       }
@@ -550,13 +550,13 @@ export const componentCatalog = [
     variants: [
       {
         name: 'Catalog card',
-        notes: 'Exposes getProductUrl() and navigateToProduct() for theme-level customization.',
+        notes: 'Uses data-product-card-media and data-product-card-title for click targets. Exposes getProductUrl().',
         html: `<so-product-card class="so-card">
-  <a class="so-card__media" href="/products/everyday-jacket" aria-label="Everyday Jacket">
+  <a class="so-card__media" href="/products/everyday-jacket" data-product-card-media aria-label="Everyday Jacket">
     <div class="so-card__image so-card__placeholder">Image</div>
   </a>
   <div class="so-card__content">
-    <h3 class="so-card__title"><a href="/products/everyday-jacket">Everyday Jacket</a></h3>
+    <h3 class="so-card__title" data-product-card-title><a href="/products/everyday-jacket">Everyday Jacket</a></h3>
     <span class="so-price__current">$148.00</span>
   </div>
 </so-product-card>`
@@ -595,11 +595,11 @@ export const componentCatalog = [
     variants: [
       {
         name: 'Load more',
-        notes: 'Fetches HTML, extracts [data-infinite-item] elements, and appends to the grid.',
+        notes: 'Fetches HTML, extracts [data-infinite-item] elements, and appends to the grid. Next link updates automatically.',
         html: `<so-infinite-list class="so-infinite-list" ajax>
   <div class="so-product-grid so-grid" data-infinite-items>
-    <div class="so-card"><div class="so-card__content">Product 1</div></div>
-    <div class="so-card"><div class="so-card__content">Product 2</div></div>
+    <div class="so-card" data-infinite-item="1"><div class="so-card__content">Product 1</div></div>
+    <div class="so-card" data-infinite-item="2"><div class="so-card__content">Product 2</div></div>
   </div>
   <a class="so-button" href="/collections/all?page=2" data-infinite-next>Load more</a>
 </so-infinite-list>`
@@ -653,16 +653,20 @@ export const componentCatalog = [
     status: 'ready',
     summary: 'Fetches pickup availability for a variant and renders loading/empty/error states.',
     attributes: [
-      { name: 'variant-id', type: 'id', description: 'Shopify variant id used to request pickup availability.' }
+      { name: 'variant-id', type: 'id', description: 'Shopify variant id used to request pickup availability.' },
+      { name: 'data-loading', type: 'boolean', description: 'Set while the availability request is pending.' }
     ],
     events: [],
     variants: [
       {
         name: 'Pickup lookup',
-        notes: 'Fetches /variants/{id}/pickup-availability and renders loading/result/error states.',
+        notes: 'Auto-fetches on connect. Call refresh(variantId) to re-check.',
         html: `<so-pickup-availability class="so-pickup-availability" variant-id="1001">
   <strong class="so-pickup-availability__title">Pickup availability</strong>
-  <p>Variant 1001 is ready for availability lookup.</p>
+  <p class="so-pickup-availability__loading" data-pickup-loading hidden>Checking stores…</p>
+  <div class="so-pickup-availability__list" data-pickup-list></div>
+  <p class="so-pickup-availability__empty" data-pickup-empty hidden>No stores nearby.</p>
+  <p class="so-pickup-availability__error" data-pickup-error hidden></p>
 </so-pickup-availability>`
       }
     ]
