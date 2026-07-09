@@ -876,7 +876,8 @@ so-tabs [role="tabpanel"][hidden] {
 .so-carousel {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
-  gap: 0.75rem;
+  grid-template-rows: auto auto;
+  gap: 0.75rem 0.75rem;
   align-items: center;
 }
 
@@ -884,6 +885,7 @@ so-tabs [role="tabpanel"][hidden] {
   min-width: 44px;
   min-height: 44px;
   padding: 0.55rem 0.75rem;
+  grid-row: 1;
 }
 
 .so-carousel__track {
@@ -895,6 +897,7 @@ so-tabs [role="tabpanel"][hidden] {
   overscroll-behavior-inline: contain;
   scroll-snap-type: inline mandatory;
   scrollbar-width: thin;
+  grid-row: 1;
 }
 
 .so-carousel__item {
@@ -913,8 +916,9 @@ so-tabs [role="tabpanel"][hidden] {
   display: flex;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.5rem 0;
-  grid-column: 2;
+  padding: 0.25rem 0;
+  grid-column: 1 / -1;
+  grid-row: 2;
 }
 
 .so-carousel__dot {
