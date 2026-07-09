@@ -1,6 +1,0 @@
-/* SO Design System — Aggregator
- * Import in order: tokens → components → animations
- */
-@import 'so-tokens.css';
-@import 'so-components.css';
-@import 'so-animations.css';
