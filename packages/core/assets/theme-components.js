@@ -22,7 +22,7 @@ function setExpanded(button, expanded) {
     button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
   }
 }
-function trapFocus(container) {
+function rememberFocus() {
   const previous = document.activeElement;
 
   return () => {
@@ -262,6 +262,7 @@ class SoModal extends HTMLElement {
   connectedCallback() {
     if (this._connected) return;
 
+    this.panel = this.querySelector('[data-modal-panel]') || this;
     this.closeButtons = Array.from(this.querySelectorAll('[data-modal-close]'));
     this.closeButtons.forEach((button) => button.addEventListener('click', this));
 
@@ -269,6 +270,7 @@ class SoModal extends HTMLElement {
       document.addEventListener('keydown', this);
     }
 
+    this.syncPanel();
     this._connected = true;
   }
 
@@ -300,11 +302,21 @@ class SoModal extends HTMLElement {
   }
 
   open() {
+    if (this.isOpen()) return;
     this.setAttribute('open', '');
+    this.syncPanel();
   }
 
   close() {
+    if (!this.isOpen()) return;
     this.removeAttribute('open');
+    this.syncPanel();
+  }
+
+  syncPanel() {
+    if (this.panel) {
+      this.panel.hidden = !this.isOpen();
+    }
   }
 }
 
@@ -436,15 +448,10 @@ class SoTabs extends HTMLElement {
       tab.setAttribute('aria-selected', selected ? 'true' : 'false');
 
       const panelId = tab.getAttribute('aria-controls');
-      const panel = panelId ? this.panels.find((candidate) => candidate.id === panelId) : null;
+      const panel = this.panels.find((p) => p.id === panelId);
       if (panel) {
         panel.hidden = !selected;
       }
-    });
-
-    this.panels.forEach((panel) => {
-      const activeTab = this.tabs.find((tab) => tab.getAttribute('aria-controls') === panel.id);
-      panel.hidden = !activeTab || activeTab !== selectedTab;
     });
   }
 }
@@ -626,14 +633,16 @@ class SoProductForm extends HTMLElement {
     this.setBusy(true);
 
     try {
+      const body = this.serializeBody();
       const response = await fetch('/cart/add.js', {
         method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: new FormData(this.form)
+        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+        body
       });
 
       if (!response.ok) {
-        throw new Error('Add to cart failed');
+        const errorData = await response.json().catch(() => null);
+        throw new Error(errorData?.description || `Add to cart failed (${response.status})`);
       }
 
       const item = await response.json();
@@ -643,6 +652,15 @@ class SoProductForm extends HTMLElement {
     } finally {
       this.setBusy(false);
     }
+  }
+
+  serializeBody() {
+    const formData = new FormData(this.form);
+    const body = {};
+    formData.forEach((value, key) => {
+      body[key] = String(value);
+    });
+    return JSON.stringify(body);
   }
 
   setBusy(busy) {
@@ -1331,8 +1349,43 @@ class SoQuickView extends HTMLElement {
 class SoProductCard extends HTMLElement {
   connectedCallback() {
     if (this._connected) return;
+
     this.link = this.querySelector('a[href]');
+    this.mediaLink = this.querySelector('[data-product-card-media]');
+    this.titleLink = this.querySelector('[data-product-card-title] a, .so-card__title a');
+
+    if (this.mediaLink) {
+      this.mediaLink.addEventListener('click', this.onMediaClick.bind(this));
+    }
+
     this._connected = true;
+  }
+
+  disconnectedCallback() {
+    if (!this._connected) return;
+    if (this.mediaLink) {
+      this.mediaLink.removeEventListener('click', this.onMediaClick);
+    }
+    this._connected = false;
+  }
+
+  onMediaClick(event) {
+    event.preventDefault();
+    this.navigateToProduct();
+  }
+
+  navigateToProduct() {
+    const url = this.getProductUrl();
+    if (url && typeof window !== 'undefined') {
+      window.location.href = url;
+    }
+  }
+
+  getProductUrl() {
+    if (this.titleLink?.href) return this.titleLink.href;
+    if (this.mediaLink?.href) return this.mediaLink.href;
+    if (this.link?.href) return this.link.href;
+    return null;
   }
 }
 
@@ -1367,6 +1420,7 @@ class SoInfiniteList extends HTMLElement {
     if (this._connected) return;
 
     this.nextLink = this.querySelector('[data-infinite-next]');
+    this.itemsContainer = this.querySelector('[data-infinite-items]');
     this.onClick = (event) => this.loadMore(event);
     this.nextLink?.addEventListener('click', this.onClick);
     this._connected = true;
@@ -1386,9 +1440,50 @@ class SoInfiniteList extends HTMLElement {
     try {
       const response = await fetch(this.nextLink.href, { headers: { Accept: 'text/html' } });
       if (!response.ok) throw new Error('Load more failed');
+
+      const html = await response.text();
+      this.appendContent(html);
       this.dispatchEvent(new CustomEvent('so:infinite-list:load', { bubbles: true }));
     } finally {
       this.toggleAttribute('aria-busy', false);
+    }
+  }
+
+  appendContent(html) {
+    if (!this.itemsContainer) {
+      this.insertAdjacentHTML('beforeend', html);
+      return;
+    }
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    const productItems = doc.querySelectorAll('[data-infinite-item]');
+    if (productItems.length > 0) {
+      productItems.forEach((item) => {
+        this.itemsContainer.appendChild(item);
+      });
+    } else {
+      const fragment = doc.createDocumentFragment();
+      while (doc.body.firstChild) {
+        fragment.appendChild(doc.body.firstChild);
+      }
+      this.itemsContainer.appendChild(fragment);
+    }
+
+    this.updateNextLink(doc);
+  }
+
+  updateNextLink(doc) {
+    const nextLink = doc.querySelector('[data-infinite-next]');
+    if (this.nextLink) {
+      if (nextLink && nextLink.href) {
+        this.nextLink.href = nextLink.href;
+        this.nextLink.hidden = false;
+      } else {
+        this.nextLink.remove();
+        this.nextLink = null;
+      }
     }
   }
 }
@@ -1445,8 +1540,78 @@ class SoRecipientForm extends HTMLElement {
 class SoPickupAvailability extends HTMLElement {
   connectedCallback() {
     if (this._connected) return;
+
     this.variantId = this.getAttribute('variant-id');
+    this.loadingEl = this.querySelector('[data-pickup-loading]');
+    this.listEl = this.querySelector('[data-pickup-list]');
+    this.emptyEl = this.querySelector('[data-pickup-empty]');
+    this.errorEl = this.querySelector('[data-pickup-error]');
+
     this._connected = true;
+
+    if (this.variantId) {
+      this.fetchAvailability();
+    }
+  }
+
+  disconnectedCallback() {
+    this._connected = false;
+  }
+
+  async fetchAvailability() {
+    this.setLoading(true);
+
+    try {
+      const response = await fetch(
+        `/variants/${this.variantId}/pickup-availability?section_id=pickup-availability`
+      );
+
+      if (!response.ok) throw new Error('Failed to fetch pickup availability');
+
+      const html = await response.text();
+      this.renderResult(html);
+    } catch (error) {
+      this.renderError(error.message);
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  setLoading(loading) {
+    this.toggleAttribute('data-loading', loading);
+    if (this.loadingEl) this.loadingEl.hidden = !loading;
+    if (this.listEl) this.listEl.hidden = loading;
+    if (this.emptyEl) this.emptyEl.hidden = loading;
+    if (this.errorEl) this.errorEl.hidden = loading;
+  }
+
+  renderResult(html) {
+    if (this.loadingEl) this.loadingEl.hidden = true;
+    if (this.errorEl) this.errorEl.hidden = true;
+    if (this.listEl) {
+      this.listEl.innerHTML = html;
+      this.listEl.hidden = false;
+    }
+  }
+
+  renderError(message) {
+    if (this.loadingEl) this.loadingEl.hidden = true;
+    if (this.listEl) this.listEl.hidden = true;
+    if (this.emptyEl) this.emptyEl.hidden = true;
+    if (this.errorEl) {
+      this.errorEl.textContent = message || 'Unable to check pickup availability';
+      this.errorEl.hidden = false;
+    }
+  }
+
+  refresh(variantId) {
+    if (variantId) {
+      this.variantId = variantId;
+      this.setAttribute('variant-id', String(variantId));
+    }
+    if (this.variantId) {
+      this.fetchAvailability();
+    }
   }
 }
 

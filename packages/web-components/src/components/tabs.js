@@ -32,15 +32,10 @@ export class SoTabs extends HTMLElement {
       tab.setAttribute('aria-selected', selected ? 'true' : 'false');
 
       const panelId = tab.getAttribute('aria-controls');
-      const panel = panelId ? this.panels.find((candidate) => candidate.id === panelId) : null;
+      const panel = this.panels.find((p) => p.id === panelId);
       if (panel) {
         panel.hidden = !selected;
       }
-    });
-
-    this.panels.forEach((panel) => {
-      const activeTab = this.tabs.find((tab) => tab.getAttribute('aria-controls') === panel.id);
-      panel.hidden = !activeTab || activeTab !== selectedTab;
     });
   }
 }

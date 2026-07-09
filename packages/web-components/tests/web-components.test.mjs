@@ -336,11 +336,13 @@ test('drawer opens from trigger and closes on escape and close button', async ()
 test('modal toggles open state and removes listeners on disconnect', async () => {
   const { SoModal } = await import(pathToFileURL(path.join(packageRoot, 'src/components/modal.js')).href);
 
+  const panel = new FakeNode();
   const closeButton = new FakeNode();
   const modal = new SoModal();
   const previousDocument = globalThis.document;
   const fakeDocument = new FakeDocument();
 
+  modal.querySelector = (selector) => (selector === '[data-modal-panel]' ? panel : null);
   modal.querySelectorAll = (selector) => (selector === '[data-modal-close]' ? [closeButton] : []);
   modal.setAttribute = (name) => {
     if (name === 'open') modal._open = true;
@@ -359,6 +361,7 @@ test('modal toggles open state and removes listeners on disconnect', async () =>
 
     modal.open();
     assert.equal(modal._open, true);
+    assert.equal(panel.hidden, false);
 
     fakeDocument.listeners.get('keydown').forEach((handler) => {
       if (handler && typeof handler.handleEvent === 'function') {
@@ -366,10 +369,12 @@ test('modal toggles open state and removes listeners on disconnect', async () =>
       }
     });
     assert.equal(modal._open, false);
+    assert.equal(panel.hidden, true);
 
     modal.open();
     closeButton.dispatch('click');
     assert.equal(modal._open, false);
+    assert.equal(panel.hidden, true);
 
     modal.disconnectedCallback();
     assert.equal(fakeDocument.listeners.get('keydown')?.has(modal), false);
@@ -665,18 +670,26 @@ test('product form submits ajax add-to-cart and restores busy state', async () =
   hiddenInput.value = '101';
   const productForm = new SoProductForm();
   const events = [];
+  const capturedBodies = [];
 
   globalThis.FormData = class FormData {
     constructor(source) {
-      this.source = source;
+      this.entries = () => [['id', '101'], ['quantity', '1']];
+      this.forEach = (callback) => {
+        callback('101', 'id');
+        callback('1', 'quantity');
+      };
     }
   };
-  globalThis.fetch = async (url, options) => ({
-    ok: true,
-    url,
-    options,
-    json: async () => ({ id: 101 })
-  });
+  globalThis.fetch = async (url, options) => {
+    capturedBodies.push(options.body);
+    return {
+      ok: true,
+      url,
+      options,
+      json: async () => ({ id: 101 })
+    };
+  };
 
   productForm.querySelector = (selector) => {
     if (selector === 'form') return form;
@@ -709,6 +722,7 @@ test('product form submits ajax add-to-cart and restores busy state', async () =
     assert.equal(submitButton.disabled, false);
     assert.equal(productForm.busy, false);
     assert.equal(events.at(-1).type, 'so:cart:add');
+    assert.equal(capturedBodies[0], JSON.stringify({ id: '101', quantity: '1' }));
 
     hiddenInput.value = '';
     prevented = false;
@@ -962,5 +976,165 @@ test('share ignores native share cancellation', async () => {
     } else {
       delete globalThis.navigator;
     }
+  }
+});
+
+test('infinite list appends fetched content and updates next link', async () => {
+  const { SoInfiniteList } = await import(pathToFileURL(path.join(packageRoot, 'src/components/infinite-list.js')).href);
+
+  const itemsContainer = new FakeNode();
+  const nextLink = new FakeNode({ 'data-infinite-next': '' });
+  nextLink.href = '/collections/all?page=1';
+  const infiniteList = new SoInfiniteList();
+  const events = [];
+  const requests = [];
+
+  itemsContainer.children = [];
+  itemsContainer.appendChild = (child) => {
+    itemsContainer.children.push(child);
+  };
+
+  class FakeDOMParser {
+    parseFromString(html) {
+      const items = [
+        new FakeNode({ 'data-infinite-item': '3' }),
+        new FakeNode({ 'data-infinite-item': '4' })
+      ];
+      items[0].textContent = 'Product 3';
+      items[1].textContent = 'Product 4';
+      const link = new FakeNode();
+      link.href = '/collections/all?page=3';
+
+      const doc = new FakeNode();
+      doc.querySelector = (selector) => {
+        if (selector === '[data-infinite-next]') return link;
+        return null;
+      };
+      doc.querySelectorAll = (selector) => (selector === '[data-infinite-item]' ? items : []);
+      return doc;
+    }
+  }
+  const previousDOMParser = globalThis.DOMParser;
+  globalThis.DOMParser = FakeDOMParser;
+
+  globalThis.fetch = async (url, options) => {
+    requests.push({ url, options });
+    return {
+      ok: true,
+      text: async () => '<div data-infinite-item="3">Product 3</div><div data-infinite-item="4">Product 4</div><a data-infinite-next href="/collections/all?page=3">Next</a>'
+    };
+  };
+
+  infiniteList.querySelector = (selector) => {
+    if (selector === '[data-infinite-next]') return nextLink;
+    if (selector === '[data-infinite-items]') return itemsContainer;
+    return null;
+  };
+  infiniteList.toggleAttribute = (name, value) => {
+    infiniteList[name] = value;
+  };
+  infiniteList.dispatchEvent = (event) => {
+    events.push(event);
+    return true;
+  };
+  infiniteList.hasAttribute = (name) => name === 'ajax';
+
+  try {
+    infiniteList.connectedCallback();
+
+    nextLink.dispatch('click', {
+      preventDefault: () => {}
+    });
+
+    await Promise.resolve();
+    await Promise.resolve();
+
+    assert.equal(requests[0].url, '/collections/all?page=1');
+    assert.equal(itemsContainer.children.length, 2);
+    assert.equal(nextLink.href, '/collections/all?page=3');
+    assert.equal(events.at(-1).type, 'so:infinite-list:load');
+  } finally {
+    globalThis.DOMParser = previousDOMParser;
+  }
+});
+
+test('pickup availability fetches and renders result', async () => {
+  const { SoPickupAvailability } = await import(pathToFileURL(path.join(packageRoot, 'src/components/pickup-availability.js')).href);
+
+  const loadingEl = new FakeNode();
+  const listEl = new FakeNode();
+  const emptyEl = new FakeNode();
+  const errorEl = new FakeNode();
+  const pickup = new SoPickupAvailability();
+  const requests = [];
+
+  globalThis.fetch = async (url, options) => {
+    requests.push({ url, options });
+    return {
+      ok: true,
+      text: async () => '<div class="pickup-location">Store A</div>'
+    };
+  };
+
+  pickup.querySelector = (selector) => {
+    if (selector === '[data-pickup-loading]') return loadingEl;
+    if (selector === '[data-pickup-list]') return listEl;
+    if (selector === '[data-pickup-empty]') return emptyEl;
+    if (selector === '[data-pickup-error]') return errorEl;
+    return null;
+  };
+  pickup.getAttribute = (name) => (name === 'variant-id' ? '1001' : null);
+  pickup.toggleAttribute = (name, value) => {
+    pickup[name] = value;
+  };
+
+  pickup.connectedCallback();
+
+  await Promise.resolve();
+  await Promise.resolve();
+
+  assert.equal(requests[0].url, '/variants/1001/pickup-availability?section_id=pickup-availability');
+  assert.equal(listEl.hidden, false);
+  assert.equal(loadingEl.hidden, true);
+});
+
+test('modal syncs panel hidden state on open and close', async () => {
+  const { SoModal } = await import(pathToFileURL(path.join(packageRoot, 'src/components/modal.js')).href);
+
+  const panel = new FakeNode();
+  const closeButton = new FakeNode();
+  const modal = new SoModal();
+  const previousDocument = globalThis.document;
+  const fakeDocument = new FakeDocument();
+
+  modal.querySelector = (selector) => (selector === '[data-modal-panel]' ? panel : null);
+  modal.querySelectorAll = (selector) => (selector === '[data-modal-close]' ? [closeButton] : []);
+  modal.setAttribute = (name) => {
+    if (name === 'open') modal._open = true;
+  };
+  modal.removeAttribute = (name) => {
+    if (name === 'open') modal._open = false;
+  };
+  modal.hasAttribute = (name) => name === 'open' && modal._open === true;
+
+  globalThis.document = fakeDocument;
+
+  try {
+    modal.connectedCallback();
+    assert.equal(panel.hidden, true);
+
+    modal.open();
+    assert.equal(modal._open, true);
+    assert.equal(panel.hidden, false);
+
+    modal.close();
+    assert.equal(modal._open, false);
+    assert.equal(panel.hidden, true);
+
+    modal.open();
+    modal.open();
+    assert.equal(panel.hidden, false);
+  } finally {
+    globalThis.document = previousDocument;
   }
 });

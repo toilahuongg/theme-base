@@ -16,7 +16,7 @@ export function setExpanded(button, expanded) {
   }
 }
 
-export function trapFocus(container) {
+export function rememberFocus() {
   const previous = document.activeElement;
 
   return () => {

@@ -518,8 +518,8 @@ export const componentCatalog = [
   {
     name: 'so-quick-view',
     group: 'Overlay',
-    status: 'shell',
-    summary: 'Opens from so:quick-view:open and stores the product URL.',
+    status: 'ready',
+    summary: 'Opens from so:quick-view:open, manages open/close state with Escape support.',
     attributes: [
       { name: 'open', type: 'boolean', description: 'Reflects visible quick view state.' },
       { name: 'product-url', type: 'url', description: 'Set when opened with a product URL.' }
@@ -528,7 +528,7 @@ export const componentCatalog = [
     variants: [
       {
         name: 'Event opened',
-        notes: 'Current component opens the shell; product content rendering is a P1 deepening task.',
+        notes: 'Opens the modal shell on so:quick-view:open; product content is rendered by the consumer.',
         html: `<button class="so-button" type="button" onclick="document.dispatchEvent(new CustomEvent('so:quick-view:open', { detail: { productUrl: '/products/everyday-jacket' } }))">Open quick view</button>
 <so-quick-view class="so-quick-view">
   <div class="so-modal__panel" data-quick-view-content>
@@ -543,14 +543,14 @@ export const componentCatalog = [
   {
     name: 'so-product-card',
     group: 'Product',
-    status: 'shell',
-    summary: 'Semantic product card wrapper that stores its primary product link.',
+    status: 'ready',
+    summary: 'Semantic product card wrapper with media click and product URL helpers.',
     attributes: [],
     events: [],
     variants: [
       {
         name: 'Catalog card',
-        notes: 'Useful hook for future card-level interactions.',
+        notes: 'Exposes getProductUrl() and navigateToProduct() for theme-level customization.',
         html: `<so-product-card class="so-card">
   <a class="so-card__media" href="/products/everyday-jacket" aria-label="Everyday Jacket">
     <div class="so-card__image so-card__placeholder">Image</div>
@@ -585,8 +585,8 @@ export const componentCatalog = [
   {
     name: 'so-infinite-list',
     group: 'Collection',
-    status: 'shell',
-    summary: 'Intercepts a next-page link in AJAX mode and emits a load event.',
+    status: 'ready',
+    summary: 'Fetches next page HTML, appends items into the grid, and updates the next link.',
     attributes: [
       { name: 'ajax', type: 'boolean', description: 'Enables fetch instead of normal link navigation.' },
       { name: 'aria-busy', type: 'boolean', description: 'Set while fetch is pending.' }
@@ -595,7 +595,7 @@ export const componentCatalog = [
     variants: [
       {
         name: 'Load more',
-        notes: 'Appending fetched HTML is part of the next P1 deepening pass.',
+        notes: 'Fetches HTML, extracts [data-infinite-item] elements, and appends to the grid.',
         html: `<so-infinite-list class="so-infinite-list" ajax>
   <div class="so-product-grid so-grid" data-infinite-items>
     <div class="so-card"><div class="so-card__content">Product 1</div></div>
@@ -650,16 +650,16 @@ export const componentCatalog = [
   {
     name: 'so-pickup-availability',
     group: 'Commerce',
-    status: 'shell',
-    summary: 'Stores the active variant id as the hook for pickup availability rendering.',
+    status: 'ready',
+    summary: 'Fetches pickup availability for a variant and renders loading/empty/error states.',
     attributes: [
       { name: 'variant-id', type: 'id', description: 'Shopify variant id used to request pickup availability.' }
     ],
     events: [],
     variants: [
       {
-        name: 'Pickup shell',
-        notes: 'Endpoint fetch and rendered states are part of the next P1 deepening pass.',
+        name: 'Pickup lookup',
+        notes: 'Fetches /variants/{id}/pickup-availability and renders loading/result/error states.',
         html: `<so-pickup-availability class="so-pickup-availability" variant-id="1001">
   <strong class="so-pickup-availability__title">Pickup availability</strong>
   <p>Variant 1001 is ready for availability lookup.</p>

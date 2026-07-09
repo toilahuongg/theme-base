@@ -2,6 +2,7 @@ export class SoModal extends HTMLElement {
   connectedCallback() {
     if (this._connected) return;
 
+    this.panel = this.querySelector('[data-modal-panel]') || this;
     this.closeButtons = Array.from(this.querySelectorAll('[data-modal-close]'));
     this.closeButtons.forEach((button) => button.addEventListener('click', this));
 
@@ -9,6 +10,7 @@ export class SoModal extends HTMLElement {
       document.addEventListener('keydown', this);
     }
 
+    this.syncPanel();
     this._connected = true;
   }
 
@@ -40,10 +42,20 @@ export class SoModal extends HTMLElement {
   }
 
   open() {
+    if (this.isOpen()) return;
     this.setAttribute('open', '');
+    this.syncPanel();
   }
 
   close() {
+    if (!this.isOpen()) return;
     this.removeAttribute('open');
+    this.syncPanel();
+  }
+
+  syncPanel() {
+    if (this.panel) {
+      this.panel.hidden = !this.isOpen();
+    }
   }
 }

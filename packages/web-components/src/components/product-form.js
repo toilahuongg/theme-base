@@ -29,14 +29,16 @@ export class SoProductForm extends HTMLElement {
     this.setBusy(true);
 
     try {
+      const body = this.serializeBody();
       const response = await fetch('/cart/add.js', {
         method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: new FormData(this.form)
+        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+        body
       });
 
       if (!response.ok) {
-        throw new Error('Add to cart failed');
+        const errorData = await response.json().catch(() => null);
+        throw new Error(errorData?.description || `Add to cart failed (${response.status})`);
       }
 
       const item = await response.json();
@@ -46,6 +48,15 @@ export class SoProductForm extends HTMLElement {
     } finally {
       this.setBusy(false);
     }
+  }
+
+  serializeBody() {
+    const formData = new FormData(this.form);
+    const body = {};
+    formData.forEach((value, key) => {
+      body[key] = String(value);
+    });
+    return JSON.stringify(body);
   }
 
   setBusy(busy) {
