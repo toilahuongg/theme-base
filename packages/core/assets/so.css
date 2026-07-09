@@ -896,8 +896,13 @@ so-tabs [role="tabpanel"][hidden] {
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   scroll-snap-type: inline mandatory;
-  scrollbar-width: thin;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   grid-row: 1;
+}
+
+.so-carousel__track::-webkit-scrollbar {
+  display: none;
 }
 
 .so-carousel__item {
