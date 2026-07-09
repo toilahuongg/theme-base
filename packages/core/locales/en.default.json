@@ -2,9 +2,64 @@
   "accessibility": {
     "skip_to_text": "Skip to content"
   },
+  "general": {
+    "pagination": {
+      "label": "Pagination",
+      "previous": "Previous page",
+      "next": "Next page"
+    },
+    "tabs": "Tabs",
+    "share": {
+      "title": "Share",
+      "copy_link": "Copy link",
+      "link": "Share link",
+      "copied": "Copied"
+    },
+    "modal": {
+      "close": "Close"
+    },
+    "quick_view": {
+      "close": "Close quick view",
+      "loading": "Loading product..."
+    },
+    "announcement": {
+      "dismiss": "Dismiss announcement"
+    },
+    "media": {
+      "play": "Play"
+    },
+    "collection": {
+      "placeholder": "Collection image",
+      "view_all": "View all",
+      "product_count": "{{ count }} products"
+    },
+    "rating": {
+      "label": "{{ value }} out of 5 stars"
+    },
+    "countdown": {
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "seconds": "Seconds"
+    },
+    "carousel": {
+      "previous": "Previous slide",
+      "next": "Next slide"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "twitter": "Twitter"
+    },
+    "load_more": "Load more",
+    "breadcrumb": "Breadcrumb"
+  },
   "sections": {
     "featured_products": {
       "empty": "No products were found for this collection."
+    },
+    "footer": {
+      "all_rights": "All rights reserved."
     }
   },
   "products": {
@@ -16,7 +71,23 @@
       "decrease_quantity": "Decrease quantity",
       "increase_quantity": "Increase quantity",
       "media_gallery": "Product media gallery",
-      "view_options": "View options"
+      "view_options": "View options",
+      "in_stock": "In stock",
+      "low_stock": "Only {{ count }} left",
+      "low_stock_label": "Low stock",
+      "pickup_availability": {
+        "title": "Pickup availability",
+        "in_stock": "Available for pickup",
+        "low_stock": "Limited availability",
+        "no_locations": "No pickup locations available."
+      },
+      "recipient": {
+        "is_gift": "This is a gift",
+        "name": "Recipient name",
+        "email": "Recipient email",
+        "message": "Gift message",
+        "delivery_date": "Delivery date"
+      }
     }
   },
   "cart": {
@@ -30,6 +101,11 @@
       "continue_shopping": "Continue shopping",
       "decrease_quantity": "Decrease quantity for {{ item }}",
       "increase_quantity": "Increase quantity for {{ item }}"
+    },
+    "quantity": {
+      "label": "Quantity",
+      "decrease": "Decrease quantity",
+      "increase": "Increase quantity"
     }
   },
   "collections": {
@@ -37,7 +113,9 @@
       "empty": "No products were found."
     },
     "facets": {
-      "apply": "Apply filters"
+      "apply": "Apply filters",
+      "clear": "Clear filters",
+      "active": "Active filters"
     },
     "sorting": {
       "label": "Sort by"
@@ -56,9 +134,28 @@
       "error": "Search is unavailable."
     }
   },
-  "general": {
-    "pagination": {
-      "label": "Pagination"
-    }
+  "newsletter": {
+    "placeholder": "Your email address",
+    "subscribe": "Subscribe",
+    "success": "Thank you for subscribing."
+  },
+  "article": {
+    "author_by": "By {{ author }}",
+    "comments": "Comments",
+    "comments_count": "{{ count }} comments",
+    "comment_name": "Name",
+    "comment_email": "Email",
+    "comment_body": "Comment",
+    "comment_submit": "Post comment",
+    "comment_success": "Your comment was posted successfully.",
+    "placeholder": "Article image",
+    "pagination": "Blog pagination"
+  },
+  "password": {
+    "enter": "Enter store password",
+    "submit": "Enter"
+  },
+  "footer": {
+    "all_rights": "All rights reserved."
   }
 }

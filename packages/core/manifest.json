@@ -1,9 +1,9 @@
 {
-  "assets": ["so.css", "theme-components.js"],
-  "blocks": ["callout-card.liquid", "content-stack.liquid"],
+  "assets": ["so.css", "so-tokens.css", "so-components.css", "so-animations.css", "theme-components.js"],
+  "blocks": ["callout-card.liquid", "content-stack.liquid", "featured-collection.liquid", "rich-text.liquid", "image-banner.liquid"],
   "layouts": ["theme.liquid"],
-  "snippets": ["button.liquid", "responsive-image.liquid", "price.liquid", "product-card.liquid", "product-form.liquid", "variant-picker.liquid", "media-gallery.liquid", "cart-line-item.liquid", "facets.liquid", "sort.liquid"],
-  "sections": ["header.liquid", "main-hero.liquid", "featured-products.liquid", "rich-content.liquid", "_blocks.liquid", "main-product.liquid", "cart-drawer.liquid", "main-cart.liquid", "predictive-search.liquid", "main-collection-product-grid.liquid", "main-search.liquid"],
-  "templates": ["index.json", "product.json", "collection.json", "cart.json", "search.json"],
+  "snippets": ["button.liquid", "responsive-image.liquid", "price.liquid", "product-card.liquid", "product-form.liquid", "variant-picker.liquid", "media-gallery.liquid", "cart-line-item.liquid", "facets.liquid", "sort.liquid", "breadcrumb.liquid", "pagination.liquid", "rating.liquid", "stock-indicator.liquid", "accordion.liquid", "tabs.liquid", "disclosure.liquid", "quantity.liquid", "share.liquid", "countdown.liquid", "live-region.liquid", "quick-view.liquid", "announcement-bar.liquid", "modal.liquid", "pickup-availability.liquid", "recipient-form.liquid", "infinite-list.liquid", "deferred-media.liquid", "cart-items.liquid", "overlay.liquid", "testimonial-card.liquid"],
+  "sections": ["header.liquid", "main-hero.liquid", "featured-products.liquid", "rich-content.liquid", "_blocks.liquid", "main-product.liquid", "cart-drawer.liquid", "main-cart.liquid", "predictive-search.liquid", "main-collection-product-grid.liquid", "main-search.liquid", "footer.liquid", "testimonial.liquid", "video.liquid", "image-with-text.liquid", "collage.liquid", "newsletter.liquid", "faq.liquid", "collection-list.liquid", "logo-list.liquid", "announcement.liquid", "main-page.liquid", "main-article.liquid", "main-blog.liquid", "main-password.liquid"],
+  "templates": ["index.json", "product.json", "collection.json", "cart.json", "search.json", "page.json", "article.json", "blog.json", "password.json"],
   "locales": ["en.default.json"]
 }

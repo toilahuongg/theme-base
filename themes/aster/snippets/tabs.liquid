@@ -1,0 +1,33 @@
+{% comment %}
+  @param tabs {array} Array of { label, id, content } objects
+  @param class {string} Additional CSS classes
+{% endcomment %}
+
+<div class="so-tabs {{ class }}" role="tablist">
+  <div class="so-tabs__list" role="tablist" aria-label="{{ 'general.tabs' | t }}">
+    {% for tab in tabs %}
+      <button
+        class="so-tabs__tab"
+        role="tab"
+        id="tab-{{ tab.id }}-{{ section.id }}"
+        aria-controls="panel-{{ tab.id }}-{{ section.id }}"
+        aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+        tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
+      >
+        {{ tab.label | escape }}
+      </button>
+    {% endfor %}
+  </div>
+
+  {% for tab in tabs %}
+    <div
+      class="so-tabs__panel"
+      role="tabpanel"
+      id="panel-{{ tab.id }}-{{ section.id }}"
+      aria-labelledby="tab-{{ tab.id }}-{{ section.id }}"
+      {% unless forloop.first %}hidden{% endunless %}
+    >
+      {{ tab.content }}
+    </div>
+  {% endfor %}
+</div>

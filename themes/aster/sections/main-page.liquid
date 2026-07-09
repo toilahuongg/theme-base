@@ -1,0 +1,24 @@
+{% comment %}
+  Generic page section for static pages.
+{% endcomment %}
+
+<section class="so-section">
+  <div class="so-page-width">
+    {% unless page.title == blank %}
+      <h1 class="so-section__heading" style="font-size:clamp(1.75rem, 3vw, 2.5rem); margin-bottom:var(--so-space-xl);">
+        {{ page.title | escape }}
+      </h1>
+    {% endunless %}
+
+    <div class="so-prose rte">
+      {{ page.content }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Page",
+  "tag": "section"
+}
+{% endschema %}

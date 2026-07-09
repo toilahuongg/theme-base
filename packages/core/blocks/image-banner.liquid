@@ -1,0 +1,72 @@
+{% comment %}
+  Image banner block - full-width image with text overlay.
+  For use inside sections.
+{% endcomment %}
+
+{% liquid
+  assign overlay_opacity = block.settings.overlay_opacity | default: 40
+  assign text_color = 'var(--so-color-text-inverse)'
+%}
+
+<div class="so-image-banner" style="position:relative; overflow:clip; border-radius:var(--so-radius); min-height:{{ block.settings.min_height | default: 24 }}rem;" {% render 'block-shopify-attrs', block: block %}>
+  {% if block.settings.image != blank %}
+    {% render 'responsive-image',
+      image: block.settings.image,
+      class: '',
+      alt: block.settings.image.alt,
+      style: 'width:100%;height:100%;object-fit:cover;position:absolute;inset:0;'
+    %}
+  {% else %}
+    <div class="so-skeleton so-skeleton--image" style="position:absolute;inset:0;"></div>
+  {% endif %}
+
+  <div class="so-image-banner__overlay" style="position:absolute;inset:0; background:rgba(0,0,0,{{ overlay_opacity | divided_by: 100.0 }});"></div>
+
+  <div class="so-image-banner__content" style="position:relative; z-index:1; display:grid; gap:var(--so-space-md); padding:var(--so-space-3xl); color:{{ text_color }}; max-width:48rem; {% if block.settings.alignment == 'left' %}margin-inline-start:0;{% elsif block.settings.alignment == 'right' %}margin-inline-end:0; margin-inline-start:auto;{% else %}margin-inline:auto; text-align:center;{% endif %}">
+    {% if block.settings.subheading != blank %}
+      <p style="color:var(--so-color-accent-soft); font-size:var(--so-text-sm); font-weight:700; letter-spacing:var(--so-tracking-wide); text-transform:uppercase; margin:0;">
+        {{ block.settings.subheading | escape }}
+      </p>
+    {% endif %}
+
+    {% if block.settings.heading != blank %}
+      <h2 style="font-size:clamp(1.5rem, 4vw, 2.5rem); line-height:var(--so-leading-tight); letter-spacing:var(--so-tracking-tight); margin:0;">
+        {{ block.settings.heading | escape }}
+      </h2>
+    {% endif %}
+
+    {% if block.settings.text != blank %}
+      <div style="max-width:62ch; opacity:0.9;">
+        {{ block.settings.text }}
+      </div>
+    {% endif %}
+
+    {% if block.settings.button_label != blank %}
+      <div>
+        {% render 'button', text: block.settings.button_label, url: block.settings.button_url, style: 'primary' %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "type": "image-banner",
+  "name": "Image banner",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "range", "id": "overlay_opacity", "label": "Overlay opacity", "min": 0, "max": 80, "step": 5, "default": 40 },
+    { "type": "range", "id": "min_height", "label": "Minimum height (rem)", "min": 12, "max": 48, "step": 4, "default": 24 },
+    { "type": "select", "id": "alignment", "label": "Text alignment", "options": [
+      { "value": "left", "label": "Left" },
+      { "value": "center", "label": "Center" },
+      { "value": "right", "label": "Right" }
+    ], "default": "center" },
+    { "type": "text", "id": "subheading", "label": "Subheading" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "richtext", "id": "text", "label": "Description" },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_url", "label": "Button link" }
+  ]
+}
+{% endschema %}

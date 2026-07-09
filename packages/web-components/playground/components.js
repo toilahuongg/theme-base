@@ -690,6 +690,225 @@ export const componentCatalog = [
 </so-share>`
       }
     ]
+  },
+  {
+    name: 'so-price',
+    group: 'Commerce',
+    status: 'ready',
+    summary: 'Price display with compare-at, sale badge, and per-unit.',
+    attributes: [
+      { name: 'price', type: 'number', description: 'Price in cents.' },
+      { name: 'compare-at', type: 'number', description: 'Original price in cents.' },
+      { name: 'currency', type: 'string', description: 'ISO currency code (default: USD).' },
+      { name: 'per-unit', type: 'string', description: 'Per-unit text (e.g., "/oz").' },
+      { name: 'show-badge', type: 'boolean', description: 'Show sale badge.' }
+    ],
+    events: ['so:price:render'],
+    variants: [
+      {
+        name: 'Regular price',
+        notes: 'Standard price display.',
+        html: `<so-price price="14800" currency="USD"></so-price>`
+      },
+      {
+        name: 'Sale price',
+        notes: 'Compare-at shows crossed out.',
+        html: `<so-price price="9800" compare-at="14800" currency="USD"></so-price>`
+      },
+      {
+        name: 'Sale with badge',
+        notes: 'Shows discount percentage.',
+        html: `<so-price price="9800" compare-at="14800" currency="USD" show-badge></so-price>`
+      }
+    ]
+  },
+  {
+    name: 'so-rating',
+    group: 'Feedback',
+    status: 'ready',
+    summary: 'Star rating display and interactive input.',
+    attributes: [
+      { name: 'value', type: 'number', description: 'Current rating (0-5).' },
+      { name: 'max', type: 'number', description: 'Max stars (default 5).' },
+      { name: 'interactive', type: 'boolean', description: 'Allow clicking to set rating.' },
+      { name: 'count', type: 'number', description: 'Review count.' },
+      { name: 'show-count', type: 'boolean', description: 'Always show count.' }
+    ],
+    events: ['so:rating:change'],
+    variants: [
+      {
+        name: 'Display only',
+        notes: '4 out of 5 stars, read-only.',
+        html: `<so-rating value="4" max="5" count="128"></so-rating>`
+      },
+      {
+        name: 'Interactive',
+        notes: 'Click stars to set rating.',
+        html: `<so-rating value="3" max="5" interactive show-count count="0"></so-rating>`
+      }
+    ]
+  },
+  {
+    name: 'so-pagination',
+    group: 'Collection',
+    status: 'ready',
+    summary: 'Page navigation with ellipsis support.',
+    attributes: [
+      { name: 'current', type: 'number', description: 'Current page.' },
+      { name: 'total', type: 'number', description: 'Total pages.' },
+      { name: 'href', type: 'string', description: 'URL template with {page}.' },
+      { name: 'show-edges', type: 'number', description: 'Edge pages to show (default 2).' }
+    ],
+    events: ['so:pagination:change'],
+    variants: [
+      {
+        name: 'Simple pagination',
+        notes: 'Few pages, no ellipsis.',
+        html: `<so-pagination current="3" total="5" href="?page={page}"></so-pagination>`
+      },
+      {
+        name: 'With ellipsis',
+        notes: 'Many pages, edge links shown.',
+        html: `<so-pagination current="12" total="48" href="?page={page}"></so-pagination>`
+      }
+    ]
+  },
+  {
+    name: 'so-breadcrumb',
+    group: 'Navigation',
+    status: 'ready',
+    summary: 'Breadcrumb navigation with ARIA support.',
+    attributes: [],
+    events: [],
+    variants: [
+      {
+        name: 'Basic breadcrumb',
+        notes: 'Items rendered from data attributes. Use setItems([{label, url, current}]) via JS.',
+        html: `<so-breadcrumb class="so-breadcrumb">
+  <li class="so-breadcrumb__item"><a class="so-breadcrumb__link" href="/">Home</a></li>
+  <li class="so-breadcrumb__item"><a class="so-breadcrumb__link" href="/collections">Collections</a></li>
+  <li class="so-breadcrumb__item" aria-current="page"><span class="so-breadcrumb__current">Jackets</span></li>
+</so-breadcrumb>`
+      }
+    ]
+  },
+  {
+    name: 'so-countdown',
+    group: 'Promotion',
+    status: 'ready',
+    summary: 'Countdown timer for flash sales.',
+    attributes: [
+      { name: 'target', type: 'string', description: 'Target ISO date.' },
+      { name: 'labels', type: 'boolean', description: 'Show day/hour/min labels.' },
+      { name: 'compact', type: 'boolean', description: 'Compact single-row display.' }
+    ],
+    events: ['so:countdown:tick', 'so:countdown:done'],
+    variants: [
+      {
+        name: 'With labels',
+        notes: 'Target is set to 2 hours from now.',
+        html: `<so-countdown target="${new Date(Date.now() + 7200000).toISOString()}" labels></so-countdown>`
+      },
+      {
+        name: 'Compact',
+        notes: 'No labels, just numbers.',
+        html: `<so-countdown target="${new Date(Date.now() + 3600000).toISOString()}" compact></so-countdown>`
+      }
+    ]
+  },
+  {
+    name: 'so-stock-indicator',
+    group: 'Commerce',
+    status: 'ready',
+    summary: 'Stock level display with color coding.',
+    attributes: [
+      { name: 'level', type: 'number', description: 'Stock quantity.' },
+      { name: 'low-threshold', type: 'number', description: 'Threshold for low stock (default 10).' }
+    ],
+    events: ['so:stock:check'],
+    variants: [
+      {
+        name: 'In stock',
+        notes: 'Level above threshold.',
+        html: `<so-stock-indicator level="45"></so-stock-indicator>`
+      },
+      {
+        name: 'Low stock',
+        notes: 'Level below threshold.',
+        html: `<so-stock-indicator level="3"></so-stock-indicator>`
+      },
+      {
+        name: 'Out of stock',
+        notes: 'Zero level.',
+        html: `<so-stock-indicator level="0"></so-stock-indicator>`
+      }
+    ]
+  },
+  {
+    name: 'so-progress-bar',
+    group: 'Feedback',
+    status: 'ready',
+    summary: 'Progress bar for thresholds and levels.',
+    attributes: [
+      { name: 'value', type: 'number', description: 'Current value.' },
+      { name: 'max', type: 'number', description: 'Maximum value (default 100).' },
+      { name: 'label', type: 'string', description: 'Accessible label.' },
+      { name: 'color', type: 'string', description: '"success", "warning", "error".' },
+      { name: 'show-text', type: 'boolean', description: 'Show percentage text.' }
+    ],
+    events: ['so:progress:change'],
+    variants: [
+      {
+        name: 'Free shipping progress',
+        notes: '$35 of $50 for free shipping.',
+        html: `<so-progress-bar value="35" max="50" label="Free shipping progress" show-text></so-progress-bar>`
+      },
+      {
+        name: 'Stock level',
+        notes: 'Low stock warning color.',
+        html: `<so-progress-bar value="20" max="100" color="warning" show-text></so-progress-bar>`
+      }
+    ]
+  },
+  {
+    name: 'so-announcement-bar',
+    group: 'Navigation',
+    status: 'ready',
+    summary: 'Top banner with dismiss support.',
+    attributes: [
+      { name: 'dismissible', type: 'boolean', description: 'Show dismiss button.' },
+      { name: 'auto-rotate', type: 'number', description: 'Rotation interval in ms.' }
+    ],
+    events: ['so:announcement:dismiss', 'so:announcement:rotate'],
+    variants: [
+      {
+        name: 'Single message',
+        notes: 'Dismiss remembers state.',
+        html: `<so-announcement-bar class="so-announcement-bar" dismissible>
+  <div class="so-announcement-bar__inner">
+    <span>Free shipping on orders over $50</span>
+    <button class="so-announcement-bar__dismiss" type="button" data-announcement-dismiss aria-label="Dismiss">&times;</button>
+  </div>
+</so-announcement-bar>`
+      }
+    ]
+  },
+  {
+    name: 'so-back-to-top',
+    group: 'Navigation',
+    status: 'ready',
+    summary: 'Scroll-to-top button with visibility threshold.',
+    attributes: [
+      { name: 'threshold', type: 'number', description: 'Scroll Y offset before visible (default 300).' }
+    ],
+    events: [],
+    variants: [
+      {
+        name: 'Back to top',
+        notes: 'Appears after scrolling 300px. Scroll down in the preview to see it.',
+        html: `<so-back-to-top class="so-back-to-top" threshold="300" aria-label="Back to top">&uarr;</so-back-to-top>`
+      }
+    ]
   }
 ];
 

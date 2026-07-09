@@ -1,0 +1,52 @@
+{% comment %}
+  Blog listing section.
+{% endcomment %}
+
+<section class="so-section">
+  <div class="so-page-width">
+    {% unless blog.title == blank %}
+      <h1 class="so-section__heading" style="font-size:clamp(1.75rem, 3vw, 2.5rem); margin-bottom:var(--so-space-xl);">
+        {{ blog.title | escape }}
+      </h1>
+    {% endunless %}
+
+    {% paginate blog.articles by 12 %}
+      <div class="so-product-grid">
+        {% for article in blog.articles %}
+          <a class="so-card" href="{{ article.url }}" style="text-decoration:none; display:block;">
+            {% if article.image != blank %}
+              <div class="so-card__media">
+                {% render 'responsive-image', image: article.image, class: '', alt: article.image.alt %}
+              </div>
+            {% else %}
+              <div class="so-card__media so-card__placeholder">
+                {{ 'article.placeholder' | t }}
+              </div>
+            {% endif %}
+
+            <div class="so-card__content">
+              <h3 class="so-card__title">{{ article.title | escape }}</h3>
+              <p style="color:var(--so-color-text-faint); font-size:var(--so-text-sm); margin:0;">
+                {{ article.published_at | date: '%B %d, %Y' }}
+              </p>
+              {% if article.excerpt != blank %}
+                <p style="color:var(--so-color-text-soft); font-size:var(--so-text-sm); margin:0;">
+                  {{ article.excerpt | strip_html | truncate: 120 }}
+                </p>
+              {% endif %}
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+
+      {% render 'pagination', paginate: paginate, aria_label: 'blog.pagination' | t %}
+    {% endpaginate %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blog",
+  "tag": "section"
+}
+{% endschema %}

@@ -14,7 +14,7 @@
         "type": "color",
         "id": "color_background",
         "label": "Background",
-        "default": "#F8F5EF"
+        "default": "#FAF8F5"
       },
       {
         "type": "color",
@@ -26,19 +26,19 @@
         "type": "color",
         "id": "color_text",
         "label": "Text",
-        "default": "#171512"
+        "default": "#1A1412"
       },
       {
         "type": "color",
         "id": "color_accent",
         "label": "Accent",
-        "default": "#496F5D"
+        "default": "#8B3A4F"
       },
       {
         "type": "color",
         "id": "color_border",
         "label": "Border",
-        "default": "#D8D0C4"
+        "default": "#D4C5B8"
       },
       {
         "type": "text",
@@ -48,9 +48,21 @@
       },
       {
         "type": "text",
+        "id": "font_heading",
+        "label": "Heading Font",
+        "default": "Playfair Display"
+      },
+      {
+        "type": "text",
+        "id": "font_body",
+        "label": "Body Font",
+        "default": "Inter"
+      },
+      {
+        "type": "text",
         "id": "typography",
         "label": "Typography",
-        "default": "Editorial headings with calm readable body copy for clinical premium commerce."
+        "default": "Playfair Display headings, Inter body"
       },
       {
         "type": "text",
@@ -59,16 +71,44 @@
         "default": "Bright product and lifestyle photography with clean ingredient and routine context."
       },
       {
-        "type": "text",
+        "type": "select",
         "id": "density",
         "label": "Density",
-        "default": "spacious"
+        "default": "spacious",
+        "options": [
+          {
+            "value": "spacious",
+            "label": "Spacious"
+          },
+          {
+            "value": "balanced",
+            "label": "Balanced"
+          },
+          {
+            "value": "compact",
+            "label": "Compact"
+          }
+        ]
       },
       {
-        "type": "text",
+        "type": "select",
         "id": "motion",
         "label": "Motion",
-        "default": "restrained"
+        "default": "expressive",
+        "options": [
+          {
+            "value": "expressive",
+            "label": "Expressive"
+          },
+          {
+            "value": "standard",
+            "label": "Standard"
+          },
+          {
+            "value": "restrained",
+            "label": "Restrained"
+          }
+        ]
       }
     ]
   }

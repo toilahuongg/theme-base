@@ -1,4 +1,13 @@
 import { registerElement } from './register.js';
+export { SoElement } from './base-element.js';
+
+// Core utilities
+export { emit, qs, qsa, setExpanded, rememberFocus, debounce, throttle, trapFocus, cssVar, once, announce, slotContent } from './helpers.js';
+
+// Overlay base class
+export { SoOverlay } from './components/overlay.js';
+
+// ─── Existing components ───────────────────────────────────────────────────
 import { SoDisclosure } from './components/disclosure.js';
 import { SoAccordion } from './components/accordion.js';
 import { SoDrawer } from './components/drawer.js';
@@ -29,6 +38,18 @@ import { SoRecipientForm } from './components/recipient-form.js';
 import { SoPickupAvailability } from './components/pickup-availability.js';
 import { SoShare } from './components/share.js';
 
+// ─── New components ────────────────────────────────────────────────────────
+import { SoPrice } from './components/price.js';
+import { SoRating } from './components/rating.js';
+import { SoPagination } from './components/pagination.js';
+import { SoBreadcrumb } from './components/breadcrumb.js';
+import { SoCountdown } from './components/countdown.js';
+import { SoStockIndicator } from './components/stock-indicator.js';
+import { SoProgressBar } from './components/progress-bar.js';
+import { SoAnnouncementBar } from './components/announcement-bar.js';
+import { SoBackToTop } from './components/back-to-top.js';
+
+// ─── Register all ──────────────────────────────────────────────────────────
 registerElement('so-disclosure', SoDisclosure);
 registerElement('so-quantity', SoQuantity);
 registerElement('so-drawer', SoDrawer);
@@ -58,3 +79,13 @@ registerElement('so-deferred-media', SoDeferredMedia);
 registerElement('so-recipient-form', SoRecipientForm);
 registerElement('so-pickup-availability', SoPickupAvailability);
 registerElement('so-share', SoShare);
+
+registerElement('so-price', SoPrice);
+registerElement('so-rating', SoRating);
+registerElement('so-pagination', SoPagination);
+registerElement('so-breadcrumb', SoBreadcrumb);
+registerElement('so-countdown', SoCountdown);
+registerElement('so-stock-indicator', SoStockIndicator);
+registerElement('so-progress-bar', SoProgressBar);
+registerElement('so-announcement-bar', SoAnnouncementBar);
+registerElement('so-back-to-top', SoBackToTop);

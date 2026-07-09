@@ -1,3 +1,28 @@
+import { emit } from '../helpers.js';
+
+/**
+ * so-carousel — Horizontal carousel with dots, keyboard nav, drag/swipe, autoplay.
+ *
+ * Attributes:
+ *   autoplay       — Auto-advance slides (ms interval, default 5000).
+ *   pause-on-hover — Pause autoplay on hover.
+ *   per-page       — Items visible at once (default: auto-fit).
+ *
+ * Events:
+ *   so:carousel:change  — { from, to, index }
+ *   so:carousel:play    — When autoplay starts.
+ *   so:carousel:pause   — When autoplay stops.
+ *
+ * Public API:
+ *   goTo(index)    — Navigate to slide index.
+ *   next()         — Go to next slide.
+ *   prev()         — Go to previous slide.
+ *   play()         — Start autoplay.
+ *   pause()        — Stop autoplay.
+ *   setPerPage(n)  — Update items per page.
+ *   currentIndex   — Read-only current slide index.
+ *   pageCount      — Read-only total slide count.
+ */
 export class SoCarousel extends HTMLElement {
   connectedCallback() {
     if (this._connected) return;
@@ -8,8 +33,8 @@ export class SoCarousel extends HTMLElement {
     this.dotsContainer = this.querySelector('[data-carousel-dots]');
 
     // Bind handlers so we can remove them later
-    this.onPrevClick = () => this.goTo(this.currentIndex - 1);
-    this.onNextClick = () => this.goTo(this.currentIndex + 1);
+    this.onPrevClick = () => this.prev();
+    this.onNextClick = () => this.next();
     this.onScroll = () => this.syncUI();
     this.onKeydown = (e) => this.handleKeydown(e);
     this.onPointerDown = (e) => this.handlePointerDown(e);
@@ -25,13 +50,32 @@ export class SoCarousel extends HTMLElement {
       this.track.addEventListener('pointerdown', this.onPointerDown);
     }
 
+    // A11y
+    if (this.track) {
+      this.track.setAttribute('role', 'group');
+      this.track.setAttribute('aria-roledescription', 'carousel');
+    }
+
+    // Hover pause
+    if (typeof this.hasAttribute === 'function' && this.hasAttribute('pause-on-hover')) {
+      this.addEventListener('mouseenter', () => this.pause());
+      this.addEventListener('mouseleave', () => this.play());
+    }
+
     this.generateDots();
     this.syncUI();
+
+    // Start autoplay if attribute set
+    if (typeof this.hasAttribute === 'function' && this.hasAttribute('autoplay')) {
+      this.play();
+    }
+
     this._connected = true;
   }
 
   disconnectedCallback() {
     if (!this._connected) return;
+    this.pause();
     this.prevButton?.removeEventListener('click', this.onPrevClick);
     this.nextButton?.removeEventListener('click', this.onNextClick);
     if (this.track) {
@@ -45,23 +89,64 @@ export class SoCarousel extends HTMLElement {
     this._connected = false;
   }
 
+  /** Read-only: current slide index. */
   get currentIndex() {
     if (!this.track || !this.track.children.length) return 0;
     const itemWidth = this.track.children[0]?.clientWidth || 1;
     return Math.round(this.track.scrollLeft / itemWidth);
   }
 
+  /** Read-only: total slide count. */
   get pageCount() {
     return this.track?.children.length || 0;
   }
 
+  /** Navigate to slide by index. */
   goTo(index) {
-    if (!this.track) return;
+    if (!this.track || this.pageCount === 0) return;
     const clamped = Math.max(0, Math.min(index, this.pageCount - 1));
+    const prevIndex = this.currentIndex;
     const target = this.track.children[clamped];
     if (target) {
       target.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      if (clamped !== prevIndex) {
+        emit(this, 'so:carousel:change', { from: prevIndex, to: clamped, index: clamped });
+      }
     }
+  }
+
+  /** Go to next slide. */
+  next() {
+    this.goTo(this.currentIndex + 1);
+  }
+
+  /** Go to previous slide. */
+  prev() {
+    this.goTo(this.currentIndex - 1);
+  }
+
+  /** Start autoplay. */
+  play() {
+    if (this._autoplayTimer) return;
+    const delay = Number(this.getAttribute('autoplay')) || 5000;
+    this._autoplayTimer = setInterval(() => this.next(), delay);
+    emit(this, 'so:carousel:play', { delay });
+  }
+
+  /** Stop autoplay. */
+  pause() {
+    if (this._autoplayTimer) {
+      clearInterval(this._autoplayTimer);
+      this._autoplayTimer = null;
+      emit(this, 'so:carousel:pause', {});
+    }
+  }
+
+  /** Set items per page (affects grid-auto-columns). */
+  setPerPage(n) {
+    if (!this.track) return;
+    this.track.style.gridAutoColumns = `minmax(${100 / n}%, 1fr)`;
+    this.syncUI();
   }
 
   syncUI() {
@@ -91,7 +176,6 @@ export class SoCarousel extends HTMLElement {
       this.dotsContainer.addEventListener('click', this.onDotClick);
       return;
     }
-    // Auto-generate dots
     if (!this.track || this.pageCount === 0) return;
 
     const dots = document.createElement('div');
@@ -105,7 +189,11 @@ export class SoCarousel extends HTMLElement {
       button.className = 'so-carousel__dot';
       button.setAttribute('role', 'tab');
       button.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      button.setAttribute('aria-controls', `slide-${i}`);
       button.dataset.carouselDot = i;
+      // Set ID on the slide for aria-controls
+      const slide = this.track.children[i];
+      if (slide && !slide.id) slide.id = `slide-${i}`;
       dots.appendChild(button);
     }
 
@@ -132,15 +220,21 @@ export class SoCarousel extends HTMLElement {
   handleKeydown(event) {
     if (event.key === 'ArrowLeft') {
       event.preventDefault();
-      this.goTo(this.currentIndex - 1);
+      this.prev();
     } else if (event.key === 'ArrowRight') {
       event.preventDefault();
-      this.goTo(this.currentIndex + 1);
+      this.next();
+    } else if (event.key === 'Home') {
+      event.preventDefault();
+      this.goTo(0);
+    } else if (event.key === 'End') {
+      event.preventDefault();
+      this.goTo(this.pageCount - 1);
     }
   }
 
   handlePointerDown(event) {
-    if (event.button !== 0) return; // Only left button
+    if (event.button !== 0) return;
     this._dragStartX = event.clientX;
     this._dragStartScrollLeft = this.track.scrollLeft;
     this._isDragging = true;

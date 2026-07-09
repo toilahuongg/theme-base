@@ -48,9 +48,21 @@
       },
       {
         "type": "text",
+        "id": "font_heading",
+        "label": "Heading Font",
+        "default": "Space Grotesk"
+      },
+      {
+        "type": "text",
+        "id": "font_body",
+        "label": "Body Font",
+        "default": "Inter"
+      },
+      {
+        "type": "text",
         "id": "typography",
         "label": "Typography",
-        "default": "Utility-forward headings and compact body copy for specification browsing."
+        "default": "Space Grotesk headings, Inter body"
       },
       {
         "type": "text",
@@ -59,16 +71,44 @@
         "default": "Clean product photography with device context and close-up detail shots."
       },
       {
-        "type": "text",
+        "type": "select",
         "id": "density",
         "label": "Density",
-        "default": "balanced"
+        "default": "balanced",
+        "options": [
+          {
+            "value": "spacious",
+            "label": "Spacious"
+          },
+          {
+            "value": "balanced",
+            "label": "Balanced"
+          },
+          {
+            "value": "compact",
+            "label": "Compact"
+          }
+        ]
       },
       {
-        "type": "text",
+        "type": "select",
         "id": "motion",
         "label": "Motion",
-        "default": "restrained"
+        "default": "standard",
+        "options": [
+          {
+            "value": "expressive",
+            "label": "Expressive"
+          },
+          {
+            "value": "standard",
+            "label": "Standard"
+          },
+          {
+            "value": "restrained",
+            "label": "Restrained"
+          }
+        ]
       }
     ]
   }

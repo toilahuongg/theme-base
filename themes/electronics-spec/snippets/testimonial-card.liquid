@@ -1,0 +1,31 @@
+{% comment %}
+  @param block {block} Testimonial block object
+{% endcomment %}
+
+<div class="so-testimonial" style="padding:var(--so-space-lg); display:grid; gap:var(--so-space-md); text-align:center;">
+  {% if block.settings.rating > 0 %}
+    <div style="display:flex; justify-content:center;">
+      {% render 'rating', value: block.settings.rating %}
+    </div>
+  {% endif %}
+
+  {% if block.settings.quote != blank %}
+    <blockquote style="margin:0; font-size:var(--so-text-base); line-height:var(--so-leading-relaxed); color:var(--so-color-text);">
+      "{{ block.settings.quote | escape }}"
+    </blockquote>
+  {% endif %}
+
+  <div style="display:flex; align-items:center; justify-content:center; gap:var(--so-space-sm);">
+    {% if block.settings.avatar != blank %}
+      <div style="width:2.5rem; height:2.5rem; border-radius:var(--so-radius-full); overflow:clip; background:var(--so-color-surface-muted);">
+        {% render 'responsive-image', image: block.settings.avatar, class: '', alt: block.settings.author, style: 'width:100%;height:100%;object-fit:cover;' %}
+      </div>
+    {% endif %}
+    <div>
+      <p style="margin:0; font-size:var(--so-text-sm); font-weight:700;">{{ block.settings.author | escape }}</p>
+      {% if block.settings.role != blank %}
+        <p style="margin:0; font-size:var(--so-text-xs); color:var(--so-color-text-faint);">{{ block.settings.role | escape }}</p>
+      {% endif %}
+    </div>
+  </div>
+</div>

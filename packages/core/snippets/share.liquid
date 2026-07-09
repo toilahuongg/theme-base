@@ -1,0 +1,49 @@
+{% comment %}
+  @param title {string} Page/product title
+  @param url {string} Share URL
+  @param class {string} Additional CSS classes
+{% endcomment %}
+
+<div class="so-share {{ class }}">
+  <so-disclosure>
+    <button class="so-share__button so-disclosure__toggle" data-disclosure-toggle aria-expanded="false">
+      {{ 'general.share.title' | t }}
+    </button>
+    <div class="so-share__panel so-disclosure__panel" data-disclosure-panel hidden>
+      <button class="so-button so-button--sm" type="button" data-share-copy aria-label="{{ 'general.share.copy_link' | t }}">
+        {{ 'general.share.copy_link' | t }}
+      </button>
+      <input
+        class="so-share__input"
+        type="text"
+        value="{{ url | default: canonical_url }}"
+        readonly
+        aria-label="{{ 'general.share.link' | t }}"
+        style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);"
+      >
+    </div>
+  </so-disclosure>
+</div>
+
+<script>
+  document.querySelectorAll('[data-share-copy]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const input = btn.closest('.so-share').querySelector('[data-share-copy]');
+      const url = btn.closest('.so-share').querySelector('input').value;
+      try {
+        await navigator.clipboard.writeText(url);
+        btn.textContent = '{{ 'general.share.copied' | t }}';
+        setTimeout(() => { btn.textContent = '{{ 'general.share.copy_link' | t }}'; }, 2000);
+      } catch {
+        const urlInput = btn.closest('.so-share').querySelector('input');
+        urlInput.style.position = '';
+        urlInput.style.height = '';
+        urlInput.style.width = '';
+        urlInput.style.clip = '';
+        urlInput.select();
+        document.execCommand('copy');
+        btn.textContent = '{{ 'general.share.copied' | t }}';
+      }
+    });
+  });
+</script>

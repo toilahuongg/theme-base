@@ -38,7 +38,7 @@ test('generated theme includes Shopify theme blocks from core', async () => {
 
   const blockFiles = await fs.readdir(path.join(asterPath, 'blocks'));
 
-  assert.deepEqual(blockFiles.sort(), ['callout-card.liquid', 'content-stack.liquid']);
+  assert.deepEqual(blockFiles.sort(), ['callout-card.liquid', 'content-stack.liquid', 'featured-collection.liquid', 'image-banner.liquid', 'rich-text.liquid']);
 });
 
 test('generated storefront contract uses the so prefix', async () => {

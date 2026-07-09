@@ -1,0 +1,27 @@
+{% comment %}
+  @param value {number} Rating value (0-5)
+  @param count {number} Review count
+  @param size {string} "sm" | "md" | "lg"
+{% endcomment %}
+
+{% liquid
+  assign rating_value = value | default: 0 | round
+  assign rating_count = count | default: 0
+%}
+
+<div class="so-rating" role="img" aria-label="{{ 'general.rating.label' | t: value: rating_value }}">
+  {% for i in (1..5) %}
+    {% if i <= rating_value %}
+      <svg class="so-rating__star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" aria-checked="true">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+      </svg>
+    {% else %}
+      <svg class="so-rating__star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" aria-checked="false">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+      </svg>
+    {% endif %}
+  {% endfor %}
+</div>
+{% if rating_count > 0 %}
+  <span class="so-rating__count">({{ rating_count }})</span>
+{% endif %}

@@ -25,16 +25,22 @@
   "visual": {
     "tokens": {
       "background": "#F5F7FA",
+      "surface": "#FFFFFF",
       "text": "#10151F",
       "accent": "#2357D6",
-      "surface": "#FFFFFF",
       "border": "#D6DCE7",
       "radius": "6px"
     },
-    "typography": "Utility-forward headings and compact body copy for specification browsing.",
+    "typography": {
+      "headingFont": "Space Grotesk",
+      "bodyFont": "Inter",
+      "headingWeight": "600",
+      "bodyWeight": "400",
+      "headingTracking": "-0.03em"
+    },
     "imagery": "Clean product photography with device context and close-up detail shots.",
     "density": "balanced",
-    "motion": "restrained"
+    "motion": "standard"
   },
   "components": ["drawer", "accordion", "tabs", "quantity-stepper", "variant-controller", "media-gallery"],
   "sections": ["main-hero", "featured-products", "rich-content"],

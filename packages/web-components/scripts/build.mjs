@@ -38,6 +38,9 @@ async function collectModules(entryFile, seen = new Set(), ordered = []) {
 function transformModule(source) {
   const withoutImports = source.replace(/^\s*import\s+{[^}]+}\s+from\s+['"][^'"]+['"];\s*$/gm, '');
   return withoutImports
+    .replace(/^\s*import\s+['"][^'"]+['"];\s*$/gm, '')
+    .replace(/^\s*export\s+{[^}]*}\s*(?:from\s+['"][^'"]+['"])?\s*;\s*$/gm, '')
+    .replace(/^\s*export\s+default\s+/gm, '')
     .replace(/^\s*export\s+function\s+/gm, 'function ')
     .replace(/^\s*export\s+class\s+/gm, 'class ')
     .replace(/^\s*export\s+(const|let|var)\s+/gm, '$1 ');

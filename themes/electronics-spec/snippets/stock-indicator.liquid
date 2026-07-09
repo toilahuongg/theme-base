@@ -1,0 +1,29 @@
+{% comment %}
+  @param quantity {number} Current stock quantity
+  @param threshold_low {number} Low stock threshold
+  @param label_in {string} In stock label
+  @param label_low {string} Low stock label
+  @param label_out {string} Out of stock label
+{% endcomment %}
+
+{% liquid
+  assign qty = quantity | default: 0
+  assign low = threshold_low | default: 5
+%}
+
+{% if qty > low %}
+  <div class="so-stock-indicator so-stock-indicator--in-stock">
+    <span class="so-stock-indicator__dot" aria-hidden="true"></span>
+    <span>{{ label_in | default: 'products.product.in_stock' | t }}</span>
+  </div>
+{% elsif qty > 0 %}
+  <div class="so-stock-indicator so-stock-indicator--low-stock">
+    <span class="so-stock-indicator__dot" aria-hidden="true"></span>
+    <span>{{ label_low | default: 'products.product.low_stock' | t: count: qty }}</span>
+  </div>
+{% else %}
+  <div class="so-stock-indicator so-stock-indicator--out-of-stock">
+    <span class="so-stock-indicator__dot" aria-hidden="true"></span>
+    <span>{{ label_out | default: 'products.product.sold_out' | t }}</span>
+  </div>
+{% endif %}

@@ -1,14 +1,16 @@
 {
   "current": {
-    "color_background": "#F8F5EF",
+    "color_background": "#FAF8F5",
     "color_surface": "#FFFFFF",
-    "color_text": "#171512",
-    "color_accent": "#496F5D",
-    "color_border": "#D8D0C4",
+    "color_text": "#1A1412",
+    "color_accent": "#8B3A4F",
+    "color_border": "#D4C5B8",
     "radius": "8px",
-    "typography": "Editorial headings with calm readable body copy for clinical premium commerce.",
+    "font_heading": "Playfair Display",
+    "font_body": "Inter",
+    "typography": "Playfair Display headings, Inter body",
     "imagery": "Bright product and lifestyle photography with clean ingredient and routine context.",
     "density": "spacious",
-    "motion": "restrained"
+    "motion": "expressive"
   }
 }

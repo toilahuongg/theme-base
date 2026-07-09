@@ -24,17 +24,23 @@
   },
   "visual": {
     "tokens": {
-      "background": "#F8F5EF",
-      "text": "#171512",
-      "accent": "#496F5D",
+      "background": "#FAF8F5",
       "surface": "#FFFFFF",
-      "border": "#D8D0C4",
+      "text": "#1A1412",
+      "accent": "#8B3A4F",
+      "border": "#D4C5B8",
       "radius": "8px"
     },
-    "typography": "Editorial headings with calm readable body copy for clinical premium commerce.",
+    "typography": {
+      "headingFont": "Playfair Display",
+      "bodyFont": "Inter",
+      "headingWeight": "400",
+      "bodyWeight": "400",
+      "headingTracking": "-0.02em"
+    },
     "imagery": "Bright product and lifestyle photography with clean ingredient and routine context.",
     "density": "spacious",
-    "motion": "restrained"
+    "motion": "expressive"
   },
   "components": ["drawer", "accordion", "tabs", "quantity-stepper", "variant-controller", "media-gallery"],
   "sections": ["main-hero", "featured-products", "rich-content"],

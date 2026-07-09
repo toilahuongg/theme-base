@@ -1,0 +1,9 @@
+{% comment %}
+  Overlay backdrop component.
+  @param open {boolean} Whether the overlay is visible
+  @param id {string} Unique identifier
+  @param class {string} Additional CSS classes
+{% endcomment %}
+
+<so-overlay class="so-overlay {{ class }}" id="overlay-{{ id }}" {% if open %}open{% endif %}>
+</so-overlay>

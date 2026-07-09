@@ -37,8 +37,30 @@ const expectedElements = [
   'so-deferred-media',
   'so-recipient-form',
   'so-pickup-availability',
-  'so-share'
+  'so-share',
+  'so-price',
+  'so-rating',
+  'so-pagination',
+  'so-breadcrumb',
+  'so-countdown',
+  'so-stock-indicator',
+  'so-progress-bar',
+  'so-announcement-bar',
+  'so-back-to-top'
 ];
+
+class FakeDOMTokenList {
+  constructor() { this._set = new Set(); }
+  add(...cls) { cls.forEach(c => this._set.add(c)); }
+  remove(...cls) { cls.forEach(c => this._set.delete(c)); }
+  toggle(cls, force) {
+    if (force === undefined) { this._set.has(cls) ? this._set.delete(cls) : this._set.add(cls); }
+    else if (force) { this._set.add(cls); } else { this._set.delete(cls); }
+    return this._set.has(cls);
+  }
+  contains(cls) { return this._set.has(cls); }
+  get value() { return [...this._set].join(' '); }
+}
 
 class FakeNode {
   constructor(attributes = {}) {
@@ -46,6 +68,7 @@ class FakeNode {
     this.attributes = new Map(Object.entries(attributes).map(([name, value]) => [name, String(value)]));
     this.hidden = false;
     this.textContent = '';
+    this.classList = new FakeDOMTokenList();
   }
 
   setAttribute(name, value = '') {
@@ -286,6 +309,7 @@ test('drawer opens from trigger and closes on escape and close button', async ()
   const closeButton = new FakeNode();
   const panel = new FakeNode();
   const drawer = new SoDrawer();
+  drawer.classList = new FakeDOMTokenList();
 
   drawer.getAttribute = (name) => (name === 'trigger-selector' ? '[data-drawer-trigger]' : null);
   drawer.hasAttribute = (name) => name === 'open' && drawer._open === true;
@@ -297,6 +321,9 @@ test('drawer opens from trigger and closes on escape and close button', async ()
   };
   drawer.querySelector = (selector) => (selector === '[data-drawer-panel]' ? panel : selector === '[data-drawer-close]' ? closeButton : null);
   drawer.querySelectorAll = (selector) => (selector === '[data-drawer-close]' ? [closeButton] : []);
+  drawer.addEventListener = () => {};
+  drawer.removeEventListener = () => {};
+  drawer.dispatchEvent = () => true;
 
   const documentTriggers = [trigger];
   const previousDocument = globalThis.document;
@@ -339,11 +366,13 @@ test('modal toggles open state and removes listeners on disconnect', async () =>
   const panel = new FakeNode();
   const closeButton = new FakeNode();
   const modal = new SoModal();
+  modal.classList = new FakeDOMTokenList();
   const previousDocument = globalThis.document;
   const fakeDocument = new FakeDocument();
 
   modal.querySelector = (selector) => (selector === '[data-modal-panel]' ? panel : null);
   modal.querySelectorAll = (selector) => (selector === '[data-modal-close]' ? [closeButton] : []);
+  modal.getAttribute = () => null;
   modal.setAttribute = (name) => {
     if (name === 'open') modal._open = true;
   };
@@ -351,6 +380,9 @@ test('modal toggles open state and removes listeners on disconnect', async () =>
     if (name === 'open') modal._open = false;
   };
   modal.hasAttribute = (name) => name === 'open' && modal._open === true;
+  modal.dispatchEvent = () => true;
+  modal.addEventListener = () => {};
+  modal.removeEventListener = () => {};
 
   globalThis.document = fakeDocument;
 
@@ -466,9 +498,13 @@ test('toast show and hide respects duration and manual hide', async () => {
     toast.setAttribute = (name) => {
       if (name === 'open') toast._open = true;
     };
+    Object.defineProperty(toast, 'innerHTML', {
+      get() { return this.textContent; },
+      set(v) { this.textContent = v; }
+    });
 
     toast.show('Saved');
-    assert.equal(toast.textContent, 'Saved');
+    assert.equal(toast.textContent.includes('Saved'), true);
     assert.equal(toast._open, true);
     assert.equal(scheduled.length, 1);
 
@@ -516,20 +552,24 @@ test('toast cancels stale auto-hide timer on rapid reschedule', async () => {
     toast.setAttribute = (name) => {
       if (name === 'open') toast._open = true;
     };
+    Object.defineProperty(toast, 'innerHTML', {
+      get() { return this.textContent; },
+      set(v) { this.textContent = v; }
+    });
 
     toast.show('First');
     assert.equal(scheduled.length, 1);
-    assert.equal(toast.textContent, 'First');
+    assert.equal(toast.textContent.includes('First'), true);
     assert.equal(toast._open, true);
 
     toast.show('Second');
     assert.equal(scheduled.length, 2);
     assert.equal(cleared.has(1), true);
-    assert.equal(toast.textContent, 'Second');
+    assert.equal(toast.textContent.includes('Second'), true);
     assert.equal(toast._open, true);
 
     scheduled[0].fn();
-    assert.equal(toast.textContent, 'Second');
+    assert.equal(toast.textContent.includes('Second'), true);
     assert.equal(toast._open, true);
 
     scheduled[1].fn();
@@ -721,7 +761,8 @@ test('product form submits ajax add-to-cart and restores busy state', async () =
     assert.equal(prevented, true);
     assert.equal(submitButton.disabled, false);
     assert.equal(productForm.busy, false);
-    assert.equal(events.at(-1).type, 'so:cart:add');
+    assert.ok(events.some((e) => e.type === 'so:cart:add'));
+    assert.ok(events.some((e) => e.type === 'so:form:success'));
     assert.equal(capturedBodies[0], JSON.stringify({ id: '101', quantity: '1' }));
 
     hiddenInput.value = '';
@@ -734,7 +775,7 @@ test('product form submits ajax add-to-cart and restores busy state', async () =
     });
 
     assert.equal(prevented, true);
-    assert.equal(events.length, 1);
+    assert.equal(events.length, 3); // so:form:submit, so:cart:add, so:form:success from first submit; none from unavailable
   } finally {
     globalThis.fetch = originalFetch;
     globalThis.FormData = originalFormData;
@@ -1104,11 +1145,13 @@ test('modal syncs panel hidden state on open and close', async () => {
   const panel = new FakeNode();
   const closeButton = new FakeNode();
   const modal = new SoModal();
+  modal.classList = new FakeDOMTokenList();
   const previousDocument = globalThis.document;
   const fakeDocument = new FakeDocument();
 
   modal.querySelector = (selector) => (selector === '[data-modal-panel]' ? panel : null);
   modal.querySelectorAll = (selector) => (selector === '[data-modal-close]' ? [closeButton] : []);
+  modal.getAttribute = () => null;
   modal.setAttribute = (name) => {
     if (name === 'open') modal._open = true;
   };
@@ -1116,6 +1159,9 @@ test('modal syncs panel hidden state on open and close', async () => {
     if (name === 'open') modal._open = false;
   };
   modal.hasAttribute = (name) => name === 'open' && modal._open === true;
+  modal.dispatchEvent = () => true;
+  modal.addEventListener = () => {};
+  modal.removeEventListener = () => {};
 
   globalThis.document = fakeDocument;
 
@@ -1174,6 +1220,7 @@ test('carousel goTo, keyboard, button disable, dots, and drag', async () => {
   const nextButton = new FakeNode();
   nextButton.disabled = false;
 
+  const events = [];
   const carousel = new SoCarousel();
   carousel.querySelector = (selector) => {
     if (selector === '[data-carousel-track]') return track;
@@ -1183,6 +1230,11 @@ test('carousel goTo, keyboard, button disable, dots, and drag', async () => {
     return null;
   };
   carousel.querySelectorAll = () => [];
+  carousel.dispatchEvent = (event) => {
+    events.push(event);
+    return true;
+  };
+  carousel.hasAttribute = (name) => false;
 
   // Mock document.createElement for auto-generated dots
   const previousDocument = globalThis.document;

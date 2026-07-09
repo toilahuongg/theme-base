@@ -1,0 +1,19 @@
+{% comment %}
+  @param message {string} Announcement text
+  @param link {string} Optional link URL
+  @param link_text {string} Optional link text
+  @param class {string} Additional CSS classes
+{% endcomment %}
+
+<so-announcement-bar class="so-announcement-bar {{ class }}">
+  <div class="so-announcement-bar__inner">
+    {% if link != blank %}
+      <a href="{{ link }}">{{ message }}</a>
+    {% else %}
+      <span>{{ message }}</span>
+    {% endif %}
+    <button class="so-announcement-bar__dismiss" type="button" aria-label="{{ 'general.announcement.dismiss' | t }}" data-announcement-dismiss>
+      &times;
+    </button>
+  </div>
+</so-announcement-bar>

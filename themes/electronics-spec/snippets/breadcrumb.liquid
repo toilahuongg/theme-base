@@ -1,0 +1,19 @@
+{% comment %}
+  @param items {array} Array of { label, url } objects
+  @param current {string} Current page label
+{% endcomment %}
+
+<nav class="so-breadcrumb" aria-label="{{ 'general.breadcrumb' | t }}">
+  <ol>
+    {% for item in items %}
+      <li class="so-breadcrumb__item">
+        <a class="so-breadcrumb__link" href="{{ item.url }}">{{ item.label | escape }}</a>
+      </li>
+    {% endfor %}
+    {% if current != blank %}
+      <li class="so-breadcrumb__item">
+        <span class="so-breadcrumb__current" aria-current="page">{{ current | escape }}</span>
+      </li>
+    {% endif %}
+  </ol>
+</nav>

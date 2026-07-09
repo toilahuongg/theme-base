@@ -1,0 +1,16 @@
+{% comment %}
+  Renders cart line items inside so-cart-items.
+  @param cart {cart} Shopify cart object
+{% endcomment %}
+
+<so-cart-items class="so-cart-items" {% if cart.currency %}currency="{{ cart.currency.iso_code }}"{% endif %}>
+  <ul class="so-cart-lines" data-cart-lines {% unless cart.item_count > 0 %}hidden{% endunless %}>
+    {% for line in cart.items %}
+      {% render 'cart-line-item', line_item: line, index: forloop.index %}
+    {% endfor %}
+  </ul>
+
+  <div class="so-cart-drawer__empty" data-cart-empty {% if cart.item_count > 0 %}hidden{% endif %}>
+    <p>{{ 'cart.general.empty' | t }}</p>
+  </div>
+</so-cart-items>

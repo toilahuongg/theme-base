@@ -1,0 +1,25 @@
+{% comment %}
+  @param end_date {string} ISO date string for countdown end
+  @param class {string} Additional CSS classes
+{% endcomment %}
+
+{% if end_date != blank %}
+  <so-countdown class="so-countdown {{ class }}" data-end="{{ end_date }}">
+    <div class="so-countdown__unit">
+      <span class="so-countdown__value" data-countdown-days>00</span>
+      <span class="so-countdown__label">{{ 'general.countdown.days' | t }}</span>
+    </div>
+    <div class="so-countdown__unit">
+      <span class="so-countdown__value" data-countdown-hours>00</span>
+      <span class="so-countdown__label">{{ 'general.countdown.hours' | t }}</span>
+    </div>
+    <div class="so-countdown__unit">
+      <span class="so-countdown__value" data-countdown-minutes>00</span>
+      <span class="so-countdown__label">{{ 'general.countdown.minutes' | t }}</span>
+    </div>
+    <div class="so-countdown__unit">
+      <span class="so-countdown__value" data-countdown-seconds>00</span>
+      <span class="so-countdown__label">{{ 'general.countdown.seconds' | t }}</span>
+    </div>
+  </so-countdown>
+{% endif %}
