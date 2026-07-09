@@ -241,7 +241,7 @@ git commit -m "refactor: rename storefront prefix to so"
 - Modify: `packages/web-components/scripts/build.mjs`
 - Modify: `packages/web-components/tests/web-components.test.mjs`
 
-- [ ] **Step 1: Create helper module**
+- [x] **Step 1: Create helper module**
 
 Create `packages/web-components/src/helpers.js`:
 
@@ -278,7 +278,7 @@ export function trapFocus(container) {
 }
 ```
 
-- [ ] **Step 2: Create register helper**
+- [x] **Step 2: Create register helper**
 
 Create `packages/web-components/src/register.js`:
 
@@ -290,7 +290,7 @@ export function registerElement(name, elementClass) {
 }
 ```
 
-- [ ] **Step 3: Move disclosure into its own module**
+- [x] **Step 3: Move disclosure into its own module**
 
 Create `packages/web-components/src/components/disclosure.js`:
 
@@ -337,7 +337,7 @@ export class SoDisclosure extends HTMLElement {
 }
 ```
 
-- [ ] **Step 4: Move quantity into its own module**
+- [x] **Step 4: Move quantity into its own module**
 
 Create `packages/web-components/src/components/quantity.js`:
 
@@ -384,7 +384,7 @@ export class SoQuantity extends HTMLElement {
 }
 ```
 
-- [ ] **Step 5: Update entrypoint**
+- [x] **Step 5: Update entrypoint**
 
 Set `packages/web-components/src/index.js` to:
 
@@ -397,7 +397,7 @@ registerElement('so-disclosure', SoDisclosure);
 registerElement('so-quantity', SoQuantity);
 ```
 
-- [ ] **Step 6: Update build script to bundle local modules**
+- [x] **Step 6: Update build script to bundle local modules**
 
 Modify `packages/web-components/scripts/build.mjs` so it recursively reads `src` modules and emits a browser-safe IIFE. The minimal acceptable output must not contain ESM `import` or `export` statements.
 
@@ -410,7 +410,7 @@ rg -n "import |export " packages/web-components/dist/theme-components.js package
 
 Expected: build exits 0; `rg` finds no import/export statements in generated browser assets.
 
-- [ ] **Step 7: Run tests**
+- [x] **Step 7: Run tests**
 
 ```bash
 npm run test:web-components

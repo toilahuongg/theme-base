@@ -6,6 +6,7 @@
   "description": "Shopify-native theme factory with blueprint-driven generation.",
   "scripts": {
     "build:web-components": "node packages/web-components/scripts/build.mjs",
+    "playground:web-components": "node packages/web-components/playground/server.mjs",
     "validate:blueprint": "node packages/generator/src/validate-blueprint.mjs",
     "generate": "node packages/generator/src/generate-theme.mjs",
     "check:theme-structure": "node packages/generator/src/check-theme-structure.mjs",

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SO Web Components Playground</title>
+    <link rel="stylesheet" href="/packages/core/assets/so.css">
+    <link rel="stylesheet" href="./playground.css">
+    <script src="../dist/theme-components.js" defer></script>
+    <script type="module" src="./playground.js"></script>
+  </head>
+  <body>
+    <main class="shell">
+      <aside class="sidebar" aria-label="Component catalog">
+        <div class="brand">
+          <span class="brand__mark">SO</span>
+          <div>
+            <h1>Web Components</h1>
+            <p>Preview contract, variants, attributes, and usage snippets.</p>
+          </div>
+        </div>
+        <label class="search">
+          <span>Search</span>
+          <input id="component-search" type="search" placeholder="so-product-form">
+        </label>
+        <nav id="component-list" class="component-list" aria-label="Components"></nav>
+      </aside>
+
+      <section class="workspace" aria-live="polite">
+        <header class="workspace__header">
+          <div>
+            <p id="component-group" class="eyebrow"></p>
+            <h2 id="component-name"></h2>
+            <p id="component-summary" class="summary"></p>
+          </div>
+          <span id="component-status" class="status"></span>
+        </header>
+
+        <div class="toolbar">
+          <label>
+            <span>Variant</span>
+            <select id="variant-select"></select>
+          </label>
+          <button id="reset-preview" class="button button--secondary" type="button">Reset preview</button>
+        </div>
+
+        <div class="content-grid">
+          <section class="preview-panel" aria-label="Live preview">
+            <div class="panel-heading">
+              <h3>Preview</h3>
+              <p id="variant-notes"></p>
+            </div>
+            <div id="preview-root" class="preview-root"></div>
+            <div id="event-log" class="event-log" aria-label="Component events"></div>
+          </section>
+
+          <section class="docs-panel" aria-label="Usage documentation">
+            <div class="doc-section">
+              <h3>Usage</h3>
+              <pre><code id="usage-code"></code></pre>
+            </div>
+            <div class="doc-section">
+              <h3>Attributes</h3>
+              <div id="attribute-list" class="meta-list"></div>
+            </div>
+            <div class="doc-section">
+              <h3>Events</h3>
+              <div id="event-list" class="meta-list"></div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

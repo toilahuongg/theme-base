@@ -12,6 +12,9 @@
       "add_to_cart": "Add to cart",
       "sold_out": "Sold out",
       "unavailable": "Unavailable",
+      "quantity": "Quantity",
+      "decrease_quantity": "Decrease quantity",
+      "increase_quantity": "Increase quantity",
       "media_gallery": "Product media gallery",
       "view_options": "View options"
     }

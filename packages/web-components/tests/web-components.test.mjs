@@ -196,6 +196,88 @@ test('builds distributable browser asset', async () => {
   }
 });
 
+test('playground documents every registered component with runnable examples', async () => {
+  const playgroundRoot = path.join(packageRoot, 'playground');
+  const html = await fs.readFile(path.join(playgroundRoot, 'index.html'), 'utf8');
+  const catalogModule = await import(`${pathToFileURL(path.join(playgroundRoot, 'components.js')).href}?catalog`);
+  const catalog = catalogModule.componentCatalog;
+
+  assert.match(html, /\.\.\/dist\/theme-components\.js/);
+  assert.match(html, /\.\/playground\.js/);
+  assert.equal(catalog.length, expectedElements.length);
+
+  for (const elementName of expectedElements) {
+    const entry = catalog.find((candidate) => candidate.name === elementName);
+    assert.ok(entry, `${elementName} is missing from the playground catalog`);
+    assert.ok(entry.summary, `${elementName} needs a summary`);
+    assert.ok(Array.isArray(entry.attributes), `${elementName} attributes must be listed`);
+    assert.ok(Array.isArray(entry.variants) && entry.variants.length > 0, `${elementName} needs at least one variant`);
+
+    for (const variant of entry.variants) {
+      assert.match(variant.html, new RegExp(`<${elementName}\\b`), `${elementName} variant must render the custom element`);
+    }
+  }
+});
+
+test('playground component examples use storefront base classes', async () => {
+  const playgroundRoot = path.join(packageRoot, 'playground');
+  const catalogModule = await import(`${pathToFileURL(path.join(playgroundRoot, 'components.js')).href}?base-classes`);
+  const catalog = catalogModule.componentCatalog;
+
+  for (const entry of catalog) {
+    for (const variant of entry.variants) {
+      assert.doesNotMatch(variant.html, /\bdemo-[a-z0-9_-]+/, `${entry.name} / ${variant.name} must not rely on playground demo CSS`);
+    }
+  }
+});
+
+test('quantity steps within bounds and updates control disabled state', async () => {
+  const { SoQuantity } = await import(pathToFileURL(path.join(packageRoot, 'src/components/quantity.js')).href);
+
+  const input = new FakeNode();
+  input.type = 'number';
+  input.value = '1';
+  input.min = '1';
+  input.max = '3';
+  input.step = '1';
+  const decrease = new FakeNode({ 'data-quantity-decrease': '' });
+  const increase = new FakeNode({ 'data-quantity-increase': '' });
+  const events = [];
+  input.addEventListener('input', () => events.push('input'));
+  input.addEventListener('change', () => events.push('change'));
+
+  const quantity = new SoQuantity();
+  quantity.querySelector = (selector) => {
+    if (selector === 'input[type="number"]') return input;
+    if (selector === '[data-quantity-decrease]') return decrease;
+    if (selector === '[data-quantity-increase]') return increase;
+    return null;
+  };
+
+  quantity.connectedCallback();
+
+  assert.equal(decrease.hasAttribute('disabled'), true);
+  assert.equal(increase.hasAttribute('disabled'), false);
+
+  increase.dispatch('click');
+  assert.equal(input.value, '2');
+  assert.deepEqual(events, ['input', 'change']);
+  assert.equal(decrease.hasAttribute('disabled'), false);
+
+  increase.dispatch('click');
+  assert.equal(input.value, '3');
+  assert.equal(increase.hasAttribute('disabled'), true);
+
+  increase.dispatch('click');
+  assert.equal(input.value, '3');
+  assert.equal(increase.hasAttribute('disabled'), true);
+
+  decrease.dispatch('click');
+  decrease.dispatch('click');
+  assert.equal(input.value, '1');
+  assert.equal(decrease.hasAttribute('disabled'), true);
+});
+
 test('drawer opens from trigger and closes on escape and close button', async () => {
   const { SoDrawer } = await import(pathToFileURL(path.join(packageRoot, 'src/components/drawer.js')).href);
 
@@ -845,4 +927,40 @@ test('quick add opens quick view for products with required options', async () =
   assert.equal(prevented, true);
   assert.equal(events.at(-1).type, 'so:quick-view:open');
   assert.equal(events.at(-1).detail.productUrl, '/products/example');
+});
+
+test('share ignores native share cancellation', async () => {
+  const { SoShare } = await import(pathToFileURL(path.join(packageRoot, 'src/components/share.js')).href);
+  const previousNavigator = Object.getOwnPropertyDescriptor(globalThis, 'navigator');
+  const payloads = [];
+  const abortError = new Error('Share canceled');
+  abortError.name = 'AbortError';
+
+  Object.defineProperty(globalThis, 'navigator', {
+    configurable: true,
+    value: {
+      share: async (payload) => {
+        payloads.push(payload);
+        throw abortError;
+      }
+    }
+  });
+
+  const share = new SoShare();
+  share.getAttribute = (name) => {
+    if (name === 'url') return 'https://example.com/products/everyday-jacket';
+    if (name === 'title') return 'Everyday Jacket';
+    return null;
+  };
+
+  try {
+    await assert.doesNotReject(() => share.share());
+    assert.deepEqual(payloads, [{ title: 'Everyday Jacket', url: 'https://example.com/products/everyday-jacket' }]);
+  } finally {
+    if (previousNavigator) {
+      Object.defineProperty(globalThis, 'navigator', previousNavigator);
+    } else {
+      delete globalThis.navigator;
+    }
+  }
 });

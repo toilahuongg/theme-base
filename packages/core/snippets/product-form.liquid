@@ -12,6 +12,40 @@
     {% form 'product', product, id: product_form_id, class: 'so-product-form' %}
       <input type="hidden" name="id" value="{{ current_variant.id }}">
 
+      <div class="so-product-form__quantity">
+        <label class="so-product-form__label" for="{{ product_form_id }}-quantity">
+          {{ 'products.product.quantity' | t }}
+        </label>
+        <so-quantity class="so-quantity">
+          <button
+            class="so-quantity__button"
+            type="button"
+            data-quantity-decrease
+            aria-label="{{ 'products.product.decrease_quantity' | t | escape }}"
+          >
+            -
+          </button>
+          <input
+            id="{{ product_form_id }}-quantity"
+            class="so-quantity__input"
+            type="number"
+            name="quantity"
+            min="1"
+            step="1"
+            value="1"
+            aria-label="{{ 'products.product.quantity' | t | escape }}"
+          >
+          <button
+            class="so-quantity__button"
+            type="button"
+            data-quantity-increase
+            aria-label="{{ 'products.product.increase_quantity' | t | escape }}"
+          >
+            +
+          </button>
+        </so-quantity>
+      </div>
+
       <div class="so-product-form__actions">
         <button
           class="so-button so-product-form__submit"

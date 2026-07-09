@@ -1,3 +1,5 @@
+import { emit } from '../helpers.js';
+
 export class SoShare extends HTMLElement {
   connectedCallback() {
     if (this._connected) return;
@@ -17,10 +19,15 @@ export class SoShare extends HTMLElement {
     const url = this.getAttribute('url') || globalThis.location?.href || '';
     const title = this.getAttribute('title') || globalThis.document?.title || '';
 
-    if (globalThis.navigator?.share) {
-      await globalThis.navigator.share({ title, url });
-    } else if (globalThis.navigator?.clipboard) {
-      await globalThis.navigator.clipboard.writeText(url);
+    try {
+      if (globalThis.navigator?.share) {
+        await globalThis.navigator.share({ title, url });
+      } else if (globalThis.navigator?.clipboard) {
+        await globalThis.navigator.clipboard.writeText(url);
+      }
+    } catch (error) {
+      if (error?.name === 'AbortError' || error?.name === 'NotAllowedError') return;
+      emit(this, 'so:share:error', { error });
     }
   }
 }
