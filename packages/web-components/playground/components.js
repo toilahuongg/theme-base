@@ -498,17 +498,17 @@ export const componentCatalog = [
     name: 'so-carousel',
     group: 'Media',
     status: 'ready',
-    summary: 'Scrolls a horizontal track with previous and next buttons.',
+    summary: 'Horizontal carousel with dots, keyboard nav, drag/swipe, and arrow buttons.',
     attributes: [],
     events: [],
     variants: [
       {
         name: 'Product rail',
-        notes: 'Track scroll distance follows its own width.',
+        notes: 'Dots are auto-generated from track children. Arrows disable at boundaries. Supports ArrowLeft/Right keyboard and drag/swipe on the track. Exposes goTo(index).',
         html: `<so-carousel class="so-carousel">
   <button class="so-carousel__button" type="button" data-carousel-prev aria-label="Previous">Prev</button>
-  <div class="so-carousel__track" data-carousel-track>
-    <div class="so-carousel__item">Jacket</div><div class="so-carousel__item">Tote</div><div class="so-carousel__item">Cap</div><div class="so-carousel__item">Notebook</div>
+  <div class="so-carousel__track" data-carousel-track tabindex="0">
+    <div class="so-carousel__item">Jacket</div><div class="so-carousel__item">Tote</div><div class="so-carousel__item">Cap</div><div class="so-carousel__item">Notebook</div><div class="so-carousel__item">Scarf</div><div class="so-carousel__item">Gloves</div><div class="so-carousel__item">Belt</div><div class="so-carousel__item">Boots</div>
   </div>
   <button class="so-carousel__button" type="button" data-carousel-next aria-label="Next">Next</button>
 </so-carousel>`

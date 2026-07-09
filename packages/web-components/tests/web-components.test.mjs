@@ -1138,3 +1138,125 @@ test('modal syncs panel hidden state on open and close', async () => {
     globalThis.document = previousDocument;
   }
 });
+
+test('carousel goTo, keyboard, button disable, dots, and drag', async () => {
+  const { SoCarousel } = await import(pathToFileURL(path.join(packageRoot, 'src/components/carousel.js')).href);
+
+  const items = [];
+  for (let i = 0; i < 5; i++) {
+    items.push(new FakeNode());
+    items[i].clientWidth = 100;
+    items[i].scrollIntoView = function () {
+      this._scrollIntoViewCalled = true;
+    };
+  }
+
+  const track = new FakeNode();
+  track.children = items;
+  track.clientWidth = 300;
+  track.scrollWidth = 500;
+  track.scrollLeft = 0;
+  track.addEventListener = function (type, handler) {
+    if (!this.listeners) this.listeners = new Map();
+    if (!this.listeners.has(type)) this.listeners.set(type, new Set());
+    this.listeners.get(type).add(handler);
+  };
+  track.removeEventListener = function (type, handler) {
+    this.listeners?.get(type)?.delete(handler);
+  };
+  track.setPointerCapture = () => {};
+  track.after = function (sibling) {
+    this._siblingAfter = sibling;
+  };
+
+  const prevButton = new FakeNode();
+  prevButton.disabled = false;
+  const nextButton = new FakeNode();
+  nextButton.disabled = false;
+
+  const carousel = new SoCarousel();
+  carousel.querySelector = (selector) => {
+    if (selector === '[data-carousel-track]') return track;
+    if (selector === '[data-carousel-prev]') return prevButton;
+    if (selector === '[data-carousel-next]') return nextButton;
+    if (selector === '[data-carousel-dots]') return null;
+    return null;
+  };
+  carousel.querySelectorAll = () => [];
+
+  // Mock document.createElement for auto-generated dots
+  const previousDocument = globalThis.document;
+  globalThis.document = {
+    createElement: (tag) => {
+      const node = new FakeNode();
+      node.tagName = tag.toUpperCase();
+      node.children = [];
+      node.dataset = {};
+      node.appendChild = function (child) {
+        this.children.push(child);
+      };
+      node.querySelectorAll = function (selector) {
+        if (selector === '[data-carousel-dot]') return this.children;
+        return [];
+      };
+      node.after = function (sibling) {
+        this._siblingAfter = sibling;
+      };
+      return node;
+    }
+  };
+
+  try {
+    carousel.connectedCallback();
+
+    // Dots were auto-generated
+    assert.ok(carousel.dotsContainer, 'dots container should be created');
+    const dots = carousel.dotsContainer.querySelectorAll('[data-carousel-dot]');
+    assert.equal(dots.length, 5, 'should create 5 dots');
+
+    // First button should be disabled at start
+    assert.equal(prevButton.disabled, true, 'prev should be disabled at start');
+    assert.equal(nextButton.disabled, false, 'next should be enabled');
+
+    // goTo(2) should work
+    carousel.goTo(2);
+    assert.equal(items[2]._scrollIntoViewCalled, true, 'goTo should call scrollIntoView');
+
+    // Simulate scroll to middle (100 + 300 = 400 < 500 - 2, not at end)
+    track.scrollLeft = 100;
+    carousel.syncUI();
+    assert.equal(prevButton.disabled, false, 'prev should be enabled in middle');
+    assert.equal(nextButton.disabled, false, 'next should be enabled in middle');
+
+    // Simulate scroll to end (200 + 300 = 500 >= 500 - 2)
+    track.scrollLeft = 200;
+    carousel.syncUI();
+    assert.equal(nextButton.disabled, true, 'next should be disabled at end');
+
+    // Keyboard navigation
+    const keyEvents = [];
+    carousel.handleKeydown({ key: 'ArrowRight', preventDefault: () => keyEvents.push('right') });
+    carousel.handleKeydown({ key: 'ArrowLeft', preventDefault: () => keyEvents.push('left') });
+    assert.deepEqual(keyEvents, ['right', 'left']);
+
+    // Dot click calls goTo
+    const dotButton = new FakeNode();
+    dotButton.dataset = { carouselDot: '3' };
+    dotButton.closest = () => dotButton;
+    carousel.onDotClick({ target: dotButton });
+    assert.equal(items[3]._scrollIntoViewCalled, true, 'dot click should call goTo');
+
+    // Drag
+    carousel.handlePointerDown({ button: 0, clientX: 100, pointerId: 1 });
+    assert.equal(carousel._isDragging, true);
+    carousel.handlePointerMove({ clientX: 50 });
+    carousel.handlePointerUp();
+    assert.equal(carousel._isDragging, false);
+
+    // disconnectedCallback removes listeners
+    carousel.disconnectedCallback();
+    assert.equal(carousel._connected, false);
+  } finally {
+    globalThis.document = previousDocument;
+  }
+});

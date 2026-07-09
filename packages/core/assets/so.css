@@ -909,6 +909,31 @@ so-tabs [role="tabpanel"][hidden] {
   font-weight: 700;
 }
 
+.so-carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  grid-column: 2;
+}
+
+.so-carousel__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--so-color-border);
+  background: var(--so-color-surface);
+  padding: 0;
+  cursor: pointer;
+  transition: background-color var(--so-transition), border-color var(--so-transition), transform var(--so-transition);
+}
+
+.so-carousel__dot[aria-current="true"] {
+  background: var(--so-color-text);
+  border-color: var(--so-color-text);
+  transform: scale(1.2);
+}
+
 .so-swatches {
   display: flex;
   flex-wrap: wrap;
