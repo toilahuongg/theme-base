@@ -1,0 +1,4 @@
+# Files not to upload when running `shopify theme push` from this repo
+tools/
+.env
+.env.*

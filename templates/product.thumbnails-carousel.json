@@ -1,0 +1,560 @@
+
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "c67b7c41-4a92-419d-85c6-c970bb43bf2d": {
+          "type": "badge",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h2"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "richtext_QiPxdM": {
+          "type": "richtext",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "variant_picker_show_selected": true,
+            "variant_picker_dont_select_the_default_variant": false,
+            "size_title": "Size Chart",
+            "size_chart_from_page": "size-chart"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_atc_button": true,
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        },
+        "text_z7pLeU": {
+          "type": "text",
+          "settings": {
+            "icon": "box",
+            "text": "Free Shipping for orders $50+",
+            "text_style": "body"
+          }
+        },
+        "text_M9RmwQ": {
+          "type": "text",
+          "settings": {
+            "icon": "currency-dollar",
+            "text": "Money back within 30 days for an exchange.",
+            "text_style": "body"
+          }
+        },
+        "4813cc96-81ff-4094-bd6a-4bf96eab69e9": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "BUY IT WITH",
+            "make_collapsible_row": false,
+            "icon": "none",
+            "product_list_limit": 10,
+            "products_per_page": 1,
+            "enable_slider": true,
+            "image_ratio": "adapt",
+            "enable_quick_add": true,
+            "enable_quick_view": false,
+            "pcard_show_color_swatch": false
+          }
+        },
+        "0bd176fb-80b2-42ce-ae4e-db8cb55fe024": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "none",
+            "heading": "DETAILS",
+            "content": "",
+            "liquid": "{{ product.description }}",
+            "page": "",
+            "default_open": false
+          }
+        },
+        "f11043ac-1746-42ad-a36b-91ff4cc9f432": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "none",
+            "heading": "MASTERIALS",
+            "content": "<p>What sets these products apart is the use of high-quality materials. The creators of these beauty products have ensured that they are made with top-notch ingredients that are safe for the skin and provide long-lasting results. This attention to detail and commitment to quality have made Fortnite beauty products a hit among gamers and beauty enthusiasts alike.</p>",
+            "liquid": "",
+            "page": "",
+            "default_open": false
+          }
+        },
+        "e303936e-d82d-4e37-8b83-e227d48fbb3d": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "none",
+            "heading": "SHIPPING & RETURN",
+            "content": "<p>By combining shipping reductions and hassle-free returns, businesses can create a positive shopping experience for customers. This can lead to repeat business and word-of-mouth referrals, ultimately driving growth and success for the company. In conclusion, shipping reductions and hassle-free returns are a winning combo that can help businesses stand out in a crowded.</p>",
+            "liquid": "",
+            "page": "",
+            "default_open": false
+          }
+        },
+        "addons": {
+          "type": "addons",
+          "settings": {
+            "show_share": true,
+            "show_ask_question": true
+          }
+        }
+      },
+      "block_order": [
+        "c67b7c41-4a92-419d-85c6-c970bb43bf2d",
+        "title",
+        "price",
+        "richtext_QiPxdM",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "text_z7pLeU",
+        "text_M9RmwQ",
+        "4813cc96-81ff-4094-bd6a-4bf96eab69e9",
+        "0bd176fb-80b2-42ce-ae4e-db8cb55fe024",
+        "f11043ac-1746-42ad-a36b-91ff4cc9f432",
+        "e303936e-d82d-4e37-8b83-e227d48fbb3d",
+        "addons"
+      ],
+      "custom_css": [],
+      "settings": {
+        "container": "container",
+        "show_breadcrumb": true,
+        "enable_sticky_info": true,
+        "media_layout": "carousel",
+        "media_size": "medium",
+        "mobile_thumbnails": "hide",
+        "enable_image_zoom": true,
+        "enable_video_looping": false,
+        "show_featured_media": false
+      }
+    },
+    "rich_text_1": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_XLApPK": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Be Remarkable"
+          }
+        },
+        "heading_PmLUie": {
+          "type": "heading",
+          "settings": {
+            "heading": "Jewelry by artist <em>Arielle Zella</em>",
+            "highlight_style": "drawer_line",
+            "enable_highlight_text_color": true,
+            "heading_size": "h1",
+            "heading_color": ""
+          }
+        },
+        "text_WedRww": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The brand is named after the town her grandma lived. Now based in Bristol, UK, Audrey splits her time <br/>between the two countries working directly with over 150 artisans in Kenya</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_XLApPK",
+        "heading_PmLUie",
+        "text_WedRww"
+      ],
+      "custom_css": [],
+      "settings": {
+        "container": "container",
+        "color_schema": "",
+        "text_alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "mobile-remove-br",
+        "animations": "inherit"
+      }
+    },
+    "image_with_text_N67WDG": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_6RamQC": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "care guide"
+          }
+        },
+        "heading_yWzJMX": {
+          "type": "heading",
+          "settings": {
+            "heading": "When not in use, store your jewelry in a dry place. ",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h1"
+          }
+        },
+        "text_DtQnAE": {
+          "type": "text",
+          "settings": {
+            "text": "<p>When not in use, store your jewelry in a cool and dry place. Keep your pieces separated to avoid scratches and tangles. You can use a jewelry box with compartments or a soft pouch to store your jewelry.whereas the base metal of plated jewelry is typically copper, brass, or steel.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_6RamQC",
+        "heading_yWzJMX",
+        "text_DtQnAE"
+      ],
+      "custom_css": [],
+      "settings": {
+        "container": "container",
+        "color_schema": "background-1",
+        "image_width": "50%",
+        "image_position": "left",
+        "vertical_alignment": "center",
+        "column_gap": "medium",
+        "row_gap": "large",
+        "padding_left": 120,
+        "padding_right": 120,
+        "align_content_container": "none",
+        "mobile_padding_left": 10,
+        "mobile_padding_right": 10,
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 48,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "image_with_text_LYAJW8": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_ehXVhp": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Gold Vermeil"
+          }
+        },
+        "heading_DDWFTd": {
+          "type": "heading",
+          "settings": {
+            "heading": "Not to be confused with regular gold plating",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h1"
+          }
+        },
+        "text_f7TAGN": {
+          "type": "text",
+          "settings": {
+            "text": "<p>When not in use, store your jewelry in a cool and dry place. Keep your pieces separated to avoid scratches and tangles. You can use a jewelry box with compartments or a soft pouch to store your jewelry.whereas the base metal of plated jewelry is typically copper, brass, or steel.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_ehXVhp",
+        "heading_DDWFTd",
+        "text_f7TAGN"
+      ],
+      "custom_css": [],
+      "settings": {
+        "container": "container",
+        "color_schema": "background-1",
+        "image_width": "50%",
+        "image_position": "right",
+        "vertical_alignment": "center",
+        "column_gap": "medium",
+        "row_gap": "large",
+        "padding_left": 120,
+        "padding_right": 120,
+        "align_content_container": "none",
+        "mobile_padding_left": 10,
+        "mobile_padding_right": 10,
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 48,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "scrolling_promotion_JTAcPf": {
+      "type": "scrolling-promotion",
+      "blocks": {
+        "testimonial_dbtmYp": {
+          "type": "testimonial",
+          "settings": {
+            "text": "<p>“Absolutely stunning jewelry! The quality and sparkle are unmatched.”</p>",
+            "author": "Rosie C."
+          }
+        },
+        "testimonial_rNCtBh": {
+          "type": "testimonial",
+          "settings": {
+            "text": "<p>“Gorgeous designs! My new favorite piece for every special occasion.”</p>",
+            "author": "Elise T."
+          }
+        },
+        "testimonial_YLFBM7": {
+          "type": "testimonial",
+          "settings": {
+            "text": "<p>“The craftsmanship is incredible! So happy with my purchase.”</p>",
+            "author": "Daisy K."
+          }
+        },
+        "testimonial_mwiQ9b": {
+          "type": "testimonial",
+          "settings": {
+            "text": "<p>“A perfect gift! Beautifully made and even more stunning in person.”</p>",
+            "author": "Nora S."
+          }
+        },
+        "testimonial_Wp3xyy": {
+          "type": "testimonial",
+          "settings": {
+            "text": "<p>“Sparkles brilliantly! The quality exceeded my expectations.”</p>",
+            "author": "Lena M."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_dbtmYp",
+        "testimonial_rNCtBh",
+        "testimonial_YLFBM7",
+        "testimonial_mwiQ9b",
+        "testimonial_Wp3xyy"
+      ],
+      "custom_css": [
+        "@media (min-width: 768px) {.section__header--text {max-width: 54rem; margin-inline: auto; }}"
+      ],
+      "settings": {
+        "container": "container-full",
+        "color_schema": "scheme-6",
+        "section_header_padding_bottom": "large",
+        "section_header_content_spacing": "medium",
+        "heading": "Loved by 100,000 customers unleash your <em>graceful aura!</em>",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "Our Reviews",
+        "description": "",
+        "alignment": "center",
+        "direction": "left",
+        "pause_on_hover": true,
+        "speed": 0.1,
+        "item_gap": 80,
+        "item_gap_mobile": 40,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "use_custom_mobile_padding": false,
+        "padding_top_mobile": 60,
+        "padding_bottom_mobile": 60,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "collapsible_tabs_1": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "content_6rgj3J": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "How long does it take to process an order?",
+            "content": "<p>Orders are processed within 1-3 business days. You’ll receive a confirmation email once your order has been shipped, ensuring a smooth shopping experience.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": true
+          }
+        },
+        "content_DBBkLp": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "Do you ship internationally?",
+            "content": "<p>Yes, we offer international shipping. Delivery times vary by location, and shipping costs are calculated at checkout for seamless worldwide service.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "content_TDYWn3": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "What is your return policy?",
+            "content": "<p>We accept returns within 30 days of delivery. Items must be unused, in original packaging, and accompanied by a receipt for a hassle-free return process.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "content_GiXT36": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "Can I track my order?",
+            "content": "<p>Yes! Once your order ships, we’ll send a tracking number via email so you can monitor your package's journey with real-time updates available online.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "content_6rgj3J",
+        "content_DBBkLp",
+        "content_TDYWn3",
+        "content_GiXT36"
+      ],
+      "settings": {
+        "container": "container-narrow",
+        "color_schema": "",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "heading": "Discover more in our FAQ",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "item_heading_font": "heading",
+        "item_heading_size": "h4",
+        "column_gap": "medium",
+        "content_width": "narrow",
+        "padding_top": 100,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "custom_css": [],
+      "settings": {
+        "container": "container",
+        "color_schema": "background-1",
+        "remove_params": false,
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "heading": "You may also like",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "description": "",
+        "limit": 8,
+        "columns": 4,
+        "column_gap": "double-extra-small",
+        "row_gap": "medium",
+        "enable_slider": true,
+        "show_nav": true,
+        "show_dots": false,
+        "enable_swipe_mobile": true,
+        "column_mobile": "1",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "animations": "inherit"
+      }
+    },
+    "hero_EAxj8X": {
+      "type": "hero",
+      "blocks": {
+        "subtitle_eTVdrG": {
+          "type": "subtitle",
+          "settings": {
+            "subtitle": "laura store"
+          }
+        },
+        "title_g8RfDK": {
+          "type": "title",
+          "settings": {
+            "title": "A Dream, Aloud Earrings",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h-xl",
+            "heading_color": ""
+          }
+        },
+        "button_4aW3zw": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_style": "btn--white",
+            "button_size": ""
+          }
+        }
+      },
+      "block_order": [
+        "subtitle_eTVdrG",
+        "title_g8RfDK",
+        "button_4aW3zw"
+      ],
+      "custom_css": [
+        ".f-hero__content {max-width: 36rem;}"
+      ],
+      "settings": {
+        "container": "container-full",
+        "image_overlay_opacity": 0,
+        "hero_height": "adapt",
+        "content_in_container": true,
+        "content_position": "left-middle",
+        "text_alignment": "left",
+        "text_color": "#ffffff",
+        "hero_height_mobile": "large",
+        "content_position_mobile": "center",
+        "show_text_below": false,
+        "text_alignment_mobile": "center",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit",
+        "enable_bg_zoom_effect": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_1",
+    "image_with_text_N67WDG",
+    "image_with_text_LYAJW8",
+    "scrolling_promotion_JTAcPf",
+    "collapsible_tabs_1",
+    "product-recommendations",
+    "hero_EAxj8X"
+  ]
+}

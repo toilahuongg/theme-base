@@ -1,0 +1,101 @@
+
+{
+  "type": "header",
+  "name": "t:sections.header.name",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_L4UT9C": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p>10 % de Dscto en tu primera compra - Registra tu email</p>",
+            "link": "",
+            "homepage_only": true,
+            "hide_on_page": "",
+            "show_on_mobile": true,
+            "show_on_tablet": true,
+            "show_on_desktop": true
+          }
+        },
+        "announcement_HaLcWC": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p>Envío gratis todo Japón por compras desde ¥15,000</p>",
+            "link": "",
+            "homepage_only": false,
+            "hide_on_page": "",
+            "show_on_mobile": true,
+            "show_on_tablet": true,
+            "show_on_desktop": true
+          }
+        },
+        "announcement_Lf3Jhi": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p><strong>¡  Bienvenidos a nuestra tienda !</strong></p>",
+            "link": "",
+            "homepage_only": true,
+            "hide_on_page": "",
+            "show_on_mobile": true,
+            "show_on_tablet": true,
+            "show_on_desktop": true
+          }
+        }
+      },
+      "block_order": [
+        "announcement_L4UT9C",
+        "announcement_HaLcWC",
+        "announcement_Lf3Jhi"
+      ],
+      "custom_css": [
+        "strong {text-decoration: 1px underline; text-underline-offset: 3px; font-weight: 500;}"
+      ],
+      "settings": {
+        "color_schema": "scheme-9",
+        "show_close_button": true,
+        "enable_carousel": true,
+        "autoplay": true,
+        "autorotate_speed": 4
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "color_schema": "",
+        "layout": "design-1",
+        "container": "container",
+        "sticky_header": true,
+        "sticky_type": "on-scroll-up",
+        "transparent_header": false,
+        "logo": "shopify://shop_images/EpiAccesoriosLogo.png",
+        "logo_transparent": "shopify://shop_images/EpiAccesoriosLogo.png",
+        "logo_mobile": "shopify://shop_images/EpiAccesoriosLogo.png",
+        "logo_on_dropdown_menu": "shopify://shop_images/EpiAccesoriosLogo.png",
+        "logo_width": 170,
+        "logo_mobile_width": 90,
+        "main_menu": "main-menu-desktop",
+        "mobile_menu": "main-menu",
+        "menu_dropdown_color_schema": "",
+        "dropdown_menu_trigger": "hover",
+        "enable_mega_menu": true,
+        "show_search": true,
+        "show_cart": true,
+        "show_account": true,
+        "show_country_selector": true,
+        "show_language_selector": true,
+        "logo_mobile_position": "center",
+        "mobile_show_search": true,
+        "mobile_show_cart": true,
+        "mobile_show_account": true,
+        "mobile_show_social": true,
+        "padding_top": 13,
+        "padding_bottom": 13
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

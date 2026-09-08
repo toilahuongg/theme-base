@@ -1,0 +1,524 @@
+
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "hero_9mL3W7": {
+      "type": "hero",
+      "blocks": {
+        "subtitle_XFi7ij": {
+          "type": "subtitle",
+          "settings": {
+            "subtitle": "our lookbook"
+          }
+        },
+        "title_9TVHiq": {
+          "type": "title",
+          "settings": {
+            "title": "Double Twist Ring in 14K Solid Gold",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h-xl",
+            "heading_color": ""
+          }
+        },
+        "button_qQmYag": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop now",
+            "button_style": "btn--white",
+            "button_size": ""
+          }
+        }
+      },
+      "block_order": [
+        "subtitle_XFi7ij",
+        "title_9TVHiq",
+        "button_qQmYag"
+      ],
+      "custom_css": [
+        ".f-hero__content {max-width: 45rem;}",
+        ".f-hero__content-wrapper {--vertical-content-padding: 8.7rem;}"
+      ],
+      "settings": {
+        "container": "container-full",
+        "image_overlay_opacity": 20,
+        "hero_height": "adapt",
+        "content_in_container": true,
+        "content_position": "left-bottom",
+        "text_alignment": "left",
+        "text_color": "#ffffff",
+        "hero_height_mobile": "large",
+        "content_position_mobile": "center",
+        "show_text_below": false,
+        "text_alignment_mobile": "center",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit",
+        "enable_bg_zoom_effect": true
+      }
+    },
+    "rich_text_MDphBH": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_3VCz7N": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Shop by categories"
+          }
+        },
+        "heading_dGGHmx": {
+          "type": "heading",
+          "settings": {
+            "heading": "Weave tales of magic. Discover the <em>extraordinary in every detail.</em>",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h2",
+            "heading_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_3VCz7N",
+        "heading_dGGHmx"
+      ],
+      "custom_css": [
+        ".rich-text__content {max-width: 60rem; margin-inline: auto;}"
+      ],
+      "settings": {
+        "container": "container",
+        "color_schema": "",
+        "text_alignment": "center",
+        "padding_top": 80,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "collection_list_EzhEC3": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_tzNBrj": {
+          "type": "featured_collection",
+          "settings": {
+            "title": "Necklaces"
+          }
+        },
+        "featured_collection_AFQded": {
+          "type": "featured_collection",
+          "settings": {
+            "title": "Rings"
+          }
+        },
+        "featured_collection_LmP8Ee": {
+          "type": "featured_collection",
+          "settings": {
+            "title": "Earrings"
+          }
+        },
+        "featured_collection_NVJHXK": {
+          "type": "featured_collection",
+          "settings": {
+            "title": "On Sale"
+          }
+        },
+        "featured_collection_Dd63T9": {
+          "type": "featured_collection",
+          "settings": {
+            "title": "Bracelets"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_tzNBrj",
+        "featured_collection_AFQded",
+        "featured_collection_LmP8Ee",
+        "featured_collection_NVJHXK",
+        "featured_collection_Dd63T9"
+      ],
+      "custom_css": [],
+      "settings": {
+        "container": "container",
+        "color_schema": "",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "header_layout": "vertical",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "title_font": "heading",
+        "title_size": "h6",
+        "card_style": "6",
+        "text_alignment": "left",
+        "text_color": "#000000",
+        "image_ratio": "adapt",
+        "show_count": false,
+        "inline_count": false,
+        "columns": 5,
+        "column_gap": "small",
+        "row_gap": "medium",
+        "show_all_button_on_top": false,
+        "button_label": "",
+        "button_url": "",
+        "button_style": "btn--primary",
+        "enable_slider": false,
+        "show_dots": false,
+        "show_nav": false,
+        "enable_swipe_mobile": true,
+        "column_mobile": "2",
+        "padding_top": 72,
+        "padding_bottom": 100,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 48,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "custom_content_rMPxbq": {
+      "type": "custom-content",
+      "blocks": {
+        "text_yiF7bB": {
+          "type": "text",
+          "settings": {
+            "color_scheme": "",
+            "title": "A Radiant Collection inspired by nature's luminescence",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h2",
+            "heading_color": "",
+            "subheading": "sunlight glory",
+            "text": "<p>Unveils a captivating collection of gemstone-added jewelry, meticulously crafted with a focus <br/>on ethical sourcing and sustainable production practices. From the sparkling brilliance of <br/>gem-studded rings to the timeless allure of pendant necklaces, each piece in the Sunlight <br/>Glory collection is a testament to our commitment to eco-friendly fashion. </p>",
+            "alignment": "center",
+            "align_text": "center",
+            "padding_left": 0,
+            "padding_right": 0,
+            "align_content_container": "none",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "width": "100%",
+            "mobile_color_scheme": "",
+            "mobile_padding_left": 15,
+            "mobile_padding_right": 15,
+            "block_custom_class": "",
+            "animations": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "text_yiF7bB"
+      ],
+      "custom_css": [
+        ".f-text-blocks h3 {max-width: 45rem; margin-left: auto; margin-right: auto;}",
+        "@media (min-width: 1280px) {.f-text-blocks h3 {max-width: 55rem; }}"
+      ],
+      "settings": {
+        "container": "container",
+        "color_schema": "",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "column_gap": "none",
+        "row_gap": "medium",
+        "enable_swipe_mobile": false,
+        "column_mobile": "1",
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "mobile-remove-br"
+      }
+    },
+    "collection_list_slider_1": {
+      "type": "collection-list-slider",
+      "blocks": {
+        "collection_hjAQem": {
+          "type": "collection",
+          "settings": {
+            "heading": "shop earring"
+          }
+        },
+        "collection_CcRhTF": {
+          "type": "collection",
+          "settings": {
+            "heading": "shop earring"
+          }
+        },
+        "collection_3yJQgP": {
+          "type": "collection",
+          "settings": {
+            "heading": "shop earring"
+          }
+        }
+      },
+      "block_order": [
+        "collection_hjAQem",
+        "collection_CcRhTF",
+        "collection_3yJQgP"
+      ],
+      "custom_css": [],
+      "settings": {
+        "container": "container-full",
+        "color_schema": "scheme-5",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "heading": "Charming Elegance",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "banner_image_ratio": "1/1",
+        "image_ratio": "adapt",
+        "controls_background": "none",
+        "controls_position": "center",
+        "pagination_type": "dots",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "custom_content_Dke7H7": {
+      "type": "custom-content",
+      "blocks": {
+        "image_comparsion_t3QqPb": {
+          "type": "image_comparsion",
+          "settings": {
+            "layout": "horizontal",
+            "image_height": "medium",
+            "width": "50%",
+            "before_heading": "Gold",
+            "before_color_scheme": "",
+            "before_heading_plain_text": true,
+            "after_heading": "Silver",
+            "after_color_scheme": "",
+            "after_heading_plain_text": true,
+            "block_custom_class": ""
+          }
+        },
+        "text_gJMWax": {
+          "type": "text",
+          "settings": {
+            "color_scheme": "",
+            "title": "Sterling silver or 18K gold vermeil earrings with peridot",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h1",
+            "heading_color": "",
+            "subheading": "Compare",
+            "text": "<p>The brand is named after the town her grandma lived. Now based in Bristol, UK, Audrey splits her time between the two countries working directly with over 150 artisans in Kenya</p>",
+            "alignment": "center",
+            "align_text": "left",
+            "padding_left": 0,
+            "padding_right": 0,
+            "align_content_container": "none",
+            "button_label": "Discover More",
+            "button_style": "btn--underline",
+            "width": "50%",
+            "mobile_color_scheme": "",
+            "mobile_padding_left": 0,
+            "mobile_padding_right": 0,
+            "block_custom_class": "",
+            "animations": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "image_comparsion_t3QqPb",
+        "text_gJMWax"
+      ],
+      "custom_css": [
+        "@media (max-width: 767px) {.f-text-blocks h3 {margin-top: 1.2rem; }}"
+      ],
+      "settings": {
+        "container": "container",
+        "color_schema": "",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "column_gap": "extra-large",
+        "row_gap": "medium",
+        "enable_swipe_mobile": false,
+        "column_mobile": "1",
+        "padding_top": 100,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "mobile-remove-br"
+      }
+    },
+    "featured_collection_R9nVCD": {
+      "type": "featured-collection",
+      "settings": {
+        "container": "container",
+        "color_schema": "",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "header_layout": "vertical",
+        "heading": "Everything in this season",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "limit": 8,
+        "columns": 4,
+        "column_gap": "double-extra-small",
+        "row_gap": "medium",
+        "pcard_image_ratio": "",
+        "show_vendor": false,
+        "enable_slider": true,
+        "show_nav": true,
+        "show_dots": false,
+        "show_all_button_on_top": false,
+        "button_label": "",
+        "button_style": "btn--primary",
+        "enable_swipe_mobile": true,
+        "column_mobile": "1",
+        "padding_top": 100,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "gallery_images_pkcgbd": {
+      "type": "gallery-images",
+      "blocks": {
+        "image_NXpdx3": {
+          "type": "image",
+          "settings": {
+            "text": "",
+            "text_size": "medium",
+            "link": ""
+          }
+        },
+        "image_UnzxtC": {
+          "type": "image",
+          "settings": {
+            "text": "",
+            "text_size": "medium",
+            "link": ""
+          }
+        },
+        "image_yWFYy6": {
+          "type": "image",
+          "settings": {
+            "text": "",
+            "text_size": "medium",
+            "link": ""
+          }
+        },
+        "image_ty6bNB": {
+          "type": "image",
+          "settings": {
+            "text": "",
+            "text_size": "medium",
+            "link": ""
+          }
+        },
+        "image_pTei6Q": {
+          "type": "image",
+          "settings": {
+            "text": "",
+            "text_size": "medium",
+            "link": ""
+          }
+        },
+        "image_cWdBkK": {
+          "type": "image",
+          "settings": {
+            "text": "",
+            "text_size": "medium",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_NXpdx3",
+        "image_UnzxtC",
+        "image_yWFYy6",
+        "image_ty6bNB",
+        "image_pTei6Q",
+        "image_cWdBkK"
+      ],
+      "settings": {
+        "container": "container",
+        "color_schema": "",
+        "section_header_padding_bottom": "large",
+        "section_header_content_spacing": "medium",
+        "heading": "Enjoy our gallery",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h1",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "image_ratio": "adapt",
+        "columns": 3,
+        "column_gap": "large",
+        "layout": "grid",
+        "metro_item_color_schema": "",
+        "enable_slider": false,
+        "show_nav": false,
+        "show_dots": false,
+        "enable_swipe_mobile": true,
+        "column_mobile": "1",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hero_9mL3W7",
+    "rich_text_MDphBH",
+    "collection_list_EzhEC3",
+    "custom_content_rMPxbq",
+    "collection_list_slider_1",
+    "custom_content_Dke7H7",
+    "featured_collection_R9nVCD",
+    "gallery_images_pkcgbd"
+  ]
+}

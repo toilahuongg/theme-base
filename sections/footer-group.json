@@ -1,0 +1,265 @@
+
+{
+  "type": "footer",
+  "name": "t:sections.footer.name",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "footer-3": {
+          "type": "newsletter",
+          "disabled": true,
+          "settings": {
+            "heading": "ÚNETE A EPI-ACCESORIOS",
+            "heading_size": "h6",
+            "subheading": "<p>Suscríbete para recibir actualizaciones y descuentos de la tienda.</p>",
+            "description": "<p>Al suscribirte, aceptas los Términos de Uso y la Política de Privacidad.</p>",
+            "email_placeholder": "Ingresa tu correo electrónico",
+            "hide_label": true,
+            "form_width": 420,
+            "width": 25,
+            "open_default_collapsible_tab": true,
+            "show_divider": false
+          }
+        },
+        "image_6Qz9nF": {
+          "type": "image",
+          "settings": {
+            "heading": "",
+            "heading_size": "h6",
+            "subheading": "",
+            "image": "shopify://shop_images/EpiAccesoriosLogo.png",
+            "image_link": "/",
+            "image_width": 200,
+            "alignment": "start",
+            "width": 20,
+            "open_default_collapsible_tab": false
+          }
+        },
+        "link_list_LNbkPn": {
+          "type": "link_list",
+          "settings": {
+            "heading": "NOSOTROS",
+            "heading_size": "h6",
+            "menu": "main-menu",
+            "width": 15,
+            "open_default_collapsible_tab": true,
+            "show_divider": false
+          }
+        },
+        "link_list_XUPpWV": {
+          "type": "link_list",
+          "settings": {
+            "heading": "LEGAL Y POLÍTICA",
+            "heading_size": "h6",
+            "menu": "footer",
+            "width": 20,
+            "open_default_collapsible_tab": true,
+            "show_divider": false
+          }
+        },
+        "link_list_bWXCB4": {
+          "type": "link_list",
+          "settings": {
+            "heading": "REDES SOCIALES",
+            "heading_size": "h6",
+            "menu": "redes-sociales-footer",
+            "width": 15,
+            "open_default_collapsible_tab": true,
+            "show_divider": false
+          }
+        },
+        "text_3mBKtf": {
+          "type": "text",
+          "settings": {
+            "heading": "CONTÁCTENOS",
+            "heading_size": "h6",
+            "subtext": "<p>Mie ken Suzuka Shi Takaokadai 1-3-12 Foresuto Paaku Takaoka 3E</p><p>C.P.: 513-0019</p><p>Tel: 08079534157</p><p>Correo: epi.accesorios@gmail.com</p>",
+            "width": 25,
+            "open_default_collapsible_tab": true,
+            "show_divider": false
+          }
+        },
+        "logo_pYmLz9": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "logo": "shopify://shop_images/EpiAccesoriosLogo.png"
+          }
+        }
+      },
+      "block_order": [
+        "footer-3",
+        "image_6Qz9nF",
+        "link_list_LNbkPn",
+        "link_list_XUPpWV",
+        "link_list_bWXCB4",
+        "text_3mBKtf",
+        "logo_pYmLz9"
+      ],
+      "custom_css": [
+        "@media (min-width: 1023.98px) {[data-column-type=\"newsletter\"] {justify-content: flex-end; order: 9; }}"
+      ],
+      "settings": {
+        "container": "container",
+        "color_schema": "scheme-7",
+        "show_copyright": true,
+        "show_divider": true,
+        "enable_follow_on_shop": true,
+        "show_social": false,
+        "icon_size": "extra-medium",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "show_payments": true,
+        "bottom_menu": "main-menu",
+        "animations": "fade-in-up"
+      }
+    },
+    "mobile-sticky-bar": {
+      "type": "mobile-sticky-bar",
+      "blocks": {
+        "mobile-sticky-bar-0": {
+          "type": "home",
+          "settings": {
+            "text": "Home"
+          }
+        },
+        "mobile-sticky-bar-1": {
+          "type": "products",
+          "settings": {
+            "text": "Products",
+            "collection": ""
+          }
+        },
+        "mobile-sticky-bar-2": {
+          "type": "search",
+          "settings": {
+            "text": "Search"
+          }
+        },
+        "mobile-sticky-bar-3": {
+          "type": "cart",
+          "settings": {
+            "text": "Cart"
+          }
+        }
+      },
+      "block_order": [
+        "mobile-sticky-bar-0",
+        "mobile-sticky-bar-1",
+        "mobile-sticky-bar-2",
+        "mobile-sticky-bar-3"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_sticky_bar": true,
+        "show_text": true
+      }
+    },
+    "popup": {
+      "type": "popup",
+      "blocks": {
+        "image": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/bruna-15_13bd8534-69bf-4233-8f0d-c7a08f3cd939.jpg",
+            "image_position": "left"
+          }
+        },
+        "popup-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "¡Únete hoy y descubre ventajas exclusivas!",
+            "text_size": "large"
+          }
+        },
+        "popup-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Novedades, beneficios únicos y 10% OFF en tu primera compra.</p>"
+          }
+        },
+        "popup-2": {
+          "type": "form",
+          "settings": {
+            "design": "design-2",
+            "button_label": "Únete ahora"
+          }
+        },
+        "social_ynFVzL": {
+          "type": "social",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "image",
+        "popup-0",
+        "popup-1",
+        "popup-2",
+        "social_ynFVzL"
+      ],
+      "settings": {
+        "design_mode": false,
+        "enable": true,
+        "show_for_homepage_only": true,
+        "show_for_visitors_only": true,
+        "trigger_open": "immediately",
+        "repeat_open": "every_30_mins",
+        "alignment": "left",
+        "width": 860,
+        "show_teaser": false,
+        "teaser_button_text": "Newsletter",
+        "teaser_popup_bg": "#1437aa",
+        "teaser_popup_text": "#ffffff"
+      }
+    },
+    "age-verifier-popup": {
+      "type": "age-verifier-popup",
+      "blocks": {
+        "age-vefirifer-popup-1": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Confirm your age",
+            "heading_size": "h1"
+          }
+        },
+        "age-vefirifer-popup-2": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Are you 18 years old or older?</p>"
+          }
+        },
+        "age-vefirifer-popup-3": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "decline_button": "No, I'm not",
+            "approve_button": "Yes, I am"
+          }
+        }
+      },
+      "block_order": [
+        "age-vefirifer-popup-1",
+        "age-vefirifer-popup-2",
+        "age-vefirifer-popup-3"
+      ],
+      "disabled": true,
+      "settings": {
+        "design_mode": false,
+        "enable": false,
+        "bg_blur": true,
+        "decline_heading": "Come back when you're older",
+        "decline_content": "<p>Sorry, the content of this store can't be seen by a younger audience. Come back when you're older.</p>",
+        "return_button": "Oops, I entered incorrectly"
+      }
+    }
+  },
+  "order": [
+    "footer",
+    "mobile-sticky-bar",
+    "popup",
+    "age-verifier-popup"
+  ]
+}

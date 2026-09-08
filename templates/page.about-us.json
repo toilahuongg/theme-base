@@ -1,0 +1,988 @@
+
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "rich_text_PAt89t": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_R4qWxQ": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "We are Epiphany"
+          }
+        },
+        "heading_VNDNBT": {
+          "type": "heading",
+          "settings": {
+            "heading": "A woman with Epiphany knows she can <em>be unique and authentic</em>",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h0",
+            "heading_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_R4qWxQ",
+        "heading_VNDNBT"
+      ],
+      "custom_css": [
+        ".rich-text__wrapper {max-width: 78rem; margin-inline: auto;}"
+      ],
+      "settings": {
+        "container": "container",
+        "color_schema": "background-1",
+        "text_alignment": "center",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "custom_content_9ChxEG": {
+      "type": "custom-content",
+      "blocks": {
+        "image_QmmcQx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/1.jpg",
+            "link": "",
+            "width": "50%",
+            "alignment": "start",
+            "block_custom_class": "",
+            "animations": "inherit"
+          }
+        },
+        "text_PiX6Xe": {
+          "type": "text",
+          "settings": {
+            "color_scheme": "scheme-10",
+            "title": "OUR STORY",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h2",
+            "heading_color": "",
+            "subheading": "",
+            "text": "<p>My name is Stefany Molina, I am Peruvian and currently live in Japan. A Business Administrator by profession and passionate about jewelry and fashion in general.</p><p>Art has always been present in my life, and from a very young age I felt that passion for design. I created Epiphany Accesorios in late 2017, while studying an International Marketing PADE in Peru.</p><p>Over the years, Epiphany has evolved and found its true identity. Today it is a family brand of artisanal, trend-driven accessories where I craft my own designs using various jewelry, weaving, and bead-embroidery techniques, 100% handmade.</p><p>We also have a trendy jewelry line that complements the rest of our pieces in both style and quality.</p>",
+            "alignment": "center",
+            "align_text": "left",
+            "padding_left": 20,
+            "padding_right": 20,
+            "align_content_container": "none",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "width": "50%",
+            "mobile_color_scheme": "",
+            "mobile_padding_left": 15,
+            "mobile_padding_right": 15,
+            "block_custom_class": "",
+            "animations": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "image_QmmcQx",
+        "text_PiX6Xe"
+      ],
+      "settings": {
+        "container": "container",
+        "color_schema": "background-1",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "column_gap": "medium",
+        "row_gap": "medium",
+        "enable_swipe_mobile": false,
+        "column_mobile": "1",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "mobile-remove-br"
+      }
+    },
+    "custom_content_gcYmxM": {
+      "type": "custom-content",
+      "blocks": {
+        "text_A8ydNQ": {
+          "type": "text",
+          "settings": {
+            "color_scheme": "scheme-10",
+            "title": "THE INSPIRATION",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h2",
+            "heading_color": "",
+            "subheading": "",
+            "text": "<p>Majestic nature, my Peruvian roots and culture, female empowerment, fashion, and the emotional journey I have experienced throughout my life have all been sources of inspiration in my designs. Every collection has a story to tell, a message, and a special essence — whether in its colors, shapes, or even the textures I use. I explore different jewelry styles without losing the identity and the details that make us unique. In the end, the result in our pieces always conveys femininity, artisanal craft, and style.</p>",
+            "alignment": "center",
+            "align_text": "left",
+            "padding_left": 20,
+            "padding_right": 20,
+            "align_content_container": "none",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "width": "50%",
+            "mobile_color_scheme": "",
+            "mobile_padding_left": 15,
+            "mobile_padding_right": 15,
+            "block_custom_class": "",
+            "animations": "inherit"
+          }
+        },
+        "image_hdKyy7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/1_1df24655-7e65-4f23-83aa-e315c1239868.webp",
+            "link": "",
+            "width": "50%",
+            "alignment": "center",
+            "block_custom_class": "",
+            "animations": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "text_A8ydNQ",
+        "image_hdKyy7"
+      ],
+      "custom_css": [],
+      "settings": {
+        "container": "container",
+        "color_schema": "background-1",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "column_gap": "medium",
+        "row_gap": "medium",
+        "enable_swipe_mobile": false,
+        "column_mobile": "1",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "mobile-remove-br"
+      }
+    },
+    "custom_content_r9Vep3": {
+      "type": "custom-content",
+      "blocks": {
+        "image_NVbbzk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/1_7902c3e2-670c-4dec-81e7-1e621e194067.webp",
+            "link": "",
+            "width": "50%",
+            "alignment": "center",
+            "block_custom_class": "",
+            "animations": "inherit"
+          }
+        },
+        "text_UY7htX": {
+          "type": "text",
+          "settings": {
+            "color_scheme": "scheme-10",
+            "title": "OUR JEWELRY",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h2",
+            "heading_color": "",
+            "subheading": "",
+            "text": "<p>Every accessory is made with quality materials to ensure it lasts for years to come. From crystals, pearls, charms, threads, findings, and clasps to the crimps, everything is carefully chosen from trusted, recognized suppliers. The MIYUKI Delicas — the raw material for many of our products — are purchased directly from MIYUKI FACTORY, a Japanese company renowned worldwide for manufacturing quality beads.</p><p>We are committed to quality throughout the entire crafting process and even after-sales, ensuring every piece is unique and special.</p>",
+            "alignment": "center",
+            "align_text": "left",
+            "padding_left": 20,
+            "padding_right": 20,
+            "align_content_container": "none",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "width": "50%",
+            "mobile_color_scheme": "",
+            "mobile_padding_left": 15,
+            "mobile_padding_right": 15,
+            "block_custom_class": "",
+            "animations": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "image_NVbbzk",
+        "text_UY7htX"
+      ],
+      "settings": {
+        "container": "container",
+        "color_schema": "background-1",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "column_gap": "medium",
+        "row_gap": "medium",
+        "enable_swipe_mobile": false,
+        "column_mobile": "1",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "mobile-remove-br"
+      }
+    },
+    "multicolumn_phc99W": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_ypYLBH": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image_link": "",
+            "title": "Timeless elegance",
+            "heading_size": "h4",
+            "text": "<p>Crafted with attention to detail and a keen eye for design, each piece exudes a sense of refined luxury that transcends trends and fads.</p>",
+            "text_size": "medium",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--underline"
+          }
+        },
+        "column_EzWchN": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image_link": "",
+            "title": "Meaningful connection",
+            "heading_size": "h4",
+            "text": "<p>With our jewelry, you can carry a piece of yourself wherever you go and create lasting memories that resonate with meaning.</p>",
+            "text_size": "medium",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--underline"
+          }
+        },
+        "column_eE7R8K": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image_link": "",
+            "title": "Versatile wearability",
+            "heading_size": "h4",
+            "text": "<p>Whether you're layering necklaces for a bohemian-chic look or stacking rings for a bold statement, our jewelry offers endless styling.</p>",
+            "text_size": "medium",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--underline"
+          }
+        }
+      },
+      "block_order": [
+        "column_ypYLBH",
+        "column_EzWchN",
+        "column_eE7R8K"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "container": "container",
+        "color_schema": "",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "layout": "vertical",
+        "text_alignment": "left",
+        "image_width": "fullwidth",
+        "custom_image_width": 80,
+        "columns": 3,
+        "column_gap": "large",
+        "row_gap": "medium",
+        "enable_swipe_mobile": true,
+        "column_mobile": "1",
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "mobile-remove-br",
+        "animations": "inherit"
+      }
+    },
+    "press_gafjaR": {
+      "type": "press",
+      "blocks": {
+        "press_bzAPp7": {
+          "type": "press",
+          "settings": {
+            "title": "<p>“The fabric feels so soft, and the craftsmanship is outstanding. It’s stylish, comfortable, and exceeded my expectations!”</p>",
+            "font_style": "font-heading",
+            "font_size": "h3",
+            "image_width": 136
+          }
+        },
+        "press_6t7BUE": {
+          "type": "press",
+          "settings": {
+            "title": "<p>“Absolutely in love with this! The design is timeless, and the quality is top-notch. I’ve received so many compliments!”</p>",
+            "font_style": "font-heading",
+            "font_size": "h3",
+            "image_width": 136
+          }
+        },
+        "press_3hXtjt": {
+          "type": "press",
+          "settings": {
+            "title": "<p>“Great value for the price. It’s well-made, super comfy, and feels like a premium product. Couldn’t be happier with my purchase!”</p>",
+            "font_style": "font-heading",
+            "font_size": "h3",
+            "image_width": 136
+          }
+        },
+        "press_6Cmb6L": {
+          "type": "press",
+          "settings": {
+            "title": "<p>“Fast shipping and perfect fit! The material feels luxurious, and it’s exactly as described. I’ll definitely be ordering more!”</p>",
+            "font_style": "font-heading",
+            "font_size": "h3",
+            "image_width": 136
+          }
+        },
+        "press_m9Fayn": {
+          "type": "press",
+          "settings": {
+            "title": "<p>“A must-have! The attention to detail is impressive, and it looks even better in person. Highly recommend!”</p>",
+            "font_style": "font-heading",
+            "font_size": "h3",
+            "image_width": 136
+          }
+        },
+        "press_HMJzGh": {
+          "type": "press",
+          "settings": {
+            "title": "<p>“The fabric feels so soft, and the craftsmanship is outstanding. It’s stylish, comfortable, and exceeded my expectations!”</p>",
+            "font_style": "font-heading",
+            "font_size": "h3",
+            "image_width": 136
+          }
+        },
+        "press_GdPC8B": {
+          "type": "press",
+          "settings": {
+            "title": "<p>“Absolutely in love with this! The design is timeless, and the quality is top-notch. I’ve received so many compliments!”</p>",
+            "font_style": "font-heading",
+            "font_size": "h3",
+            "image_width": 136
+          }
+        },
+        "press_G6LgYj": {
+          "type": "press",
+          "settings": {
+            "title": "<p>“Great value for the price. It’s well-made, super comfy, and feels like a premium product. Couldn’t be happier with my purchase!”</p>",
+            "font_style": "font-heading",
+            "font_size": "h3",
+            "image_width": 136
+          }
+        },
+        "press_Hjb7Dm": {
+          "type": "press",
+          "settings": {
+            "title": "<p>“Fast shipping and perfect fit! The material feels luxurious, and it’s exactly as described. I’ll definitely be ordering more!”</p>",
+            "font_style": "font-heading",
+            "font_size": "h3",
+            "image_width": 136
+          }
+        },
+        "press_NTn9YH": {
+          "type": "press",
+          "settings": {
+            "title": "<p>“A must-have! The attention to detail is impressive, and it looks even better in person. Highly recommend!”</p>",
+            "font_style": "font-heading",
+            "font_size": "h3",
+            "image_width": 136
+          }
+        }
+      },
+      "block_order": [
+        "press_bzAPp7",
+        "press_6t7BUE",
+        "press_3hXtjt",
+        "press_6Cmb6L",
+        "press_m9Fayn",
+        "press_HMJzGh",
+        "press_GdPC8B",
+        "press_G6LgYj",
+        "press_Hjb7Dm",
+        "press_NTn9YH"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".container-narrow {--narrow-container-width: 109.5rem;}",
+        ".section__header {--header-padding-bottom: 3.2rem;}"
+      ],
+      "settings": {
+        "container": "container-narrow",
+        "color_schema": "",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h3",
+        "heading_color": "",
+        "subheading": "Our Press",
+        "description": "",
+        "show_nav": false,
+        "autoplay": true,
+        "autorotate_speed": 3,
+        "padding_top": 100,
+        "padding_bottom": 60,
+        "show_section_divider": true,
+        "divider_width": "container-full",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "collapsible_tabs": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "heading_ki6XhY": {
+          "type": "heading",
+          "settings": {
+            "text": "Get to know more material",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h1",
+            "heading_color": "",
+            "sub_heading": "A NOTE FROM ARIELLE"
+          }
+        },
+        "content_bJVxNN": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "Gold Vermeil",
+            "content": "<p>Our Gold Vermeil pieces feature a thick layer of 18k gold over sterling silver, offering a rich color and lasting shine. Hypoallergenic and tarnish-resistant, they provide a luxurious yet durable finish.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": true
+          }
+        },
+        "content_ydzyTR": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "Sterling Silver",
+            "content": "<p>Our 925 Sterling Silver jewelry is crafted for everyday wear, combining durability with a brilliant shine. Lightweight and versatile, it complements any outfit effortlessly.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "content_jfyADz": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "Gemstones Charm",
+            "content": "<p>Each charm is adorned with a carefully selected gemstone, adding a touch of color and elegance. Designed to be worn alone or layered, they bring personal meaning to your collection.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "image_card_TX6kA8": {
+          "type": "image_card",
+          "settings": {
+            "image_position": "left",
+            "image_alignment": "center",
+            "image_width": 50,
+            "layout": "layout1",
+            "text_color": "#000000",
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 0,
+            "sub_heading": "",
+            "heading": "",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h2",
+            "heading_color": "",
+            "description": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "animations": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "heading_ki6XhY",
+        "content_bJVxNN",
+        "content_ydzyTR",
+        "content_jfyADz",
+        "image_card_TX6kA8"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "container": "container-full",
+        "color_schema": "background-2",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "item_heading_font": "heading",
+        "item_heading_size": "h3",
+        "column_gap": "none",
+        "content_width": "narrow",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "collapsible_tabs_hDcjLG": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "content_6rgj3J": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "How long does it take to process an order?",
+            "content": "<p>Orders are processed within 1-3 business days. You’ll receive a confirmation email once your order has been shipped, ensuring a smooth shopping experience.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": true
+          }
+        },
+        "content_DBBkLp": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "Do you ship internationally?",
+            "content": "<p>Yes, we offer international shipping. Delivery times vary by location, and shipping costs are calculated at checkout for seamless worldwide service.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "content_TDYWn3": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "What is your return policy?",
+            "content": "<p>We accept returns within 30 days of delivery. Items must be unused, in original packaging, and accompanied by a receipt for a hassle-free return process.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "content_GiXT36": {
+          "type": "content",
+          "settings": {
+            "icon": "none",
+            "title": "Can I track my order?",
+            "content": "<p>Yes! Once your order ships, we’ll send a tracking number via email so you can monitor your package's journey with real-time updates available online.</p>",
+            "custom_liquid": "",
+            "content_page": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "content_6rgj3J",
+        "content_DBBkLp",
+        "content_TDYWn3",
+        "content_GiXT36"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".container-narrow {--narrow-container-width: 98.3rem;}"
+      ],
+      "settings": {
+        "container": "container-narrow",
+        "color_schema": "background-1",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "heading": "Discover more in our FAQ",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "item_heading_font": "heading",
+        "item_heading_size": "h4",
+        "column_gap": "medium",
+        "content_width": "narrow",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "scrolling_promotion_JK9cDV": {
+      "type": "scrolling-promotion",
+      "blocks": {
+        "announcement_cny7Ce": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free shipping",
+            "font_family": "heading",
+            "text_size": 34,
+            "text_link": "",
+            "use_custom_spacing": true,
+            "margin_left": 15,
+            "margin_right": 15,
+            "margin_left_mobile": 10,
+            "margin_right_mobile": 10
+          }
+        },
+        "divider_ctprJT": {
+          "type": "divider",
+          "settings": {
+            "width": 64,
+            "use_custom_spacing": true,
+            "margin_left": 15,
+            "margin_right": 15,
+            "margin_left_mobile": 10,
+            "margin_right_mobile": 10
+          }
+        },
+        "announcement_dqpnMB": {
+          "type": "announcement",
+          "settings": {
+            "text": "<em>30 Days Free Returns<em></em></em>",
+            "font_family": "heading",
+            "text_size": 34,
+            "text_link": "",
+            "use_custom_spacing": true,
+            "margin_left": 15,
+            "margin_right": 15,
+            "margin_left_mobile": 10,
+            "margin_right_mobile": 10
+          }
+        },
+        "divider_bfGRqR": {
+          "type": "divider",
+          "settings": {
+            "width": 64,
+            "use_custom_spacing": true,
+            "margin_left": 15,
+            "margin_right": 15,
+            "margin_left_mobile": 10,
+            "margin_right_mobile": 10
+          }
+        },
+        "announcement_XzQGNw": {
+          "type": "announcement",
+          "settings": {
+            "text": "Fast Delivery",
+            "font_family": "heading",
+            "text_size": 34,
+            "text_link": "",
+            "use_custom_spacing": true,
+            "margin_left": 15,
+            "margin_right": 15,
+            "margin_left_mobile": 10,
+            "margin_right_mobile": 10
+          }
+        },
+        "divider_gEjgcU": {
+          "type": "divider",
+          "settings": {
+            "width": 64,
+            "use_custom_spacing": true,
+            "margin_left": 15,
+            "margin_right": 15,
+            "margin_left_mobile": 10,
+            "margin_right_mobile": 10
+          }
+        },
+        "announcement_ttAMnE": {
+          "type": "announcement",
+          "settings": {
+            "text": "<em>Secure Payment<em></em></em>",
+            "font_family": "heading",
+            "text_size": 34,
+            "text_link": "",
+            "use_custom_spacing": true,
+            "margin_left": 15,
+            "margin_right": 15,
+            "margin_left_mobile": 10,
+            "margin_right_mobile": 10
+          }
+        },
+        "divider_DdnRrA": {
+          "type": "divider",
+          "settings": {
+            "width": 64,
+            "use_custom_spacing": true,
+            "margin_left": 15,
+            "margin_right": 15,
+            "margin_left_mobile": 10,
+            "margin_right_mobile": 10
+          }
+        }
+      },
+      "block_order": [
+        "announcement_cny7Ce",
+        "divider_ctprJT",
+        "announcement_dqpnMB",
+        "divider_bfGRqR",
+        "announcement_XzQGNw",
+        "divider_gEjgcU",
+        "announcement_ttAMnE",
+        "divider_DdnRrA"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "container": "container-full",
+        "color_schema": "",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "alignment": "center",
+        "direction": "left",
+        "pause_on_hover": true,
+        "speed": 0.2,
+        "item_gap": 50,
+        "item_gap_mobile": 30,
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "use_custom_mobile_padding": true,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "show_section_divider": true,
+        "divider_width": "container-full",
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "custom_content_eDwYnU": {
+      "type": "custom-content",
+      "blocks": {
+        "image_card_BiyeLK": {
+          "type": "image_card",
+          "settings": {
+            "layout": "layout1",
+            "text_color": "#ffffff",
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 30,
+            "sub_heading": "Find your best",
+            "heading": "Shine Bright",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h-xl",
+            "heading_color": "",
+            "description": "",
+            "button_label": "Shop Now",
+            "button_link": "",
+            "button_style": "btn--white",
+            "vertical_content_padding": 40,
+            "vertical_content_padding_mobile": 30,
+            "alignment": "center",
+            "width": "50%",
+            "animations": "inherit"
+          }
+        },
+        "image_card_MDnJWr": {
+          "type": "image_card",
+          "settings": {
+            "layout": "layout1",
+            "text_color": "#ffffff",
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 30,
+            "sub_heading": "everyday basics",
+            "heading": "Bring Sparkle",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h-xl",
+            "heading_color": "",
+            "description": "",
+            "button_label": "Shop Now",
+            "button_link": "",
+            "button_style": "btn--white",
+            "vertical_content_padding": 40,
+            "vertical_content_padding_mobile": 30,
+            "alignment": "center",
+            "width": "50%",
+            "animations": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "image_card_BiyeLK",
+        "image_card_MDnJWr"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "container": "container",
+        "color_schema": "background-1",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "column_gap": "double-extra-small",
+        "row_gap": "double-extra-small",
+        "enable_swipe_mobile": false,
+        "column_mobile": "1",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "gallery_images": {
+      "type": "gallery-images",
+      "blocks": {
+        "image_KXnMM4": {
+          "type": "image",
+          "settings": {
+            "text": "",
+            "text_size": "medium",
+            "link": ""
+          }
+        },
+        "image_H8npxP": {
+          "type": "image",
+          "settings": {
+            "text": "",
+            "text_size": "medium",
+            "link": ""
+          }
+        },
+        "image_d93EmR": {
+          "type": "image",
+          "settings": {
+            "text": "",
+            "text_size": "medium",
+            "link": ""
+          }
+        },
+        "image_qhWR6U": {
+          "type": "image",
+          "settings": {
+            "text": "",
+            "text_size": "medium",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_KXnMM4",
+        "image_H8npxP",
+        "image_d93EmR",
+        "image_qhWR6U"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".section__header {max-width: 60rem; margin-inline: auto;}"
+      ],
+      "settings": {
+        "container": "container",
+        "color_schema": "",
+        "section_header_padding_bottom": "large",
+        "section_header_content_spacing": "medium",
+        "heading": "Shine on Instagram. Where timeless <em>beauty and luxury</em> come alive.",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "button_label": "@laura_store",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "image_ratio": "adapt",
+        "columns": 4,
+        "column_gap": "double-extra-small",
+        "layout": "grid",
+        "metro_item_color_schema": "",
+        "enable_slider": false,
+        "show_nav": false,
+        "show_dots": false,
+        "enable_swipe_mobile": true,
+        "column_mobile": "2",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "mobile-remove-br",
+        "animations": "inherit"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_PAt89t",
+    "custom_content_9ChxEG",
+    "custom_content_gcYmxM",
+    "custom_content_r9Vep3",
+    "multicolumn_phc99W",
+    "press_gafjaR",
+    "collapsible_tabs",
+    "collapsible_tabs_hDcjLG",
+    "scrolling_promotion_JK9cDV",
+    "custom_content_eDwYnU",
+    "gallery_images"
+  ]
+}

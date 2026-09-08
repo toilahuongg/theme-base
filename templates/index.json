@@ -1,0 +1,1449 @@
+
+{
+  "sections": {
+    "slideshow_PktnWV": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_G3A8Wg": {
+          "type": "slide",
+          "settings": {
+            "background": "shopify://shop_images/Portada_web-24.jpg",
+            "mb_background": "shopify://shop_images/Portada_cel-25.jpg",
+            "image_overlay_opacity": 0,
+            "content_position": "center",
+            "text_alignment": "center",
+            "text_color": "#000000",
+            "title": "",
+            "heading_size": "h2",
+            "heading_color": "#ffffff",
+            "subheading": "",
+            "description": "",
+            "desc_size": "text-desc-base",
+            "button_text_1": "",
+            "button_link_1": "",
+            "button_style_1": "btn--primary",
+            "button_size_1": "",
+            "button_text_2": "",
+            "button_link_2": "",
+            "button_style_2": "btn--primary",
+            "button_size_2": ""
+          }
+        },
+        "slide_8pwVLm": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "background": "shopify://shop_images/Portada_web_2026-13.png",
+            "mb_background": "shopify://shop_images/last-23.png",
+            "image_overlay_opacity": 0,
+            "content_position": "right-middle",
+            "text_alignment": "center",
+            "text_color": "#000000",
+            "title": "",
+            "heading_size": "h2",
+            "heading_color": "rgba(0,0,0,0)",
+            "subheading": "",
+            "description": "",
+            "desc_size": "text-desc-base",
+            "button_text_1": "",
+            "button_link_1": "",
+            "button_style_1": "btn--underline",
+            "button_size_1": "",
+            "button_text_2": "",
+            "button_link_2": "",
+            "button_style_2": "btn--white",
+            "button_size_2": ""
+          }
+        },
+        "slide_Fhgy9k": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "background": "shopify://shop_images/Portada_web_2026-19.png",
+            "mb_background": "shopify://shop_images/Portada_web_cel_2026-21.png",
+            "image_overlay_opacity": 0,
+            "content_position": "center",
+            "text_alignment": "center",
+            "text_color": "#000000",
+            "title": "",
+            "heading_size": "h2",
+            "heading_color": "",
+            "subheading": "",
+            "description": "",
+            "desc_size": "text-desc-base",
+            "button_text_1": "",
+            "button_link_1": "",
+            "button_style_1": "btn--primary",
+            "button_size_1": "",
+            "button_text_2": "",
+            "button_link_2": "",
+            "button_style_2": "btn--primary",
+            "button_size_2": ""
+          }
+        },
+        "slide_Cacnfe": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "background": "shopify://shop_images/Portada_web_2026-20.png",
+            "mb_background": "shopify://shop_images/Portada_web_cel_2026-22.png",
+            "image_overlay_opacity": 0,
+            "content_position": "center",
+            "text_alignment": "center",
+            "text_color": "#000000",
+            "title": "",
+            "heading_size": "h2",
+            "heading_color": "",
+            "subheading": "",
+            "description": "",
+            "desc_size": "text-desc-base",
+            "button_text_1": "",
+            "button_link_1": "",
+            "button_style_1": "btn--white",
+            "button_size_1": "btn--medium",
+            "button_text_2": "",
+            "button_link_2": "",
+            "button_style_2": "btn--primary",
+            "button_size_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_G3A8Wg",
+        "slide_8pwVLm",
+        "slide_Fhgy9k",
+        "slide_Cacnfe"
+      ],
+      "name": "t:sections.slideshow.name",
+      "settings": {
+        "container": "container-full",
+        "slideshow_height": "large",
+        "show_dots": true,
+        "show_nav": false,
+        "autoplay": true,
+        "autorotate_speed": 3,
+        "pagination_background": "light",
+        "controls_position": "center",
+        "pagination_style": "dots",
+        "show_text_below": true,
+        "text_alignment_mobile": "center",
+        "accessibility_info": "",
+        "custom_id": "",
+        "custom_class": "",
+        "enable_bg_zoom_effect": false
+      }
+    },
+    "image_with_text_slider_mbnE6c": {
+      "type": "image-with-text-slider",
+      "blocks": {
+        "slide_np9aeC": {
+          "type": "slide",
+          "settings": {
+            "slide_color_scheme": "background-2",
+            "content_position": "center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "title": "Create Memories <em>That Sparkle</em>",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h-xl",
+            "subheading": "Enchanting Elegance",
+            "description": "<p>We believe in the power of jewelry, to tell a story, celebrate a moment, create or continue a tradition.</p>",
+            "desc_size": "text-desc-base",
+            "button_text_1": "Shop Now",
+            "button_link_1": "",
+            "button_style_1": "btn--primary",
+            "button_size_1": ""
+          }
+        },
+        "slide_EiRAtU": {
+          "type": "slide",
+          "settings": {
+            "slide_color_scheme": "scheme-6",
+            "content_position": "center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "title": "Celebrate Love That <em>Shines Bright</em>",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h-xl",
+            "subheading": "Timeless Brilliance",
+            "description": "<p>Jewelry is more than adornment, it's a keepsake of cherished times, love, and meaningful connections.</p>",
+            "desc_size": "text-desc-base",
+            "button_text_1": "Shop Now",
+            "button_link_1": "",
+            "button_style_1": "btn--primary",
+            "button_size_1": ""
+          }
+        },
+        "slide_PnVRig": {
+          "type": "slide",
+          "settings": {
+            "slide_color_scheme": "scheme-5",
+            "content_position": "center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "title": "Mark Your Milestones <em>With Brilliance</em>",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h-xl",
+            "subheading": "Eternal Sparkle",
+            "description": "<p>Jewelry is a symbol of love, success, and self-expression, making every occasion more special.</p>",
+            "desc_size": "text-desc-base",
+            "button_text_1": "Shop Now",
+            "button_link_1": "",
+            "button_style_1": "btn--primary",
+            "button_size_1": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_np9aeC",
+        "slide_EiRAtU",
+        "slide_PnVRig"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "@media (min-width: 768px) {.f-slider__content {max-width: 53rem; }}"
+      ],
+      "settings": {
+        "container": "container",
+        "slider_height": "medium",
+        "image_width": 50,
+        "image_position": "right",
+        "show_dots": true,
+        "show_nav": true,
+        "autoplay": false,
+        "autorotate_speed": 5,
+        "controls_position": "center",
+        "pagination_style": "dots",
+        "accessibility_info": "Slideshow about our brand",
+        "custom_id": "",
+        "custom_class": "",
+        "enable_bg_zoom_effect": false
+      }
+    },
+    "scrolling_promotion_JK9cDV": {
+      "type": "scrolling-promotion",
+      "blocks": {
+        "announcement_cny7Ce": {
+          "type": "announcement",
+          "settings": {
+            "text": "<em>Handmade jewelry</em>",
+            "font_family": "heading",
+            "text_size": 28,
+            "text_link": "",
+            "use_custom_spacing": true,
+            "margin_left": 15,
+            "margin_right": 15,
+            "margin_left_mobile": 10,
+            "margin_right_mobile": 10
+          }
+        },
+        "divider_ctprJT": {
+          "type": "divider",
+          "settings": {
+            "width": 64,
+            "use_custom_spacing": true,
+            "margin_left": 15,
+            "margin_right": 15,
+            "margin_left_mobile": 10,
+            "margin_right_mobile": 10
+          }
+        },
+        "announcement_dqpnMB": {
+          "type": "announcement",
+          "settings": {
+            "text": "<em>Welcome to our world</em>",
+            "font_family": "heading",
+            "text_size": 28,
+            "text_link": "",
+            "use_custom_spacing": true,
+            "margin_left": 15,
+            "margin_right": 15,
+            "margin_left_mobile": 10,
+            "margin_right_mobile": 10
+          }
+        },
+        "divider_bfGRqR": {
+          "type": "divider",
+          "settings": {
+            "width": 64,
+            "use_custom_spacing": true,
+            "margin_left": 15,
+            "margin_right": 15,
+            "margin_left_mobile": 10,
+            "margin_right_mobile": 10
+          }
+        },
+        "announcement_XzQGNw": {
+          "type": "announcement",
+          "settings": {
+            "text": "<em>Free shipping in November</em>",
+            "font_family": "heading",
+            "text_size": 28,
+            "text_link": "",
+            "use_custom_spacing": true,
+            "margin_left": 15,
+            "margin_right": 15,
+            "margin_left_mobile": 10,
+            "margin_right_mobile": 10
+          }
+        },
+        "divider_gEjgcU": {
+          "type": "divider",
+          "settings": {
+            "width": 64,
+            "use_custom_spacing": true,
+            "margin_left": 15,
+            "margin_right": 15,
+            "margin_left_mobile": 10,
+            "margin_right_mobile": 10
+          }
+        }
+      },
+      "block_order": [
+        "announcement_cny7Ce",
+        "divider_ctprJT",
+        "announcement_dqpnMB",
+        "divider_bfGRqR",
+        "announcement_XzQGNw",
+        "divider_gEjgcU"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "container": "container-full",
+        "color_schema": "",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h3",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "alignment": "center",
+        "direction": "left",
+        "pause_on_hover": true,
+        "speed": 0.2,
+        "item_gap": 50,
+        "item_gap_mobile": 30,
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "use_custom_mobile_padding": true,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "show_section_divider": true,
+        "divider_width": "container-full",
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "featured_collection_ect4Jh": {
+      "type": "featured-collection",
+      "custom_css": [
+        "@media (min-width: 768px) {.section__header--text {max-width: 63rem; margin-inline: auto; }}",
+        "@media (min-width: 1280px) {.section__header--text {max-width: 78rem; }}"
+      ],
+      "settings": {
+        "container": "container",
+        "color_schema": "background-1",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "small",
+        "header_layout": "vertical",
+        "heading": "Wear jewelry that harmonizes with your <em>unique energy and style</em>",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "Our Designs",
+        "description": "",
+        "collection": "nuestros-disenos",
+        "limit": 8,
+        "columns": 4,
+        "column_gap": "double-extra-small",
+        "row_gap": "double-extra-small",
+        "pcard_image_ratio": "1/1",
+        "show_vendor": false,
+        "enable_slider": true,
+        "show_nav": true,
+        "show_dots": false,
+        "show_all_button_on_top": false,
+        "button_label": "",
+        "button_style": "btn--primary",
+        "enable_swipe_mobile": false,
+        "column_mobile": "2",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "custom_content_gqJTwm": {
+      "type": "custom-content",
+      "blocks": {
+        "image_card_HPG8ch": {
+          "type": "image_card",
+          "settings": {
+            "layout": "layout8",
+            "text_color": "#ffffff",
+            "image": "shopify://shop_images/1.PulserasMiyuki.a.webp",
+            "image_ratio": "3/4",
+            "image_overlay_opacity": 30,
+            "sub_heading": "Arte Colorido",
+            "heading": "Miyuki Bracelets",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h-xl",
+            "heading_color": "",
+            "description": "",
+            "button_label": "",
+            "button_link": "shopify://collections/pulseras",
+            "button_style": "btn--white",
+            "vertical_content_padding": 30,
+            "vertical_content_padding_mobile": 24,
+            "alignment": "center",
+            "width": "33%",
+            "animations": "inherit"
+          }
+        },
+        "image_card_NRGtpt": {
+          "type": "image_card",
+          "settings": {
+            "layout": "layout8",
+            "text_color": "#ffffff",
+            "image": "shopify://shop_images/2.Aretes.webp",
+            "image_ratio": "3/4",
+            "image_overlay_opacity": 30,
+            "sub_heading": "Elegancia Natural",
+            "heading": "Earrings",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h-xl",
+            "heading_color": "",
+            "description": "",
+            "button_label": "",
+            "button_link": "shopify://collections/aretes",
+            "button_style": "btn--white",
+            "vertical_content_padding": 30,
+            "vertical_content_padding_mobile": 24,
+            "alignment": "center",
+            "width": "33%",
+            "animations": "inherit"
+          }
+        },
+        "image_card_8TLcU6": {
+          "type": "image_card",
+          "settings": {
+            "layout": "layout8",
+            "text_color": "#ffffff",
+            "image": "shopify://shop_images/3.Collares.c.webp",
+            "image_ratio": "3/4",
+            "image_overlay_opacity": 30,
+            "sub_heading": "Estilo Radiante",
+            "heading": "Necklaces",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h-xl",
+            "heading_color": "",
+            "description": "",
+            "button_label": "",
+            "button_link": "shopify://collections/collares",
+            "button_style": "btn--white",
+            "vertical_content_padding": 30,
+            "vertical_content_padding_mobile": 24,
+            "alignment": "center",
+            "width": "33%",
+            "animations": "inherit"
+          }
+        },
+        "image_card_XDkKGr": {
+          "type": "image_card",
+          "settings": {
+            "layout": "layout8",
+            "text_color": "#ffffff",
+            "image": "shopify://shop_images/4._Diademas.webp",
+            "image_ratio": "3/4",
+            "image_overlay_opacity": 30,
+            "sub_heading": "Encanto Sutil",
+            "heading": "Diademas",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h-xl",
+            "heading_color": "",
+            "description": "",
+            "button_label": "",
+            "button_link": "shopify://collections/diademas",
+            "button_style": "btn--white",
+            "vertical_content_padding": 30,
+            "vertical_content_padding_mobile": 24,
+            "alignment": "center",
+            "width": "33%",
+            "animations": "inherit"
+          }
+        },
+        "image_card_MyjGk7": {
+          "type": "image_card",
+          "settings": {
+            "layout": "layout8",
+            "text_color": "#ffffff",
+            "image": "shopify://shop_images/5.Pulseras.b.webp",
+            "image_ratio": "3/4",
+            "image_overlay_opacity": 30,
+            "sub_heading": "Vivid Design",
+            "heading": "Bracelets",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h-xl",
+            "heading_color": "",
+            "description": "",
+            "button_label": "",
+            "button_link": "shopify://collections/pulseras-miyuki",
+            "button_style": "btn--white",
+            "vertical_content_padding": 30,
+            "vertical_content_padding_mobile": 24,
+            "alignment": "center",
+            "width": "33%",
+            "animations": "inherit"
+          }
+        },
+        "image_card_EDGhm3": {
+          "type": "image_card",
+          "settings": {
+            "layout": "layout8",
+            "text_color": "#ffffff",
+            "image": "shopify://shop_images/6.Anillos.a.webp",
+            "image_ratio": "3/4",
+            "image_overlay_opacity": 30,
+            "sub_heading": "Brillo Eterno",
+            "heading": "Rings",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h-xl",
+            "heading_color": "",
+            "description": "",
+            "button_label": "",
+            "button_link": "shopify://collections/anillos",
+            "button_style": "btn--white",
+            "vertical_content_padding": 30,
+            "vertical_content_padding_mobile": 24,
+            "alignment": "center",
+            "width": "33%",
+            "animations": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "image_card_HPG8ch",
+        "image_card_NRGtpt",
+        "image_card_8TLcU6",
+        "image_card_XDkKGr",
+        "image_card_MyjGk7",
+        "image_card_EDGhm3"
+      ],
+      "custom_css": [],
+      "settings": {
+        "container": "container",
+        "color_schema": "",
+        "section_header_padding_bottom": "large",
+        "section_header_content_spacing": "medium",
+        "heading": "Shop by <em>category</em>.",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "column_gap": "double-extra-small",
+        "row_gap": "double-extra-small",
+        "enable_swipe_mobile": false,
+        "column_mobile": "1",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "custom_content_Dke7H7": {
+      "type": "custom-content",
+      "blocks": {
+        "image_comparsion_t3QqPb": {
+          "type": "image_comparsion",
+          "settings": {
+            "layout": "horizontal",
+            "image_height": "medium",
+            "product": "",
+            "width": "50%",
+            "before_heading": "Bracelets",
+            "before_image": "shopify://shop_images/1_abf4b0f2-48cd-4ea9-b7e6-83ef04f221b2.webp",
+            "before_image_mobile": "shopify://shop_images/1_abf4b0f2-48cd-4ea9-b7e6-83ef04f221b2.webp",
+            "before_color_scheme": "",
+            "before_heading_plain_text": true,
+            "after_heading": "Miyuki",
+            "after_image": "shopify://shop_images/2_51593eaf-fd17-4efd-ad43-2660a81756b6.webp",
+            "after_image_mobile": "shopify://shop_images/2_51593eaf-fd17-4efd-ad43-2660a81756b6.webp",
+            "after_color_scheme": "",
+            "after_heading_plain_text": true,
+            "block_custom_class": ""
+          }
+        },
+        "text_gJMWax": {
+          "type": "text",
+          "settings": {
+            "color_scheme": "",
+            "title": "Bracelets woven with <em>Japanese Miyuki beads,</em> known for their precision and vibrant color.",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h1",
+            "heading_color": "",
+            "subheading": "Compare",
+            "text": "<p>Each design honors artisanal tradition and celebrates the connection between cultures. Our bracelets are handmade and woven on a loom.</p>",
+            "alignment": "center",
+            "align_text": "left",
+            "padding_left": 0,
+            "padding_right": 0,
+            "align_content_container": "none",
+            "button_label": "Discover more",
+            "button_link": "shopify://collections/pulseras",
+            "button_style": "btn--underline",
+            "width": "50%",
+            "mobile_color_scheme": "",
+            "mobile_padding_left": 0,
+            "mobile_padding_right": 0,
+            "block_custom_class": "",
+            "animations": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "image_comparsion_t3QqPb",
+        "text_gJMWax"
+      ],
+      "custom_css": [
+        "@media (max-width: 767px) {.f-text-blocks h3 {margin-top: 1.2rem; }}"
+      ],
+      "settings": {
+        "container": "container",
+        "color_schema": "background-1",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "column_gap": "extra-large",
+        "row_gap": "medium",
+        "enable_swipe_mobile": false,
+        "column_mobile": "1",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "mobile-remove-br"
+      }
+    },
+    "rich_text_MDphBH": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_3VCz7N": {
+          "type": "subheading",
+          "settings": {
+            "subheading": ""
+          }
+        },
+        "heading_dGGHmx": {
+          "type": "heading",
+          "settings": {
+            "heading": "Explore our collections. <em>Discover the inspiration behind every piece.</em>",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h2",
+            "heading_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_3VCz7N",
+        "heading_dGGHmx"
+      ],
+      "custom_css": [
+        ".rich-text__content {max-width: 60rem; margin-inline: auto;}"
+      ],
+      "settings": {
+        "container": "container",
+        "color_schema": "",
+        "text_alignment": "center",
+        "padding_top": 48,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "collection_list_EzhEC3": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_qNGBHm": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sakura-bloom",
+            "image": "shopify://shop_images/Sakura-60.jpg",
+            "title": ""
+          }
+        },
+        "featured_collection_tzNBrj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "atardecer-de-verano",
+            "image": "shopify://shop_images/1_6ee5bb9b-707c-4847-b383-9b3b2e690136.webp",
+            "title": "Atardecer de Verano"
+          }
+        },
+        "featured_collection_LmP8Ee": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "fusion",
+            "image": "shopify://shop_images/Fusion_2edit-15.jpg",
+            "title": "Fusion"
+          }
+        },
+        "featured_collection_937cYK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dreamshine",
+            "image": "shopify://shop_images/producto-06.jpg",
+            "title": ""
+          }
+        },
+        "featured_collection_Dd63T9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "golden-forever",
+            "image": "shopify://shop_images/2_b706e1f1-5d52-4447-bbc9-b40eda7eef99.webp",
+            "title": "Golden Forever"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_qNGBHm",
+        "featured_collection_tzNBrj",
+        "featured_collection_LmP8Ee",
+        "featured_collection_937cYK",
+        "featured_collection_Dd63T9"
+      ],
+      "custom_css": [],
+      "settings": {
+        "container": "container",
+        "color_schema": "",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "header_layout": "vertical",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "title_font": "heading",
+        "title_size": "h6",
+        "card_style": "6",
+        "text_alignment": "left",
+        "text_color": "#000000",
+        "image_ratio": "1/1",
+        "show_count": false,
+        "inline_count": false,
+        "columns": 5,
+        "column_gap": "small",
+        "row_gap": "medium",
+        "show_all_button_on_top": false,
+        "button_label": "",
+        "button_url": "",
+        "button_style": "btn--primary",
+        "enable_slider": false,
+        "show_dots": false,
+        "show_nav": false,
+        "enable_swipe_mobile": true,
+        "column_mobile": "2",
+        "padding_top": 72,
+        "padding_bottom": 100,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 48,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "products_bundle_akJyWk": {
+      "type": "products-bundle",
+      "blocks": {
+        "product_7JAPWP": {
+          "type": "product",
+          "settings": {
+            "product": "pulsera-polaroid-natural",
+            "hotspot_color": "light",
+            "horizontal": 45,
+            "vertical": 58
+          }
+        },
+        "product_fxqUFg": {
+          "type": "product",
+          "settings": {
+            "product": "pulsera-polaroid-rose",
+            "hotspot_color": "light",
+            "horizontal": 26,
+            "vertical": 63
+          }
+        },
+        "product_jwmRhg": {
+          "type": "product",
+          "settings": {
+            "product": "pulsera-polaroid-sky",
+            "hotspot_color": "light",
+            "horizontal": 45,
+            "vertical": 67
+          }
+        }
+      },
+      "block_order": [
+        "product_7JAPWP",
+        "product_fxqUFg",
+        "product_jwmRhg"
+      ],
+      "custom_css": [],
+      "settings": {
+        "container": "container",
+        "color_schema": "background-1",
+        "image": "shopify://shop_images/Bundle.jpg",
+        "image_position": "right",
+        "desktop_content_position": "start",
+        "subheading": "",
+        "heading": "<p>POLAROID Capsule Collection</p>",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h1",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "padding_left": 0,
+        "padding_right": 100,
+        "align_content_container": "left",
+        "mobile_padding_left": 0,
+        "mobile_padding_right": 0,
+        "padding_top": 0,
+        "padding_bottom": 48,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 48,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "collection_tabs_MbqQEP": {
+      "type": "collection-tabs",
+      "blocks": {
+        "collection_fYKzU7": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "heading": "Make it Forever",
+            "heading_size": "h4",
+            "text": "<p>Timeless and radiant, our diamond jewelry captures brilliance and elegance, perfect for celebrating life's precious moments.</p>"
+          }
+        },
+        "collection_nzAe9d": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "heading": "Better Basics Collection",
+            "heading_size": "h4",
+            "text": "<p>Elevate your look with our exquisite earrings, designed to add sparkle, elegance, and timeless beauty to every occasion.</p>"
+          }
+        },
+        "collection_cV86YB": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "heading": "Curated Products",
+            "heading_size": "h4",
+            "text": "<p>Grace your neckline with our stunning necklaces, crafted to add elegance, sparkle, and timeless charm to every moment.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "collection_fYKzU7",
+        "collection_nzAe9d",
+        "collection_cV86YB"
+      ],
+      "disabled": true,
+      "settings": {
+        "container": "container",
+        "color_schema": "scheme-5",
+        "heading": "Revitalize your skin, <em>refresh your confidence</em>",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h1",
+        "heading_color": "",
+        "subheading": "Top Collections",
+        "description": "",
+        "image_position": "right",
+        "image_ratio": "1/1",
+        "prefix_header": "ordinal_number",
+        "trigger_behavior": "hover",
+        "autoplay": false,
+        "autoplay_duration": 5,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "custom_content_eDwYnU": {
+      "type": "custom-content",
+      "blocks": {
+        "image_card_BiyeLK": {
+          "type": "image_card",
+          "settings": {
+            "layout": "layout1",
+            "text_color": "#ffffff",
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 30,
+            "sub_heading": "Find your best",
+            "heading": "Shine Bright",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h-xl",
+            "heading_color": "",
+            "description": "",
+            "button_label": "Shop Now",
+            "button_link": "",
+            "button_style": "btn--white",
+            "vertical_content_padding": 40,
+            "vertical_content_padding_mobile": 30,
+            "alignment": "center",
+            "width": "50%",
+            "animations": "inherit"
+          }
+        },
+        "image_card_MDnJWr": {
+          "type": "image_card",
+          "settings": {
+            "layout": "layout1",
+            "text_color": "#ffffff",
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 30,
+            "sub_heading": "everyday basics",
+            "heading": "Bring Sparkle",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h-xl",
+            "heading_color": "",
+            "description": "",
+            "button_label": "Shop Now",
+            "button_link": "",
+            "button_style": "btn--white",
+            "vertical_content_padding": 40,
+            "vertical_content_padding_mobile": 30,
+            "alignment": "center",
+            "width": "50%",
+            "animations": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "image_card_BiyeLK",
+        "image_card_MDnJWr"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "container": "container",
+        "color_schema": "background-1",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "column_gap": "double-extra-small",
+        "row_gap": "extra-small",
+        "enable_swipe_mobile": false,
+        "column_mobile": "1",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "scrolling_promotion_JTAcPf": {
+      "type": "scrolling-promotion",
+      "blocks": {
+        "testimonial_dbtmYp": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "text": "<p>“Absolutely stunning jewelry! The quality and sparkle are unmatched.”</p>",
+            "author": "Rosie C.",
+            "product": "",
+            "show_image": true
+          }
+        },
+        "testimonial_rNCtBh": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "text": "<p>“Gorgeous designs! My new favorite piece for every special occasion.”</p>",
+            "author": "Elise T.",
+            "product": "",
+            "show_image": true
+          }
+        },
+        "testimonial_YLFBM7": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "text": "<p>“The craftsmanship is incredible! So happy with my purchase.”</p>",
+            "author": "Daisy K.",
+            "product": "",
+            "show_image": true
+          }
+        },
+        "testimonial_mwiQ9b": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "text": "<p>“A perfect gift! Beautifully made and even more stunning in person.”</p>",
+            "author": "Nora S.",
+            "product": "",
+            "show_image": true
+          }
+        },
+        "testimonial_Wp3xyy": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "text": "<p>“Sparkles brilliantly! The quality exceeded my expectations.”</p>",
+            "author": "Lena M.",
+            "product": "",
+            "show_image": true
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_dbtmYp",
+        "testimonial_rNCtBh",
+        "testimonial_YLFBM7",
+        "testimonial_mwiQ9b",
+        "testimonial_Wp3xyy"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "@media (min-width: 768px) {.section__header--text {max-width: 54rem; margin-inline: auto; }}"
+      ],
+      "settings": {
+        "container": "container-full",
+        "color_schema": "",
+        "section_header_padding_bottom": "large",
+        "section_header_content_spacing": "medium",
+        "heading": "Loved by 100,000 customers unleash your <em>graceful aura!</em>",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "Our Reviews",
+        "description": "",
+        "alignment": "center",
+        "direction": "left",
+        "pause_on_hover": true,
+        "speed": 0.1,
+        "item_gap": 80,
+        "item_gap_mobile": 40,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "use_custom_mobile_padding": false,
+        "padding_top_mobile": 60,
+        "padding_bottom_mobile": 60,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "collections_showcase_zMz8Ah": {
+      "type": "collections-showcase",
+      "blocks": {
+        "collection_ttdYmP": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "heading": "Earring Gifts",
+            "heading_size": "h-xl",
+            "subheading": "Reveal your singular shine",
+            "subheading_size": "h1",
+            "text": "<p>Surprise someone special with dazzling earrings, beautifully crafted to add timeless beauty, elegance, charm, and sparkle to every cherished moment.</p>",
+            "button_label": "Shop All Items",
+            "button_style": "btn--underline"
+          }
+        },
+        "collection_HgPhqj": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "heading": "Shine Bright",
+            "heading_size": "h-xl",
+            "subheading": "Jewelry that truly sparkles & glows",
+            "subheading_size": "h1",
+            "text": "<p>Radiate confidence with our stunning jewelry, designed to capture light, brilliance, and elegance, making every moment shine even brighter with grace.</p>",
+            "button_label": "Shop All Items",
+            "button_style": "btn--underline"
+          }
+        },
+        "collection_RhA9kU": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "heading": "Classic",
+            "heading_size": "h-xl",
+            "subheading": "Timeless jewelry design classics",
+            "subheading_size": "h1",
+            "text": "<p>From delicate details to bold elegance, our classic jewelry is designed to capture tradition, sophistication, artistry, and everlasting beauty with every piece.</p>",
+            "button_label": "Shop All Items",
+            "button_style": "btn--underline"
+          }
+        },
+        "collection_TxxxDH": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "heading": "Move Rings",
+            "heading_size": "h-xl",
+            "subheading": "Enduring beauty, charm & grace",
+            "subheading_size": "h1",
+            "text": "<p>Experience the beauty of dynamic jewelry with our Move Rings, featuring fluid designs that symbolize love, freedom, passion, creativity, and everlasting elegance.</p>",
+            "button_label": "Shop All Items",
+            "button_style": "btn--underline"
+          }
+        }
+      },
+      "block_order": [
+        "collection_ttdYmP",
+        "collection_HgPhqj",
+        "collection_RhA9kU",
+        "collection_TxxxDH"
+      ],
+      "disabled": true,
+      "settings": {
+        "container": "container",
+        "color_schema": "scheme-6",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "New Collections",
+        "description": "",
+        "image_ratio": "adapt",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "featured_collection_Jp6jHC": {
+      "type": "featured-collection",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "container": "container",
+        "color_schema": "",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "header_layout": "horizontal",
+        "heading": "Jeweller <em>favourites</em>",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "collection": "",
+        "limit": 8,
+        "columns": 4,
+        "column_gap": "double-extra-small",
+        "row_gap": "double-extra-small",
+        "pcard_image_ratio": "",
+        "show_vendor": false,
+        "enable_slider": true,
+        "show_nav": true,
+        "show_dots": false,
+        "show_all_button_on_top": true,
+        "button_label": "Shop All Products",
+        "button_style": "btn--underline",
+        "enable_swipe_mobile": true,
+        "column_mobile": "1",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "promotion_banner_dUdHxr": {
+      "type": "promotion-banner",
+      "blocks": {
+        "text_h7y6Mh": {
+          "type": "text",
+          "settings": {
+            "title": "<p>Sale 30% OFF</p>",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h-xl",
+            "heading_color": "#f6ff94",
+            "subheading": "Special Offer",
+            "text": "<p>*Ends April 120 2025, 12:00 PST. T&C's Apply</p>",
+            "align_text": "center",
+            "content_width": 500,
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "block_custom_class": "",
+            "animations": "inherit"
+          }
+        },
+        "text_gCDi77": {
+          "type": "text",
+          "settings": {
+            "title": "<p>Seasonal <em>Savings Event</em></p>",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h1",
+            "heading_color": "",
+            "subheading": "",
+            "text": "<p>Up to 30% Off on Must-Have Styles !</p>",
+            "align_text": "center",
+            "content_width": 500,
+            "button_label": "Shop The Sale",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "block_custom_class": "",
+            "animations": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "text_h7y6Mh",
+        "text_gCDi77"
+      ],
+      "disabled": true,
+      "settings": {
+        "container": "container",
+        "color_schema": "accent",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "multicolumn_64LhFL": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_haUjCd": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image_link": "",
+            "title": "",
+            "heading_size": "h3",
+            "text": "<p>“Delivery were very fast. It fits really well and the quality is really good. I'm absolutely delighted with the shirt!”</p>",
+            "text_size": "large",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--underline"
+          }
+        },
+        "column_YyW9TM": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image_link": "",
+            "title": "",
+            "heading_size": "h3",
+            "text": "<p>“Arrived faster than expected! The necklace is stunning, and the quality is exceptional. I’m so in love with it!”</p>",
+            "text_size": "large",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--underline"
+          }
+        },
+        "column_FPcV68": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image_link": "",
+            "title": "",
+            "heading_size": "h3",
+            "text": "<p>“Fast delivery! The earrings are gorgeous, lightweight, and feel premium. I’m thrilled with how they look!”</p>",
+            "text_size": "large",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--underline"
+          }
+        }
+      },
+      "block_order": [
+        "column_haUjCd",
+        "column_YyW9TM",
+        "column_FPcV68"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".multicolumn-card__info {--image-spacing: 1.2rem; max-width: 35rem; margin-inline: auto;}"
+      ],
+      "settings": {
+        "container": "container",
+        "color_schema": "",
+        "section_header_padding_bottom": "large",
+        "section_header_content_spacing": "medium",
+        "heading": "Quote of the week",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "layout": "vertical",
+        "text_alignment": "center",
+        "image_width": "custom",
+        "custom_image_width": 170,
+        "columns": 3,
+        "column_gap": "large",
+        "row_gap": "large",
+        "enable_swipe_mobile": true,
+        "column_mobile": "1",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "gallery_images": {
+      "type": "gallery-images",
+      "settings": {
+        "container": "container",
+        "color_schema": "background-1",
+        "section_header_padding_bottom": "large",
+        "section_header_content_spacing": "medium",
+        "heading": "Find us on Instagram as",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "button_label": "@epi.accesorios",
+        "button_link": "https://www.instagram.com/epi.accesorios/",
+        "button_style": "btn--secondary",
+        "image_ratio": "adapt",
+        "columns": 4,
+        "column_gap": "double-extra-small",
+        "layout": "grid",
+        "metro_item_color_schema": "background-1",
+        "enable_slider": true,
+        "show_nav": true,
+        "show_dots": false,
+        "enable_swipe_mobile": true,
+        "column_mobile": "2",
+        "padding_top": 48,
+        "padding_bottom": 0,
+        "show_section_divider": true,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "mobile-remove-br",
+        "animations": "inherit"
+      }
+    },
+    "video_QCxgRT": {
+      "type": "video",
+      "name": "t:sections.video.presets.name",
+      "settings": {
+        "container": "container",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "video_type": "shopify",
+        "shopify_video": "",
+        "video_url": "",
+        "video_ratio": "adapt",
+        "autoplay_video": true,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "fade-in"
+      }
+    }
+  },
+  "order": [
+    "slideshow_PktnWV",
+    "image_with_text_slider_mbnE6c",
+    "scrolling_promotion_JK9cDV",
+    "featured_collection_ect4Jh",
+    "custom_content_gqJTwm",
+    "custom_content_Dke7H7",
+    "rich_text_MDphBH",
+    "collection_list_EzhEC3",
+    "products_bundle_akJyWk",
+    "collection_tabs_MbqQEP",
+    "custom_content_eDwYnU",
+    "scrolling_promotion_JTAcPf",
+    "collections_showcase_zMz8Ah",
+    "featured_collection_Jp6jHC",
+    "promotion_banner_dUdHxr",
+    "multicolumn_64LhFL",
+    "gallery_images",
+    "video_QCxgRT"
+  ]
+}
