@@ -33,16 +33,16 @@
 <script src="{{ 'product-grid-container.js' | asset_url }}" defer="defer"></script>
 
 <div
-  class="f-template-search f-section-padding{% unless search.performed and search.results_count > 0 %} f-template-search--empty{% endunless %}"
+  class="m-template-search m-section-padding{% unless search.performed and search.results_count > 0 %} m-template-search--empty{% endunless %}"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
-  <div class="f-template-search__header container text-center">
+  <div class="m-template-search__header container text-center">
     {%- if search.performed -%}
       <h1 class="h2">{{ 'templates.search.title' | t }}</h1>
     {%- else -%}
       <h1 class="h2">{{ 'general.search.search' | t }}</h1>
     {%- endif -%}
-    <div class="f-template-search__search">
+    <div class="m-template-search__search">
       {%- if predictive_search_enabled -%}
         <predictive-search class="h-full" data-loading-text="{{ 'accessibility.loading' | t }}">
       {%- endif -%}
@@ -51,13 +51,13 @@
           action="{{ routes.search_url }}"
           method="get"
           role="search"
-          class="f-search-drawer__form h-full flex flex-col"
+          class="m-search-drawer__form h-full flex flex-col"
         >
-          <div class="f-template-search__field w-full">
-            <label class="visually-hidden" for="f-search-drawer-input">{{ 'general.search.search' | t }}</label>
+          <div class="m-template-search__field w-full">
+            <label class="visually-hidden" for="m-search-drawer-input">{{ 'general.search.search' | t }}</label>
             <input
-              class="form-control focus-none f-search-drawer__input"
-              id="f-search-drawer-input"
+              class="form-control focus-none m-search-drawer__input"
+              id="m-search-drawer-input"
               type="search"
               name="q"
               value="{{ search.terms | escape }}"
@@ -66,8 +66,8 @@
               {% if predictive_search_enabled %}
                 role="combobox"
                 aria-expanded="false"
-                aria-owns="f-predictive-search-results"
-                aria-controls="f-predictive-search-results"
+                aria-owns="m-predictive-search-results"
+                aria-controls="m-predictive-search-results"
                 aria-haspopup="listbox"
                 aria-autocomplete="list"
                 autocorrect="off"
@@ -89,7 +89,7 @@
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="f-icon-svg f-icon-svg--medium  f-icon-search"
+                class="m-icon-svg m-icon-svg--medium  m-icon-search"
               >
                 <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
@@ -97,8 +97,8 @@
             <input type="hidden" name="options[prefix]" value="last">
           </div>
           {%- if predictive_search_enabled -%}
-            <div class="f-predictive-search" tabindex="-1" data-predictive-search>
-              <div class="f-predictive-search__loading-state">
+            <div class="m-predictive-search" tabindex="-1" data-predictive-search>
+              <div class="m-predictive-search__loading-state">
                 {% comment %} theme-check-disable {% endcomment %}
                 {{ 'icon-spinner.svg' | inline_asset_content }}
                 {% comment %} theme-check-enable {% endcomment %}
@@ -113,7 +113,7 @@
       {%- endif -%}
     </div>
     {%- if search.performed -%}
-      <div class="f-template-search__status">
+      <div class="m-template-search__status">
         {%- unless section.settings.enable_filtering or section.settings.enable_sorting or enable_product_count -%}
           {%- if search.results_count > 0 -%}
             <p role="status" class="h5">
@@ -160,11 +160,11 @@
                   <div
                     id="product-grid"
                     data-id="{{ section.id }}"
-                    class="template-search__results product-grid f-grid f-grid-2-cols md:f-grid-{{ columns_tablet }}-cols xl:f-grid-{{ columns }}-cols f-grid--gap-{{ section.settings.column_gap }} f-grid--row-gap-{{ section.settings.row_gap }}"
+                    class="template-search__results product-grid m-grid m-grid-2-cols md:m-grid-{{ columns_tablet }}-cols xl:m-grid-{{ columns }}-cols m-grid--gap-{{ section.settings.column_gap }} m-grid--row-gap-{{ section.settings.row_gap }}"
                     data-products-grid
                   >
                     {%- for product in products_list -%}
-                      <div class="f-column">
+                      <div class="m-column">
                         {% render 'product-card',
                           product: product,
                           show_vendor: false,
@@ -176,7 +176,7 @@
                     {%- endfor -%}
 
                     {% for article in articles_list %}
-                      <div class="f-column">
+                      <div class="m-column">
                         {{ 'blog.css' | asset_url | stylesheet_tag }}
                         {%- render 'article-card',
                           article: article,
@@ -188,14 +188,14 @@
                       </div>
                     {% endfor %}
                     {% for page in pages_list %}
-                      <div class="f-column">
-                        <a href="{{ page.url }}" class="f-card">
-                          <div class="f-card__inner">
-                            <div class="f-card__content">
+                      <div class="m-column">
+                        <a href="{{ page.url }}" class="m-card">
+                          <div class="m-card__inner">
+                            <div class="m-card__content">
                               <h3 class="text-product-title h5">{{ page.title | escape }}</h3>
                             </div>
-                            <div class="f-card__badge">
-                              <span class="f-badge">{{ 'templates.search.page' | t }}</span>
+                            <div class="m-card__badge">
+                              <span class="m-badge">{{ 'templates.search.page' | t }}</span>
                             </div>
                           </div>
                         </a>
@@ -203,7 +203,7 @@
                     {% endfor %}
                   </div>
                   {%- if paginate.pages > 1 -%}
-                    <div class="f-pagination__wrapper text-center">
+                    <div class="m-pagination__wrapper text-center">
                       {% render 'pagination', paginate: paginate %}
                     </div>
                   {%- endif -%}
@@ -219,7 +219,7 @@
 {% schema %}
 {
   "name": "t:sections.main-search.name",
-  "class": "f-section",
+  "class": "m-section",
   "settings": [
     {
       "type": "header",

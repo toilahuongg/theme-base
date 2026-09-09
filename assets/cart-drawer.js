@@ -88,14 +88,14 @@ class CartDrawer extends HTMLElement {
     const sections = [
       {
         id: "cart-drawer",
-        selector: ".f-cart-drawer__items",
+        selector: ".m-cart-drawer__items",
       },
     ];
 
     if (renderFooter) {
       sections.push({
         id: "cart-drawer",
-        selector: ".f-drawer__footer",
+        selector: ".m-drawer__footer",
       });
     }
 
@@ -116,12 +116,12 @@ class CartDrawerItems extends CartItems {
       {
         id: "Drawer-Cart",
         section: "cart-drawer",
-        selector: ".f-cart-drawer__items",
+        selector: ".m-cart-drawer__items",
       },
       {
         id: "Drawer-Cart",
         section: "cart-drawer",
-        selector: ".f-cart-drawer__block-subtotal",
+        selector: ".m-cart-drawer__block-subtotal",
       },
     ];
   }

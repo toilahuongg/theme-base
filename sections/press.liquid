@@ -42,8 +42,8 @@
 %}
 <div
   id="{{ section_id }}"
-  class="f-press f-section-padding color-{{ section.settings.color_schema }}{{ custom_class }}"
-  data-section-type="f-press"
+  class="m-press m-section-padding color-{{ section.settings.color_schema }}{{ custom_class }}"
+  data-section-type="m-press"
   data-section-id="{{ section.id }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
@@ -55,17 +55,17 @@
     <motion-element
       data-motion="{{ animation_effect }}"
       data-motion-delay="{{ motion_delay }}"
-      class="block f-press__wrapper{% if section.settings.show_nav %} show-nav{% endif %}"
+      class="block m-press__wrapper{% if section.settings.show_nav %} show-nav{% endif %}"
     >
-      <div class="f-press__content-wrapper">
+      <div class="m-press__content-wrapper">
         <flickity-component
-          class="f-press__content flickity-button-initialized"
+          class="m-press__content flickity-button-initialized"
           data-auto-play="{{ autoplay }}"
           data-slider-options='{"prevNextButtons": {{ section.settings.show_nav }}, "autoPlay": {{ autoplay }}, "wrapAround": true, "adaptiveHeight": true}'
           data-slider-columns="1"
           data-enable-slider="true"
           data-calc-button-position="true"
-          id="f-press__slider-{{ section.id }}"
+          id="m-press__slider-{{ section.id }}"
         >
           {%- for block in section.blocks -%}
             {%- liquid
@@ -77,7 +77,7 @@
               assign font_size = block.settings.font_size
             -%}
             <div
-              class="f-press__text w-full text-center"
+              class="m-press__text w-full text-center"
               data-index="{{ forloop.index0 }}"
               {{ block.shopify_attributes }}
             >
@@ -88,7 +88,7 @@
           {% endfor %}
         </flickity-component>
       </div>
-      <div class="f-press__list">
+      <div class="m-press__list">
         {%- liquid
           assign nav_max_count = 5
           if section.blocks.size <= 5
@@ -96,10 +96,10 @@
           endif
         -%}
         <press-nav-component
-          class="f-press__slider f-grid{% unless loop %} md:disable-transition{% endunless %}"
+          class="m-press__slider m-grid{% unless loop %} md:disable-transition{% endunless %}"
           data-enable-slider="true"
           data-slider-columns="{{ nav_max_count }}"
-          data-slider-options='{"prevNextButtons": false, "asNavFor": "#f-press__slider-{{ section.id }}", "percentPosition": true, "draggable": false, "wrapAround": {{ loop }}, "cellAlign": "{{ cell_align }}", "groupCells": 1}'
+          data-slider-options='{"prevNextButtons": false, "asNavFor": "#m-press__slider-{{ section.id }}", "percentPosition": true, "draggable": false, "wrapAround": {{ loop }}, "cellAlign": "{{ cell_align }}", "groupCells": 1}'
         >
           {%- for block in section.blocks -%}
             {%- liquid
@@ -109,7 +109,7 @@
 
               assign image_width = block.settings.image_width | append: 'px'
             -%}
-            <div class="f-press__logo" {{ block.shopify_attributes }}>
+            <div class="m-press__logo" {{ block.shopify_attributes }}>
               {%- if block.settings.image != blank -%}
                 {% render 'responsive-image',
                   image: block.settings.image,
@@ -118,7 +118,7 @@
                   index: forloop.index
                 %}
               {%- else -%}
-                <div class="f-image" style="--aspect-ratio: 16/9">
+                <div class="m-image" style="--aspect-ratio: 16/9">
                   {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
                 </div>
               {%- endif -%}
@@ -135,7 +135,7 @@
   "disabled_on": {
     "groups": ["header", "footer"]
   },
-  "class": "f-section-press",
+  "class": "m-section-press",
   "settings": [
     {
       "type": "header",

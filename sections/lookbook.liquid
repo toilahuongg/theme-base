@@ -24,7 +24,7 @@
 %}
 <div
   id="{{ section_id }}"
-  class="f-lookbook relative z-1 f-section-padding color-{{ section.settings.color_schema }}{{ custom_class }}"
+  class="m-lookbook relative z-1 m-section-padding color-{{ section.settings.color_schema }}{{ custom_class }}"
   data-section-type="lookbook"
   data-section-id="{{ section.id }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px; --grid-cols: {{ columns }}"
@@ -37,10 +37,10 @@
     {%- if section.blocks.size > 0 -%}
       <grid-list
         data-motion="{{ animation_effect }}"
-        class="f-grid md:f-grid-{{ columns }}-cols f-grid--gap-{{ section.settings.column_gap }}"
+        class="m-grid md:m-grid-{{ columns }}-cols m-grid--gap-{{ section.settings.column_gap }}"
       >
         {%- for block in section.blocks -%}
-          <div class="f-column{% if block.type == 'lookbook-slider' %} f-column--expanded{% endif %}">
+          <div class="m-column{% if block.type == 'lookbook-slider' %} m-column--expanded{% endif %}">
             {% render 'lookbook-card',
               color_schema: section.settings.color_schema,
               block: block,

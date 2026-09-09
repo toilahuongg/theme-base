@@ -40,8 +40,8 @@
         "button_qQmYag"
       ],
       "custom_css": [
-        ".f-hero__content {max-width: 45rem;}",
-        ".f-hero__content-wrapper {--vertical-content-padding: 8.7rem;}"
+        ".m-hero__content {max-width: 45rem;}",
+        ".m-hero__content-wrapper {--vertical-content-padding: 8.7rem;}"
       ],
       "settings": {
         "container": "container-full",
@@ -222,8 +222,8 @@
         "text_yiF7bB"
       ],
       "custom_css": [
-        ".f-text-blocks h3 {max-width: 45rem; margin-left: auto; margin-right: auto;}",
-        "@media (min-width: 1280px) {.f-text-blocks h3 {max-width: 55rem; }}"
+        ".m-text-blocks h3 {max-width: 45rem; margin-left: auto; margin-right: auto;}",
+        "@media (min-width: 1280px) {.m-text-blocks h3 {max-width: 55rem; }}"
       ],
       "settings": {
         "container": "container",
@@ -351,7 +351,7 @@
         "text_gJMWax"
       ],
       "custom_css": [
-        "@media (max-width: 767px) {.f-text-blocks h3 {margin-top: 1.2rem; }}"
+        "@media (max-width: 767px) {.m-text-blocks h3 {margin-top: 1.2rem; }}"
       ],
       "settings": {
         "container": "container",

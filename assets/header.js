@@ -4,17 +4,17 @@ class BasicHeader extends HTMLElement {
   }
 
   get headerSection() {
-    return document.querySelector(".f-section-header");
+    return document.querySelector(".m-section-header");
   }
 
   connectedCallback() {
     this.classes = {
-      active: "f-header__mega-active",
+      active: "m-header__mega-active",
       headerScheme: this.dataset.headerColorScheme,
       dropdownScheme: this.dataset.dropdownColorScheme,
     };
 
-    this.grandLinks = this.querySelectorAll(".f-site-nav__sub-item--has-child");
+    this.grandLinks = this.querySelectorAll(".m-site-nav__sub-item--has-child");
     this.grandLinks &&
       this.grandLinks.forEach((item) => {
         this.handleGrandLinksPosition(item);
@@ -25,14 +25,14 @@ class BasicHeader extends HTMLElement {
     // Calculate backdrop height.
     const rect = dropdown.getBoundingClientRect();
     this.style.setProperty(
-      "--f-dropdown-height",
+      "--m-dropdown-height",
       Math.ceil(rect.height) + "px"
     );
 
     this.classList.remove(this.classes.headerScheme);
     this.classList.add(this.classes.active, this.classes.dropdownScheme);
     document.documentElement.style.setProperty(
-      "--f-header-height",
+      "--m-header-height",
       this.clientHeight + "px"
     );
   }
@@ -41,22 +41,22 @@ class BasicHeader extends HTMLElement {
     this.classList.remove(this.classes.active, this.classes.dropdownScheme);
     this.classList.add(this.classes.headerScheme);
     document.documentElement.style.setProperty(
-      "--f-header-height",
+      "--m-header-height",
       this.clientHeight + "px"
     );
   }
 
   handleGrandLinksPosition(target) {
-    const dropdownLV3 = target.querySelector(".f-site-nav__dropdown");
+    const dropdownLV3 = target.querySelector(".m-site-nav__dropdown");
     if (dropdownLV3) {
       const rect = dropdownLV3.getBoundingClientRect();
-      dropdownLV3.classList.remove("f-site-nav__dropdown-reversed");
+      dropdownLV3.classList.remove("m-site-nav__dropdown-reversed");
       if (
         (!VelouraSettings.isRTL &&
           document.documentElement.clientWidth < rect.x + rect.width + 10) ||
         (VelouraSettings.isRTL && rect.x < 10)
       ) {
-        dropdownLV3.classList.add("f-site-nav__dropdown-reversed");
+        dropdownLV3.classList.add("m-site-nav__dropdown-reversed");
       }
     }
   }
@@ -152,7 +152,7 @@ class HeaderMenu extends DetailsDisclosure {
   connectedCallback() {
     this.header = this.closest(".site-header");
     this.classes = {
-      itemActive: "f-menu__item-active",
+      itemActive: "m-menu__item-active",
     };
     this.header.timeoutEnter = null;
     this.header.timeoutLeave = null;
@@ -160,9 +160,9 @@ class HeaderMenu extends DetailsDisclosure {
 
   onToggle(evt) {
     const { target } = evt;
-    const li = target.closest(".f-site-nav__item");
+    const li = target.closest(".m-site-nav__item");
     const isOpen = this.mainDetailsToggle.open;
-    const isMega = li.classList.contains("f-site-nav__item--mega");
+    const isMega = li.classList.contains("m-site-nav__item--mega");
 
     if (!isOpen) {
       clearTimeout(this.header.timeoutEnter);
@@ -173,7 +173,7 @@ class HeaderMenu extends DetailsDisclosure {
     } else {
       if (isMega) {
         clearTimeout(this.header.timeoutLeave);
-        const dropdown = li.querySelector(".f-site-nav__dropdown");
+        const dropdown = li.querySelector(".m-site-nav__dropdown");
         this.header.handleMegaItemActive(dropdown);
         this.header.timeoutEnter = setTimeout(() => {
           li.classList.add(this.classes.itemActive);
@@ -194,10 +194,10 @@ class SiteNav extends HTMLElement {
   connectedCallback() {
     this.header = this.closest(".site-header");
     this.classes = {
-      itemActive: "f-menu__item-active",
+      itemActive: "m-menu__item-active",
     };
 
-    this.megaItems = this.querySelectorAll(".f-site-nav__item--mega");
+    this.megaItems = this.querySelectorAll(".m-site-nav__item--mega");
     this.timeoutEnter = null;
     this.timeoutLeave = null;
     this.isHover =
@@ -231,7 +231,7 @@ class SiteNav extends HTMLElement {
         });
     }
 
-    const dropdown = target.querySelector(".f-site-nav__dropdown");
+    const dropdown = target.querySelector(".m-site-nav__dropdown");
 
     if (dropdown) {
       this.header.handleMegaItemActive(dropdown);

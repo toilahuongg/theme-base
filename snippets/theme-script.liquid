@@ -146,14 +146,14 @@
       const logoWidth = parseInt(computedStyle.getPropertyValue("--logo-width").trim());
       const logoWidthMobile = parseInt(computedStyle.getPropertyValue("--logo-mobile-width").trim());
 
-      document.documentElement.style.setProperty("--f-header-height", headerEl.offsetHeight + "px");
-      document.documentElement.style.setProperty("--f-header-space", displayHeight + "px");
+      document.documentElement.style.setProperty("--m-header-height", headerEl.offsetHeight + "px");
+      document.documentElement.style.setProperty("--m-header-space", displayHeight + "px");
       document.documentElement.style.setProperty("--logo-width", logoWidth + "px");
       document.documentElement.style.setProperty("--logo-mobile-width", logoWidthMobile + "px");
 		}
 
 		if (announcementEl) {
-			document.documentElement.style.setProperty("--f-announcement-height", announcementEl.offsetHeight + "px")
+			document.documentElement.style.setProperty("--m-announcement-height", announcementEl.offsetHeight + "px")
 		}
 	}
 
@@ -180,7 +180,7 @@
 		__calcHeight()
 	});
 
-  var fader = document.querySelector('.f-page-transition')
+  var fader = document.querySelector('.m-page-transition')
   function __fadeInPage() {
     if (!window.AnimationEvent || !fader) return;
 

@@ -54,7 +54,7 @@ class CartItems extends HTMLElement {
 
   initLoading() {
     this.loading = new window.VelouraTheme.AnimateLoading(document.body, {
-      overlay: this.querySelector(".f-cart__items"),
+      overlay: this.querySelector(".m-cart__items"),
     });
   }
 
@@ -122,7 +122,7 @@ class CartItems extends HTMLElement {
         );
 
         const quantityElement = updatedLine.querySelector('[name="updates[]"]');
-        const items = document.querySelectorAll(".f-cart-item");
+        const items = document.querySelectorAll(".m-cart-item");
 
         if (parsedState.errors) {
           quantityElement.value = quantityElement.getAttribute("value");
@@ -175,8 +175,8 @@ class CartItems extends HTMLElement {
         } else if (parsedState.item_count === 0 && cartDrawer) {
           //TODO: Check later
           // trapFocus(cartDrawer.querySelector('.drawer__inner-empty'), cartDrawer.querySelector('a'));
-        } else if (document.querySelector(".f-cart-item") && cartDrawer) {
-          trapFocus(cartDrawer, document.querySelector(".f-cart-item__name"));
+        } else if (document.querySelector(".m-cart-item") && cartDrawer) {
+          trapFocus(cartDrawer, document.querySelector(".m-cart-item__name"));
         }
         window.VelouraEvents.emit(PUB_SUB_EVENTS.cartUpdate, parsedState);
 
@@ -231,7 +231,7 @@ class CartItems extends HTMLElement {
 
     window.VelouraTheme.Notification.show({
       target: lineItemError.querySelector(
-        ".f-cart-item__quantity, .f-cart-drawer__error"
+        ".m-cart-item__quantity, .m-cart-drawer__error"
       ),
       method: "appendChild",
       type: "warning",

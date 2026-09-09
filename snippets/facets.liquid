@@ -24,22 +24,22 @@
 
 <drawer-component
   id="Drawer-Facets"
-  class="f-drawer f-drawer--left f-drawer-facets no-js-hidden f-facets--{{ sidebar_position }}"
+  class="m-drawer m-drawer--left m-drawer-facets no-js-hidden m-facets--{{ sidebar_position }}"
   role="dialog"
   data-can-move="false"
   aria-modal="true"
   hidden
-  style="--f-drawer-width: 100vw;"
+  style="--m-drawer-width: 100vw;"
 >
-  <div class="f-drawer__overlay" data-drawer-overlay></div>
+  <div class="m-drawer__overlay" data-drawer-overlay></div>
   <motion-element
     data-motion="{% if sidebar_position != 'drawer' %}{{ animation_effect }}{% else %}none{% endif %}"
-    class="f-drawer__content w-full focus-inset"
+    class="m-drawer__content w-full focus-inset"
     tabindex="-1"
   >
     {% if results.filters != empty %}
-      <div class="f-facets__header items-center justify-between">
-        <h3 class="f-facets__heading h5">
+      <div class="m-facets__header items-center justify-between">
+        <h3 class="m-facets__heading h5">
           {{ 'products.facets.filter_by_label' | t }}
         </h3>
         <div class="collection-product-count" role="status" data-product-count>
@@ -64,7 +64,7 @@
         </div>
         <button
           id="DrawerClose-Facets"
-          class="f-drawer__close btn btn--plain"
+          class="m-drawer__close btn btn--plain"
           aria-label="{{ 'accessibility.close' | t }}"
         >
           {% comment %} theme-check-disable {% endcomment %}
@@ -73,15 +73,15 @@
         </button>
       </div>
     {% endif %}
-    <div class="f-drawer__inner scroll-container">
+    <div class="m-drawer__inner scroll-container">
       <div
-        class="f-facets__container f-facets__container--{{ sidebar_position }}"
+        class="m-facets__container m-facets__container--{{ sidebar_position }}"
         data-collapsible="{{ group_collapsible | default: false }}"
         data-open-first="{{ open_first_group | default: false }}"
         data-facets-type="{{ sidebar_position }}"
       >
-        <facet-filters-form class="f-facets">
-          <form id="FacetFiltersForm" class="f-facets__form" data-facet-form>
+        <facet-filters-form class="m-facets">
+          <form id="FacetFiltersForm" class="m-facets__form" data-facet-form>
             {%- if results.terms -%}
               <input
                 type="hidden"
@@ -91,18 +91,18 @@
               <input name="options[prefix]" type="hidden" value="last">
             {%- endif -%}
 
-            <div class="f-facets__wrapper" data-facets-wrapper>
+            <div class="m-facets__wrapper" data-facets-wrapper>
               {%- if results.filters != empty
                 and sidebar_position != 'drawer'
               -%}
-                <h3 class="f-facets__heading visually-hidden">
+                <h3 class="m-facets__heading visually-hidden">
                   {{ 'products.facets.filter_by_label' | t }}
                 </h3>
               {%- endif -%}
-              <div class="f-facets__blocks" data-collapsible-parent>
+              <div class="m-facets__blocks" data-collapsible-parent>
                 {% if enable_sorting %}
                   <div
-                    class="f-facets__block f-facets__block--divider js-filter f-facets__block-sortby md:hidden"
+                    class="m-facets__block m-facets__block--divider js-filter m-facets__block-sortby md:hidden"
                     data-index="{{ results.filters.size | plus: 1 }}"
                   >
                     <div id="Mobile-SortBy-Block" class="flex items-center">
@@ -176,7 +176,7 @@
                     ></script>
                   {% endif %}
                   <div
-                    class="f-facets__block js-filter"
+                    class="m-facets__block js-filter"
                     data-index="{{ forloop.index }}"
                   >
                     <collapsible-tab
@@ -190,7 +190,7 @@
                       {% endunless %}
                     >
                       <button
-                        class="f-facets__block-header focus-inset m-0 {{ heading_size }}"
+                        class="m-facets__block-header focus-inset m-0 {{ heading_size }}"
                         data-trigger
                       >
                         <span class="font-body-bolder text-button">
@@ -218,7 +218,7 @@
                         {% endif %}
                       </button>
                       <div
-                        class="f-facets__block-content"
+                        class="m-facets__block-content"
                         data-content
                         {% if isHidden %}
                           hidden
@@ -235,12 +235,12 @@
                               or filter.presentation == 'swatch'
                             -%}
                               <ul
-                                class="list-none f-facets__list f-facets__list--color f-filter__color--{{ filter_color_type }}"
+                                class="list-none m-facets__list m-facets__list--color m-filter__color--{{ filter_color_type }}"
                                 role="list"
                               >
                                 {%- for value in sorted_values -%}
                                   {% capture label %}
-                                    {{ value.label | escape }} {% if show_results_count %}<span class="f-facets__results-count">({{ value.count }})</span>{% endif %}
+                                    {{ value.label | escape }} {% if show_results_count %}<span class="m-facets__results-count">({{ value.count }})</span>{% endif %}
                                   {% endcapture %}
                                   {% capture id %}Filter-{{ filter.label | escape }}-{{ filter_index }}-{{ forloop.index }}{% endcapture %}
 
@@ -251,7 +251,7 @@
                                     endif
                                   -%}
 
-                                  <li class="f-facets__item{% if forloop.index > 10 %} show-more-item hidden{% endif %}">
+                                  <li class="m-facets__item{% if forloop.index > 10 %} show-more-item hidden{% endif %}">
                                     {%- if filter.presentation == 'swatch' -%}
                                       {%- render 'facet-swatch',
                                         id: id,
@@ -274,10 +274,10 @@
                                 {%- endfor -%}
                               </ul>
                             {%- elsif filter.presentation == 'image' -%}
-                              <ul class="list-none f-facets__list f-facets__images">
+                              <ul class="list-none m-facets__list m-facets__images">
                                 {%- for value in sorted_values -%}
                                   {% capture label %}
-                                    {{ value.label | escape }} {% if show_results_count %}<span class="f-facets__results-count">({{ value.count }})</span>{% endif %}
+                                    {{ value.label | escape }} {% if show_results_count %}<span class="m-facets__results-count">({{ value.count }})</span>{% endif %}
                                   {% endcapture %}
                                   {% capture id %}Filter-{{ filter.label | escape }}-{{ filter_index }}-{{ forloop.index }}{% endcapture %}
                                   {%- liquid
@@ -292,7 +292,7 @@
                                       assign swatch_image = value.image | image_url: width: 144
                                     endif
                                   -%}
-                                  <li class="f-facets__item{% if forloop.index > 10 %} show-more-item hidden{% endif %}">
+                                  <li class="m-facets__item{% if forloop.index > 10 %} show-more-item hidden{% endif %}">
                                     <div
                                       class="filter-image-swatch"
                                     >
@@ -322,12 +322,12 @@
                               </ul>
                             {%- else -%}
                               <ul
-                                class="list-none f-facets__list{% if is_color or filter.presentation == 'swatch' %} f-facets__list--color f-filter__color--{{ filter_color_type }}{% endif %}"
+                                class="list-none m-facets__list{% if is_color or filter.presentation == 'swatch' %} m-facets__list--color m-filter__color--{{ filter_color_type }}{% endif %}"
                                 role="list"
                               >
                                 {%- for value in sorted_values -%}
                                   {% capture label %}
-                                    {{ value.label | escape }} {% if show_results_count %}<span class="f-facets__results-count">({{ value.count }})</span>{% endif %}
+                                    {{ value.label | escape }} {% if show_results_count %}<span class="m-facets__results-count">({{ value.count }})</span>{% endif %}
                                   {% endcapture %}
                                   {% capture id %}Filter-{{ filter.label | escape }}-{{ filter_index }}-{{ forloop.index }}{% endcapture %}
 
@@ -337,10 +337,10 @@
                                       assign disabled = true
                                     endif
                                   -%}
-                                  <li class="f-facets__item{% if forloop.index > 10 %} show-more-item hidden{% endif %}">
+                                  <li class="m-facets__item{% if forloop.index > 10 %} show-more-item hidden{% endif %}">
                                     <label
                                       for="{{ id }}"
-                                      class="f-checkbox{% if disabled %} f-checkbox--disabled{% endif %}"
+                                      class="m-checkbox{% if disabled %} m-checkbox--disabled{% endif %}"
                                     >
                                       <input
                                         type="checkbox"
@@ -402,18 +402,18 @@
                               assign price_gap = 5
                             %}
                             <price-range
-                              class="f-facets-price"
+                              class="m-facets-price"
                               data-price-max="{{ max }}"
                               data-price-gap="{{ price_gap }}"
                               style="--price-min: {{ range_min | default: 0 }}%; --price-max: {{ range_max | default: 100 }}%"
                             >
-                              <div class="f-facets-price__range-group">
+                              <div class="m-facets-price__range-group">
                                 <input
                                   data-type="min-range"
                                   type="range"
                                   aria-label="{{ 'products.facets.from' | t }}"
                                   tabindex="-1"
-                                  class="f-facets-price__range focus-none f-facets-price__range--min"
+                                  class="m-facets-price__range focus-none m-facets-price__range--min"
                                   min="0"
                                   max="{{ max }}"
                                   value="{{ from_value | default: 0 }}"
@@ -423,18 +423,18 @@
                                   type="range"
                                   aria-label="{{ 'products.facets.to' | t }}"
                                   tabindex="-1"
-                                  class="f-facets-price__range focus-none f-facets-price__range--max"
+                                  class="m-facets-price__range focus-none m-facets-price__range--max"
                                   min="0"
                                   max="{{ max }}"
                                   value="{{ to_value }}"
                                 >
                               </div>
-                              <div class="f-facets-price__inputs">
-                                <div class="f-facets-price__field">
+                              <div class="m-facets-price__inputs">
+                                <div class="m-facets-price__field">
                                   <span class="visually-hidden">
                                     {{- 'products.facets.from' | t -}}
                                   </span>
-                                  <span class="f-facets-price__field-currency">
+                                  <span class="m-facets-price__field-currency">
                                     {{- cart.currency.symbol -}}
                                   </span>
                                   <input
@@ -452,14 +452,14 @@
                                     data-type="min-input"
                                   >
                                 </div>
-                                <span class="f-facets-price__to">
+                                <span class="m-facets-price__to">
                                   {{- 'products.facets.to' | t -}}
                                 </span>
-                                <div class="f-facets-price__field">
+                                <div class="m-facets-price__field">
                                   <span class="visually-hidden">
                                     {{- 'products.facets.to' | t -}}
                                   </span>
-                                  <span class="f-facets-price__field-currency">
+                                  <span class="m-facets-price__field-currency">
                                     {{- cart.currency.symbol -}}
                                   </span>
                                   <input
@@ -505,7 +505,7 @@
         </facet-filters-form>
       </div>
     </div>
-    <div class="f-facets__footer flex justify-between items-center">
+    <div class="m-facets__footer flex justify-between items-center">
       <facet-remove class="text-left">
         <a
           href="{{ results_url }}"

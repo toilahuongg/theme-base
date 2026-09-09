@@ -27,12 +27,12 @@
 %}
 <div
   id="{{ section_id }}"
-  class="f-newsletter relative z-0 overflow-hidden{% unless image != blank %} f-section-padding{% endunless %}{% if image == blank %} color-{{ section.settings.color_schema }}{% endif %}{{ custom_class }}"
+  class="m-newsletter relative z-0 overflow-hidden{% unless image != blank %} m-section-padding{% endunless %}{% if image == blank %} color-{{ section.settings.color_schema }}{% endif %}{{ custom_class }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
   <div class="{{ container }}">
-    <div class="f-newsletter__wrapper relative flex justify-{{ form_position }}{% if image != blank %} f-section-padding f-newsletter__wrapper--has-bg{% endif %}">
-      <div class="f-newsletter__form text-{{ text_alignment }}{% if image != blank %} f-newsletter__form--boxed color-{{ section.settings.color_schema }}{% endif %}">
+    <div class="m-newsletter__wrapper relative flex justify-{{ form_position }}{% if image != blank %} m-section-padding m-newsletter__wrapper--has-bg{% endif %}">
+      <div class="m-newsletter__form text-{{ text_alignment }}{% if image != blank %} m-newsletter__form--boxed color-{{ section.settings.color_schema }}{% endif %}">
         {%- unless heading == blank -%}
           <h2 class="{{ section.settings.heading_size }}">
             <motion-element
@@ -76,7 +76,7 @@
           <motion-element
             data-motion="{{ animation_effect }}"
             data-motion-delay="{{ motion_delay }}"
-            class="block f-newsletter__description text-sm"
+            class="block m-newsletter__description text-sm"
           >
             {{- description -}}
           </motion-element>

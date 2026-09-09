@@ -40,14 +40,14 @@
 %}
 <div
   id="{{ section_id }}"
-  class="f-favorite-collection{{ custom_class }} f-section-padding color-{{ section.settings.color_schema }}"
+  class="m-favorite-collection{{ custom_class }} m-section-padding color-{{ section.settings.color_schema }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
   <div class="{{ container }}">
-    <div class="f-favorite-collection__wrapper relative">
+    <div class="m-favorite-collection__wrapper relative">
       <favorite-collection>
-        <div class="f-flex flex-wrap">
-          <div class="f-column f-favorite-collection__content w-full{% if enable_sticky_column %} sticky-element{% endif %}">
+        <div class="m-flex flex-wrap">
+          <div class="m-column m-favorite-collection__content w-full{% if enable_sticky_column %} sticky-element{% endif %}">
             {% render 'index-section-header',
               animation_effect: animation_effect,
               section_settings: section.settings,
@@ -61,7 +61,7 @@
             <motion-element
               data-motion="{{ animation_effect }}"
               data-motion-delay="{{ motion_delay }}"
-              class="block f-favorite-collection__image w-full"
+              class="block m-favorite-collection__image w-full"
             >
               {%- if section.settings.image != blank -%}
                 {% render 'responsive-image',
@@ -72,7 +72,7 @@
                   index: 1
                 %}
               {%- else -%}
-                <div class="f-image">
+                <div class="m-image">
                   {{
                     'image'
                     | placeholder_svg_tag: 'placeholder-svg w-full h-full'
@@ -84,17 +84,17 @@
           <motion-element
             data-motion="{{ animation_effect }}"
             data-motion-delay="{{ motion_delay }}"
-            class="block f-column f-favorite-collection__product w-full"
+            class="block m-column m-favorite-collection__product w-full"
           >
             <flickity-component
-              class="f-grid f-grid--gap-{{ section.settings.column_gap }} f-grid--row-gap-{{ section.settings.row_gap }} f-grid-{{ section.settings.column_mobile }}-cols lg:f-grid-1-cols{% if enable_swipe_mobile %} f-swiper f-swiper--no-scrollbar f-swiper--{{ section.settings.column_mobile }}-cols{% endif %}"
-              data-slider-options='{"watchCSS": true, "cellSelector": ".f-column", "wrapAround": true, "percentPosition": false, "freeScroll": false}'
+              class="m-grid m-grid--gap-{{ section.settings.column_gap }} m-grid--row-gap-{{ section.settings.row_gap }} m-grid-{{ section.settings.column_mobile }}-cols lg:m-grid-1-cols{% if enable_swipe_mobile %} m-swiper m-swiper--no-scrollbar m-swiper--{{ section.settings.column_mobile }}-cols{% endif %}"
+              data-slider-options='{"watchCSS": true, "cellSelector": ".m-column", "wrapAround": true, "percentPosition": false, "freeScroll": false}'
             >
               {%- if collection != blank -%}
                 {%- for product in collection.products
                   limit: product_to_show
                 -%}
-                  <div class="f-column">
+                  <div class="m-column">
                     {% render 'product-card',
                       color_schema: section.settings.color_schema,
                       product: product,
@@ -107,7 +107,7 @@
                 {%- endfor -%}
               {%- else -%}
                 {%- for i in (1..product_to_show) -%}
-                  <div class="f-column">
+                  <div class="m-column">
                     {% render 'product-card-placeholder',
                       index: forloop.index
                     %}

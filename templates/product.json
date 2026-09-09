@@ -565,7 +565,7 @@
       ],
       "disabled": true,
       "custom_css": [
-        ".f-hero__content {max-width: 36rem;}"
+        ".m-hero__content {max-width: 36rem;}"
       ],
       "settings": {
         "container": "container-full",

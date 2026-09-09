@@ -1,9 +1,9 @@
 {% assign title = 'general.cart.coupon.title' | t %}
 {% capture content %}
   <div class="{{ class }} flex flex-col" data-index="{{ index }}" data-block="{{ block.type }}" {{ block.shopify_attributes }}>
-    <div class="f-cart-drawer__discount w-full">
+    <div class="m-cart-drawer__discount w-full">
       <form
-        class="f-cart-discount__form flex flex-col"
+        class="m-cart-discount__form flex flex-col"
         action="{{ routes.cart_url }}"
         method="POST"
       >

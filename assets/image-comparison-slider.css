@@ -1,30 +1,30 @@
-.f-image-comparison-slider {
+.m-image-comparison-slider {
   --color-foreground: 34, 34, 34;
 }
-.f-image-comparison-slider[data-animation] {
+.m-image-comparison-slider[data-animation] {
   --percent: 95%;
 }
 @media (min-width: 768px) {
-  .f-image-comparison-slider[data-animation] {
+  .m-image-comparison-slider[data-animation] {
     --percent: 98%;
   }
 }
-.f-image-comparison-slider[is-visible] {
+.m-image-comparison-slider[is-visible] {
   --percent: 50%;
 }
-.f-image-comparison-slider--media {
+.m-image-comparison-slider--media {
   background: rgb(243, 243, 243);
 }
-[data-layout=horizontal] .f-image-comparison-slider__after {
+[data-layout=horizontal] .m-image-comparison-slider__after {
   clip-path: inset(0px 0px 0px var(--percent, 50%));
 }
-[data-layout=vertical] .f-image-comparison-slider__after {
+[data-layout=vertical] .m-image-comparison-slider__after {
   clip-path: inset(var(--percent, 50%) 0px 0px 0px);
 }
-.f-image-comparison-slider__before .placeholder-svg {
+.m-image-comparison-slider__before .placeholder-svg {
   background-color: rgba(0, 0, 0, 0.4392156863);
 }
-.f-image-comparison-slider__button {
+.m-image-comparison-slider__button {
   z-index: 2;
   color: inherit;
   background-color: transparent;
@@ -33,34 +33,34 @@
   cursor: pointer;
   transition: none;
 }
-.f-image-comparison-slider__button svg {
+.m-image-comparison-slider__button svg {
   width: 12px;
 }
-.f-image-comparison-slider__button::before {
+.m-image-comparison-slider__button::before {
   content: "";
   position: absolute;
   background-color: #fff;
   pointer-events: none;
 }
-[data-layout=horizontal] .f-image-comparison-slider__button::before {
+[data-layout=horizontal] .m-image-comparison-slider__button::before {
   width: 0.2rem;
   height: 100%;
   inset-inline-start: 50%;
   margin-inline-start: -0.1rem;
 }
-[data-layout=vertical] .f-image-comparison-slider__button::before {
+[data-layout=vertical] .m-image-comparison-slider__button::before {
   width: 100%;
   height: 0.2rem;
   top: 50%;
   margin-top: -0.1rem;
 }
-[data-layout=horizontal] .f-image-comparison-slider__button::before {
+[data-layout=horizontal] .m-image-comparison-slider__button::before {
   top: 0;
 }
-[data-layout=vertical] .f-image-comparison-slider__button::before {
+[data-layout=vertical] .m-image-comparison-slider__button::before {
   left: 0;
 }
-[data-layout=horizontal] .f-image-comparison-slider__button {
+[data-layout=horizontal] .m-image-comparison-slider__button {
   top: 0;
   inset-inline-start: var(--percent, 50%);
   width: 28px;
@@ -68,7 +68,7 @@
   margin-inline-start: -14px;
   cursor: col-resize;
 }
-[data-layout=vertical] .f-image-comparison-slider__button {
+[data-layout=vertical] .m-image-comparison-slider__button {
   left: 0;
   top: var(--percent, 50%);
   width: 100%;
@@ -76,7 +76,7 @@
   margin-top: -1.4rem;
   cursor: row-resize;
 }
-.f-image-comparison-slider__button span {
+.m-image-comparison-slider__button span {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -91,7 +91,7 @@
   justify-content: center;
   box-shadow: 0 9px 11px rgba(0, 0, 0, 0.11);
 }
-.f-image-comparison-slider__button span:before {
+.m-image-comparison-slider__button span:before {
   content: "";
   width: 4.6rem;
   height: 4.6rem;
@@ -100,67 +100,67 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-[data-layout=vertical] .f-image-comparison-slider__button span {
+[data-layout=vertical] .m-image-comparison-slider__button span {
   transform: rotate(90deg) translate(-50%, 50%);
 }
-.f-image-comparison-slider__button span svg {
+.m-image-comparison-slider__button span svg {
   width: 2.4rem;
   height: 2.4rem;
 }
-.f-image-comparison-slider__animation {
+.m-image-comparison-slider__animation {
   height: 0.1rem;
 }
-.f-image-comparison-slider__product {
+.m-image-comparison-slider__product {
   margin-top: 2.4rem;
   gap: 1rem 1.6rem;
 }
-.f-image-comparison-slider__product-title {
+.m-image-comparison-slider__product-title {
   line-height: 1.5;
   padding: 0 !important;
 }
-.f-image-comparison-slider__product .f-price > * {
+.m-image-comparison-slider__product .m-price > * {
   margin: 0;
 }
 @media (max-width: 767.98px) {
-  .f-image-comparison-slider__product {
+  .m-image-comparison-slider__product {
     margin-top: 1.2rem;
   }
 }
-.f-image-comparison-slider.f-animating .f-image-comparison-slider__after {
+.m-image-comparison-slider.m-animating .m-image-comparison-slider__after {
   transition-property: clip-path;
   transition-duration: 1s;
   transition-timing-function: ease;
 }
-.f-image-comparison-slider.f-animating .f-image-comparison-slider__button {
+.m-image-comparison-slider.m-animating .m-image-comparison-slider__button {
   transition-property: top, inset-inline-start;
   transition-duration: 1s;
   transition-timing-function: ease;
 }
-.f-image-comparison-slider--small {
+.m-image-comparison-slider--small {
   --hero-height: 29rem;
 }
-.f-image-comparison-slider--medium {
+.m-image-comparison-slider--medium {
   --hero-height: 36rem;
 }
-.f-image-comparison-slider--large {
+.m-image-comparison-slider--large {
   --hero-height: 42rem;
 }
 @media (min-width: 768px) {
-  .f-image-comparison-slider--small {
+  .m-image-comparison-slider--small {
     --hero-height: 42rem;
   }
-  .f-image-comparison-slider--medium {
+  .m-image-comparison-slider--medium {
     --hero-height: 56rem;
   }
-  .f-image-comparison-slider--large {
+  .m-image-comparison-slider--large {
     --hero-height: 72rem;
   }
 }
-.f-image-comparison-slider__wrapper {
+.m-image-comparison-slider__wrapper {
   height: var(--hero-height);
 }
-.f-image-comparison-slider__wrapper img,
-.f-image-comparison-slider__wrapper svg {
+.m-image-comparison-slider__wrapper img,
+.m-image-comparison-slider__wrapper svg {
   display: block;
   max-width: 100%;
   position: absolute;
@@ -172,16 +172,16 @@
   pointer-events: none;
 }
 @media (max-width: 767.98px) {
-  .f-image-comparison-slider__wrapper.has-mobile-image .f-image-comparison-slider--image-desktop {
+  .m-image-comparison-slider__wrapper.has-mobile-image .m-image-comparison-slider--image-desktop {
     display: none;
   }
 }
 @media (min-width: 768px) {
-  .f-image-comparison-slider--image-mobile {
+  .m-image-comparison-slider--image-mobile {
     display: none !important;
   }
 }
-.f-image-comparison-slider__heading {
+.m-image-comparison-slider__heading {
   color: var(--color-text-body);
   background: var(--color-background);
   padding: 0.2rem 1rem;
@@ -192,7 +192,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-transform: inherit;
 }
-.f-image-comparison-slider__heading--plain {
+.m-image-comparison-slider__heading--plain {
   background: none;
   box-shadow: none;
   padding: 0;
@@ -201,17 +201,17 @@
   top: 1.4rem;
   inset-inline: 2.5rem auto;
 }
-.dragging .f-image-comparison-slider__heading {
+.dragging .m-image-comparison-slider__heading {
   opacity: 0;
   visibility: hidden;
 }
-.f-image-comparison-slider__after .f-image-comparison-slider__heading {
+.m-image-comparison-slider__after .m-image-comparison-slider__heading {
   inset-inline: auto 2rem;
 }
-.f-image-comparison-slider__after .f-image-comparison-slider__heading--plain {
+.m-image-comparison-slider__after .m-image-comparison-slider__heading--plain {
   inset-inline: auto 2.5rem;
 }
-.f-image-comparison-slider[data-layout=vertical] .f-image-comparison-slider__after .f-image-comparison-slider__heading {
+.m-image-comparison-slider[data-layout=vertical] .m-image-comparison-slider__after .m-image-comparison-slider__heading {
   inset-inline: 2rem auto;
   bottom: 20px;
   top: auto;

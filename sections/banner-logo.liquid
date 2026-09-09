@@ -77,7 +77,7 @@
     {%- endif -%}
     {%- if section.blocks.size > 0 -%}
       <div class="banner-logo__content-wrapper absolute inset-full flex flex md:content-overlay--center-bottom md-down:content-overlay--center-bottom">
-        <div class="f-text-blocks text-center">
+        <div class="m-text-blocks text-center">
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when 'title' -%}
@@ -123,7 +123,7 @@
                   <motion-element
                     data-motion="{{ animation_effect }}"
                     data-motion-delay="{{ motion_delay }}"
-                    class="block f-text-blocks__btn"
+                    class="block m-text-blocks__btn"
                   >
                     <a
                       class="btn {{ block.settings.button_style }} {{ block.settings.button_size }}"

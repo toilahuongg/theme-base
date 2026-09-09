@@ -34,7 +34,7 @@ class DetailsModal extends HTMLElement {
 	onBodyClick(event) {
 		if (
 			!this.contains(event.target) ||
-			event.target.classList.contains("f-password-modal__overlay")
+			event.target.classList.contains("m-password-modal__overlay")
 		)
 			this.close(false)
 	}

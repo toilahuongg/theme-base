@@ -47,8 +47,8 @@
 %}
 <div
   id="{{ section_id }}"
-  class="f-video f-section-padding{{ custom_class }}"
-  data-section-type="f-video"
+  class="m-video m-section-padding{{ custom_class }}"
+  data-section-type="m-video"
   data-section-id="{{ section.id }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
@@ -60,10 +60,10 @@
     <motion-element
       data-motion="{{ animation_effect }}"
       data-motion-delay="{{ motion_delay }}"
-      class="block f-video__wrapper relative"
+      class="block m-video__wrapper relative"
     >
       <noscript>
-        <div class="f-video__media">
+        <div class="m-video__media">
           <a
             href="{{ section.settings.video_url }}"
             class="video-section__poster"
@@ -101,24 +101,24 @@
         </div>
       </noscript>
       <deferred-media
-        class="f-video__media deferred-media no-js-hidden"
+        class="m-video__media deferred-media no-js-hidden"
         data-media-id="{{ section.settings.video_url.id }}"
         data-autoplay="{{ section.settings.autoplay_video }}"
         style="--aspect-ratio: {{ video_aspect_ratio }}"
       >
         <button
           id="Deferred-Poster-Modal-{{ section.settings.video_url.id }}"
-          class="f-video__poster media deferred-media__poster{% if animation_effect == 'zoom-fade' %} f-image{% endif %}"
+          class="m-video__poster media deferred-media__poster{% if animation_effect == 'zoom-fade' %} m-image{% endif %}"
           type="button"
           aria-label="{{ 'sections.video.load_video' | t: description: section.settings.description | escape }}"
         >
           {%- if cover_image != blank -%}
-            <div class="f-video__cover bg-image">
+            <div class="m-video__cover bg-image">
               {%- liquid
                 assign image_height = cover_image.width | divided_by: cover_image.aspect_ratio
               -%}
               <div
-                class="f-image"
+                class="m-image"
                 style="--aspect-ratio: {{ video_aspect_ratio }}"
               >
                 {{

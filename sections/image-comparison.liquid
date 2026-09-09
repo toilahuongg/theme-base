@@ -30,13 +30,13 @@
   id="{{ section_id }}"
   data-section-type="image-comparison-slider"
   data-section-id="{{ section.id }}"
-  class="{{ custom_class }} f-section-padding color-{{ section.settings.color_schema }}"
+  class="{{ custom_class }} m-section-padding color-{{ section.settings.color_schema }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
   <div class="{{ container }}">
     {% render 'index-section-header', section_settings: section.settings %}
-    <f-image-comparison-slider
-      class="f-image-comparison-slider block relative overflow-hidden"
+    <m-image-comparison-slider
+      class="m-image-comparison-slider block relative overflow-hidden"
       data-layout="{{ layout }}"
       {% if animated %}
         data-animation
@@ -44,7 +44,7 @@
     >
       {%- if animated -%}
         <span
-          class="f-image-comparison-slider__animation block absolute bottom-0 left-0 right-0 pointer-events-none"
+          class="m-image-comparison-slider__animation block absolute bottom-0 left-0 right-0 pointer-events-none"
         ></span>
       {%- endif -%}
       {% for block in section.blocks %}
@@ -52,10 +52,10 @@
           assign image = block.settings.image
           assign image_mobile = block.settings.image_mobile
           assign heading = block.settings.heading
-          assign heading_class = 'f-image-comparison-slider__heading absolute z-1 m-0 flex items-center justify-center text-center color-' | append: block.settings.color_scheme
+          assign heading_class = 'm-image-comparison-slider__heading absolute z-1 m-0 flex items-center justify-center text-center color-' | append: block.settings.color_scheme
           assign heading_plain_text = block.settings.heading_plain_text
           if heading_plain_text
-            assign heading_class = heading_class | append: ' f-image-comparison-slider__heading--plain'
+            assign heading_class = heading_class | append: ' m-image-comparison-slider__heading--plain'
           endif
           assign image_class = ''
           if image_mobile != blank
@@ -63,12 +63,12 @@
           endif
         %}
         {% if forloop.index == 1 %}
-          <div class="f-image-comparison-slider__before f-image-comparison-slider--media overflow-hidden relative">
+          <div class="m-image-comparison-slider__before m-image-comparison-slider--media overflow-hidden relative">
             {% if heading != blank -%}
               <p class="{{ heading_class }}">{{ heading }}</p>
             {%- endif %}
             <div
-              class="f-image-comparison-slider__wrapper f-image-comparison-slider--{{ image_height }}{{ image_class }}"
+              class="m-image-comparison-slider__wrapper m-image-comparison-slider--{{ image_height }}{{ image_class }}"
               {% if image_height == 'adapt' %}
                 style="--aspect-ratio: {{ aspect_ratio }}; --aspect-ratio-mobile: {{ aspect_ratio_mobile }}"
               {% endif %}
@@ -93,12 +93,12 @@
                   alt="{{ image.alt | escape }}"
                   width="{{ image.width }}"
                   height="{{ image.width | divided_by: image.aspect_ratio | round }}"
-                  class="f-image-comparison-slider--image-desktop"
+                  class="m-image-comparison-slider--image-desktop"
                 >
               {% else %}
                 {{
                   'lifestyle-1'
-                  | placeholder_svg_tag: 'placeholder-svg f-image-comparison-slider--image-desktop'
+                  | placeholder_svg_tag: 'placeholder-svg m-image-comparison-slider--image-desktop'
                 }}
               {% endif %}
               {% if image_mobile != blank %}
@@ -115,18 +115,18 @@
                   alt="{{ image_mobile.alt | escape }}"
                   width="{{ image_mobile.width }}"
                   height="{{ image_mobile.width | divided_by: image_mobile.aspect_ratio | round }}"
-                  class="f-image-comparison-slider--image-mobile"
+                  class="m-image-comparison-slider--image-mobile"
                 >
               {% endif %}
             </div>
           </div>
         {% else %}
-          <div class="f-image-comparison-slider__after f-image-comparison-slider--media overflow-hidden absolute top-0 left-0 w-full h-full z-1">
+          <div class="m-image-comparison-slider__after m-image-comparison-slider--media overflow-hidden absolute top-0 left-0 w-full h-full z-1">
             {% if heading != blank -%}
               <p class="{{ heading_class }}">{{ heading }}</p>
             {%- endif %}
             <div
-              class="f-image-comparison-slider__wrapper f-image-comparison-slider--{{ image_height }}{{ image_class }}"
+              class="m-image-comparison-slider__wrapper m-image-comparison-slider--{{ image_height }}{{ image_class }}"
               {% if image_height == 'adapt' %}
                 style="--aspect-ratio: {{ aspect_ratio }}; --aspect-ratio-mobile: {{ aspect_ratio_mobile }}"
               {% endif %}
@@ -151,12 +151,12 @@
                   alt="{{ image.alt | escape }}"
                   width="{{ image.width }}"
                   height="{{ image.width | divided_by: image.aspect_ratio | round }}"
-                  class="f-image-comparison-slider--image-desktop"
+                  class="m-image-comparison-slider--image-desktop"
                 >
               {% else %}
                 {{
                   'lifestyle-2'
-                  | placeholder_svg_tag: 'placeholder-svg f-image-comparison-slider--image-desktop'
+                  | placeholder_svg_tag: 'placeholder-svg m-image-comparison-slider--image-desktop'
                 }}
               {% endif %}
               {% if image_mobile != blank %}
@@ -173,7 +173,7 @@
                   alt="{{ image_mobile.alt | escape }}"
                   width="{{ image_mobile.width }}"
                   height="{{ image_mobile.width | divided_by: image_mobile.aspect_ratio | round }}"
-                  class="f-image-comparison-slider--image-mobile"
+                  class="m-image-comparison-slider--image-mobile"
                 >
               {% endif %}
             </div>
@@ -181,7 +181,7 @@
         {% endif %}
       {% endfor %}
       <button
-        class="f-image-comparison-slider__button absolute"
+        class="m-image-comparison-slider__button absolute"
         aria-label="image-comparison"
       >
         <span>
@@ -201,7 +201,7 @@
           </svg>
         </span>
       </button>
-    </f-image-comparison-slider>
+    </m-image-comparison-slider>
   </div>
 </section>
 {% schema %}

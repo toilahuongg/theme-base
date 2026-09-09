@@ -21,7 +21,7 @@ export default class Confetti {
       this.container.style.position = "relative";
     }
 
-    containerEl.classList.add("f-confetti-container");
+    containerEl.classList.add("m-confetti-container");
 
     this.container.appendChild(containerEl);
 
@@ -53,8 +53,8 @@ export default class Confetti {
         ];
 
       confettiEl.classList.add(
-        "f-confetti",
-        "f-confetti--animation-" + confettiAnimation
+        "m-confetti",
+        "m-confetti--animation-" + confettiAnimation
       );
       confettiEl.style.left = confettiLeft;
       confettiEl.style.width = confettiSize;

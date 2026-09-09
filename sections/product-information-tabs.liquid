@@ -13,25 +13,25 @@
 <script src="{{ 'tabs-component.js' | asset_url }}" defer="defer"></script>
 <div
     id="{{ section_id }}"
-    class="f-information-tabs{{ custom_class }} f-section-padding color-{{ section.settings.color_schema }}"
+    class="m-information-tabs{{ custom_class }} m-section-padding color-{{ section.settings.color_schema }}"
     data-section-type="products-information-tabs"
     data-section-id="{{ section.id }}"
     style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
     <div class="{{ container }}">
         {% if section.blocks.size > 0 %}
-        <div class="f-product-tabs__wrapper">
-            <tabs-component class="f-tabs f-tabs--collapsible" data-selected="0">
-                <div class="f-tabs__header no-js-hidden hidden md:flex justify-center" role="tablist" aria-label="{{ 'accessibility.product_information_tabs' | t }}">
-                  <div class="f-tabs__header-group">
+        <div class="m-product-tabs__wrapper">
+            <tabs-component class="m-tabs m-tabs--collapsible" data-selected="0">
+                <div class="m-tabs__header no-js-hidden hidden md:flex justify-center" role="tablist" aria-label="{{ 'accessibility.product_information_tabs' | t }}">
+                  <div class="m-tabs__header-group">
                     {% for block in section.blocks %}
-                        <button class="f-tabs__nav focus-inset" role="tab" id="{{- block.id -}}" data-tab-type="{{ block.type }}">{{ block.settings.header }}</button>
+                        <button class="m-tabs__nav focus-inset" role="tab" id="{{- block.id -}}" data-tab-type="{{ block.type }}">{{ block.settings.header }}</button>
                     {% endfor %}
                   </div>
                 </div>
-                <div class="f-product-tabs__blocks" data-collapsible-parent>
+                <div class="m-product-tabs__blocks" data-collapsible-parent>
                     {% for block in section.blocks %}
-                        <div class="f-tabs__content" id="tab-{{ block.id }}" {% unless forloop.first %} hidden{% endunless %} role="tabpanel" {{ block.shopify_attributes }}>
+                        <div class="m-tabs__content" id="tab-{{ block.id }}" {% unless forloop.first %} hidden{% endunless %} role="tabpanel" {{ block.shopify_attributes }}>
                           <collapsible-tab class="collapsible__item no-js-hidden" open="{{ block.settings.default_open }}">
                             <button class="collapsible__button" data-trigger>
                               <span>{{- block.settings.header -}}</span>
@@ -40,7 +40,7 @@
                                     <svg width="1.5" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                             </button>
-                            <div class="f-tabs__content-inner" data-content>
+                            <div class="m-tabs__content-inner" data-content>
                               <div class="rte py-sm">
                                 {% case block.type %}
                                   {% when 'description' %}
@@ -68,7 +68,7 @@
                                   <svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </span>
                               </summary>
-                              <div class="f-tabs__content-inner" data-content>
+                              <div class="m-tabs__content-inner" data-content>
                                 <div class="rte py-sm">
                                   {% case block.type %}
                                     {% when 'description' %}

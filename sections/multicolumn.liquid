@@ -26,7 +26,7 @@
 
   assign swiper_class = ''
   if enable_swipe_mobile
-    assign swiper_class = ' f-swiper f-swiper--no-scrollbar f-swiper--' | append: section.settings.column_mobile | append: '-cols'
+    assign swiper_class = ' m-swiper m-swiper--no-scrollbar m-swiper--' | append: section.settings.column_mobile | append: '-cols'
     if columns == 3
       assign swiper_class = swiper_class | append: ' lg-down-swiper'
     endif
@@ -38,7 +38,7 @@
 %}
 <div
   id="{{ section_id }}"
-  class="f-multicolumn{{ custom_class }} f-section-padding color-{{ section.settings.color_schema }}"
+  class="m-multicolumn{{ custom_class }} m-section-padding color-{{ section.settings.color_schema }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
   <div class="{{ container }}">
@@ -50,7 +50,7 @@
       data-motion="{{ animation_effect }}"
       class="block"
     >
-      <div class="f-grid f-grid-{{ section.settings.column_mobile }}-cols md:f-grid-{{ columns_tablet }}-cols lg:f-grid-{{ columns }}-cols f-grid--row-gap-{{ section.settings.row_gap }} f-grid--gap-{{ section.settings.column_gap }}{{ swiper_class }}">
+      <div class="m-grid m-grid-{{ section.settings.column_mobile }}-cols md:m-grid-{{ columns_tablet }}-cols lg:m-grid-{{ columns }}-cols m-grid--row-gap-{{ section.settings.row_gap }} m-grid--gap-{{ section.settings.column_gap }}{{ swiper_class }}">
         {%- for block in section.blocks -%}
           {%- liquid
             assign show_image = block.settings.show_image
@@ -66,7 +66,7 @@
               assign inline_css = inline_css | append: '--image-width: ' | append: section.settings.custom_image_width | append: 'px;'
             endif
           -%}
-          <div class="f-column" {{ block.shopify_attributes }}>
+          <div class="m-column" {{ block.shopify_attributes }}>
             <div
               class="grid-list__column multicolumn-card multicolumn-card--{{ layout }} multicolumn-card--image-{{ section.settings.image_width }}"
               {% if inline_css != blank %}
@@ -80,7 +80,7 @@
                       aria-label="{{ 'accessibility.read_more' | t: title: block.settings.title }}"
                       href="{{ image_link | escape }}"
                     {% endif %}
-                    class="multicolumn-card__image{% if image_link != blank %} f-image-hover-effect__{{settings.image_hover_effect}}{% endif %}"
+                    class="multicolumn-card__image{% if image_link != blank %} m-image-hover-effect__{{settings.image_hover_effect}}{% endif %}"
                   >
                     {% if image != blank %}
                       {% render 'responsive-image',
@@ -90,7 +90,7 @@
                         index: forloop.index
                       %}
                     {% else %}
-                      <div class="f-image f-image--placeholder">
+                      <div class="m-image m-image--placeholder">
                         {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
                       </div>
                     {% endif %}

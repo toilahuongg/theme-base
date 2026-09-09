@@ -132,7 +132,7 @@ class FacetFiltersForm extends HTMLElement {
 
     facetsToRender.forEach((element) => {
       const target = document.querySelector(
-        `.f-facets__block[data-index="${element.dataset.index}"]`
+        `.m-facets__block[data-index="${element.dataset.index}"]`
       );
       if (!target) return;
       target.textContent = "";
@@ -214,12 +214,12 @@ class FacetFiltersForm extends HTMLElement {
   }
 }
 FacetFiltersForm.selectors = {
-  container: ".f-facets__container",
+  container: ".m-facets__container",
   productGrid: "[data-products-grid]",
   productCount: "[data-product-count]",
   filtersForm: "[data-facet-form]",
   facetWrapper: "[data-facets-wrapper]",
-  facetBlock: ".f-facets__block",
+  facetBlock: ".m-facets__block",
 };
 
 FacetFiltersForm.section = document.querySelector("#ProductGridContainer");

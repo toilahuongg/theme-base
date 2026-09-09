@@ -8,7 +8,7 @@ class GiftWrappingComponent extends HTMLElement {
     this.giftWrapping = this.dataset.giftWrapping;
     this.cartItemsSize = parseInt(this.getAttribute("cart-items-size"));
     this.giftWrapsInCart = parseInt(this.getAttribute("gift-wraps-in-cart"));
-    this.loadingIcon = this.querySelector(".f-gift-wrapping--loading");
+    this.loadingIcon = this.querySelector(".m-gift-wrapping--loading");
 
     // When the gift-wrapping checkbox is checked or unchecked.
     this.querySelector('[name="attributes[gift-wrapping]"]').addEventListener(

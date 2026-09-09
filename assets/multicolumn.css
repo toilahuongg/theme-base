@@ -12,7 +12,7 @@
   display: inline-block;
   min-width: var(--image-width);
 }
-.multicolumn-card__image .f-image--placeholder {
+.multicolumn-card__image .m-image--placeholder {
   display: inline-block;
 }
 .multicolumn-card--horizontal {

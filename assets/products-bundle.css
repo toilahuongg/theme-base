@@ -26,38 +26,38 @@
   .products-bundle__grid-item {
     flex: 9;
   }
-  .products-bundle__grid-item.f-card {
+  .products-bundle__grid-item.m-card {
     flex: 11;
   }
 }
 .products-bundle.is-hover .products-bundle__product:not(.is-active) {
   opacity: 0.3 !important;
 }
-.products-bundle .f-lookbook-card__pin-icon::after,
-.products-bundle .f-lookbook-card__pin-icon::before {
+.products-bundle .m-lookbook-card__pin-icon::after,
+.products-bundle .m-lookbook-card__pin-icon::before {
   display: none;
 }
-.products-bundle .f-lookbook-card__pin {
+.products-bundle .m-lookbook-card__pin {
   pointer-events: all;
 }
-.products-bundle .f-lookbook-card__pin .f-lookbook-card__pin-icon {
+.products-bundle .m-lookbook-card__pin .m-lookbook-card__pin-icon {
   transition: all 0.3s ease;
 }
-.products-bundle .f-lookbook-card__pin--light .f-lookbook-card__pin-icon {
+.products-bundle .m-lookbook-card__pin--light .m-lookbook-card__pin-icon {
   color: #222;
 }
-.products-bundle .f-lookbook-card__pin--light:hover .f-lookbook-card__pin-icon, .products-bundle .f-lookbook-card__pin--light.is-active .f-lookbook-card__pin-icon {
+.products-bundle .m-lookbook-card__pin--light:hover .m-lookbook-card__pin-icon, .products-bundle .m-lookbook-card__pin--light.is-active .m-lookbook-card__pin-icon {
   color: #fff;
   background-color: #222;
 }
-.products-bundle .f-lookbook-card__pin--dark .f-lookbook-card__pin-icon {
+.products-bundle .m-lookbook-card__pin--dark .m-lookbook-card__pin-icon {
   color: #fff;
 }
-.products-bundle .f-lookbook-card__pin--dark:hover .f-lookbook-card__pin-icon, .products-bundle .f-lookbook-card__pin--dark.is-active .f-lookbook-card__pin-icon {
+.products-bundle .m-lookbook-card__pin--dark:hover .m-lookbook-card__pin-icon, .products-bundle .m-lookbook-card__pin--dark.is-active .m-lookbook-card__pin-icon {
   color: #222;
   background-color: #fff;
 }
-.products-bundle .f-lookbook-card__pin-icon {
+.products-bundle .m-lookbook-card__pin-icon {
   width: 3rem;
   height: 3rem;
 }
@@ -70,9 +70,9 @@
   border-radius: 50%;
   background: var(--color-bg-2);
 }
-.products-bundle .f-price__sale,
-.products-bundle .f-price__regular, .products-bundle__product-title,
-.products-bundle .f-price {
+.products-bundle .m-price__sale,
+.products-bundle .m-price__regular, .products-bundle__product-title,
+.products-bundle .m-price {
   margin: 0;
   line-height: 1.5;
 }

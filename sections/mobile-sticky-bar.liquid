@@ -74,7 +74,7 @@
     }
     @media (max-width: 767px) {
       body.mobile-sticky-bar-enabled {
-        padding-bottom: var(--f-mobile-navbar-height, 6.6rem);
+        padding-bottom: var(--m-mobile-navbar-height, 6.6rem);
       }
     }
   {% endstyle %}
@@ -219,7 +219,7 @@
     }
 
     connectedCallback() {
-      document.documentElement.style.setProperty('--f-mobile-navbar-height', this.offsetHeight + 'px');
+      document.documentElement.style.setProperty('--m-mobile-navbar-height', this.offsetHeight + 'px');
     }
   }
   customElements.define('mobile-sticky-bar', MobileStickyBar);

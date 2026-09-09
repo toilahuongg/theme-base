@@ -2,7 +2,7 @@
 {% if show_search %}
   <div class="header-search-form {{ search_form_class }}">
     <drawer-opener
-      class="site-header__search site-header__link f-tablet-hidden no-js-hidden"
+      class="site-header__search site-header__link m-tablet-hidden no-js-hidden"
       data-drawer="#Drawer-Search"
     >
       <button
@@ -24,7 +24,7 @@
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="f-icon-svg f-icon-svg--medium f-icon-search"
+          class="m-icon-svg m-icon-svg--medium m-icon-search"
         >
           <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
@@ -46,7 +46,7 @@
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="f-icon-svg f-icon-svg--medium f-icon-search"
+                class="m-icon-svg m-icon-svg--medium m-icon-search"
               >
                 <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
@@ -54,13 +54,13 @@
           </span>
           {% render 'icon-close', class: 'hidden' %}
         </summary>
-        <div class="f-search-no-js">
-          <form action="{{ routes.search_url }}" method="get" role="search" class="f-search-no-js__form">
-            <div class="f-search-no-js__field w-full">
-              <label class="visually-hidden" for="f-search-no-js-input">{{ 'general.search.search' | t }}</label>
+        <div class="m-search-no-js">
+          <form action="{{ routes.search_url }}" method="get" role="search" class="m-search-no-js__form">
+            <div class="m-search-no-js__field w-full">
+              <label class="visually-hidden" for="m-search-no-js-input">{{ 'general.search.search' | t }}</label>
               <input
-                class="form-control focus-inset f-search-no-js__input"
-                id="f-search-no-js-input"
+                class="form-control focus-inset m-search-no-js__input"
+                id="m-search-no-js-input"
                 type="text"
                 name="q"
                 value=""
@@ -79,7 +79,7 @@
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="f-icon-svg f-icon-svg--medium f-icon-search"
+                  class="m-icon-svg m-icon-svg--medium m-icon-search"
                 >
                   <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>

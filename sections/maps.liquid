@@ -15,36 +15,36 @@
   endif
 -%}
 <style>
-  .f-map {
+  .m-map {
     position: relative;
     --map-height: {{ section.settings.height }}px;
   }
-  .f-map__info {
+  .m-map__info {
     position: absolute;
     inset-inline-start: 2rem;
     top: 50%;
     transform: translateY(-50%);
     width: 35rem;
   }
-  .f-map__info-inner {
+  .m-map__info-inner {
     background: #fff;
     padding: 2rem 1.5rem;
   }
-  .f-map__info h3 {
+  .m-map__info h3 {
     margin-bottom: 1.2rem;
   }
-  .f-map__info .social-links,
-  .f-map__info .btn {
+  .m-map__info .social-links,
+  .m-map__info .btn {
     margin-top: 1.6rem;
   }
-  .f-map--initialized .f-map__banner {
+  .m-map--initialized .m-map__banner {
     display: none;
   }
-  .f-map-section .container-full .f-map {
+  .m-map-section .container-full .m-map {
     margin: 0 -15px;
   }
   @media (max-width: 767.98px) {
-    .f-map .f-map__info {
+    .m-map .m-map__info {
       position: relative;
       transform: none;
       width: calc(100% - 3rem);
@@ -55,14 +55,14 @@
       box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
     }
 
-    .f-map {
+    .m-map {
       margin: 0 -15px;
     }
   }
 </style>
-<div id="{{ section_id }}" class="f-map-section{{ custom_class }}">
+<div id="{{ section_id }}" class="m-map-section{{ custom_class }}">
   <div class="{{ container }}">
-    <div class="f-map">
+    <div class="m-map">
       <g-map
         class="block h-full relative"
         data-api-key="{{ section.settings.api_key }}"
@@ -74,7 +74,7 @@
         style="height: {{ section.settings.height }}px"
       >
         <div class="map h-full"></div>
-        <div class="f-map__banner bg-image">
+        <div class="m-map__banner bg-image">
           {%- if banner == blank -%}
             {{
               'lifestyle-1'
@@ -92,10 +92,10 @@
         </div>
       </g-map>
       {%- if section.blocks.size > 0 -%}
-        <div class="f-map__info absolute">
+        <div class="m-map__info absolute">
           <motion-element
             data-motion="{{ animation_effect }}"
-            class="block w-full f-map__info-inner"
+            class="block w-full m-map__info-inner"
           >
             {%- for block in section.blocks -%}
               {%- case block.type -%}

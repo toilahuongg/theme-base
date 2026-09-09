@@ -95,7 +95,7 @@
 %}
 <div
   id="{{ section_id }}"
-  class="f-testimonials f-testimonials--{{ design }}{{ custom_class }} f-section__{{ container }} f-section-padding color-{{ section.settings.color_schema }} overflow-hidden"
+  class="m-testimonials m-testimonials--{{ design }}{{ custom_class }} m-section__{{ container }} m-section-padding color-{{ section.settings.color_schema }} overflow-hidden"
   data-section-type="testimonials"
   data-section-id="{{ section.id }}"
   data-enable-slider="{{ enable_slider }}"
@@ -111,11 +111,11 @@
     %}
     <grid-list
       data-motion="{{ animation_effect }}"
-      class="block f-testimonials__wrapper"
+      class="block m-testimonials__wrapper"
     >
       <flickity-component
-        class="f-grid sm:f-grid-2-cols md:f-grid-3-cols lg:f-grid-{{ columns }}-cols f-grid--gap-{{ section.settings.column_gap }} flickity-disable {% if enable_slider %}md:flickity-enable {% endif %}flickity-button-initialized f-swiper f-swiper--no-scrollbar{{ flickity_classes }}"
-        data-slider-options='{"autoPlay": {{ autoplay }}, "pageDots": {{ show_dots }}, "prevNextButtons": {{ show_nav }}, "groupCells": {{ group_cells }}, "cellAlign": "{{ cell_align }}", "cellSelector": ".f-column", "wrapAround": true, "percentPosition": true, "contain": true}'
+        class="m-grid sm:m-grid-2-cols md:m-grid-3-cols lg:m-grid-{{ columns }}-cols m-grid--gap-{{ section.settings.column_gap }} flickity-disable {% if enable_slider %}md:flickity-enable {% endif %}flickity-button-initialized m-swiper m-swiper--no-scrollbar{{ flickity_classes }}"
+        data-slider-options='{"autoPlay": {{ autoplay }}, "pageDots": {{ show_dots }}, "prevNextButtons": {{ show_nav }}, "groupCells": {{ group_cells }}, "cellAlign": "{{ cell_align }}", "cellSelector": ".m-column", "wrapAround": true, "percentPosition": true, "contain": true}'
         data-slider-columns="{{ columns }}"
         data-enable-slider="{{ enable_slider }}"
         {% if show_page and section.blocks.size > 1 %}
@@ -131,50 +131,50 @@
             assign show_image = block.settings.show_image
           -%}
           <div
-            class="f-column"
+            class="m-column"
             {{ block.shopify_attributes }}
             {% if block.settings.icon != 'none' %}
               style="--color-star: {{ stars_color }}"
             {% endif %}
           >
-            <div class="grid-list__column f-testimonial f-testimonial--{{ design }}{% if design == 'unbalanced' %} color-{{ section.settings.card_color_schema }}{% endif %}">
+            <div class="grid-list__column m-testimonial m-testimonial--{{ design }}{% if design == 'unbalanced' %} color-{{ section.settings.card_color_schema }}{% endif %}">
               {% case design %}
                 {% when 'unbalanced' %}
-                  <div class="f-testimonial__inner flex flex-col">
-                    <div class="f-testimonial__content flex flex-1">
+                  <div class="m-testimonial__inner flex flex-col">
+                    <div class="m-testimonial__content flex flex-1">
                       <div class="flex-1">
                         {%- if block.settings.icon != 'none'
                           and block.settings.icon == 'quote'
                         -%}
-                          <div class="f-testimonial__icon f-testimonial__icon--{{ block.settings.icon }}">
+                          <div class="m-testimonial__icon m-testimonial__icon--{{ block.settings.icon }}">
                             {% render 'icon-testimonials',
                               icon_name: block.settings.icon
                             %}
                           </div>
                         {%- endif -%}
                         {%- if author != blank -%}
-                          <p class="f-testimonial__author">{{ author }}</p>
+                          <p class="m-testimonial__author">{{ author }}</p>
                         {%- endif -%}
                         {%- if block.settings.icon != 'none'
                           and block.settings.icon != 'quote'
                         -%}
-                          <div class="f-testimonial__icon f-testimonial__icon--{{ block.settings.icon }}">
+                          <div class="m-testimonial__icon m-testimonial__icon--{{ block.settings.icon }}">
                             {% render 'icon-testimonials',
                               icon_name: block.settings.icon
                             %}
                           </div>
                         {%- endif -%}
                         {%- if bio != blank -%}
-                          <p class="f-testimonial__bio font-medium">
+                          <p class="m-testimonial__bio font-medium">
                             {{ bio }}
                           </p>
                         {%- endif -%}
                         {%- if text != blank -%}
-                          <div class="f-testimonial__text">{{ text }}</div>
+                          <div class="m-testimonial__text">{{ text }}</div>
                         {%- endif -%}
                       </div>
                       {%- if show_image -%}
-                        <div class="f-testimonial__image">
+                        <div class="m-testimonial__image">
                           {% if image != blank %}
                             {% render 'responsive-image', image: image %}
                           {% else %}
@@ -184,10 +184,10 @@
                       {%- endif -%}
                     </div>
                     {%- if block.settings.product != blank -%}
-                      <div class="f-testimonial__footer">
+                      <div class="m-testimonial__footer">
                         {%- assign product = all_products[block.settings.product] -%}
                         <a
-                          class="f-testimonial__product flex items-center"
+                          class="m-testimonial__product flex items-center"
                           href="{{ product.url }}"
                           target="_blank"
                           style="--image-width: 40px;"
@@ -195,7 +195,7 @@
                           {% render 'responsive-image',
                             image: product.featured_image
                           %}
-                          <p class="f-testimonial__product-title m-0 h6">
+                          <p class="m-testimonial__product-title m-0 h6">
                             {{ product.title }}
                           </p>
                         </a>
@@ -203,9 +203,9 @@
                     {%- endif -%}
                   </div>
                 {%- when 'zigzag' -%}
-                  <div class="f-testimonial__inner">
+                  <div class="m-testimonial__inner">
                     {%- if image != blank -%}
-                      <div class="f-testimonial__image">
+                      <div class="m-testimonial__image">
                         {% render 'responsive-image',
                           image: image,
                           wrapper_class: 'w-full'
@@ -213,48 +213,48 @@
                       </div>
                     {%- endif -%}
                     {%- if block.settings.icon != 'none' -%}
-                      <div class="f-testimonial__icon f-testimonial__icon--{{ block.settings.icon }}">
+                      <div class="m-testimonial__icon m-testimonial__icon--{{ block.settings.icon }}">
                         {% render 'icon-testimonials',
                           icon_name: block.settings.icon
                         %}
                       </div>
                     {%- endif -%}
                     {%- if text != blank -%}
-                      <div class="f-testimonial__text">{{ text }}</div>
+                      <div class="m-testimonial__text">{{ text }}</div>
                     {%- endif -%}
-                    <div class="f-testimonial__inner-bottom">
+                    <div class="m-testimonial__inner-bottom">
                       {%- if author != blank -%}
-                        <p class="f-testimonial__author">{{ author }}</p>
+                        <p class="m-testimonial__author">{{ author }}</p>
                       {%- endif -%}
                       {%- if bio != blank -%}
-                        <p class="f-testimonial__bio">{{ bio }}</p>
+                        <p class="m-testimonial__bio">{{ bio }}</p>
                       {%- endif -%}
                     </div>
                   </div>
                 {%- else -%}
-                  <div class="f-testimonial__inner flex flex-col{% if show_quotes_icon %} show-quotes-icon{% endif %}">
+                  <div class="m-testimonial__inner flex flex-col{% if show_quotes_icon %} show-quotes-icon{% endif %}">
                     {%- if block.settings.icon != 'none' -%}
-                      <div class="f-testimonial__icon f-testimonial__icon--{{ block.settings.icon }}">
+                      <div class="m-testimonial__icon m-testimonial__icon--{{ block.settings.icon }}">
                         {% render 'icon-testimonials',
                           icon_name: block.settings.icon
                         %}
                       </div>
                     {%- endif -%}
                     {%- if text != blank -%}
-                      <div class="f-testimonial__text">{{ text }}</div>
+                      <div class="m-testimonial__text">{{ text }}</div>
                     {%- endif -%}
-                    <div class="f-testimonial__inner-bottom{% if image != blank %} f-testimonial__inner-bottom-has-image{% endif %}">
+                    <div class="m-testimonial__inner-bottom{% if image != blank %} m-testimonial__inner-bottom-has-image{% endif %}">
                       {%- if image != blank -%}
-                        <div class="f-testimonial__inner-bottom-left">
+                        <div class="m-testimonial__inner-bottom-left">
                           {% render 'responsive-image', image: image %}
                         </div>
                       {%- endif -%}
-                      <div class="f-testimonial__inner-bottom-right">
+                      <div class="m-testimonial__inner-bottom-right">
                         {%- if author != blank -%}
-                          <p class="f-testimonial__author">{{ author }}</p>
+                          <p class="m-testimonial__author">{{ author }}</p>
                         {%- endif -%}
                         {%- if bio != blank -%}
-                          <p class="f-testimonial__bio font-medium">
+                          <p class="m-testimonial__bio font-medium">
                             {{ bio }}
                           </p>
                         {%- endif -%}

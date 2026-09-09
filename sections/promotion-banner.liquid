@@ -28,8 +28,8 @@
   class="promotion-banner{{ custom_class }}"
 >
   <div class="{{ container }}">
-    <div class="promotion-banner__wrapper f-section-padding color-{{ section.settings.color_schema }}">
-      <div class="promotion-banner__content flex flex-col md:f-grid f-grid-{{ section.blocks.size }}-cols">
+    <div class="promotion-banner__wrapper m-section-padding color-{{ section.settings.color_schema }}">
+      <div class="promotion-banner__content flex flex-col md:m-grid m-grid-{{ section.blocks.size }}-cols">
         {%- for block in section.blocks -%}
           {%- liquid
             assign alignment = block.settings.align_text
@@ -43,11 +43,11 @@
             assign motion_delay = 0
           -%}
           <div
-            class="f-column flex items-center justify-{{ alignment }} relative{% unless forloop.last %} f-line-block{% endunless %}"
+            class="m-column flex items-center justify-{{ alignment }} relative{% unless forloop.last %} m-line-block{% endunless %}"
             {{ block.shopify_attributes }}
             style="--content-width: {{ block.settings.content_width }}px;"
           >
-            <div class="f-text-blocks w-full f-blocks-padding f-align-content-container--{{ block.settings.align_content_container }} text-{{ block.settings.align_text }}">
+            <div class="m-text-blocks w-full m-blocks-padding m-align-content-container--{{ block.settings.align_content_container }} text-{{ block.settings.align_text }}">
               {%- if block.settings.subheading != blank -%}
                 <motion-element
                   data-motion="{{ animation_effect }}"
@@ -100,7 +100,7 @@
                 <motion-element
                   data-motion="{{ animation_effect }}"
                   data-motion-delay="{{ motion_delay }}"
-                  class="f-text-blocks__btn"
+                  class="m-text-blocks__btn"
                 >
                   <a
                     class="btn {{ block.settings.button_style }}"

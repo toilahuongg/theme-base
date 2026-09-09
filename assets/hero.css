@@ -1,117 +1,117 @@
-.f-hero .container-full {
+.m-hero .container-full {
   padding: 0;
 }
-.f-hero:not(.f-hero--mobile) .f-hero--small {
+.m-hero:not(.m-hero--mobile) .m-hero--small {
   --hero-height: 29rem;
 }
-.f-hero:not(.f-hero--mobile) .f-hero--medium {
+.m-hero:not(.m-hero--mobile) .m-hero--medium {
   --hero-height: 36rem;
 }
-.f-hero:not(.f-hero--mobile) .f-hero--large {
+.m-hero:not(.m-hero--mobile) .m-hero--large {
   --hero-height: 42rem;
 }
 @media (min-width: 768px) {
-  .f-hero--small {
+  .m-hero--small {
     --hero-height: 42rem;
   }
-  .f-hero--medium {
+  .m-hero--medium {
     --hero-height: 56rem;
   }
-  .f-hero--large {
+  .m-hero--large {
     --hero-height: 72rem;
   }
-  .f-hero:not(.f-hero--adapt) .f-hero__wrapper::before {
+  .m-hero:not(.m-hero--adapt) .m-hero__wrapper::before {
     display: none;
   }
 }
 @media (max-width: 767.98px) {
-  .f-hero-mobile--small {
+  .m-hero-mobile--small {
     --hero-height: 29rem;
   }
-  .f-hero-mobile--medium {
+  .m-hero-mobile--medium {
     --hero-height: 36rem;
   }
-  .f-hero-mobile--large {
+  .m-hero-mobile--large {
     --hero-height: 42rem;
   }
-  .f-hero-mobile--extra-large {
+  .m-hero-mobile--extra-large {
     --hero-height: 66rem;
   }
-  .f-hero:not(.f-hero-mobile--adapt) .f-hero__wrapper::before {
+  .m-hero:not(.m-hero-mobile--adapt) .m-hero__wrapper::before {
     display: none;
   }
 }
-.f-hero__wrapper {
+.m-hero__wrapper {
   min-height: var(--hero-height);
 }
-.f-hero__content {
+.m-hero__content {
   z-index: 1;
   color: var(--text-color);
 }
 @media (min-width: 768px) {
-  .f-hero__content {
+  .m-hero__content {
     max-width: 60%;
   }
 }
-.f-hero__content .btn--underline {
+.m-hero__content .btn--underline {
   color: currentColor;
 }
-.f-hero__content-wrapper {
+.m-hero__content-wrapper {
   padding-top: var(--vertical-content-padding, 4rem);
   padding-bottom: var(--vertical-content-padding, 4rem);
 }
-.f-hero__content-wrapper:not(.container) {
+.m-hero__content-wrapper:not(.container) {
   max-width: 100%;
 }
 @media (max-width: 767.98px) {
-  .f-hero__content-wrapper {
+  .m-hero__content-wrapper {
     padding-top: var(--vertical-content-padding-mobile, 4rem);
     padding-bottom: var(--vertical-content-padding-mobile, 4rem);
   }
 }
 @media (max-width: 767.98px) {
-  .f-hero__wrapper--mobile-stack {
+  .m-hero__wrapper--mobile-stack {
     padding: 0;
   }
-  .f-hero__wrapper--mobile-stack:before,
-  .f-hero__wrapper--mobile-stack .bg-overlay {
+  .m-hero__wrapper--mobile-stack:before,
+  .m-hero__wrapper--mobile-stack .bg-overlay {
     display: none;
   }
-  .f-hero__wrapper--mobile-stack .f-hero__content-wrapper {
+  .m-hero__wrapper--mobile-stack .m-hero__content-wrapper {
     padding: 0;
     position: static;
   }
-  .f-hero__wrapper--mobile-stack .f-hero__bg--mobile {
+  .m-hero__wrapper--mobile-stack .m-hero__bg--mobile {
     position: relative;
   }
-  .f-hero__wrapper--mobile-stack .f-hero__bg--desktop {
+  .m-hero__wrapper--mobile-stack .m-hero__bg--desktop {
     position: relative !important;
   }
-  .f-hero__wrapper--mobile-stack .f-hero__bg {
+  .m-hero__wrapper--mobile-stack .m-hero__bg {
     height: var(--hero-height);
     position: relative;
   }
-  .f-hero__wrapper--mobile-stack .f-hero__content {
+  .m-hero__wrapper--mobile-stack .m-hero__content {
     width: 100%;
     padding: 2rem 1.5rem 0;
     color: var(--color-text-body);
   }
-  .f-hero__wrapper--mobile-stack .f-video-wrapper {
+  .m-hero__wrapper--mobile-stack .m-video-wrapper {
     position: relative !important;
   }
-  .f-hero-mobile--adapt .f-hero__wrapper--mobile-stack .f-hero__media {
+  .m-hero-mobile--adapt .m-hero__wrapper--mobile-stack .m-hero__media {
     position: static !important;
   }
-  .f-hero-mobile--adapt .f-hero__wrapper--mobile-stack .f-hero__bg {
+  .m-hero-mobile--adapt .m-hero__wrapper--mobile-stack .m-hero__bg {
     height: auto;
   }
 }
-.f-hero:not(.f-hero--adapt) .f-video-wrapper,
-.f-hero:not(.f-hero--adapt) .f-hero__bg {
+.m-hero:not(.m-hero--adapt) .m-video-wrapper,
+.m-hero:not(.m-hero--adapt) .m-hero__bg {
   height: var(--hero-height);
 }
-.f-hero .f-hero__bg img,
-.f-hero .f-hero__bg svg {
+.m-hero .m-hero__bg img,
+.m-hero .m-hero__bg svg {
   height: 100%;
   width: 100%;
   object-fit: cover;

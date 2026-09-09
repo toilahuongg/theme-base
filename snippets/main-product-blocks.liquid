@@ -3,22 +3,22 @@
 -%}
 <div
   id="ProductInfo-{{ section.id }}"
-  class="f-product-single__blocks{% if enable_sticky_info %} sticky-element{% endif %}"
+  class="m-product-single__blocks{% if enable_sticky_info %} sticky-element{% endif %}"
 >
   {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
   {%- for block in section.blocks -%}
-    <div class="f-product-single__block f-product-single__block--{{ block.type }}" {{ block.shopify_attributes }}>
+    <div class="m-product-single__block m-product-single__block--{{ block.type }}" {{ block.shopify_attributes }}>
       {%- case block.type -%}
         {%- when '@app' -%}
-          <div class="f-product__app-block">
+          <div class="m-product__app-block">
             {% render block %}
           </div>
         {%- when 'rating' -%}
           {%- render 'product-rating', product: product, block: block -%}
         {%- when 'text' -%}
           <p
-            class="f-product__text flex items-center{% if block.settings.text_style == 'uppercase' %} text-upper{% elsif block.settings.text_style == 'subtitle' %} text-upper text-subtext{% endif %}"
+            class="m-product__text flex items-center{% if block.settings.text_style == 'uppercase' %} text-upper{% elsif block.settings.text_style == 'subtitle' %} text-upper text-subtext{% endif %}"
             {{ block.shopify_attributes }}
           >
             {% unless block.settings.icon == blank %}
@@ -42,7 +42,7 @@
               <div class="bottom-block__image" style="width: {{ block.settings.image_width }}%">
                 {% if image_link != blank %}<a href="{{ image_link }}" class="block">{% endif %}
                 <responsive-image
-                  class="f-image {{ wrapper_class }}"
+                  class="m-image {{ wrapper_class }}"
                   data-image-loading
                   style="--aspect-ratio: {{ block.settings.image.aspect_ratio }}"
                 >
@@ -70,10 +70,10 @@
           {% if block.settings.trust_badges_image != blank %}
             {% assign trust_badges_image = block.settings.trust_badges_image %}
             {% assign position = block.settings.position %}
-            <div class="f-product-single__trust-badges text-center flex flex-col {{ position | default: 'below' }}">
+            <div class="m-product-single__trust-badges text-center flex flex-col {{ position | default: 'below' }}">
               <div style="width: {{ block.settings.trust_badges_image_width }};">
                 <responsive-image
-                  class="f-image {{ wrapper_class }}"
+                  class="m-image {{ wrapper_class }}"
                   data-image-loading
                   style="--aspect-ratio: {{ block.settings.trust_badges_image.aspect_ratio }}"
                 >
@@ -106,7 +106,7 @@
               assign tag = 'h2'
             endif
           -%}
-          <{{ tag }} class="f-product-single__title m-0 {{ block.settings.heading_size }}">
+          <{{ tag }} class="m-product-single__title m-0 {{ block.settings.heading_size }}">
             {{ product.title | escape }}
           </{{ tag }}>
         {%- when 'price' -%}
@@ -117,11 +117,11 @@
               show_sale_badge: block.settings.show_sale_badge,
               sale_badge_type: block.settings.sale_badge_type,
               show_soldout_badge: true,
-              price_class: 'f-price--large text-lg sm:text-xl'
+              price_class: 'm-price--large text-lg sm:text-xl'
             -%}
           </div>
           {%- if shop.taxes_included -%}
-            <div class="f-product-single__block-tax text-subtext">
+            <div class="m-product-single__block-tax text-subtext">
               {{- 'products.product.include_taxes' | t -}}
             </div>
           {%- endif -%}
@@ -139,7 +139,7 @@
           </div>
         {%- when 'description' -%}
           {%- if product.description != blank -%}
-            <div class="f-product__description rte">
+            <div class="m-product__description rte">
               {{ product.description }}
             </div>
             {% if is_featured_product == true %}
@@ -154,23 +154,23 @@
           {%- endif -%}
         {%- when 'vendor' -%}
           {%- if product.vendor != blank -%}
-            <div class="f-product__vendor text-subheading">
+            <div class="m-product__vendor text-subheading">
               {{ product.vendor | link_to_vendor }}
             </div>
           {%- endif -%}
         {%- when 'type' -%}
           {%- if product.type != blank -%}
-            <div class="f-product__type text-subheading">
+            <div class="m-product__type text-subheading">
               {{ product.type | link_to_type }}
             </div>
           {%- endif -%}
         {%- when 'meta' -%}
-          <ul class="f-product-meta list-none">
+          <ul class="m-product-meta list-none">
             {% if block.settings.show_availability %}
               <li id="Availability-{{ section.id }}">
-                <span class="f-product-meta__label">{{ 'products.product.meta.availability' | t }}:</span>
+                <span class="m-product-meta__label">{{ 'products.product.meta.availability' | t }}:</span>
                 <div
-                  class="f-product-meta__value f-product-meta__availability{% unless current_variant.available %} out-of-stock{% endunless %}"
+                  class="m-product-meta__value m-product-meta__availability{% unless current_variant.available %} out-of-stock{% endunless %}"
                   data-product-availability
                 >
                   {%- if current_variant.available -%}
@@ -184,28 +184,28 @@
             {% if block.settings.show_sku %}
               {% assign default_sku = 'products.product.meta.no_sku' | t %}
               <li id="Sku-{{ section.id }}">
-                <span class="f-product-meta__label">{{ 'products.product.meta.sku' | t }}:</span>
-                <div class="f-product-meta__value" data-product-sku>
+                <span class="m-product-meta__label">{{ 'products.product.meta.sku' | t }}:</span>
+                <div class="m-product-meta__value" data-product-sku>
                   {{ current_variant.sku | default: default_sku }}
                 </div>
               </li>
             {% endif %}
             {% if block.settings.show_vendor and product.vendor != blank %}
               <li>
-                <span class="f-product-meta__label">{{ 'products.product.vendor' | t }}:</span>
-                <div class="f-product-meta__value">{{ product.vendor | link_to_vendor }}</div>
+                <span class="m-product-meta__label">{{ 'products.product.vendor' | t }}:</span>
+                <div class="m-product-meta__value">{{ product.vendor | link_to_vendor }}</div>
               </li>
             {% endif %}
             {% if block.settings.show_type and product.type != blank %}
               <li>
-                <span class="f-product-meta__label">{{ 'products.product.meta.type' | t }}:</span>
-                <div class="f-product-meta__value">{{ product.type | link_to_type }}</div>
+                <span class="m-product-meta__label">{{ 'products.product.meta.type' | t }}:</span>
+                <div class="m-product-meta__value">{{ product.type | link_to_type }}</div>
               </li>
             {% endif %}
             {% if block.settings.show_collections and product.collections.size > 0 %}
               <li>
-                <span class="f-product-meta__label">{{ 'products.product.meta.collections' | t }}:</span>
-                <div class="f-product-meta__value">
+                <span class="m-product-meta__label">{{ 'products.product.meta.collections' | t }}:</span>
+                <div class="m-product-meta__value">
                   {% for collection in product.collections %}
                     <a href="{{ collection.url }}" class="hover:text-black">
                       {{ collection.title }}
@@ -217,8 +217,8 @@
             {% endif %}
             {% if block.settings.show_tags and product.tags.size > 0 %}
               <li>
-                <span class="f-product-meta__label">{{ 'products.product.meta.tags' | t }}:</span>
-                <div class="f-product-meta__value">
+                <span class="m-product-meta__label">{{ 'products.product.meta.tags' | t }}:</span>
+                <div class="m-product-meta__value">
                   {% for tag in product.tags %}
                     {% assign tag_handle = tag | handleize %}
                     <a href="{{ routes.all_products_collection_url | append: '/' | append: tag_handle }}">
@@ -305,9 +305,9 @@
             {% endcase %}
           </div>
         {%- when 'quantity_selector' -%}
-          <div class="f-product-single__info-quantity">
+          <div class="m-product-single__info-quantity">
             {%- assign cart_qty = cart | item_count_for_variant: product.selected_or_first_available_variant.id -%}  
-            <div class="f-quantity__wrapper {{ class }}" id="QuantityForm-{{ section.id }}">
+            <div class="m-quantity__wrapper {{ class }}" id="QuantityForm-{{ section.id }}">
               <label class="form-label font-body-bolder quantity__label" for="Quantity-{{ section.id }}-{{ product.id }}">
                 <span>{{- 'products.product.quantity.label' | t -}}</span>
                 <span id="QuantityRulesCart-{{ section.id }}" class="quantity__rules-cart{% if cart_qty == 0 %} hidden{% endif %} relative">
@@ -315,8 +315,8 @@
                 </span>
               </label>
               <div class="flex">
-                <quantity-input class="f-quantity" data-product-id="{{ product.id }}" data-section-id="{{ section.id }}">
-                  <button class="f-quantity__button btn btn--plain no-js-hidden" name="minus" type="button">
+                <quantity-input class="m-quantity" data-product-id="{{ product.id }}" data-section-id="{{ section.id }}">
+                  <button class="m-quantity__button btn btn--plain no-js-hidden" name="minus" type="button">
                     <span class="visually-hidden">
                       {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
                     </span>
@@ -326,7 +326,7 @@
                   </button>
                   <input
                     id="Quantity-{{ section.id }}-{{ product.id }}"
-                    class="f-quantity__input quantity__input form-control"
+                    class="m-quantity__input quantity__input form-control"
                     type="number"
                     name="quantity"
                     inputmode="numeric"
@@ -343,7 +343,7 @@
                     value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
                     form="{{ product_form_id }}"
                   >
-                  <button class="f-quantity__button btn btn--plain no-js-hidden" name="plus" type="button">
+                  <button class="m-quantity__button btn btn--plain no-js-hidden" name="plus" type="button">
                     <span class="visually-hidden">
                       {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
                     </span>
@@ -514,7 +514,7 @@
             <script src="{{ 'share-button.js' | asset_url }}" defer></script>
           {%- endif -%}
           {% if show_share or show_ask_question %}
-            <div class="f-product-single__addon-buttons flex items-center">
+            <div class="m-product-single__addon-buttons flex items-center">
               {% if show_share %}
                 <modal-opener class="no-js-hidden" data-modal="#PopupModal-Sharing-{{ section.id }}">
                   <button
@@ -538,22 +538,22 @@
                   </button>
                 </modal-opener>
                 {% assign modal_id = 'Sharing-' | append: section.id %}
-                <modal-dialog id="PopupModal-{{ modal_id }}" class="f-modal hidden" style="--modal-width: 600px">
-                  <div class="f-modal__content" role="dialog" aria-label="{{ label }}" aria-modal="true" tabindex="-1">
+                <modal-dialog id="PopupModal-{{ modal_id }}" class="m-modal hidden" style="--modal-width: 600px">
+                  <div class="m-modal__content" role="dialog" aria-label="{{ label }}" aria-modal="true" tabindex="-1">
                     <div class="scroll-container">
                       <button
                         id="ModalClose-{{ modal_id }}"
                         type="button"
-                        class="f-modal__close"
+                        class="m-modal__close"
                         aria-label="{{ 'accessibility.close' | t }}"
                       >
                         {% comment %} theme-check-disable {% endcomment %}
                         {{ 'icon-close.svg' | inline_asset_content }}
                         {% comment %} theme-check-enable {% endcomment %}
                       </button>
-                      <div class="f-modal__inner">
+                      <div class="m-modal__inner">
                         <h3 class="h5">{{ 'products.product.share' | t }}</h3>
-                        <share-button class="f-sharing__copy-link">
+                        <share-button class="m-sharing__copy-link">
                           <input
                             data-share-url
                             type="text"
@@ -599,20 +599,20 @@
                   </button>
                 </modal-opener>
                 {% assign modal_id = 'AskQuestionForm-' | append: section.id %}
-                <modal-dialog id="PopupModal-{{ modal_id }}" class="f-modal hidden" style="--modal-width:600px">
-                  <div class="f-modal__content" role="dialog" aria-label="{{ label }}" aria-modal="true" tabindex="-1">
+                <modal-dialog id="PopupModal-{{ modal_id }}" class="m-modal hidden" style="--modal-width:600px">
+                  <div class="m-modal__content" role="dialog" aria-label="{{ label }}" aria-modal="true" tabindex="-1">
                     <div class="scroll-container">
                       <button
                         id="ModalClose-{{ modal_id }}"
                         type="button"
-                        class="f-modal__close"
+                        class="m-modal__close"
                         aria-label="{{ 'accessibility.close' | t }}"
                       >
                         {% comment %} theme-check-disable {% endcomment %}
                         {{ 'icon-close.svg' | inline_asset_content }}
                         {% comment %} theme-check-enable {% endcomment %}
                       </button>
-                      <div class="f-modal__inner">
+                      <div class="m-modal__inner">
                         {% render 'ask-question-form' %}
                       </div>
                     </div>
@@ -650,20 +650,20 @@
           %}
           {% if size_chart != blank and show_size_chart %}
             {% assign modal_id = 'SizeChart-' | append: section.id %}
-            <modal-dialog id="PopupModal-{{ modal_id }}" class="f-modal hidden" style="--modal-width:800px">
-              <div class="f-modal__content" role="dialog" aria-label="{{ label }}" aria-modal="true" tabindex="-1">
+            <modal-dialog id="PopupModal-{{ modal_id }}" class="m-modal hidden" style="--modal-width:800px">
+              <div class="m-modal__content" role="dialog" aria-label="{{ label }}" aria-modal="true" tabindex="-1">
                 <div class="scroll-container">
                   <button
                     id="ModalClose-{{ modal_id }}"
                     type="button"
-                    class="f-modal__close"
+                    class="m-modal__close"
                     aria-label="{{ 'accessibility.close' | t }}"
                   >
                     {% comment %} theme-check-disable {% endcomment %}
                     {{ 'icon-close.svg' | inline_asset_content }}
                     {% comment %} theme-check-enable {% endcomment %}
                   </button>
-                  <div class="f-modal__inner">
+                  <div class="m-modal__inner">
                     <div class="rte py-md px-sm">{{ size_chart }}</div>
                   </div>
                 </div>
@@ -684,7 +684,7 @@
               endif
             -%}
             {% if block.settings.show_atc_button or show_dynamic_checkout %}
-              <product-form class="f-product-form f-main-product-form">
+              <product-form class="m-product-form m-main-product-form">
                 {%- form 'product',
                   product,
                   id: product_form_id,
@@ -696,7 +696,7 @@
                   {%- if gift_card_recipient_feature_active -%}
                     {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
                   {%- endif -%}
-                  <div class="f-product-form__buttons{% if show_dynamic_checkout and product.selling_plan_groups == empty %} f-product-form__buttons--show-buynow{% endif %}">
+                  <div class="m-product-form__buttons{% if show_dynamic_checkout and product.selling_plan_groups == empty %} m-product-form__buttons--show-buynow{% endif %}">
                     {% if block.settings.show_atc_button %}
                       {%- liquid
                         assign check_against_inventory = true
@@ -711,7 +711,7 @@
                         id="ProductSubmitButton-{{ section.id }}"
                         type="submit"
                         name="add"
-                        class="f-product-form__submit btn {% if show_dynamic_checkout and product.selling_plan_groups == empty %}btn--secondary{% else %}btn--primary{% endif %}"
+                        class="m-product-form__submit btn {% if show_dynamic_checkout and product.selling_plan_groups == empty %}btn--secondary{% else %}btn--primary{% endif %}"
                         {% if product.selected_or_first_available_variant.available == false
                           or quantity_rule_soldout
                           or product.selected_or_first_available_variant == null
@@ -732,11 +732,11 @@
                       </button>
                     {% endif %}
                     {%- if show_dynamic_checkout -%}
-                      <div class="f-product-form__button-dynamic">
+                      <div class="m-product-form__button-dynamic">
                         {{ form | payment_button }}
                       </div>
                     {%- endif -%}
-                    <div class="f-product-form__error-message-wrapper" role="alert"></div>
+                    <div class="m-product-form__error-message-wrapper" role="alert"></div>
                   </div>
                 {%- endform -%}
               </product-form>
@@ -796,7 +796,7 @@
               assign timer = custom_time
             endif
           %}
-          <div class="f-product-single__block-countdown f-product-single__block-countdown--{{ style }}">
+          <div class="m-product-single__block-countdown m-product-single__block-countdown--{{ style }}">
             {%- if heading != blank -%}
               <h4 class="h5">{{- heading -}}</h4>
             {% endif %}
@@ -917,7 +917,7 @@
           {% endif %}
         {%- when 'complementary' -%}
           <product-recommendations
-            class="f-complementary-products block{% if block.settings.make_collapsible_row %} is-accordion{% else %} relative{% endif %}"
+            class="m-complementary-products block{% if block.settings.make_collapsible_row %} is-accordion{% else %} relative{% endif %}"
             data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ block.settings.product_list_limit }}&intent=complementary"
           >
             {%- if recommendations.performed and recommendations.products_count > 0 -%}
@@ -930,16 +930,16 @@
               -%}
               {% capture block_content %}
                 <flickity-component
-                    class="f-grid f-grid-1-cols{% if enable_slider %} flickity-enable{% endif %} {{ slide_class }}"
-                    data-slider-options='{"pageDots": true, "prevNextButtons": false, "groupCells": 1, "cellSelector": ".f-complementary-products__slide", "wrapAround": true, "adaptiveHeight": true}'
+                    class="m-grid m-grid-1-cols{% if enable_slider %} flickity-enable{% endif %} {{ slide_class }}"
+                    data-slider-options='{"pageDots": true, "prevNextButtons": false, "groupCells": 1, "cellSelector": ".m-complementary-products__slide", "wrapAround": true, "adaptiveHeight": true}'
                     data-slider-columns="1"
                     data-enable-slider="{{ enable_slider }}"
                     style="--pagination-width: 2.5rem;--button-size: 3.6rem;--button-size-mobile: 3.6rem;"
                 >
                     {%- for i in (1..number_of_slides) -%}
-                        <div class="f-complementary-products__slide w-full">
+                        <div class="m-complementary-products__slide w-full">
                             {%- for product in recommendations.products limit: block.settings.products_per_page offset: continue -%}
-                                <div class="f-column">
+                                <div class="m-column">
                                     {% render 'product-card', 
                                         product: product, 
                                         custom_class: 'bg-secondary', 
@@ -987,7 +987,7 @@
                 </collapsible-tab>
               {% else %}
                 {% unless block.settings.block_heading == blank %}
-                  <h3 class="f-complementary-products__block-heading font-body-bolder h6">
+                  <h3 class="m-complementary-products__block-heading font-body-bolder h6">
                     {{ block.settings.block_heading }}
                   </h3>
                 {% endunless %}
@@ -1015,7 +1015,7 @@
             endfor
           -%}
           {%- if has_tags -%}
-            <div class="f-product__tags">
+            <div class="m-product__tags">
               {% for tag in product.tags %}
                 {% if tag contains 'tag__' %}
                   {%- liquid
@@ -1023,7 +1023,7 @@
                     assign type = tag_content | split: '_' | first
                     assign tag_name = tag_content | split: '_' | last
                   -%}
-                  <span class="f-badge f-badge--{{ type }}">
+                  <span class="m-badge m-badge--{{ type }}">
                     {{ tag_name }}
                   </span>
                 {% endif %}

@@ -3,9 +3,9 @@ if (!customElements.get("image-with-text-slider")) {
     constructor() {
       super()
       this.selectors = {
-        contents: ['.f-slider__content-wrapper'],
-        textContainer: '.f-slider__text',
-        mediaContainer: '.f-slider__media',
+        contents: ['.m-slider__content-wrapper'],
+        textContainer: '.m-slider__text',
+        mediaContainer: '.m-slider__media',
         pageDots: '.flickity-page-dots',
         pageCounter: '.flickity-page-counter'
       }

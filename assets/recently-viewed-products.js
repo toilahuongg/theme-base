@@ -7,7 +7,7 @@ if (!customElements.get("recently-viewed-products")) {
       }
 
       connectedCallback() {
-        this.section = this.closest(".f-recently-viewed");
+        this.section = this.closest(".m-recently-viewed");
 
         const handleIntersection = (entries, observer) => {
           if (!entries[0].isIntersecting) return;
@@ -34,13 +34,13 @@ if (!customElements.get("recently-viewed-products")) {
               recommendations.querySelectorAll(".product-card").length;
 
             if (this.productsCount <= 0) {
-              this.classList.add("f-hidden");
+              this.classList.add("m-hidden");
             }
 
             if (recommendations && recommendations.innerHTML.trim().length) {
               this.innerHTML = recommendations.innerHTML;
               const productContainer = this.querySelector(
-                ".f-recently-viewed-flickity"
+                ".m-recently-viewed-flickity"
               );
 
               const { enableSlider, sliderColumns, sliderColumnsTablet } =

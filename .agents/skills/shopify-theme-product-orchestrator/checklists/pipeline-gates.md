@@ -5,8 +5,8 @@ Run after each stage completes. Do not rely on the stage skill's self-assessment
 ## G1 — Source audit (stage 1)
 
 - [ ] docs/source-audit.md exists with all six sections: provenance, third-party deps, high-risk files, safe concepts, must-rewrite code, licensing risks.
-- [ ] Verdict is ORIGINAL or SKELETON.
-- [ ] If DAWN/HORIZON/THIRD-PARTY/MIXED/UNVERIFIED: pipeline marked BLOCKED, rewrite mandate recorded, no later stage started.
+- [ ] Verdict is ORIGINAL or SKELETON, OR the pipeline is in REFERENCE-REBUILD mode (mode + provenance findings recorded in state; feature inventory runs concepts-only; G1 re-run on the new codebase required before readiness).
+- [ ] UNVERIFIED: pipeline marked BLOCKED, no later stage started.
 
 ## G2 — Uniqueness review #1 (stage 6)
 

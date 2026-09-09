@@ -47,7 +47,7 @@
 
   assign slider_class = ''
   if has_control
-    assign slider_class = slider_class | append: ' f-slider-wrapper__has-controls'
+    assign slider_class = slider_class | append: ' m-slider-wrapper__has-controls'
   endif
 
   assign animation_effect = settings.animations
@@ -65,21 +65,21 @@
   id="{{ section_id }}"
   data-section-type="slider"
   data-section-id="{{ section.id }}"
-  class="f-slider{{ custom_class }}"
+  class="m-slider{{ custom_class }}"
   role="region"
   aria-roledescription="{{ 'sections.image-with-text-slider.carousel' | t }}"
   aria-label="{{ section.settings.accessibility_info | escape }}"
 >
   <div class="{{ container }}">
     <image-with-text-slider
-      class="f-slider-wrapper f-slider-wrapper--image-{{ section.settings.image_position }} overflow-hidden f-slider-wrapper--{{ slider_height }}{{ slider_class }}"
+      class="m-slider-wrapper m-slider-wrapper--image-{{ section.settings.image_position }} overflow-hidden m-slider-wrapper--{{ slider_height }}{{ slider_class }}"
       data-media-loading
       style="--number-slides: {{ section.blocks.size }}; --image-width: {{ section.settings.image_width }}%;"
     >
       <flickity-component
-        id="f-text-{{ section.id }}"
-        class="f-slider__text color-{{ section.blocks.first.settings.slide_color_scheme }} flickity-button-initialized flickity-controls-group flickity-controls-group__bottom flickity-controls-group__bottom--{{ controls_position }} flickity-pagination--{{ pagination_style }}{{ flickity_classes }}"
-        data-slider-options='{"pageDots": {{ is_page_dots }}, "prevNextButtons": {{ show_nav }}, "autoPlay": {{ autoplay }}, "wrapAround": true, "adaptiveHeight": true, "fade": true, "cellSelector": ".f-slider__content-wrapper"}'
+        id="m-text-{{ section.id }}"
+        class="m-slider__text color-{{ section.blocks.first.settings.slide_color_scheme }} flickity-button-initialized flickity-controls-group flickity-controls-group__bottom flickity-controls-group__bottom--{{ controls_position }} flickity-pagination--{{ pagination_style }}{{ flickity_classes }}"
+        data-slider-options='{"pageDots": {{ is_page_dots }}, "prevNextButtons": {{ show_nav }}, "autoPlay": {{ autoplay }}, "wrapAround": true, "adaptiveHeight": true, "fade": true, "cellSelector": ".m-slider__content-wrapper"}'
         aria-live="polite"
         aria-atomic="true"
         data-enable-slider="true"
@@ -93,13 +93,13 @@
 
             assign flexible_content = ''
             if bs.content_position == 'left-bottom' and controls_position == 'left' and has_control
-              assign flexible_content = ' f-slider__content--move-top'
+              assign flexible_content = ' m-slider__content--move-top'
             endif
             if bs.content_position == 'right-bottom' and controls_position == 'right' and has_control
-              assign flexible_content = ' f-slider__content--move-top'
+              assign flexible_content = ' m-slider__content--move-top'
             endif
             if bs.content_position == 'center-bottom' and controls_position == 'center' and has_control
-              assign flexible_content = ' f-slider__content--move-top'
+              assign flexible_content = ' m-slider__content--move-top'
             endif
 
             assign slide_color_scheme = bs.slide_color_scheme
@@ -107,7 +107,7 @@
             assign count = 0
           %}
           <div
-            class="f-slider__content-wrapper focus-none f-slider__content--{{ bs.content_position }}{{ flexible_content }} color-{{ slide_color_scheme }}{% if animated %} f-slider-animate--{{ animation_effect }}{% endif %}"
+            class="m-slider__content-wrapper focus-none m-slider__content--{{ bs.content_position }}{{ flexible_content }} color-{{ slide_color_scheme }}{% if animated %} m-slider-animate--{{ animation_effect }}{% endif %}"
             data-index="{{ forloop.index0 }}"
             role="group"
             aria-roledescription="{{ 'sections.slideshow.slide' | t }}"
@@ -116,11 +116,11 @@
             data-color-scheme="color-{{ slide_color_scheme }}"
             {{ block.shopify_attributes }}
           >
-            <div class="f-slider__content f-text-blocks text-{{ text_alignment_mobile }} sm:text-{{ text_alignment }}">
+            <div class="m-slider__content m-text-blocks text-{{ text_alignment_mobile }} sm:text-{{ text_alignment }}">
               {% unless block.settings.subheading == blank %}
                 {% assign count = count | plus: 1 %}
                 <div
-                  class="f-slider__block f-slider__subtitle text-subheading"
+                  class="m-slider__block m-slider__subtitle text-subheading"
                   style="--transition-delay: {{ count | divided_by: 10.00 }}s;"
                 >
                   {{ block.settings.subheading }}
@@ -129,7 +129,7 @@
               {% unless block.settings.title == blank %}
                 {% assign count = count | plus: 1 %}
                 <h2
-                  class="f-slider__block f-slider__title {{ block.settings.heading_size }}"
+                  class="m-slider__block m-slider__title {{ block.settings.heading_size }}"
                   style="--transition-delay: {{ count | divided_by: 10.00 }}s;"
                 >
                   {%- render 'highlight-text',
@@ -142,7 +142,7 @@
               {% unless block.settings.description == blank %}
                 {% assign count = count | plus: 1 %}
                 <div
-                  class="f-slider__block f-slider__description {{ desc_size }}"
+                  class="m-slider__block m-slider__description {{ desc_size }}"
                   style="--transition-delay: {{ count | divided_by: 10.00 }}s;"
                 >
                   {{ block.settings.description }}
@@ -154,10 +154,10 @@
                   assign count = count | plus: 1
                 %}
                 <div
-                  class="f-slider__block f-slider__btn-group f-text-blocks__btn pointer-events-auto"
+                  class="m-slider__block m-slider__btn-group m-text-blocks__btn pointer-events-auto"
                   style="--transition-delay: {{ count | divided_by: 10.00 }}s;"
                 >
-                  <div class="f-slider__btn f-slider__btn-first">
+                  <div class="m-slider__btn m-slider__btn-first">
                     <a
                       href="{{ block.settings.button_link_1 | default: "#" }}"
                       {% if bs.button_link_1 == blank %}
@@ -192,8 +192,8 @@
       </flickity-component>
 
       <flickity-component
-        id="f-media-{{ section.id }}"
-        class="f-slider__media"
+        id="m-media-{{ section.id }}"
+        class="m-slider__media"
         data-slider-options='{"pageDots": false, "prevNextButtons": false, "wrapAround": true, "adaptiveHeight": false, "setGallerySize": false, "fade": {% if animated and section.settings.enable_bg_zoom_effect %}true{% else %}false{% endif %}}'
         aria-live="polite"
         aria-atomic="true"
@@ -210,7 +210,7 @@
             {% else %}
               role="link"
             {% endunless %}
-            class="f-slider__slide"
+            class="m-slider__slide"
             data-index="{{ forloop.index0 }}"
             role="group"
             aria-roledescription="{{ 'sections.image-with-text-slider.slide' | t }}"
@@ -226,7 +226,7 @@
                 %}
 
                 {% if block.settings.background == blank %}
-                  <div class="f-slider__slide-placeholder h-full{% if mb_background != blank %} hidden md:block{% endif %}{% if animated and section.settings.enable_bg_zoom_effect %} bg-image__animation{% endif %}">
+                  <div class="m-slider__slide-placeholder h-full{% if mb_background != blank %} hidden md:block{% endif %}{% if animated and section.settings.enable_bg_zoom_effect %} bg-image__animation{% endif %}">
                     {% capture current %}{% cycle 1, 2 %}{% endcapture %}
                     {{
                       'lifestyle-'
@@ -235,7 +235,7 @@
                     }}
                   </div>
                 {% else %}
-                  <div class="f-slider__slide-bg bg-image{% if mb_background != blank %} hidden md:block{% endif %}{% if animated and section.settings.enable_bg_zoom_effect %} bg-image__animation{% endif %}">
+                  <div class="m-slider__slide-bg bg-image{% if mb_background != blank %} hidden md:block{% endif %}{% if animated and section.settings.enable_bg_zoom_effect %} bg-image__animation{% endif %}">
                     {%- liquid
                       assign image_height = bs.background.width | divided_by: bs.background.aspect_ratio
                       assign loading = 'lazy'
@@ -261,7 +261,7 @@
                   </div>
                 {% endif %}
                 {% unless mb_background == blank %}
-                  <div class="f-slider__slide-mobile bg-image w-full md:hidden{% if animated and section.settings.enable_bg_zoom_effect %} bg-image__animation{% endif %}">
+                  <div class="m-slider__slide-mobile bg-image w-full md:hidden{% if animated and section.settings.enable_bg_zoom_effect %} bg-image__animation{% endif %}">
                     {%- liquid
                       assign image_height = mb_background.width | divided_by: mb_background.aspect_ratio
                       assign loading = 'lazy'
@@ -289,7 +289,7 @@
               {% else %}
                 <deferred-media
                   data-type="{{ block.settings.video_type }}"
-                  class="f-video__bg{% if animated and section.settings.enable_bg_zoom_effect %} bg-image__animation{% endif %}"
+                  class="m-video__bg{% if animated and section.settings.enable_bg_zoom_effect %} bg-image__animation{% endif %}"
                 >
                   <button
                     id="Deferred-Poster-Modal-{{ block.settings.video_url.id }}"

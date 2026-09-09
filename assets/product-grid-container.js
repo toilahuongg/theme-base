@@ -72,7 +72,7 @@ class ProductGridContainer extends HTMLElement {
     })
       .then((html) => {
         const productNodes = html.querySelectorAll(
-          "[data-products-grid] .f-column"
+          "[data-products-grid] .m-column"
         );
         productNodes.forEach((prodNode) => productGrid.appendChild(prodNode));
       })
@@ -127,11 +127,11 @@ class ProductGridContainer extends HTMLElement {
     target.setAttribute("aria-selected", true);
 
     if (column === "2") {
-      productGrid.classList.add("f-grid-2-cols");
-      productGrid.classList.remove("f-grid-1-cols");
+      productGrid.classList.add("m-grid-2-cols");
+      productGrid.classList.remove("m-grid-1-cols");
     } else {
-      productGrid.classList.remove("f-grid-2-cols");
-      productGrid.classList.add("f-grid-1-cols");
+      productGrid.classList.remove("m-grid-2-cols");
+      productGrid.classList.add("m-grid-1-cols");
     }
 
     localStorage.setItem(this.save_key, column);

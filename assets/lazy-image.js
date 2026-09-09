@@ -10,7 +10,7 @@ class ResponsiveImage extends HTMLElement {
 		this.img.onload = this.onLoad.bind(this)
 		if (this.img.complete) {
 			this.removeAttribute('data-image-loading')
-			this.img.classList.add('f-img-loaded')
+			this.img.classList.add('m-img-loaded')
 		}
 	}
 	connectedCallback() {
@@ -28,7 +28,7 @@ class ResponsiveImage extends HTMLElement {
 	}
 	onLoad() {
 		this.removeAttribute('data-image-loading')
-		this.img.classList.add('f-img-loaded')
+		this.img.classList.add('m-img-loaded')
 	}
 	observerCallback(entries, observer) {
 		if (!entries[0].isIntersecting) return;

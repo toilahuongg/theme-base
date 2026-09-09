@@ -21,11 +21,11 @@ if (!customElements.get("g-map")) {
       initMap() {
         const { scrollWheel, draggable } = this.dataset;
         this.mapContainer = this.querySelector(".map");
-        this.section = this.closest(".f-map");
+        this.section = this.closest(".m-map");
         const geocoder = new google.maps.Geocoder();
 
         geocoder.geocode({ address: this.address }, (res, status) => {
-          this.section.classList.add("f-map--initialized");
+          this.section.classList.add("m-map--initialized");
           if (status !== google.maps.GeocoderStatus.OK) {
           } else {
             const mapOptions = {

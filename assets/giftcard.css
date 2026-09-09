@@ -379,7 +379,7 @@ h2,
   justify-content: center;
 }
 
-.form__message .f-icon {
+.form__message .m-icon {
   flex-shrink: 0;
   height: 13px;
   margin-inline-end: 5px;

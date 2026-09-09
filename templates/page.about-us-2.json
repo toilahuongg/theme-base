@@ -169,7 +169,7 @@
         "text_RRiRUq"
       ],
       "custom_css": [
-        ".f-hero__content {max-width: 75rem;}"
+        ".m-hero__content {max-width: 75rem;}"
       ],
       "settings": {
         "container": "container-full",

@@ -41,7 +41,7 @@
 <div
   id="ProductGridContainer"
   data-section-id="{{ section.id }}"
-  class="main-collection block f-section-padding"
+  class="main-collection block m-section-padding"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
   <div class="main-collection__container">
@@ -99,11 +99,11 @@
                   data-motion="{{ animation_effect }}"
                   id="product-grid"
                   data-id="{{ section.id }}"
-                  class="product-grid f-grid f-grid-2-cols md:f-grid-{{ columns_tablet }}-cols lg:f-grid-{{ columns_tablet_large }}-cols xl:f-grid-{{ columns }}-cols f-grid--gap-{{ section.settings.column_gap }} f-grid--row-gap-{{ section.settings.row_gap }}"
+                  class="product-grid m-grid m-grid-2-cols md:m-grid-{{ columns_tablet }}-cols lg:m-grid-{{ columns_tablet_large }}-cols xl:m-grid-{{ columns }}-cols m-grid--gap-{{ section.settings.column_gap }} m-grid--row-gap-{{ section.settings.row_gap }}"
                   data-products-grid
                 >
                   {%- for product in collection.products -%}
-                    <div class="f-column">
+                    <div class="m-column">
                       {%- render 'product-card',
                         color_schema: 'background-1',
                         product: product,
@@ -116,7 +116,7 @@
               {% endif %}
               {% if paginate.pages > 1 %}
                 <div
-                  class="main-collection__pagination f-pagination__wrapper text-center"
+                  class="main-collection__pagination m-pagination__wrapper text-center"
                   data-paginate="{{ paginate_type }}"
                   data-total-pages="{{ paginate.pages }}"
                 >
@@ -151,7 +151,7 @@
 {% schema %}
 {
   "name": "t:sections.main-collection-product-grid.name",
-  "class": "f-section-product-grid",
+  "class": "m-section-product-grid",
   "settings": [
     {
       "type": "header",

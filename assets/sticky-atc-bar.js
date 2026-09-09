@@ -17,7 +17,7 @@ if (!customElements.get("sticky-atc-bar")) {
 
       connectedCallback() {
         this.productFormActions = document.querySelector(
-          ".f-main-product-form"
+          ".m-main-product-form"
         );
         this.container = this.closest(".sticky-atc-bar");
         this.mainProduct = document.querySelector(
@@ -134,7 +134,7 @@ if (!customElements.get("sticky-atc-bar")) {
         setTimeout(() => {
           const sectionHeight = this.clientHeight + "px";
           document.documentElement.style.setProperty(
-            "--f-sticky-atc-bar-height",
+            "--m-sticky-atc-bar-height",
             sectionHeight
           );
         }, 100);
@@ -147,7 +147,7 @@ if (!customElements.get("sticky-atc-bar")) {
         if (!productForm) return;
         const addButton = productForm.querySelector('[name="add"]');
         const addButtonText = productForm.querySelector(
-          '[name="add"] > span:not(.f-icon)'
+          '[name="add"] > span:not(.m-icon)'
         );
 
         if (!addButton) return;
@@ -197,15 +197,15 @@ if (!customElements.get("sticky-atc-bar")) {
 
       updatePrice() {
         const classes = {
-          onSale: "f-price--on-sale",
-          soldOut: "f-price--sold-out",
+          onSale: "m-price--on-sale",
+          soldOut: "m-price--sold-out",
         };
         const selectors = {
-          priceWrapper: ".f-price",
-          salePrice: ".f-price-item--sale",
-          compareAtPrice: [".f-price-item--regular"],
-          unitPrice: ".f-price__unit",
-          saleBadge: ".f-price__badge-sale",
+          priceWrapper: ".m-price",
+          salePrice: ".m-price-item--sale",
+          compareAtPrice: [".m-price-item--regular"],
+          unitPrice: ".m-price__unit",
+          saleBadge: ".m-price__badge-sale",
           saleAmount: "[data-sale-value]",
         };
         const money_format = window.VelouraSettings.money_format;
@@ -249,7 +249,7 @@ if (!customElements.get("sticky-atc-bar")) {
         }
 
         if (unit_price_measurement && unitPrice) {
-          unitPrice.classList.remove("f-hidden");
+          unitPrice.classList.remove("m-hidden");
           const unitPriceContent = `<span>${formatMoney(
             this.currentVariant.unit_price,
             money_format
@@ -258,7 +258,7 @@ if (!customElements.get("sticky-atc-bar")) {
           )}</span>`;
           unitPrice.innerHTML = unitPriceContent;
         } else {
-          unitPrice.classList.add("f-hidden");
+          unitPrice.classList.add("m-hidden");
         }
       }
 
@@ -270,7 +270,7 @@ if (!customElements.get("sticky-atc-bar")) {
           if (!isMainProduct) return;
           this.currentVariant = evt.data.variant;
           if (this.currentVariant) {
-            this.container.classList.remove("f-hidden");
+            this.container.classList.remove("m-hidden");
             variantInput.value = evt.data.variant.id;
             this.updatePrice();
             this.updateButton(true, "", false);
@@ -283,7 +283,7 @@ if (!customElements.get("sticky-atc-bar")) {
               );
             }
           } else {
-            this.container.classList.add("f-hidden");
+            this.container.classList.add("m-hidden");
           }
 
           this.updateQuantityInput();

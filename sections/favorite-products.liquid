@@ -56,11 +56,11 @@
 %}
 <div
   id="{{ section_id }}"
-  class="f-favorite-products{{ custom_class }} f-section-padding color-{{ section.settings.color_schema }}"
+  class="m-favorite-products{{ custom_class }} m-section-padding color-{{ section.settings.color_schema }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
   <div class="{{ container }}">
-    <div class="f-favorite-products__wrapper relative">
+    <div class="m-favorite-products__wrapper relative">
       <favorite-products>
         {% render 'index-section-header',
           animation_effect: animation_effect,
@@ -68,14 +68,14 @@
           alignment: 'center',
           custom_css_class: 'lg:hidden'
         %}
-        <div class="f-grid lg:f-grid-2-cols items-center">
+        <div class="m-grid lg:m-grid-2-cols items-center">
           <motion-element
             data-motion="{{ animation_effect }}"
-            class="block f-column"
+            class="block m-column"
           >
             <div
               id="FavoriteProductsImageSlider-{{ section.id }}"
-              class="f-favorite-products__image-slider h-full"
+              class="m-favorite-products__image-slider h-full"
               style="--aspect-ratio: {{ image_ratio }}"
             >
               {%- for block in section.blocks -%}
@@ -87,7 +87,7 @@
                   endunless
                   assign alt = image.alt | default: product.title
                 -%}
-                <div class="f-favorite-products__image absolute flex items-center w-full{% if forloop.first %} is-selected{% endif %}">
+                <div class="m-favorite-products__image absolute flex items-center w-full{% if forloop.first %} is-selected{% endif %}">
                   {%- if image != blank -%}
                     {%- render 'responsive-image',
                       image: image,
@@ -99,7 +99,7 @@
                     -%}
                   {%- else -%}
                     <div
-                      class="f-image"
+                      class="m-image"
                       style="--aspect-ratio: {{ image_ratio }}"
                     >
                       {{
@@ -114,9 +114,9 @@
           </motion-element>
           <motion-element
             data-motion="{{ animation_effect }}"
-            class="block f-column"
+            class="block m-column"
           >
-            <div class="f-favorite-products__content">
+            <div class="m-favorite-products__content">
               <div class="lg-down:hidden">
                 <h3 
                   class="mega-subtitle text-upper font-body"
@@ -135,8 +135,8 @@
               </div>
               <flickity-component
                 id="FavoriteProductsSlider-{{ section.id }}"
-                class="f-favorite-products__product-slider flickity-show-controls flickity-controls-group flickity-controls-group__bottom flickity-controls-group__bottom--{{ controls_position }} flickity-pagination--{{ pagination_style }} {{ pagination_class }} flickity-button-initialized"
-                data-slider-options='{"pageDots": {{ is_page_dots }}, "prevNextButtons": true, "wrapAround": true, "adaptiveHeight": true, "cellSelector": ".f-favorite-products__block"}'
+                class="m-favorite-products__product-slider flickity-show-controls flickity-controls-group flickity-controls-group__bottom flickity-controls-group__bottom--{{ controls_position }} flickity-pagination--{{ pagination_style }} {{ pagination_class }} flickity-button-initialized"
+                data-slider-options='{"pageDots": {{ is_page_dots }}, "prevNextButtons": true, "wrapAround": true, "adaptiveHeight": true, "cellSelector": ".m-favorite-products__block"}'
                 data-enable-slider="true"
                 data-slider-columns="1"
                 style="--number-slides: {{ total_pages }};{{ style }}"
@@ -148,17 +148,17 @@
                     assign preview_image = product.featured_media.preview_image
                   -%}
                   <div
-                    class="f-favorite-products__block w-full"
+                    class="m-favorite-products__block w-full"
                     data-index="{{ forloop.index0 }}"
                     {{ block.shopify_attributes }}
                   >
                     {%- unless text == blank -%}
-                      <div class="f-favorite-products__product-content">
+                      <div class="m-favorite-products__product-content">
                         <div class="rte h3 text-normal">{{- text -}}</div>
                       </div>
                     {%- endunless -%}
-                    <div class="f-favorite-products__product flex items-center relative">
-                      <div class="f-favorite-products__product-image relative f-image-hover-effect__{{settings.image_hover_effect}}">
+                    <div class="m-favorite-products__product flex items-center relative">
+                      <div class="m-favorite-products__product-image relative m-image-hover-effect__{{settings.image_hover_effect}}">
                         <a href="{{ product.url }}" class="full-width-link"
                           ><span class="visually-hidden">
                             {{- product.title -}}

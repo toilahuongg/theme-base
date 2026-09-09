@@ -58,7 +58,7 @@
 %}
 <div
   id="{{ section_id }}"
-  class="f-collection-tabs f-collection-tabs--image-{{ section.settings.image_position }} f-section-padding color-{{ section.settings.color_schema }}{{ custom_class }}"
+  class="m-collection-tabs m-collection-tabs--image-{{ section.settings.image_position }} m-section-padding color-{{ section.settings.color_schema }}{{ custom_class }}"
   data-section-id="{{ section.id }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
@@ -78,7 +78,7 @@
     >
       <motion-element
         data-motion="{{ animation_effect }}"
-        class="block f-collection-tab__images {{ image_width }}"
+        class="block m-collection-tab__images {{ image_width }}"
         style="--aspect-ratio: {{ image_aspect_ratio }}"
       >
         {%- for block in section.blocks %}
@@ -95,7 +95,7 @@
             endif
           -%}
           <div
-            class="f-collection-tab__image f-card block{% if forloop.first %} is-active{% endif %}"
+            class="m-collection-tab__image m-card block{% if forloop.first %} is-active{% endif %}"
             data-block-id="{{ block.id }}"
           >
             {%- if tab_image != blank -%}
@@ -107,7 +107,7 @@
               %}
             {%- else -%}
               <div
-                class="f-image"
+                class="m-image"
                 style="--aspect-ratio: {{ image_aspect_ratio }}"
               >
                 {% capture current %}{% cycle 1, 2, 3 %}{% endcapture %}
@@ -121,7 +121,7 @@
           </div>
         {%- endfor -%}
       </motion-element>
-      <div class="f-collection-tab__content flex-1">
+      <div class="m-collection-tab__content flex-1">
         {% render 'index-section-header',
           animation_effect: animation_effect,
           section_settings: section.settings,
@@ -129,7 +129,7 @@
           header_alignment_mobile: 'left',
           custom_css_class: 'md-down:hidden'
         %}
-        <div class="f-collection-tab__content-wrap" data-collapsible-parent>
+        <div class="m-collection-tab__content-wrap" data-collapsible-parent>
           {%- for block in section.blocks -%}
             {% render 'collection-tab',
               block_settings: block.settings,

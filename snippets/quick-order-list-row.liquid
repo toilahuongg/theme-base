@@ -202,14 +202,14 @@
   <div class="flex items-center gap-2">
     <quantity-popover class="flex">
     {%- if is_available -%}
-      <quantity-input class="f-quantity quick-order-list-quantity">
+      <quantity-input class="m-quantity quick-order-list-quantity">
         <label class="visually-hidden" for="Quantity-{{ section_id }}-{{ variant.id }}">{{ 'products.product.quantity.label' | t }}</label>
-        <button type="button" name="minus" class="f-quantity__button btn btn--plain no-js-hidden" aria-label="{{ 'products.product.quantity.decrease' | t: product: item.title | escape }}">
+        <button type="button" name="minus" class="m-quantity__button btn btn--plain no-js-hidden" aria-label="{{ 'products.product.quantity.decrease' | t: product: item.title | escape }}">
           <svg width="16" height="16" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M2.6875 7H12.3125" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
-        <input class="f-quantity__input quantity__input form-control"
+        <input class="m-quantity__input quantity__input form-control"
           type="number"
           name="updates[]"
           value="{{ cart | item_count_for_variant: variant.id }}"
@@ -228,7 +228,7 @@
           {% endif %}
           step="{{ variant.quantity_rule.increment }}"
         />
-        <button type="button" name="plus" class="f-quantity__button btn btn--plain no-js-hidden" aria-label="{{ 'products.product.quantity.increase' | t: product: item.title | escape }}">
+        <button type="button" name="plus" class="m-quantity__button btn btn--plain no-js-hidden" aria-label="{{ 'products.product.quantity.increase' | t: product: item.title | escape }}">
           <svg width="16" height="16" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M2.6875 7H12.3125" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M7.5 2.1875V11.8125" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -236,7 +236,7 @@
         </button>
       </quantity-input>
     {%- else -%}
-      <span class="variant-item__sold-out f-badge f-badge--soldout">{{ 'products.product.sold_out' | t }}</span>
+      <span class="variant-item__sold-out m-badge m-badge--soldout">{{ 'products.product.sold_out' | t }}</span>
     {%- endif -%}
     {%- if has_qty_rules or has_vol_pricing -%}
       <button
@@ -285,7 +285,7 @@
 
 <tr class="variant-item" id="VariantItem-{{ section_id }}-{{ variant.id }}">
   <td>
-    <div class="f-flex items-stretch" style="gap: 1.2rem;--column-gap-mobile: 0px;">
+    <div class="m-flex items-stretch" style="gap: 1.2rem;--column-gap-mobile: 0px;">
       {%- if show_image and image != blank -%}
         <picture class="variant-item__media media-wrapper relative overflow-hidden shrink-0">
           {{-
@@ -296,9 +296,9 @@
         </picture>
       {%- endif -%}
 
-      <div class="f-grid items-start md:items-center w-full" style="--row-gap-mobile: 1rem;">
+      <div class="m-grid items-start md:items-center w-full" style="--row-gap-mobile: 1rem;">
         <div class="flex justify-between items-start">
-          <div class="f-grid" style="--row-gap: .4rem;--row-gap-mobile: .4rem;">
+          <div class="m-grid" style="--row-gap: .4rem;--row-gap-mobile: .4rem;">
             <span class="variant-item__title text-pcard-title">{{ item.title | escape }}</span>
             {%- if show_sku and sku != blank -%}
               <span class="text-subtext text-sm">{{ sku | escape }}</span>

@@ -1,7 +1,7 @@
 class MobileNavToggle extends HTMLElement {
 	constructor() {
 		super()
-		this.menuDrawer = document.querySelector('.f-drawer-mobile-nav')
+		this.menuDrawer = document.querySelector('.m-drawer-mobile-nav')
 		this.addEventListener('click', this.openNav.bind(this))
 
 		if (this.menuDrawer) {

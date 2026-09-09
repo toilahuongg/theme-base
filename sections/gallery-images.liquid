@@ -70,7 +70,7 @@
   data-section-id="{{ section.id }}"
   data-columns="{{ columns }}"
   data-enable-slider="{{ enable_slider }}"
-  class="f-section__gallery-images f-section__gallery-images-layout-{{section.settings.layout}} f-section-padding color-{{ section.settings.color_schema }}{{ custom_class }}{% if is_metro_layout %} lg-down:color-{{ section.settings.metro_item_color_schema }}{% endif %}"
+  class="m-section__gallery-images m-section__gallery-images-layout-{{section.settings.layout}} m-section-padding color-{{ section.settings.color_schema }}{{ custom_class }}{% if is_metro_layout %} lg-down:color-{{ section.settings.metro_item_color_schema }}{% endif %}"
 >
   <div class="{{ container }}">
     {% render 'index-section-header',
@@ -87,7 +87,7 @@
       class="block"
     >
       <flickity-component
-        class="f-grid items-center f-grid-{{ section.settings.column_mobile }}-cols md:f-grid-{{ columns }}-cols lg:f-grid-{{ lg_columns }}-cols flickity-disable f-grid--gap-{{ section.settings.column_gap }}{% if enable_slider %} md:flickity-enable{% endif %}{% if enable_swipe_mobile %} f-swiper f-swiper--no-scrollbar f-swiper--{{ section.settings.column_mobile }}-cols{% endif %}"
+        class="m-grid items-center m-grid-{{ section.settings.column_mobile }}-cols md:m-grid-{{ columns }}-cols lg:m-grid-{{ lg_columns }}-cols flickity-disable m-grid--gap-{{ section.settings.column_gap }}{% if enable_slider %} md:flickity-enable{% endif %}{% if enable_swipe_mobile %} m-swiper m-swiper--no-scrollbar m-swiper--{{ section.settings.column_mobile }}-cols{% endif %}"
         data-slider-options='{"pageDots": {{ section.settings.show_dots }}, "prevNextButtons": {{ section.settings.show_nav }}, "groupCells": {{ columns }}, "wrapAround": true}'
         data-slider-columns="{{ columns }}"
         data-enable-slider="{{ enable_slider }}"
@@ -115,14 +115,14 @@
               assign tag = 'a'
             endif
           -%}
-          <div class="f-column" {{ block.shopify_attributes }}>
+          <div class="m-column" {{ block.shopify_attributes }}>
             <div class="grid-list__column block w-full">
               <{{ tag }}
                 {% if image_link != blank %}
                   href="{{ image_link | escape }}"
                   aria-label="{{ image.alt | default: 'image-gallery-image-' | append: forloop.index }}"
                 {% endif %}
-                class="gallery-images__item flex items-center justify-center text-center h-full f-image-hover-effect__{{settings.image_hover_effect}}"
+                class="gallery-images__item flex items-center justify-center text-center h-full m-image-hover-effect__{{settings.image_hover_effect}}"
               >
                 {%- if image != blank -%}
                   {% render 'responsive-image',
@@ -133,7 +133,7 @@
                     index: forloop.index
                   %}
                 {%- else -%}
-                  <div class="f-image">
+                  <div class="m-image">
                     {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
                   </div>
                 {%- endif -%}

@@ -12,7 +12,7 @@
 
 {% liquid
     if no_zoom
-        assign wrapper_class = wrapper_class | append: ' f-image--no-zoom'
+        assign wrapper_class = wrapper_class | append: ' m-image--no-zoom'
     endif
     assign loading = 'lazy'
     assign fetchpriority = 'low'
@@ -21,7 +21,7 @@
         assign fetchpriority = 'high'
     endif
 %}
-<responsive-image data-index="{{ index }}" class="f-image {{ wrapper_class }}" data-image-loading {{ wrapper_attributes }} style="{{ style | strip | strip_newlines }}">
+<responsive-image data-index="{{ index }}" class="m-image {{ wrapper_class }}" data-image-loading {{ wrapper_attributes }} style="{{ style | strip | strip_newlines }}">
     <img
         srcset="{%- if image.width >= 165 -%}{{ image | image_url: width: 165 }} 165w,{%- endif -%}
             {%- if image.width >= 360 -%}{{ image | image_url: width: 360 }} 360w,{%- endif -%}

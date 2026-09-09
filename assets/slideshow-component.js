@@ -3,7 +3,7 @@ if (!customElements.get("slideshow-component")) {
     constructor() {
       super()
       this.selectors = {
-        contents: ['.f-slideshow__content-wrapper'],
+        contents: ['.m-slideshow__content-wrapper'],
         selected: '.selected',
         flickity: 'flickity-component',
         pageDots: '.flickity-page-dots',
@@ -42,10 +42,10 @@ if (!customElements.get("slideshow-component")) {
       this.style.setProperty('--slider-controls-color', currentTextColor);
 
       this.domNodes.contents.forEach(item => item.classList.remove('selected'))
-      this.domNodes.contents[this.prevIndex].classList.add('f-slideshow__content--out')
+      this.domNodes.contents[this.prevIndex].classList.add('m-slideshow__content--out')
       this.domNodes.contents[index].classList.add('selected')
       setTimeout(() => {
-        this.domNodes.contents[this.prevIndex].classList.remove('f-slideshow__content--out')
+        this.domNodes.contents[this.prevIndex].classList.remove('m-slideshow__content--out')
         this.prevIndex = index
       }, 300)
 

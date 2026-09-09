@@ -14,7 +14,7 @@ class CartRecommendationsComponent extends HTMLElement {
         );
         if (
           recommendations &&
-          recommendations.querySelectorAll(".f-cart-recommendations__item")
+          recommendations.querySelectorAll(".m-cart-recommendations__item")
             .length
         ) {
           this.innerHTML = recommendations.innerHTML;
@@ -36,7 +36,7 @@ if (!customElements.get("add-to-cart-component")) {
 
       this.cartDrawer = document.querySelector("cart-drawer");
       this.addToCartButton = this.querySelector(
-        ".f-cart-recommendations__item-add-to-cart"
+        ".m-cart-recommendations__item-add-to-cart"
       );
       this.addEventListener("click", this.onSubmitHandler.bind(this));
     }

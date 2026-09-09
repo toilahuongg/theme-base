@@ -147,7 +147,7 @@ if (!customElements.get("recipient-form")) {
 
         if (this.errorMessageList) this.errorMessageList.innerHTML = "";
 
-        this.querySelectorAll(".f-recipient-fields .f-form__message").forEach(
+        this.querySelectorAll(".m-recipient-fields .m-form__message").forEach(
           (field) => {
             field.classList.add("hidden");
             const textField = field.querySelector(".error-message");

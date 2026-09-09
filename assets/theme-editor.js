@@ -43,7 +43,7 @@ document.addEventListener('shopify:section:load', function(event) {
 
   imageWithTextSlider.forEach(slider => {
 		setTimeout(() => {
-      const mainSlider = slider.querySelector('.f-slider__text')
+      const mainSlider = slider.querySelector('.m-slider__text')
       const currentIndex = mainSlider.querySelector('.is-selected').dataset.index
 			slider.removeAttribute('data-media-loading')
       slider.handleChange(parseInt(currentIndex))
@@ -57,11 +57,11 @@ document.addEventListener('shopify:block:select', function(event) {
 	const {target} = event
 
 	const slideClasses = [
-		'f-press__text',
-		'f-slideshow__slide',
-		'f-slideshow__content',
-		'f-favorite-products__block',
-		'f-slider__content-wrapper',
+		'm-press__text',
+		'm-slideshow__slide',
+		'm-slideshow__content',
+		'm-favorite-products__block',
+		'm-slider__content-wrapper',
 		'collection-list-slider__slide'
 	];
 	slideClasses.some((slide) => {
@@ -76,13 +76,13 @@ document.addEventListener('shopify:block:select', function(event) {
 		}
 	});
 	
-	const blockSelectedIsTab = target.classList.contains('f-tabs__content');
+	const blockSelectedIsTab = target.classList.contains('m-tabs__content');
 	if (blockSelectedIsTab) {
 		const tabs = target.closest('tabs-component')
 		tabs.setActiveTab(target.dataset.index)
 	}
 
-	const blockSelectedLookbook = target.classList.contains('f-lookbook-card');
+	const blockSelectedLookbook = target.classList.contains('m-lookbook-card');
 	if (blockSelectedLookbook) {
 		const lookbookIcons = target.querySelectorAll('lookbook-icon')
 		lookbookIcons.forEach(lookbookIcon => {
@@ -90,7 +90,7 @@ document.addEventListener('shopify:block:select', function(event) {
 		});
 	}
 
-  const blockProductComplementary = target.classList.contains('f-product-single__block--complementary');
+  const blockProductComplementary = target.classList.contains('m-product-single__block--complementary');
   if (blockProductComplementary) {
     const collapsibleTab = target.querySelectorAll('collapsible-tab');
     collapsibleTab && collapsibleTab.init();

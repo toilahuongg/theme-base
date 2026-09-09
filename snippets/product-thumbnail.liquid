@@ -20,8 +20,8 @@
 -%}
 
 <div
-  id="f-product__media-{{ media.id }}"
-  class="f-product__media f-product__media--{{ media.media_type }}{% if media.media_type == 'video' or media.media_type == 'external_video' %} f-video__wrapper{% endif %}{% if 'carousel,standard' contains media_layout %} w-full{% endif %}"
+  id="m-product__media-{{ media.id }}"
+  class="m-product__media m-product__media--{{ media.media_type }}{% if media.media_type == 'video' or media.media_type == 'external_video' %} m-video__wrapper{% endif %}{% if 'carousel,standard' contains media_layout %} w-full{% endif %}"
   data-media-type="{{ media.media_type }}"
   data-media-id="{{ media.id }}"
   data-media-index="{{ index }}"
@@ -120,7 +120,7 @@
     </div>
   {%- else -%}
     <div>
-      <responsive-image class="f-image" data-image-loading style="--aspect-ratio: {{ media.aspect_ratio }}">
+      <responsive-image class="m-image" data-image-loading style="--aspect-ratio: {{ media.aspect_ratio }}">
         <img
           srcset="
             {% if media.preview_image.width >= 493 %}{{ media.preview_image | image_url: width: 493 }} 493w,{% endif %}
@@ -149,14 +149,14 @@
   {%- endif -%}
   {% if enable_image_zoom and media.media_type == 'image' %}
     <span
-      class="f-product__media-icon f-product__media-zoom f-product__media-badge motion-reduce"
+      class="m-product__media-icon m-product__media-zoom m-product__media-badge motion-reduce"
       aria-hidden="true"
     >
       <svg
         aria-hidden="true"
         focusable="false"
         role="presentation"
-        class="f-icon--medium f-icon-zoom-in"
+        class="m-icon--medium m-icon-zoom-in"
         viewBox="0 0 20 20"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -165,7 +165,7 @@
       </svg>
     </span>
     <button
-      class="f-product__modal-toggle js-photoswipe--zoom"
+      class="m-product__modal-toggle js-photoswipe--zoom"
       type="button"
       aria-haspopup="dialog"
       data-media-id="{{ media.id }}"
@@ -181,7 +181,7 @@
     {%- if media.media_type == 'video'
       or media.media_type == 'external_video'
     -%}
-      <span class="product__media-icon f-product__media-badge motion-reduce">
+      <span class="product__media-icon m-product__media-badge motion-reduce">
         {% comment %} theme-check-disable {% endcomment %}
         {{ 'icon-play.svg' | inline_asset_content }}
         {% comment %} theme-check-enable {% endcomment %}
@@ -213,7 +213,7 @@
       </div>
       <a
         href="{% if media.media_type == 'video' %}{{ media.sources[1].url }}{% else %}{{ media | external_video_url }}{% endif %}"
-        class="f-product__modal-toggle"
+        class="m-product__modal-toggle"
       >
         <span class="visually-hidden">
           {{-

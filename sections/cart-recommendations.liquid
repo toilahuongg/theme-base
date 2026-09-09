@@ -1,10 +1,10 @@
-<div class="f-cart-recommendations__wrapper">
-  <h3 class="f-cart-recommendations__title font-body-bolder h6">
+<div class="m-cart-recommendations__wrapper">
+  <h3 class="m-cart-recommendations__title font-body-bolder h6">
     {{ 'general.cart.cart_recommendations' | t }}
   </h3>
-  <div class="f-cart-recommendations__items {% if recommendations.products.size == 1 %} f-cart-recommendations__items-only-product{% endif %}">
+  <div class="m-cart-recommendations__items {% if recommendations.products.size == 1 %} m-cart-recommendations__items-only-product{% endif %}">
     <flickity-component
-      data-slider-options='{"pageDots": true, "wrapAround": true, "cellSelector": ".f-cart-recommendations__item" }'
+      data-slider-options='{"pageDots": true, "wrapAround": true, "cellSelector": ".m-cart-recommendations__item" }'
       data-slider-columns="1"
       data-enable-slider="true"
       data-is-paginate-counter="true"
@@ -13,7 +13,7 @@
       {%- for recommendation in recommendations.products -%}
         {% render 'product-card',
           product: recommendation,
-          custom_class: 'f-cart-recommendations__item bg-secondary',
+          custom_class: 'm-cart-recommendations__item bg-secondary',
           is_complementary: true,
           list_layout: true,
           index: forloop.index,

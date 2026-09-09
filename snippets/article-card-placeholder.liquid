@@ -1,23 +1,23 @@
-<div class="f-article-card f-article-card__placeholder {{ classes }} grid-list__column">
-  <div class="f-article-card__image">
+<div class="m-article-card m-article-card__placeholder {{ classes }} grid-list__column">
+  <div class="m-article-card__image">
     <div
-      class="f-image f-card"
+      class="m-image m-card"
       style="--aspect-ratio: {{ image_aspect_ratio }};"
     >
       {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
     </div>
   </div>
-  <div class="f-article-card__info">
+  <div class="m-article-card__info">
     {%- if show_date -%}
-      <p class="f-article-card__date">
+      <p class="m-article-card__date">
         {{ 'now' | date: '%b %d, %y' }}
       </p>
     {%- endif -%}
-    <h3 class="f-article-card__title h5">
+    <h3 class="m-article-card__title h5">
       {{ 'onboarding.blog_title' | t }}
     </h3>
     {%- if show_excerpt -%}
-      <div class="f-article-card__excerpt text-subtext">
+      <div class="m-article-card__excerpt text-subtext">
         <div class="text-limit-2-lines">
           {{ 'onboarding.blog_excerpt' | t }}
         </div>
@@ -26,7 +26,7 @@
     {%- if show_readmore -%}
       <a
         href="#"
-        class="btn btn--underline f-article-card__readmore text-normal"
+        class="btn btn--underline m-article-card__readmore text-normal"
       >
         {{ 'blogs.article.read_more' | t }}
       </a>

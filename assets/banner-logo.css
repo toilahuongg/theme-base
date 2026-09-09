@@ -1,5 +1,5 @@
 .banner-logo {
-  height: calc(100vh - var(--f-header-space, 70px) - var(--f-announcement-height, 0px));
+  height: calc(100vh - var(--m-header-space, 70px) - var(--m-announcement-height, 0px));
 }
 .banner-logo__logo-inner {
   margin-block-start: -10.9333333333%;
@@ -25,6 +25,6 @@
 
 @media (max-width: 767.98px) {
   .mobile-sticky-bar-enabled .banner-logo {
-    height: calc(100vh - var(--f-header-space, 60px) - var(--f-announcement-height, 0px) - var(--f-mobile-navbar-height, 6.6rem));
+    height: calc(100vh - var(--m-header-space, 60px) - var(--m-announcement-height, 0px) - var(--m-mobile-navbar-height, 6.6rem));
   }
 }

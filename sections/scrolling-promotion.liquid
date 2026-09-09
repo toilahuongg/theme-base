@@ -29,47 +29,47 @@
 </style>
 <div
   id="{{ section_id }}"
-  class="f-scrolling-promotion__wrapper f-section-padding color-{{ section.settings.color_schema }}{{ custom_class }}"
+  class="m-scrolling-promotion__wrapper m-section-padding color-{{ section.settings.color_schema }}{{ custom_class }}"
 >
   <div class="{{ container }}">
     {% render 'index-section-header',
       section_settings: section.settings
     %}
-    <f-scrolling-promotion
+    <m-scrolling-promotion
       data-section-type="scrolling-promotion"
       data-section-id="{{ section.id }}"
       {% if pause_on_hover %}
         data-pause-on-hover
       {% endif %}
-      class="f-scrolling-promotion f-scrolling-promotion--{{ section.settings.direction }}"
+      class="m-scrolling-promotion m-scrolling-promotion--{{ section.settings.direction }}"
       style="--item-gap: {{ section.settings.item_gap }}px;--item-gap-mobile: {{ section.settings.item_gap_mobile }}px;--duration: {{ duration }}s;"
     >
-      <div class="f-promotion items-{{ vertical_alignment }}">
+      <div class="m-promotion items-{{ vertical_alignment }}">
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'divider' -%}
               <div
-                class="f-promotion__item f-promotion--{{ block.type }}{% if block.settings.use_custom_spacing %} f-promotion__item-custom-spacing{% endif %}"
+                class="m-promotion__item m-promotion--{{ block.type }}{% if block.settings.use_custom_spacing %} m-promotion__item-custom-spacing{% endif %}"
                 style="--divider-width: {{ block.settings.width }}px;{% if block.settings.use_custom_spacing %}--margin-left: {{ block.settings.margin_left }}px; --margin-left-mobile: {{ block.settings.margin_left_mobile }}px; --margin-right: {{ block.settings.margin_right }}px; --margin-right-mobile: {{ block.settings.margin_right_mobile }}px;{% endif %}"
               >
-                <div class="f-promotion__item-divider"></div>
+                <div class="m-promotion__item-divider"></div>
               </div>
             {%- when 'image' -%}
               <div
-                class="f-promotion__item f-promotion--{{ block.type }}{% if block.settings.use_custom_spacing %} f-promotion__item-custom-spacing{% endif %}"
+                class="m-promotion__item m-promotion--{{ block.type }}{% if block.settings.use_custom_spacing %} m-promotion__item-custom-spacing{% endif %}"
                 style="--image-height: {{ block.settings.image_height }}px;{% if block.settings.use_custom_spacing %}--margin-left: {{ block.settings.margin_left }}px; --margin-left-mobile: {{ block.settings.margin_left_mobile }}px; --margin-right: {{ block.settings.margin_right }}px; --margin-right-mobile: {{ block.settings.margin_right_mobile }}px;{% endif %}"
               >
                 {%- if block.settings.image_link != blank -%}
                   <a
                     href="{{ block.settings.image_link }}"
-                    class="f-promotion__item--link f-image-hover-effect__{{settings.image_hover_effect}}"
+                    class="m-promotion__item--link m-image-hover-effect__{{settings.image_hover_effect}}"
                   >
                 {%- endif -%}
                 {%- if block.settings.image != blank -%}
                   {%- liquid
                     assign image = block.settings.image
                   -%}
-                  <div class="f-image">
+                  <div class="m-image">
                     <img
                       srcset="
                         {%- if image.src.width >= 165 -%}{{ image.src | image_url: width: 165 }} 165w,{%- endif -%}
@@ -96,10 +96,10 @@
                 {%- if block.settings.image_link != blank -%}</a>{%- endif -%}
               </div>
             {%- when 'testimonial' -%}
-              <div class="f-promotion__item f-promotion__item-testimonial f-promotion--{{ block.type }}">
-                <div class="f-promotion-testimonial">
+              <div class="m-promotion__item m-promotion__item-testimonial m-promotion--{{ block.type }}">
+                <div class="m-promotion-testimonial">
                   {%- if block.settings.show_image != blank -%}
-                    <div class="f-promotion-testimonial__image">
+                    <div class="m-promotion-testimonial__image">
                       {%- if block.settings.image != blank -%}
                         {% render 'responsive-image', image: block.settings.image, wrapper_class: 'w-full' %}
                       {%- else -%}
@@ -108,20 +108,20 @@
                     </div>
                   {%- endif -%}
                   {%- if block.settings.icon != 'none' -%}
-                    <div class="f-promotion-testimonial__icon f-promotion-testimonial__icon--{{ block.settings.icon }}">
+                    <div class="m-promotion-testimonial__icon m-promotion-testimonial__icon--{{ block.settings.icon }}">
                       {% render 'icon-testimonials', icon_name: block.settings.icon %}
                     </div>
                   {%- endif -%}
                   {%- if block.settings.text != blank -%}
-                    <div class="f-promotion-testimonial__text">{{ block.settings.text }}</div>
+                    <div class="m-promotion-testimonial__text">{{ block.settings.text }}</div>
                   {%- endif -%}
-                  <div class="f-promotion-testimonial__inner-bottom flex items-center">
+                  <div class="m-promotion-testimonial__inner-bottom flex items-center">
                     {%- if block.settings.author != blank -%}
-                      <p class="f-promotion-testimonial__author font-body-bolder">{{ block.settings.author }}</p>
+                      <p class="m-promotion-testimonial__author font-body-bolder">{{ block.settings.author }}</p>
                     {%- endif -%}
                     {%- assign product = all_products[block.settings.product] -%}
                     {%- if product != blank -%}
-                      <p class="f-promotion-testimonial__product">
+                      <p class="m-promotion-testimonial__product">
                         <a href="{{ product.url }}" class="btn--link">{{ product.title }}</a>
                       </p>
                     {%- endif -%}
@@ -130,14 +130,14 @@
               </div>
             {%- when 'text' -%}
               <div
-                class="f-promotion__item f-promotion--{{ block.type }}{% if block.settings.use_custom_spacing %} f-promotion__item-custom-spacing{% endif %}"
+                class="m-promotion__item m-promotion--{{ block.type }}{% if block.settings.use_custom_spacing %} m-promotion__item-custom-spacing{% endif %}"
                 {% if block.settings.use_custom_spacing %}
                   style="--margin-left: {{ block.settings.margin_left }}px; --margin-left-mobile: {{ block.settings.margin_left_mobile }}px; --margin-right: {{ block.settings.margin_right }}px; --margin-right-mobile: {{ block.settings.margin_right_mobile }}px;"
                 {% endif %}
               >
                 {%- if block.settings.text != blank -%}
                   <div
-                    class="f-promotion__text font-{{ block.settings.font_family }}"
+                    class="m-promotion__text font-{{ block.settings.font_family }}"
                     style="--text-size: {{ block.settings.text_size }}px;"
                   >
                     {%- render 'highlight-text',
@@ -149,15 +149,15 @@
               </div>
             {%- else -%}
               <div
-                class="f-promotion__item f-promotion--{{ block.type }}{% if block.settings.use_custom_spacing %} f-promotion__item-custom-spacing{% endif %}"
+                class="m-promotion__item m-promotion--{{ block.type }}{% if block.settings.use_custom_spacing %} m-promotion__item-custom-spacing{% endif %}"
                 {% if block.settings.use_custom_spacing %}
                   style="--margin-left: {{ block.settings.margin_left }}px; --margin-left-mobile: {{ block.settings.margin_left_mobile }}px; --margin-right: {{ block.settings.margin_right }}px; --margin-right-mobile: {{ block.settings.margin_right_mobile }}px;"
                 {% endif %}
               >
                 {%- if block.settings.text != blank -%}
-                  {%- if block.settings.text_link != blank -%}<a href="{{ block.settings.text_link }}" class="f-promotion__item--link">{%- endif -%}
+                  {%- if block.settings.text_link != blank -%}<a href="{{ block.settings.text_link }}" class="m-promotion__item--link">{%- endif -%}
                   <div
-                    class="f-promotion__text font-{{ block.settings.font_family }}"
+                    class="m-promotion__text font-{{ block.settings.font_family }}"
                     style="--text-size: {{ block.settings.text_size }}px;"
                   >
                     {{- block.settings.text -}}
@@ -168,7 +168,7 @@
           {%- endcase -%}
         {%- endfor -%}
       </div>
-    </f-scrolling-promotion>
+    </m-scrolling-promotion>
   </div>
 </div>
 {% schema %}

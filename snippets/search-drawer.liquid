@@ -11,16 +11,16 @@
 
 <drawer-component
   id="Drawer-Search"
-  class="f-drawer f-drawer-search no-js-hidden"
+  class="m-drawer m-drawer-search no-js-hidden"
   hidden
-  data-element-to-focus="#f-search-drawer-input"
+  data-element-to-focus="#m-search-drawer-input"
   role="dialog"
   aria-modal="true"
   aria-label="{{ 'general.search.search' | t }}"
-  style="--f-drawer-width: 460px; --f-drawer-header-height: auto;"
+  style="--m-drawer-width: 460px; --m-drawer-header-height: auto;"
 >
-  <div class="f-drawer__overlay"></div>
-  <div class="f-search-drawer f-drawer__content">
+  <div class="m-drawer__overlay"></div>
+  <div class="m-search-drawer m-drawer__content">
     {%- if predictive_search_enabled -%}
       <predictive-search class="h-full" data-loading-text="{{ 'accessibility.loading' | t }}">
     {%- endif -%}
@@ -28,19 +28,19 @@
       action="{{ routes.search_url }}"
       method="get"
       role="search"
-      class="f-search-drawer__form h-full flex flex-col"
+      class="m-search-drawer__form h-full flex flex-col"
     >
-      <div class="f-drawer__header">
-        <div class="f-search-drawer__field w-full">
-          <span class="f-search-drawer__field-icon">
+      <div class="m-drawer__header">
+        <div class="m-search-drawer__field w-full">
+          <span class="m-search-drawer__field-icon">
             {% comment %} theme-check-disable {% endcomment %}
             {{ 'icon-search.svg' | inline_asset_content }}
             {% comment %} theme-check-enable {% endcomment %}
           </span>
-          <label class="visually-hidden" for="f-search-drawer-input">{{ 'general.search.search' | t }}</label>
+          <label class="visually-hidden" for="m-search-drawer-input">{{ 'general.search.search' | t }}</label>
           <input
-            class="form-control focus-none f-search-drawer__input"
-            id="f-search-drawer-input"
+            class="form-control focus-none m-search-drawer__input"
+            id="m-search-drawer-input"
             type="search"
             name="q"
             value="{{ search.terms | escape }}"
@@ -49,8 +49,8 @@
             {% if predictive_search_enabled %}
               role="combobox"
               aria-expanded="false"
-              aria-owns="f-predictive-search-results"
-              aria-controls="f-predictive-search-results"
+              aria-owns="m-predictive-search-results"
+              aria-controls="m-predictive-search-results"
               aria-haspopup="listbox"
               aria-autocomplete="list"
               autocorrect="off"
@@ -64,7 +64,7 @@
           <input type="hidden" name="options[prefix]" value="last">
         </div>
         <drawer-closer
-          class="f-drawer__close btn btn--plain"
+          class="m-drawer__close btn btn--plain"
           role="button"
           aria-label="{{ 'accessibility.close' | t }}"
         >
@@ -84,11 +84,11 @@
           </svg>
         </drawer-closer>
       </div>
-      <div class="f-drawer__scroller">
+      <div class="m-drawer__scroller">
         {% if most_searched_keywords != blank %}
           {%- assign keywords = most_searched_keywords | split: ',' -%}
-          <div class="f-predictive-search__keywords f-predictive-search__block">
-            <h4 class="f-predictive-search__subheading font-body-bolder">
+          <div class="m-predictive-search__keywords m-predictive-search__block">
+            <h4 class="m-predictive-search__subheading font-body-bolder">
               {{ 'general.search.popular_searches' | t }}:
             </h4>
             <ul class="list-none flex flex-wrap">
@@ -104,26 +104,26 @@
         {% endif %}
         {% if predictive_search_collection != blank %}
           {%- assign recommend_collection = collections[predictive_search_collection] -%}
-          <div class="f-predictive-search__recommendations f-predictive-search__block f-predictive-search__block-products">
-            <h4 class="f-predictive-search__subheading font-body-bolder">
+          <div class="m-predictive-search__recommendations m-predictive-search__block m-predictive-search__block-products">
+            <h4 class="m-predictive-search__subheading font-body-bolder">
               {{ 'general.search.most_searched_products' | t }}:
             </h4>
             <ul
-              class="f-predictive-search__results-list list-none"
+              class="m-predictive-search__results-list list-none"
               role="listbox"
-              aria-labelledby="f-predictive-search-results-list"
+              aria-labelledby="m-predictive-search-results-list"
             >
               {% for product in recommend_collection.products limit: 5 %}
                 <li role="option" aria-selected="false">
                   <a
                     href="{{ product.url }}"
-                    class="f-predictive-search__item f-image-hover-effect__{{settings.image_hover_effect}}"
+                    class="m-predictive-search__item m-image-hover-effect__{{settings.image_hover_effect}}"
                     tabindex="-1"
                   >
                     {%- if product.featured_media != blank -%}
-                      <div class="f-predictive-search__item-image">
+                      <div class="m-predictive-search__item-image">
                         <responsive-image
-                          class="f-predictive-search__item-image f-image"
+                          class="m-predictive-search__item-image m-image"
                           style="--aspect-ratio: {{ product.featured_media.preview_image.aspect_ratio | default: '1' }}"
                         >
                           <img
@@ -136,12 +136,12 @@
                         </responsive-image>
                       </div>
                     {%- endif -%}
-                    <div class="f-predictive-search__item-content">
+                    <div class="m-predictive-search__item-content">
                       {%- if settings.predictive_search_show_vendor -%}
                         <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
-                        <div class="f-predictive-search__item-vendor text-subtext">{{ product.vendor }}</div>
+                        <div class="m-predictive-search__item-vendor text-subtext">{{ product.vendor }}</div>
                       {%- endif -%}
-                      <h3 class="f-predictive-search__item-heading {{ product_title_class }}">{{ product.title }}</h3>
+                      <h3 class="m-predictive-search__item-heading {{ product_title_class }}">{{ product.title }}</h3>
                       {%- if settings.predictive_search_show_price -%}
                         {% render 'price', product: product, use_variant: true %}
                       {%- endif -%}
@@ -153,8 +153,8 @@
           </div>
         {% endif %}
         {%- if predictive_search_enabled -%}
-          <div class="f-predictive-search f-predictive-search--drawer" tabindex="-1" data-predictive-search>
-            <div class="f-predictive-search__loading-state">
+          <div class="m-predictive-search m-predictive-search--drawer" tabindex="-1" data-predictive-search>
+            <div class="m-predictive-search__loading-state">
               {% comment %} theme-check-disable {% endcomment %}
               {{ 'icon-spinner.svg' | inline_asset_content }}
               {% comment %} theme-check-enable {% endcomment %}

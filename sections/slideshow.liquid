@@ -60,13 +60,13 @@
 
   assign slideshow_class = ''
   if has_control
-    assign slideshow_class = slideshow_class | append: ' f-slideshow-wrapper__has-controls'
+    assign slideshow_class = slideshow_class | append: ' m-slideshow-wrapper__has-controls'
   endif
   if show_controls_below
-    assign slideshow_class = slideshow_class | append: ' f-slideshow--mobile-controls-below'
+    assign slideshow_class = slideshow_class | append: ' m-slideshow--mobile-controls-below'
   endif
   if show_text_below
-    assign slideshow_class = slideshow_class | append: ' f-slideshow--mobile-stack'
+    assign slideshow_class = slideshow_class | append: ' m-slideshow--mobile-stack'
   endif
 
   assign animation_effect = settings.animations
@@ -80,13 +80,13 @@
 
   assign pagination_class = ''
   if pagination_background == 'dark'
-    assign pagination_class = 'f-pagination-bg--dark'
+    assign pagination_class = 'm-pagination-bg--dark'
     assign pagination_background = '#000000'
   elsif pagination_background == 'light'
-    assign pagination_class = 'f-pagination-bg--light'
+    assign pagination_class = 'm-pagination-bg--light'
     assign pagination_background = '#ffffff'
   else
-    assign pagination_class = 'f-pagination-bg--none'
+    assign pagination_class = 'm-pagination-bg--none'
     assign pagination_background = 'transparent'
   endif
 -%}
@@ -96,22 +96,22 @@
   id="{{ section_id }}"
   data-section-type="slideshow"
   data-section-id="{{ section.id }}"
-  class="f-slideshow{{ custom_class }}"
+  class="m-slideshow{{ custom_class }}"
   role="region"
   aria-roledescription="{{ 'sections.slideshow.carousel' | t }}"
   aria-label="{{ section.settings.accessibility_info | escape }}"
 >
   <div class="{{ container }}">
     <slideshow-component
-      class="f-slideshow-wrapper f-slideshow-wrapper--{{ slideshow_height }}{{ slideshow_class }}"
+      class="m-slideshow-wrapper m-slideshow-wrapper--{{ slideshow_height }}{{ slideshow_class }}"
       data-mobile-stack="{{ show_text_below }}"
       data-media-loading
       style="--number-slides: {{ section.blocks.size }}; --pagination-background: {{ pagination_background }}; --slider-controls-color: {{ section.blocks.first.settings.text_color }};"
     >
       <flickity-component
-        id="f-slideshow-{{ section.id }}"
-        class="f-slideshow__slides overflow-hidden w-full flickity-button-initialized flickity-controls-group flickity-controls-group__bottom flickity-controls-group__bottom--{{ controls_position }} flickity-pagination--{{ pagination_style }}{{ flickity_classes }} {{ pagination_class }}"
-        data-slider-options='{"pageDots": {{ is_page_dots }}, "dragThreshold": 20, "prevNextButtons": {{ show_nav }}, "autoPlay": {{ autoplay }}, "wrapAround": true, "fade": true, "adaptiveHeight": true, "setGallerySize": false, "cellSelector": ".f-slideshow__slide"}'
+        id="m-slideshow-{{ section.id }}"
+        class="m-slideshow__slides overflow-hidden w-full flickity-button-initialized flickity-controls-group flickity-controls-group__bottom flickity-controls-group__bottom--{{ controls_position }} flickity-pagination--{{ pagination_style }}{{ flickity_classes }} {{ pagination_class }}"
+        data-slider-options='{"pageDots": {{ is_page_dots }}, "dragThreshold": 20, "prevNextButtons": {{ show_nav }}, "autoPlay": {{ autoplay }}, "wrapAround": true, "fade": true, "adaptiveHeight": true, "setGallerySize": false, "cellSelector": ".m-slideshow__slide"}'
         aria-live="polite"
         aria-atomic="true"
         data-enable-slider="true"
@@ -129,7 +129,7 @@
                 assign image_overlay_opacity = block.settings.image_overlay_opacity
               %}
               <div
-                class="f-slideshow__slide"
+                class="m-slideshow__slide"
                 data-index="{{ forloop.index0 }}"
                 role="group"
                 aria-roledescription="{{ 'sections.slideshow.slide' | t }}"
@@ -138,7 +138,7 @@
                 {{ block.shopify_attributes }}
               >
                 {% if block.settings.background == blank %}
-                  <div class="f-slideshow__slide-placeholder h-full{% if mb_background != blank %} hidden md:block{% endif %}{% if animated and section.settings.enable_bg_zoom_effect %} bg-image__animation{% endif %}">
+                  <div class="m-slideshow__slide-placeholder h-full{% if mb_background != blank %} hidden md:block{% endif %}{% if animated and section.settings.enable_bg_zoom_effect %} bg-image__animation{% endif %}">
                     {% capture current %}{% cycle 1, 2 %}{% endcapture %}
                     {{
                       'lifestyle-'
@@ -147,7 +147,7 @@
                     }}
                   </div>
                 {% else %}
-                  <div class="f-slideshow__slide-bg bg-image{% if mb_background != blank %} hidden md:block{% endif %}{% if animated and section.settings.enable_bg_zoom_effect %} bg-image__animation{% endif %}">
+                  <div class="m-slideshow__slide-bg bg-image{% if mb_background != blank %} hidden md:block{% endif %}{% if animated and section.settings.enable_bg_zoom_effect %} bg-image__animation{% endif %}">
                     {%- liquid
                       assign image_height = bs.background.width | divided_by: bs.background.aspect_ratio
                       assign loading = 'lazy'
@@ -173,7 +173,7 @@
                   </div>
                 {% endif %}
                 {% unless mb_background == blank %}
-                  <div class="f-slideshow__slide-mobile bg-image w-full md:hidden{% if animated and section.settings.enable_bg_zoom_effect %} bg-image__animation{% endif %}">
+                  <div class="m-slideshow__slide-mobile bg-image w-full md:hidden{% if animated and section.settings.enable_bg_zoom_effect %} bg-image__animation{% endif %}">
                     {%- liquid
                       assign image_height = mb_background.width | divided_by: mb_background.aspect_ratio
                       assign loading = 'lazy'
@@ -200,14 +200,14 @@
                 {% endunless %}
                 {% if image_overlay_opacity > 0 %}
                   <div
-                    class="f-slideshow__overlay bg-overlay"
+                    class="m-slideshow__overlay bg-overlay"
                     style="--color-overlay-alpha: {{ image_overlay_opacity }}"
                   ></div>
                 {% endif %}
               </div>
             {% else %}
               <div
-                class="f-slideshow__slide"
+                class="m-slideshow__slide"
                 data-index="{{ forloop.index0 }}"
                 role="group"
                 aria-roledescription="{{ 'sections.slideshow.slide' | t }}"
@@ -217,7 +217,7 @@
               >
                 <deferred-media
                   data-type="{{ block.settings.video_type }}"
-                  class="f-video__bg{% if animated and section.settings.enable_bg_zoom_effect %} bg-image__animation{% endif %}"
+                  class="m-video__bg{% if animated and section.settings.enable_bg_zoom_effect %} bg-image__animation{% endif %}"
                 >
                   <button
                     id="Deferred-Poster-Modal-{{ block.settings.video_url.id }}"
@@ -245,7 +245,7 @@
                 </deferred-media>
                 {% if block.settings.image_overlay_opacity > 0 %}
                   <div
-                    class="f-slideshow__overlay bg-overlay"
+                    class="m-slideshow__overlay bg-overlay"
                     style="--color-overlay-alpha: {{ block.settings.image_overlay_opacity }}"
                   ></div>
                 {% endif %}
@@ -268,7 +268,7 @@
           </div>
         {% endif %}
       </flickity-component>
-      <div class="f-slideshow__text absolute inset-full flex">
+      <div class="m-slideshow__text absolute inset-full flex">
         {% for block in section.blocks %}
           {% liquid
             assign bs = block.settings
@@ -278,33 +278,33 @@
 
             assign flexible_content = ''
             if bs.content_position == 'left-bottom' and controls_position == 'left' and has_control
-              assign flexible_content = ' f-slideshow__content--move-top'
+              assign flexible_content = ' m-slideshow__content--move-top'
             endif
             if bs.content_position == 'right-bottom' and controls_position == 'right' and has_control
-              assign flexible_content = ' f-slideshow__content--move-top'
+              assign flexible_content = ' m-slideshow__content--move-top'
             endif
             if bs.content_position == 'center-bottom' and controls_position == 'center' and has_control
-              assign flexible_content = ' f-slideshow__content--move-top'
+              assign flexible_content = ' m-slideshow__content--move-top'
             endif
           %}
           <div
-            class="f-slideshow__content-wrapper absolute focus-none inset-full flex f-slideshow__content--{{ bs.content_position }}{{ flexible_content }} container"
+            class="m-slideshow__content-wrapper absolute focus-none inset-full flex m-slideshow__content--{{ bs.content_position }}{{ flexible_content }} container"
             tabindex="-1"
             data-text-color="{{ text_color }}"
             {{ block.shopify_attributes }}
           >
             <div
-              class="f-slideshow__content f-text-blocks hidden text-{{ text_alignment_mobile }} sm:text-{{ text_alignment }}"
+              class="m-slideshow__content m-text-blocks hidden text-{{ text_alignment_mobile }} sm:text-{{ text_alignment }}"
               style="--slide-content-text-color: {{ text_color }};"
             >
               {% unless block.settings.subheading == blank %}
-                <div class="f-slideshow__subtitle text-subheading">
+                <div class="m-slideshow__subtitle text-subheading">
                   {{ block.settings.subheading }}
                 </div>
               {% endunless %}
               {% unless block.settings.title == blank %}
                 <h2
-                  class="f-slideshow__title {{ block.settings.heading_size }}"
+                  class="m-slideshow__title {{ block.settings.heading_size }}"
                   {% if block.settings.heading_color != blank
                     and block.settings.heading_color != 'rgba(0,0,0,0)'
                   %}
@@ -315,11 +315,11 @@
                 </h2>
               {% endunless %}
               {% unless block.settings.description == blank %}
-                <div class="f-slideshow__description {{ desc_size }}">
+                <div class="m-slideshow__description {{ desc_size }}">
                   {{ block.settings.description }}
                 </div>
               {% endunless %}
-              <div class="f-slideshow__btn-group f-text-blocks__btn pointer-events-auto">
+              <div class="m-slideshow__btn-group m-text-blocks__btn pointer-events-auto">
                 {% liquid
                   assign button_style_1 = bs.button_style_1
                   assign button_style_2 = bs.button_style_2
@@ -331,7 +331,7 @@
                   endif
                 %}
                 {% unless block.settings.button_text_1 == blank %}
-                  <div class="f-slideshow__btn f-slideshow__btn-first">
+                  <div class="m-slideshow__btn m-slideshow__btn-first">
                     <a
                       href="{{ block.settings.button_link_1 | default: "#" }}"
                       {% if bs.button_link_1 == blank %}
@@ -344,7 +344,7 @@
                   </div>
                 {% endunless %}
                 {% unless block.settings.button_text_2 == blank %}
-                  <div class="f-slideshow__btn f-slideshow__btn-second">
+                  <div class="m-slideshow__btn m-slideshow__btn-second">
                     <a
                       href="{{ block.settings.button_link_2 | default: "#" }}"
                       {% if bs.button_link_2 == blank %}

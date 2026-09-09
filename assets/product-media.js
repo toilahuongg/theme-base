@@ -8,12 +8,12 @@ if (!customElements.get("media-gallery")) {
           mediaGallery: "[id^=Media-Gallery]",
           liveRegion: '[id^="GalleryStatus"]',
           viewer: '[id^="GalleryViewer"]',
-          thumbnailsWrapper: ".f-product__media-thumbnails-wrapper",
+          thumbnailsWrapper: ".m-product__media-thumbnails-wrapper",
           thumbnails: '[id^="GalleryThumbnails"]',
           thumbnailItems: ['[id^="GalleryThumbnailItem"]'],
-          videos: [".f-video__embed"],
+          videos: [".m-video__embed"],
           models: ["product-model"],
-          medias: [".f-product__media"],
+          medias: [".m-product__media"],
           xrButton: "[data-first-xr-button]",
           sliderCounter: ".flickity-counter--current",
           toggleZoom: [".js-photoswipe--zoom"],
@@ -71,8 +71,6 @@ if (!customElements.get("media-gallery")) {
         this.sectionId = this.dataset.sectionId;
         this.section = this.closest("product-info");
         this.enableZoom = this.dataset.enableZoom === "true";
-        this.enableVariantGroupImages =
-          this.dataset.enableVariantGroupImages === "true";
         this.showFeaturedMedia = this.dataset.showFeaturedMedia === "true";
         this.variantPickers = this.section.querySelector(
           "[data-variant-picker]"
@@ -89,7 +87,7 @@ if (!customElements.get("media-gallery")) {
           (variant) => variant.id === Number(selectedVariantId)
         );
 
-        if (!this.enableVariantGroupImages || this.onlyImage) {
+        if (this.onlyImage) {
           setTimeout(() => {
             this.removeAttribute("data-media-loading");
           }, 100);
@@ -202,7 +200,7 @@ if (!customElements.get("media-gallery")) {
 
       initImageZoom() {
         let dataSource = [];
-        const allMedia = this.querySelectorAll(".f-product__media");
+        const allMedia = this.querySelectorAll(".m-product__media");
         if (allMedia) {
           allMedia.forEach((media) => {
             if (media.dataset.mediaType === "image") {
@@ -307,7 +305,7 @@ if (!customElements.get("media-gallery")) {
               ariaLabel: "Next slide",
               order: 3,
               isButton: true,
-              html: '<svg class="pswp-icon-next f-rlt-reverse-x" viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 65,90 L 25,50  L 65,10 L 60,0 Z" class="arrow" transform="translate(100, 100) rotate(180) "></path></svg>',
+              html: '<svg class="pswp-icon-next m-rlt-reverse-x" viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 65,90 L 25,50  L 65,10 L 60,0 Z" class="arrow" transform="translate(100, 100) rotate(180) "></path></svg>',
               onClick: (event, el) => {
                 this.lightbox.pswp.next();
               },
@@ -317,7 +315,7 @@ if (!customElements.get("media-gallery")) {
               ariaLabel: "Previous slide",
               order: 1,
               isButton: true,
-              html: '<svg class="pswp-icon-prev f-rlt-reverse-x" viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 65,90 L 25,50  L 65,10 L 60,0 Z" class="arrow"></path></svg>',
+              html: '<svg class="pswp-icon-prev m-rlt-reverse-x" viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 65,90 L 25,50  L 65,10 L 60,0 Z" class="arrow"></path></svg>',
               onClick: (event, el) => {
                 this.lightbox.pswp.prev();
               },
@@ -329,7 +327,7 @@ if (!customElements.get("media-gallery")) {
             ariaLabel: "Close zoom image",
             order: 2,
             isButton: true,
-            html: '<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="f-icon-svg f-icon--medium  f-icon-close"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>',
+            html: '<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="m-icon-svg m-icon--medium  m-icon-close"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>',
             onClick: (event, el) => {
               this.lightbox.pswp.close();
             },

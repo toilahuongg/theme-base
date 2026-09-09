@@ -1,42 +1,42 @@
-.f-countdown .bg-image {
+.m-countdown .bg-image {
   z-index: 1;
   background-size: cover;
 }
 @media (max-width: 639.98px) {
-  .f-countdown .bg-image {
+  .m-countdown .bg-image {
     left: -1.5rem;
     right: -1.5rem;
     width: calc(100% + 3rem);
   }
 }
-.f-countdown__overlay {
+.m-countdown__overlay {
   z-index: 2;
 }
-.f-countdown__content {
+.m-countdown__content {
   position: relative;
   z-index: 3;
 }
-.f-countdown__wrapper--has-bg .f-countdown__content:not(.container) {
+.m-countdown__wrapper--has-bg .m-countdown__content:not(.container) {
   padding: 0 1.5rem;
 }
-.container-full .f-countdown__content:not(.container) {
+.container-full .m-countdown__content:not(.container) {
   padding: 0 1.5rem;
 }
-.f-countdown__inner {
+.m-countdown__inner {
   max-width: 55rem;
   --text-btn-gap: 2.4rem;
 }
-.f-countdown__inner--boxed {
+.m-countdown__inner--boxed {
   z-index: 3;
   padding: 3rem 2rem;
 }
 @media (max-width: 639.98px) {
-  .f-countdown__inner--boxed {
+  .m-countdown__inner--boxed {
     padding: 2rem;
   }
 }
 @media (max-width: 639.98px) {
-  .f-countdown:not(:has(.f-countdown__wrapper--has-bg)) .container-fluid .f-countdown__content {
+  .m-countdown:not(:has(.m-countdown__wrapper--has-bg)) .container-fluid .m-countdown__content {
     padding-inline: 0;
   }
 }

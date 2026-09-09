@@ -14,7 +14,7 @@
       assign noscript_form_id = form_id | append: '_NoScript'
     endunless
   %}
-  <div class="country-switcher {{ class }}" style="--f-max-width: 220px">
+  <div class="country-switcher {{ class }}" style="--m-max-width: 220px">
     <noscript>
       {%- form 'localization', class: 'selectors-form', id: noscript_form_id -%}
         <h2 class="visually-hidden" id="CountryLabelNoScript-{{ form_id }}">
@@ -49,7 +49,7 @@
     </noscript>
 
     <localization-form
-      class="f-disclosure no-js-hidden f-disclosure--{{ position | default: 'down' }}{% if plain == true %} f-disclosure--plain{% endif %}"
+      class="m-disclosure no-js-hidden m-disclosure--{{ position | default: 'down' }}{% if plain == true %} m-disclosure--plain{% endif %}"
       data-disclosure-country
     >
       {%- form 'localization', class: 'selectors-form', id: form_id, data-disclosure-form: '' -%}
@@ -58,24 +58,24 @@
         </h2>
         <button
           type="button"
-          class="f-disclosure__toggle{% if plain == true %} btn--plain{% endif %} text-normal"
+          class="m-disclosure__toggle{% if plain == true %} btn--plain{% endif %} text-normal"
           aria-expanded="false"
           aria-controls="country-list"
           aria-describedby="CountryLabel-{{ form_id }}"
           data-disclosure-toggle
         >
-          <span class="f-country-flags f-country-flags--{{ localization.country.iso_code }}"></span>
+          <span class="m-country-flags m-country-flags--{{ localization.country.iso_code }}"></span>
           {{ localization.country.name }} ({{ localization.country.currency.iso_code }}
           {{ localization.country.currency.symbol }})
           {% comment %} theme-check-disable {% endcomment %}
           {{ 'icon-arrow-down.svg' | inline_asset_content }}
           {% comment %} theme-check-enable {% endcomment %}
         </button>
-        <ul class="f-disclosure-list scroll-container text-left hidden">
+        <ul class="m-disclosure-list scroll-container text-left hidden">
           {%- for country in localization.available_countries -%}
-            <li class="f-disclosure-list__item{% if country.iso_code == localization.country.iso_code %} f-disclosure-list__item--current{% endif %}">
+            <li class="m-disclosure-list__item{% if country.iso_code == localization.country.iso_code %} m-disclosure-list__item--current{% endif %}">
               <a
-                class="f-disclosure-list__option"
+                class="m-disclosure-list__option"
                 href="#"
                 {% if country.iso_code == localization.country.iso_code %}
                   aria-current="true"
@@ -83,7 +83,7 @@
                 data-value="{{ country.iso_code }}"
                 data-disclosure-option
               >
-                <span class="f-country-flags f-country-flags--{{ country.iso_code }}"></span>
+                <span class="m-country-flags m-country-flags--{{ country.iso_code }}"></span>
                 {{- country.name -}}
                 <span class="localization-form__currency"
                   >({{ country.currency.iso_code }}

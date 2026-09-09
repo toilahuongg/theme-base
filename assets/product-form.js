@@ -8,7 +8,7 @@ if (!customElements.get("product-form")) {
           form: "form",
           inputId: "[name=id]",
           submitButton: '[name="add"]',
-          errorWrapper: ".f-product-form__error-message-wrapper",
+          errorWrapper: ".m-product-form__error-message-wrapper",
           customFields: ["[data-product-custom-field]"],
         };
 
@@ -65,7 +65,7 @@ if (!customElements.get("product-form")) {
       onSubmitHandler(evt) {
         evt.preventDefault();
         const missing = this.validateForm(
-          this.form.closest(".f-product-single__blocks")
+          this.form.closest(".m-product-single__blocks")
         );
 
         if (missing && missing.length > 0) {

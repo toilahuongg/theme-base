@@ -45,7 +45,7 @@
   }
 }
 .collection-list-slider__badge .split-chars {
-  animation: f-spinner-smooth infinite linear 12s;
+  animation: m-spinner-smooth infinite linear 12s;
   animation-direction: reverse;
 }
 .collection-list-slider__badge .split-chars span {

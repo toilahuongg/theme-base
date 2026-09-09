@@ -1,5 +1,5 @@
 body.template-product.sticky-atc-bar-enabled {
-  padding-bottom: var(--f-sticky-atc-bar-height, 0px);
+  padding-bottom: var(--m-sticky-atc-bar-height, 0px);
 }
 
 .sticky-atc-bar {
@@ -23,7 +23,7 @@ body.template-product.sticky-atc-bar-enabled {
 .sticky-atc-bar__product-title {
   margin-bottom: 0.4rem;
 }
-.sticky-atc-bar__product .f-price > * {
+.sticky-atc-bar__product .m-price > * {
   margin: 0;
 }
 .sticky-atc-bar__variant-select {
@@ -44,13 +44,13 @@ body.template-product.sticky-atc-bar-enabled {
     justify-content: center;
   }
 }
-.sticky-atc-bar__form .f-quantity__wrapper {
+.sticky-atc-bar__form .m-quantity__wrapper {
   margin-inline-end: 1.2rem;
 }
-.sticky-atc-bar__form .f-product-form__button-dynamic {
+.sticky-atc-bar__form .m-product-form__button-dynamic {
   margin-inline-start: 1.2rem;
 }
-.sticky-atc-bar__form .f-product-form__buttons .btn {
+.sticky-atc-bar__form .m-product-form__buttons .btn {
   padding: 0 25px;
   min-width: 130px;
 }

@@ -35,7 +35,7 @@
 -%}
 {{ section.settings.video_url.preview_image }}
 <div
-  class="f-hero f-hero--{{ hero_height }} f-hero--mobile f-hero-mobile--{{ hero_height_mobile }}{{ custom_class }}"
+  class="m-hero m-hero--{{ hero_height }} m-hero--mobile m-hero-mobile--{{ hero_height_mobile }}{{ custom_class }}"
   id="{{ section_id }}"
   data-section-id="{{ section.id }}"
   data-section-type="hero-section"
@@ -48,7 +48,7 @@
         data-desktop-height="{{ hero_height }}"
         data-mobile-height="{{ hero_height_mobile }}"
       {% endif %}
-      class="block f-hero__wrapper relative overflow-hidden{% if show_text_below %} f-hero__wrapper--mobile-stack{% endif %}"
+      class="block m-hero__wrapper relative overflow-hidden{% if show_text_below %} m-hero__wrapper--mobile-stack{% endif %}"
       style="{% if hero_height == 'adapt' %}--aspect-ratio: {{ aspect_ratio }};{% endif %}{% if hero_height_mobile == 'adapt' %}--aspect-ratio-mobile: {{ aspect_ratio_mobile }};{% endif %}--vertical-content-padding: {{ section.settings.vertical_content_padding }}px;--vertical-content-padding-mobile: {{ section.settings.vertical_content_padding_mobile }}px;"
     >
       {%- liquid
@@ -71,10 +71,10 @@
       -%}
       <motion-element
         data-motion="{% if section.settings.enable_bg_zoom_effect %}zoom-out-sm{% else %}none{% endif %}"
-        class="block f-video-wrapper"
+        class="block m-video-wrapper"
       >
         <video-component
-          class="f-video__bg"
+          class="m-video__bg"
           data-init="false"
           data-type="{{ data_type }}"
           data-video-id="{{ section.settings.video_url.id }}"
@@ -95,14 +95,14 @@
       </motion-element>
       {%- if image_overlay_opacity > 0 -%}
         <div
-          class="f-hero__overlay bg-overlay"
+          class="m-hero__overlay bg-overlay"
           style="--color-overlay-alpha: {{ image_overlay_opacity }}"
         ></div>
       {%- endif -%}
       {%- if section.blocks.size > 0 -%}
-        <div class="f-hero__content-wrapper absolute inset-full flex {{ content_container }} flex md:content-overlay--{{ section.settings.content_position }}{% unless section.settings.show_text_below %} md-down:content-overlay--{{ section.settings.content_position_mobile }}{% endunless %}">
+        <div class="m-hero__content-wrapper absolute inset-full flex {{ content_container }} flex md:content-overlay--{{ section.settings.content_position }}{% unless section.settings.show_text_below %} md-down:content-overlay--{{ section.settings.content_position_mobile }}{% endunless %}">
           <div
-            class="f-hero__content f-text-blocks text-{{ text_alignment_mobile }} md:text-{{ text_alignment }}"
+            class="m-hero__content m-text-blocks text-{{ text_alignment_mobile }} md:text-{{ text_alignment }}"
             style="--text-color: {{ text_color }};"
           >
             {%- for block in section.blocks -%}
@@ -117,7 +117,7 @@
                       endif
                     -%}
                     <h2
-                      class="f-hero_heading text-current {{ block.settings.heading_size }}"
+                      class="m-hero_heading text-current {{ block.settings.heading_size }}"
                       {% if inline_css != blank %}
                         style="{{ inline_css }}"
                       {% endif %}
@@ -142,7 +142,7 @@
                     <motion-element
                       data-motion="{{ animation_effect }}"
                       data-motion-delay="{{ motion_delay }}"
-                      class="block f-hero_subheading text-subheading text-current"
+                      class="block m-hero_subheading text-subheading text-current"
                       {{ block.shopify_attributes }}
                     >
                       {{ block.settings.subtitle | escape }}
@@ -154,7 +154,7 @@
                     <motion-element
                       data-motion="{{ animation_effect }}"
                       data-motion-delay="{{ motion_delay }}"
-                      class="block f-hero_text text-current rte mobile-remove-br"
+                      class="block m-hero_text text-current rte mobile-remove-br"
                       {{ block.shopify_attributes }}
                     >
                       {{ block.settings.text }}
@@ -168,7 +168,7 @@
                     <motion-element
                       data-motion="{{ animation_effect }}"
                       data-motion-delay="{{ motion_delay }}"
-                      class="f-text-blocks__btn f-hero_button"
+                      class="m-text-blocks__btn m-hero_button"
                     >
                       {%- if block.settings.button_label != blank -%}
                         <a

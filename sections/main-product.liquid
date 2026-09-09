@@ -5,11 +5,6 @@
 
   assign first_3d_model = product.media | where: 'media_type', 'model' | first
 
-  assign enable_variant_group_image = false
-  if product.metafields['foxecom-bs-kit']['variant-images'].value.enable and product.has_only_default_variant == false
-    assign enable_variant_group_image = true
-  endif
-
   assign variant_picker_block = section.blocks | where: 'type', 'variant_picker' | first
   assign disable_default_variant = variant_picker_block.settings.variant_picker_dont_select_the_default_variant
   if product.has_only_default_variant
@@ -63,22 +58,21 @@
   data-product-id="{{ product.id }}"
   data-update-url="true"
   data-product-url="{{ product.url }}"
-  class="f-product-single block"
+  class="m-product-single block"
   data-section-type="main-product"
   data-media-layout="{{ section.settings.media_layout }}"
-  data-enable-variant-group-images="{{ enable_variant_group_image }}"
   data-disable-default-select-variant="{{ disable_default_variant }}"
   data-variant-option-none-text="{{ 'products.product.variant_option_none_text' | t }}"
   data-variant-selection-needed-text="{{ 'products.product.variant_selection_needed_text' | t }}"
 >
   <div class="{{ container }}">
     <div
-      class="f-flex flex-wrap f-single-product--information f-single-product--media-{{ media_size }}{% unless product.media.size > 0 %} f-single-product--no-media{% endunless %}"
+      class="m-flex flex-wrap m-single-product--information m-single-product--media-{{ media_size }}{% unless product.media.size > 0 %} m-single-product--no-media{% endunless %}"
       style="--column-gap: 6rem;--row-gap-mobile: 2.4rem;"
     >
       <motion-element
         data-motion="{{ animation_effect }}"
-        class="block f-column f-product__media-wrapper"
+        class="block m-column m-product__media-wrapper"
       >
         {% render 'product-media',
           section: section,
@@ -90,7 +84,7 @@
       </motion-element>
       <motion-element
         data-motion="{{ animation_effect }}"
-        class="block f-column f-product-single__info"
+        class="block m-column m-product-single__info"
       >
         {% render 'main-product-blocks',
           update_browser_history: true,
@@ -100,11 +94,6 @@
       </motion-element>
     </div>
   </div>
-  {%- if enable_variant_group_image -%}
-    <script id="VariantGroupImages" type="application/json">
-      {{ product.metafields.foxecom-bs-kit.variant-images.value | json }}
-    </script>
-  {%- endif -%}
   <script id="ProductData" type="application/json">
     {{ product | json }}
   </script>
@@ -140,28 +129,28 @@
   -%}
   <product-modal
     id="ProductModal-{{ section.id }}"
-    class="f-modal hidden media-modal"
+    class="m-modal hidden media-modal"
     style="--modal-width: 100%"
   >
     <div
-      class="f-modal__content"
+      class="m-modal__content"
       role="dialog"
       aria-label="{{ 'products.modal.label' | t }}"
       aria-modal="true"
       tabindex="-1"
     >
-      <div class="f-modal__inner">
+      <div class="m-modal__inner">
         <button
           id="ModalClose-{{ section.id }}"
           type="button"
-          class="f-modal__close"
+          class="m-modal__close"
           aria-label="{{ 'accessibility.close' | t }}"
         >
           {% comment %} theme-check-disable {% endcomment %}
           {{ 'icon-close.svg' | inline_asset_content }}
           {% comment %} theme-check-enable {% endcomment %}
         </button>
-        <div class="f-modal__inner">
+        <div class="m-modal__inner">
           <div
             class="media-modal__content flex flex-col h-full"
             role="document"
@@ -204,7 +193,7 @@
 {% schema %}
 {
   "name": "t:sections.main-product.name",
-  "class": "f-section f-section--flush",
+  "class": "m-section m-section--flush",
   "blocks": [
     {
       "type": "@app"

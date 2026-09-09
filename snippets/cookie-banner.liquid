@@ -7,10 +7,10 @@
 
 {% if should_show %}
 {{ 'cookie-consent.css' | asset_url | stylesheet_tag }}
-<div id="f-cookie-banner" class="f-cookie-banner color-{{ settings.cookie_color_schema }}" {% if settings.cb_design_mode and request.design_mode %}style="display: flex;transform: translateZ(0);"{% endif %}>
+<div id="m-cookie-banner" class="m-cookie-banner color-{{ settings.cookie_color_schema }}" {% if settings.cb_design_mode and request.design_mode %}style="display: flex;transform: translateZ(0);"{% endif %}>
     <div class="container-fluid">
-        <div class="f-cookie-banner__inner">
-            <span class="f-cookie-banner__icon">
+        <div class="m-cookie-banner__inner">
+            <span class="m-cookie-banner__icon">
                 <svg width="34" height="34" viewBox="0 0 552 552" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M510.62 131.354L503.198 119.302L490.286 125.067C484.104 127.823 477.489 129.224 470.62 129.224C443.901 129.224 422.156 107.478 422.156 80.7598C422.156 73.89 423.557 67.2757 426.312 61.1037L432.077 48.1819L420.025 40.76C376.719 14.0933 326.817 0 275.692 0C202.047 0 132.812 28.6827 80.7453 80.7453C28.6827 132.819 0 202.048 0 275.692C0 349.336 28.6827 418.572 80.7453 470.639C132.819 522.701 202.048 551.384 275.692 551.384C349.336 551.384 418.559 522.701 470.639 470.639C522.701 418.565 551.384 349.336 551.384 275.692C551.384 224.572 537.291 174.671 510.613 131.359L510.62 131.354Z" fill="#B8B8B8"/>
                     <path d="M356.46 275.687C311.924 275.687 275.694 311.917 275.694 356.453C275.694 400.989 311.924 437.218 356.46 437.218C400.996 437.218 437.225 400.989 437.225 356.453C437.225 311.917 400.996 275.687 356.46 275.687Z" fill="white"/>
@@ -21,9 +21,9 @@
                 </svg>
             </span>
             {%- if settings.cookie_message != blank -%}
-            <div class="f-cookie-banner__message">{{ settings.cookie_message }}</div>
+            <div class="m-cookie-banner__message">{{ settings.cookie_message }}</div>
             {%- endif -%}
-            <p class="f-cookie-banner__actions">
+            <p class="m-cookie-banner__actions">
                 <button class="cookie-action--decline btn btn--plain" onclick="handleDecline()">{{ 'general.cookies.decline_button' | t }}</button>
                 <button class="cookie-action--accept btn btn--primary" onclick="handleAccept()">{{ 'general.cookies.accept_button' | t }}</button>
             </p>
@@ -32,7 +32,7 @@
 </div>
 <script>
     function getBannerEl() {
-        return document.getElementById('f-cookie-banner');
+        return document.getElementById('m-cookie-banner');
       }
 
       function hideBanner(res) {

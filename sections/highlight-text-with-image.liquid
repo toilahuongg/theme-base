@@ -41,7 +41,7 @@
 %}
 <div
   id="{{ section_id }}"
-  class="section-{{ section.id }} highlight-text-image overflow-hidden f-section-padding color-{{ section.settings.color_scheme }}{{ custom_class }}"
+  class="section-{{ section.id }} highlight-text-image overflow-hidden m-section-padding color-{{ section.settings.color_scheme }}{{ custom_class }}"
 >
   <motion-element
     data-motion="{{ animation_effect }}"
@@ -73,7 +73,7 @@
             href="{{ block.settings.image_link }}"
           {% endif %}
           style="--image-width:{{ block.settings.image_width }}px; --image-width-mobile:{{ block.settings.image_width_mobile }}px;"
-          class="highlight-text-image__image f-card inline-flex f-image-hover-effect__{{ settings.image_hover_effect }}"
+          class="highlight-text-image__image m-card inline-flex m-image-hover-effect__{{ settings.image_hover_effect }}"
           {{ block.shopify_attributes }}
         >
           {%- if block.settings.image != blank -%}
@@ -84,13 +84,13 @@
                 loading: 'lazy',
                 widths: '100,200,300,400',
                 alt: alt_image,
-                class: 'f-image w-full',
+                class: 'm-image w-full',
                 is: 'image-lazy'
             }}
           {%- else -%}
             {{
               placeholder_image
-              | placeholder_svg_tag: 'placeholder-svg f-image w-full'
+              | placeholder_svg_tag: 'placeholder-svg m-image w-full'
             }}
           {%- endif -%}
         </{{ tag }}>

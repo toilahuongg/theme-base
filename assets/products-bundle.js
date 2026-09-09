@@ -60,12 +60,12 @@ if (!customElements.get("product-bundle")) {
         super();
 
         this.classes = {
-          souldout: "f-price--sold-out",
-          onsale: "f-price--on-sale",
-          nocompare: "f-price--no-compare",
+          souldout: "m-price--sold-out",
+          onsale: "m-price--on-sale",
+          nocompare: "m-price--no-compare",
         };
 
-        this.price = this.querySelector(".f-price");
+        this.price = this.querySelector(".m-price");
         this.variants = this.querySelector("select");
         if (this.variants) {
           this.variants.addEventListener(
@@ -103,14 +103,14 @@ if (!customElements.get("product-bundle")) {
         }
 
         // Change price
-        const price__regular = this.querySelector(".f-price__regular");
-        price__regular.querySelector(".f-price-item--regular").innerHTML =
+        const price__regular = this.querySelector(".m-price__regular");
+        price__regular.querySelector(".m-price-item--regular").innerHTML =
           formatMoney(price, window.VelouraSettings.money_format);
 
-        const price__sale = this.querySelector(".f-price__sale");
-        price__sale.querySelector(".f-price-item--regular").innerHTML =
+        const price__sale = this.querySelector(".m-price__sale");
+        price__sale.querySelector(".m-price-item--regular").innerHTML =
           formatMoney(compare_at_price, window.VelouraSettings.money_format);
-        price__sale.querySelector(".f-price-item--sale").innerHTML =
+        price__sale.querySelector(".m-price-item--sale").innerHTML =
           formatMoney(price, window.VelouraSettings.money_format);
       }
     }

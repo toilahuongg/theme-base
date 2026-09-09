@@ -26,7 +26,7 @@
   endif
 
   if swipe_on_mobile
-    assign swipe_classes = ' f-swiper f-swiper--' | append: section.settings.column_mobile | append: '-cols'
+    assign swipe_classes = ' m-swiper m-swiper--' | append: section.settings.column_mobile | append: '-cols'
   endif
 
   if swipe_on_tablet
@@ -34,7 +34,7 @@
   endif
 
   if swipe_classes != blank
-    assign swipe_classes = swipe_classes | append: ' f-swiper--no-scrollbar'
+    assign swipe_classes = swipe_classes | append: ' m-swiper--no-scrollbar'
   endif
 
   capture styles
@@ -69,8 +69,8 @@
 %}
 <div
   id="{{ section_id }}"
-  class="f-custom relative f-section-padding color-{{ section.settings.color_schema }}{{ custom_class }}"
-  data-section-type="f-custom-content"
+  class="m-custom relative m-section-padding color-{{ section.settings.color_schema }}{{ custom_class }}"
+  data-section-type="m-custom-content"
   data-section-id="{{ section.id }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
@@ -99,7 +99,7 @@
   {%- endif -%}
   <div class="{{ container }}">
     {% render 'index-section-header', section_settings: section.settings %}
-    <div class="f-flex flex-wrap f-grid--gap-{{ section.settings.column_gap }} f-grid--row-gap-{{ section.settings.row_gap }}{{ swipe_classes }}">
+    <div class="m-flex flex-wrap m-grid--gap-{{ section.settings.column_gap }} m-grid--row-gap-{{ section.settings.row_gap }}{{ swipe_classes }}">
       {%- for block in section.blocks -%}
         {%- liquid
           assign vertical_alignment = block.settings.alignment | default: 'center'
@@ -139,12 +139,12 @@
           assign motion_delay = section_motion_delay
         -%}
         <div
-          id="f-custom-block--{{ block.id }}"
-          class="f-column {{ block_class }}"
+          id="m-custom-block--{{ block.id }}"
+          class="m-column {{ block_class }}"
           data-block-type="{{ block.type }}"
           {{ block.shopify_attributes }}
         >
-          <div class="f-custom__block f-custom__block--{{ block.type }} h-full md:flex items-{{ vertical_alignment  }} text-{{ block.settings.align_text }}{% if block.settings.color_scheme %} color-{{ block.settings.color_scheme }}{% endif %}{% if block.settings.mobile_color_scheme %} md-down:color-{{ block.settings.mobile_color_scheme }}{% endif %}">
+          <div class="m-custom__block m-custom__block--{{ block.type }} h-full md:flex items-{{ vertical_alignment  }} text-{{ block.settings.align_text }}{% if block.settings.color_scheme %} color-{{ block.settings.color_scheme }}{% endif %}{% if block.settings.mobile_color_scheme %} md-down:color-{{ block.settings.mobile_color_scheme }}{% endif %}">
             {%- case block.type -%}
               {%- when 'image' -%}
                 <motion-element
@@ -160,7 +160,7 @@
                       endif
                     -%}
                     <{{ tag }}
-                      class="block f-card w-full{% if block.settings.link != blank %} f-image-hover-effect__{{settings.image_hover_effect}}{% endif %}"
+                      class="block m-card w-full{% if block.settings.link != blank %} m-image-hover-effect__{{settings.image_hover_effect}}{% endif %}"
                       {% if block.settings.link != blank %}
                         href="{{ block.settings.link }}"
                       {% endif %}
@@ -172,14 +172,14 @@
                       %}
                     </{{ tag }}>
                   {%- else -%}
-                    <div class="f-image">
+                    <div class="m-image">
                       {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
                     </div>
                   {%- endif -%}
                 </motion-element>
               {%- when 'text' -%}
                 <div
-                  class="f-text-blocks w-full f-blocks-padding f-align-content-container--{{ block.settings.align_content_container }}"
+                  class="m-text-blocks w-full m-blocks-padding m-align-content-container--{{ block.settings.align_content_container }}"
                   style="--padding-left: {{ block.settings.padding_left }}px;--padding-right: {{ block.settings.padding_right }}px;--mobile-padding-left: {{ block.settings.mobile_padding_left }}px;--mobile-padding-right: {{ block.settings.mobile_padding_right }}px;"
                 >
                   {%- if block.settings.subheading != blank -%}
@@ -234,7 +234,7 @@
                     <motion-element
                       data-motion="{{ animation_effect }}"
                       data-motion-delay="{{ motion_delay }}"
-                      class="f-text-blocks__btn"
+                      class="m-text-blocks__btn"
                     >
                       <a
                         class="btn {{ block.settings.button_style }}"
@@ -269,20 +269,20 @@
                     | stylesheet_tag: preload: true
                   -}}
                 {%- endif %}
-                <div class="f-custom__block-wrapper relative w-full h-full flex flex-col{% if items != blank %} justify-between{% else %} justify-center{% endif %} color-{{ block.settings.color_schema }}">
+                <div class="m-custom__block-wrapper relative w-full h-full flex flex-col{% if items != blank %} justify-between{% else %} justify-center{% endif %} color-{{ block.settings.color_schema }}">
                   {%- if items != blank -%}
-                    <f-scrolling-promotion
-                      class="f-scrolling-promotion f-scrolling-promotion--top f-scrolling-promotion--{{ block.settings.direction }} text-sm"
+                    <m-scrolling-promotion
+                      class="m-scrolling-promotion m-scrolling-promotion--top m-scrolling-promotion--{{ block.settings.direction }} text-sm"
                       style="--item-gap: 15px; --item-gap-mobile:15px; --duration: {{ duration }}s;"
                     >
-                      <div class="f-promotion items-center">
+                      <div class="m-promotion items-center">
                         {%- for item in items -%}
-                          <div class="f-promotion__item">{{ item }}</div>
+                          <div class="m-promotion__item">{{ item }}</div>
                         {%- endfor -%}
                       </div>
-                    </f-scrolling-promotion>
+                    </m-scrolling-promotion>
                   {%- endif -%}
-                  <div class="f-text-blocks w-full">
+                  <div class="m-text-blocks w-full">
                     {%- if block.settings.subheading != blank -%}
                       <motion-element
                         data-motion="{{ animation_effect }}"
@@ -335,7 +335,7 @@
                       <motion-element
                         data-motion="{{ animation_effect }}"
                         data-motion-delay="{{ motion_delay }}"
-                        class="f-text-blocks__btn"
+                        class="m-text-blocks__btn"
                       >
                         <a
                           class="btn {{ block.settings.button_style }}"
@@ -353,16 +353,16 @@
                     {%- endif -%}
                   </div>
                   {%- if items != blank -%}
-                    <f-scrolling-promotion
-                      class="f-scrolling-promotion f-scrolling-promotion--top f-scrolling-promotion--{{ direction_reverse }} text-sm"
+                    <m-scrolling-promotion
+                      class="m-scrolling-promotion m-scrolling-promotion--top m-scrolling-promotion--{{ direction_reverse }} text-sm"
                       style="--item-gap: 15px; --item-gap-mobile:15px; --duration: {{ duration }}s;"
                     >
-                      <div class="f-promotion items-center">
+                      <div class="m-promotion items-center">
                         {%- for item in items -%}
-                          <div class="f-promotion__item">{{ item }}</div>
+                          <div class="m-promotion__item">{{ item }}</div>
                         {%- endfor -%}
                       </div>
-                    </f-scrolling-promotion>
+                    </m-scrolling-promotion>
                   {%- endif -%}
                 </div>
               {%- when 'video' -%}
@@ -380,13 +380,13 @@
                     assign video_aspect_ratio = block.settings.video_ratio | replace: ':', '/'
                   endif
                 -%}
-                <div class="f-video w-full">
+                <div class="m-video w-full">
                   <motion-element
                     data-motion="{{ animation_effect }}"
-                    class="block f-video__wrapper overflow-hidden relative"
+                    class="block m-video__wrapper overflow-hidden relative"
                   >
                     <noscript>
-                      <div class="f-video__media">
+                      <div class="m-video__media">
                         <a
                           href="{{ video_link }}"
                           class="video-section__poster"
@@ -427,19 +427,19 @@
                       </div>
                     </noscript>
                     <deferred-media
-                      class="f-video__media deferred-media no-js-hidden"
+                      class="m-video__media deferred-media no-js-hidden"
                       data-autoplay="{{ block.settings.autoplay_video }}"
                       data-media-id="{{ video_link.id }}"
                       style="--aspect-ratio: {{ video_aspect_ratio }}"
                     >
                       <button
                         id="Deferred-Poster-Modal-{{ video_link.id }}"
-                        class="f-video__poster media deferred-media__poster{% if animation_effect == 'zoom-fade' %} f-image{% endif %}"
+                        class="m-video__poster media deferred-media__poster{% if animation_effect == 'zoom-fade' %} m-image{% endif %}"
                         type="button"
                         aria-label="{{ 'accessibility.load_video' | t }}"
                       >
                         {%- if cover_image != blank -%}
-                          <div class="f-video__cover bg-image">
+                          <div class="m-video__cover bg-image">
                             {% render 'responsive-image',
                               image: cover_image,
                               section_index: section.index,
@@ -526,7 +526,7 @@
                     or block.settings.heading != blank
                     or block.settings.text != blank
                   -%}
-                    <div class="f-text-blocks text-center py-sm sm:py-md sm:pt-0">
+                    <div class="m-text-blocks text-center py-sm sm:py-md sm:pt-0">
                       {%- if block.settings.subheading != blank -%}
                         <div class="mega-subtitle">
                           {{ block.settings.subheading }}
@@ -687,7 +687,7 @@
                             data-product-id="{{ product.id }}"
                             data-index="{{ forloop.index0 }}"
                           >
-                            <div class="block product-bundle__product-image relative f-card f-image-hover-effect__{{settings.image_hover_effect}}">
+                            <div class="block product-bundle__product-image relative m-card m-image-hover-effect__{{settings.image_hover_effect}}">
                               <a
                                 class="full-width-link"
                                 href="{{ product.url }}"
@@ -741,7 +741,7 @@
                                 </div>
                               </div>
                               <div
-                                class="product-bundle__product-prices price{%- if compare_at_price > price %} price--on-sale{% endif -%}{% unless product.has_only_default_variant %} f-hidden__mobile{% endunless %}"
+                                class="product-bundle__product-prices price{%- if compare_at_price > price %} price--on-sale{% endif -%}{% unless product.has_only_default_variant %} m-hidden__mobile{% endunless %}"
                                 data-price
                               >
                                 <div class="price-sale">
@@ -792,7 +792,7 @@
                               data-motion-delay="{{ motion_delay }}"
                               class="product-bundle__product flex items-center relative"
                             >
-                              <div class="block product-bundle__product-image relative f-card">
+                              <div class="block product-bundle__product-image relative m-card">
                                 {{
                                   'image'
                                   | placeholder_svg_tag: 'placeholder-svg w-full h-full'
@@ -895,7 +895,7 @@
                     assign text_align = 'right'
                   endif
                 -%}
-                <div class="f-text-blocks f-block-countdown w-full text-{{ text_align }}">
+                <div class="m-text-blocks m-block-countdown w-full text-{{ text_align }}">
                   {%- if block.settings.subheading_text != blank -%}
                     <motion-element
                       data-motion="{{ animation_effect }}"
@@ -979,11 +979,11 @@
                   assign block_align = block.settings.align_text | replace: 'left', 'start' | replace: 'right', 'end'
                 -%}
                 {{ 'newsletter.css' | asset_url | stylesheet_tag }}
-                <div class="f-newsletter w-full flex justify-{{ block_align }}">
+                <div class="m-newsletter w-full flex justify-{{ block_align }}">
                   <motion-element
                     data-motion="{{ animation_effect }}"
                     data-motion-delay="{{ motion_delay }}"
-                    class="block f-newsletter__form text-{{ block.settings.align_text }}"
+                    class="block m-newsletter__form text-{{ block.settings.align_text }}"
                   >
                     {%- unless heading == blank -%}
                       <h2 class="{{ block.settings.heading_size }}">
@@ -1012,24 +1012,24 @@
                 {{ 'component-image-card.css' | asset_url | stylesheet_tag }}
                 <motion-element
                   data-motion="{{ animation_effect }}"
-                  class="block relative overflow-hidden w-full f-image-hover-effect__{{ settings.image_hover_effect }} f-card"
+                  class="block relative overflow-hidden w-full m-image-hover-effect__{{ settings.image_hover_effect }} m-card"
                 >
                   {%- if block.settings.image != blank -%}
                     {% render 'responsive-image',
                       image: block.settings.image,
                       aspect_ratio: block.settings.image_ratio,
-                      wrapper_class: 'f-image-card__image',
+                      wrapper_class: 'm-image-card__image',
                       section_index: section.index,
                       index: forloop.index
                     %}
                   {%- else -%}
                     {{
                       'image'
-                      | placeholder_svg_tag: 'placeholder-svg f-image-card__image'
+                      | placeholder_svg_tag: 'placeholder-svg m-image-card__image'
                     }}
                   {%- endif -%}
                   <div
-                    class="f-image-card__content f-image-card__content-{{ block.settings.layout }}{% if block.settings.layout == 'layout7' or block.settings.layout == 'layout8' %} reversed-link reversed-link--underline{% endif %}"
+                    class="m-image-card__content m-image-card__content-{{ block.settings.layout }}{% if block.settings.layout == 'layout7' or block.settings.layout == 'layout8' %} reversed-link reversed-link--underline{% endif %}"
                     style="--color-overlay-alpha: {{ block.settings.image_overlay_opacity | default: 0 }}; --vertical-content-padding: {{ block.settings.vertical_content_padding }}px; --vertical-content-padding-mobile: {{ block.settings.vertical_content_padding_mobile }}px;"
                   >
                     {%- if block.settings.button_link != blank -%}
@@ -1047,18 +1047,18 @@
                       </a>
                     {%- endif -%}
                     <div
-                      class="f-image-card__content-box f-text-blocks"
+                      class="m-image-card__content-box m-text-blocks"
                       style="--text-color: {{ block.settings.text_color }};"
                     >
-                      <div class="f-image-card__content-text f-text-blocks">
+                      <div class="m-image-card__content-text m-text-blocks">
                         {% if block.settings.sub_heading != blank %}
-                          <p class="f-image-card__subheading text-subheading{% if block.settings.layout == 'layout8' %} flex-1{% endif %}">
+                          <p class="m-image-card__subheading text-subheading{% if block.settings.layout == 'layout8' %} flex-1{% endif %}">
                             {{ block.settings.sub_heading }}
                           </p>
                         {% endif %}
                         {%- if block.settings.heading != blank -%}
                           <h3
-                            class="f-image-card__heading text-current {{ block.settings.heading_size }}"
+                            class="m-image-card__heading text-current {{ block.settings.heading_size }}"
                             {% if block.settings.heading_color != blank
                               and block.settings.heading_color
                                 != 'rgba(0,0,0,0)'
@@ -1076,14 +1076,14 @@
                           </h3>
                         {%- endif -%}
                         {%- if block.settings.description != blank -%}
-                          <div class="f-image-card__description rte mobile-remove-br">
+                          <div class="m-image-card__description rte mobile-remove-br">
                             {{ block.settings.description }}
                           </div>
                         {%- endif -%}
                       </div>
                       {%- if block.settings.button_label != blank -%}
                         <a
-                          class="f-image-card__action no-color-schema btn {{ block.settings.button_style }}"
+                          class="m-image-card__action no-color-schema btn {{ block.settings.button_style }}"
                           {% if block.settings.button_link != blank %}
                             href="{{ block.settings.button_link }}"
                           {% else %}
@@ -1109,7 +1109,7 @@
                     assign has_control = true
                   endif
                 %}
-                <div class="w-full f-custom__block--product-list {{ animation_effect }}">
+                <div class="w-full m-custom__block--product-list {{ animation_effect }}">
                   {% render 'index-section-header',
                     section_settings: block.settings,
                     alignment: 'left'
@@ -1119,8 +1119,8 @@
                     class="block relative"
                   >
                     <flickity-component
-                      class="f-grid f-grid--gap-{{ block.settings.column_gap }} {% if has_control %}flickity-show-controls {% endif %}flickity-controls-group flickity-controls-group__bottom flickity-controls-group__bottom--left flickity-static f-grid-2-cols md:f-grid-{{ block.settings.columns }}-cols flickity-disable{% if block.settings.enable_slider %} md:flickity-enable{% endif %} f-swiper f-swiper--no-scrollbar"
-                      data-slider-options='{"pageDots": false, "prevNextButtons": true, "groupCells": 1, "cellSelector": ".f-column", "wrapAround": true}'
+                      class="m-grid m-grid--gap-{{ block.settings.column_gap }} {% if has_control %}flickity-show-controls {% endif %}flickity-controls-group flickity-controls-group__bottom flickity-controls-group__bottom--left flickity-static m-grid-2-cols md:m-grid-{{ block.settings.columns }}-cols flickity-disable{% if block.settings.enable_slider %} md:flickity-enable{% endif %} m-swiper m-swiper--no-scrollbar"
+                      data-slider-options='{"pageDots": false, "prevNextButtons": true, "groupCells": 1, "cellSelector": ".m-column", "wrapAround": true}'
                       data-slider-columns="{{ block.settings.columns }}"
                       data-enable-slider="{{ block.settings.enable_slider }}"
                       data-calc-button-position="true"
@@ -1132,7 +1132,7 @@
                     >
                       {% if block.settings.product_list != blank %}
                         {% for product in block.settings.product_list %}
-                          <div class="f-column">
+                          <div class="m-column">
                             {% render 'product-card',
                               color_schema: section.settings.color_schema,
                               product: product,
@@ -1143,7 +1143,7 @@
                         {% endfor %}
                       {% else %}
                         {% for i in (1..product_to_show) %}
-                          <div class="f-column">
+                          <div class="m-column">
                             {% render 'product-card-placeholder',
                               index: forloop.index
                             %}
@@ -1176,8 +1176,8 @@
                   endif
                 -%}
                 <div class="w-full">
-                  <f-image-comparison-slider
-                    class="f-image-comparison-slider block relative overflow-hidden"
+                  <m-image-comparison-slider
+                    class="m-image-comparison-slider block relative overflow-hidden"
                     data-layout="{{ layout }}"
                     {% if animated %}
                       data-animation
@@ -1185,7 +1185,7 @@
                   >
                     {%- if animated -%}
                       <span
-                        class="f-image-comparison-slider__animation block absolute bottom-0 left-0 right-0 pointer-events-none"
+                        class="m-image-comparison-slider__animation block absolute bottom-0 left-0 right-0 pointer-events-none"
                       ></span>
                     {%- endif -%}
                     {%- liquid
@@ -1206,14 +1206,14 @@
                         assign image_after_class = image_after_class | append: ' has-mobile-image'
                       endif
                     -%}
-                    <div class="f-image-comparison-slider__before f-image-comparison-slider--media overflow-hidden relative">
+                    <div class="m-image-comparison-slider__before m-image-comparison-slider--media overflow-hidden relative">
                       {%- if before_heading != blank -%}
-                        <p class="f-image-comparison-slider__heading absolute z-1 m-0 flex items-center justify-center text-center color-{{ block.settings.before_color_scheme }}{% if block.settings.before_heading_plain_text %} f-image-comparison-slider__heading--plain{% endif %}">
+                        <p class="m-image-comparison-slider__heading absolute z-1 m-0 flex items-center justify-center text-center color-{{ block.settings.before_color_scheme }}{% if block.settings.before_heading_plain_text %} m-image-comparison-slider__heading--plain{% endif %}">
                           {{ before_heading }}
                         </p>
                       {%- endif -%}
                       <div
-                        class="f-image-comparison-slider__wrapper f-image-comparison-slider--{{ image_height }}{{ image_before_class }}"
+                        class="m-image-comparison-slider__wrapper m-image-comparison-slider--{{ image_height }}{{ image_before_class }}"
                         {% if image_height == 'adapt' %}
                           style="--aspect-ratio: {{ aspect_ratio }}; --aspect-ratio-mobile: {{ aspect_ratio_mobile }}"
                         {% endif %}
@@ -1238,12 +1238,12 @@
                             alt="{{ before_image.alt | escape }}"
                             width="{{ before_image.width }}"
                             height="{{ before_image.width | divided_by: before_image.aspect_ratio | round }}"
-                            class="f-image-comparison-slider--image-desktop"
+                            class="m-image-comparison-slider--image-desktop"
                           >
                         {%- else -%}
                           {{
                             'lifestyle-1'
-                            | placeholder_svg_tag: 'placeholder-svg f-image-comparison-slider--image-desktop'
+                            | placeholder_svg_tag: 'placeholder-svg m-image-comparison-slider--image-desktop'
                           }}
                         {%- endif -%}
                         {%- if before_image_mobile != blank -%}
@@ -1260,19 +1260,19 @@
                             alt="{{ before_image_mobile.alt | escape }}"
                             width="{{ before_image_mobile.width }}"
                             height="{{ before_image_mobile.width | divided_by: before_image_mobile.aspect_ratio | round }}"
-                            class="f-image-comparison-slider--image-mobile"
+                            class="m-image-comparison-slider--image-mobile"
                           >
                         {%- endif -%}
                       </div>
                     </div>
-                    <div class="f-image-comparison-slider__after f-image-comparison-slider--media overflow-hidden absolute top-0 left-0 w-full h-full z-1">
+                    <div class="m-image-comparison-slider__after m-image-comparison-slider--media overflow-hidden absolute top-0 left-0 w-full h-full z-1">
                       {%- if after_heading != blank -%}
-                        <p class="f-image-comparison-slider__heading absolute z-1 m-0 flex items-center justify-center text-center color-{{ block.settings.after_color_scheme }} {% if block.settings.after_heading_plain_text %} f-image-comparison-slider__heading--plain{% endif %}">
+                        <p class="m-image-comparison-slider__heading absolute z-1 m-0 flex items-center justify-center text-center color-{{ block.settings.after_color_scheme }} {% if block.settings.after_heading_plain_text %} m-image-comparison-slider__heading--plain{% endif %}">
                           {{ after_heading }}
                         </p>
                       {%- endif -%}
                       <div
-                        class="f-image-comparison-slider__wrapper f-image-comparison-slider--{{ image_height }}{{ image_after_class }}"
+                        class="m-image-comparison-slider__wrapper m-image-comparison-slider--{{ image_height }}{{ image_after_class }}"
                         {% if image_height == 'adapt' %}
                           style="--aspect-ratio: {{ aspect_ratio }}; --aspect-ratio-mobile: {{ aspect_ratio_mobile }}"
                         {% endif %}
@@ -1297,12 +1297,12 @@
                             alt="{{ after_image.alt | escape }}"
                             width="{{ after_image.width }}"
                             height="{{ after_image.width | divided_by: after_image.aspect_ratio | round }}"
-                            class="f-image-comparison-slider--image-desktop"
+                            class="m-image-comparison-slider--image-desktop"
                           >
                         {%- else -%}
                           {{
                             'lifestyle-2'
-                            | placeholder_svg_tag: 'placeholder-svg f-image-comparison-slider--image-desktop'
+                            | placeholder_svg_tag: 'placeholder-svg m-image-comparison-slider--image-desktop'
                           }}
                         {%- endif -%}
                         {%- if after_image_mobile != blank -%}
@@ -1319,13 +1319,13 @@
                             alt="{{ after_image_mobile.alt | escape }}"
                             width="{{ after_image_mobile.width }}"
                             height="{{ after_image_mobile.width | divided_by: after_image_mobile.aspect_ratio | round }}"
-                            class="f-image-comparison-slider--image-mobile"
+                            class="m-image-comparison-slider--image-mobile"
                           >
                         {%- endif -%}
                       </div>
                     </div>
                     <button
-                      class="f-image-comparison-slider__button absolute"
+                      class="m-image-comparison-slider__button absolute"
                       aria-label="image-comparison"
                     >
                       <span>
@@ -1344,12 +1344,12 @@
                         </svg>
                       </span>
                     </button>
-                  </f-image-comparison-slider>
+                  </m-image-comparison-slider>
                   {%- if block.settings.product != blank -%}
-                    <div class="f-image-comparison-slider__product flex items-center justify-between">
+                    <div class="m-image-comparison-slider__product flex items-center justify-between">
                       <a
                         href="{{ block.settings.product.url }}"
-                        class="f-image-comparison-slider__product-title btn--underline"
+                        class="m-image-comparison-slider__product-title btn--underline"
                       >
                         {{- block.settings.product.title -}}
                       </a>

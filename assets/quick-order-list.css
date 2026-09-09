@@ -71,7 +71,7 @@
 .quick-order-list .quantity-popover__info {
   top: calc(100% + 0.5rem);
 }
-.quick-order-list .f-quantity {
+.quick-order-list .m-quantity {
   width: 110px;
 }
 .quick-order-list price-per-item {

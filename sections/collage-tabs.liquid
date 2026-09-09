@@ -30,7 +30,7 @@
 %}
 <div
   id="{{ section_id }}"
-  class="f-collage-tabs f-section-padding color-{{ section.settings.color_schema }} no-js-hidden{{ custom_class }}"
+  class="m-collage-tabs m-section-padding color-{{ section.settings.color_schema }} no-js-hidden{{ custom_class }}"
   data-section-type="collage-with-tabs"
   data-section-id="{{ section.id }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
@@ -41,13 +41,13 @@
         data-motion="{{ animation_effect }}"
         class="block"
       >
-        <tabs-component class="f-tabs f-collage-tabs__wrapper">
+        <tabs-component class="m-tabs m-collage-tabs__wrapper">
           {%- if section.blocks.size > 1 -%}
             <div
-              class="f-collage-tabs__header f-tabs__header flex justify-{{ section.settings.desktop_navigation_alignment }}"
+              class="m-collage-tabs__header m-tabs__header flex justify-{{ section.settings.desktop_navigation_alignment }}"
               role="tablist"
             >
-              <div class="f-tabs__header-group">
+              <div class="m-tabs__header-group">
                 {%- for block in section.blocks -%}
                   {%- liquid
                     if block.settings.navigation_title != blank
@@ -57,7 +57,7 @@
                     endif
                   -%}
                   <button
-                    class="f-tabs__nav focus-inset {{ section.settings.tab_heading_size }}"
+                    class="m-tabs__nav focus-inset {{ section.settings.tab_heading_size }}"
                     role="tab"
                     id="{{- block.id -}}"
                   >
@@ -67,7 +67,7 @@
               </div>
             </div>
           {%- endif -%}
-          <div class="f-collage-tabs__blocks">
+          <div class="m-collage-tabs__blocks">
             {%- for block in section.blocks -%}
               {%- liquid
                 assign aspect_ratio = section.settings.image_aspect_ratio | default: '1/1'
@@ -89,7 +89,7 @@
                 assign motion_delay = 50
               -%}
               <div
-                class="f-tabs__content"
+                class="m-tabs__content"
                 id="tab-{{ block.id }}"
                 data-index="{{ forloop.index0 }}"
                 role="tabpanel"
@@ -103,7 +103,7 @@
                   class="flex flex-wrap{% if section.settings.desktop_image_position == 'right' %} flex-row-reverse{% endif %} color-{{ block.settings.content_color_schema }}"
                   style="{{ tab_inline_style }}"
                 >
-                  <div class="f-collage-tab--image">
+                  <div class="m-collage-tab--image">
                     {%- if block.settings.image != blank -%}
                       {% render 'responsive-image',
                         image: block.settings.image,
@@ -113,20 +113,20 @@
                       %}
                     {%- else -%}
                       <div
-                        class="f-image"
+                        class="m-image"
                         style="--aspect-ratio: {{ aspect_ratio }};"
                       >
                         {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
                       </div>
                     {%- endif -%}
                   </div>
-                  <div class="f-collage-tab--content flex-1 flex items-center">
-                    <div class="f-collage-tab--content-inner f-text-blocks flex flex-col w-full spacing--normal text-{{ mobile_text_alignment }} md:text-{{ text_alignment }}">
+                  <div class="m-collage-tab--content flex-1 flex items-center">
+                    <div class="m-collage-tab--content-inner m-text-blocks flex flex-col w-full spacing--normal text-{{ mobile_text_alignment }} md:text-{{ text_alignment }}">
                       {%- if block.settings.subheading != blank -%}
                         <motion-element
                           data-motion="{{ animation_effect }}"
                           data-motion-delay="{{ motion_delay }}"
-                          class="block f-collage-tab--subheading text-subheading"
+                          class="block m-collage-tab--subheading text-subheading"
                         >
                           {{ block.settings.subheading }}
                         </motion-element>
@@ -134,7 +134,7 @@
                       {%- endif -%}
                       {%- if block.settings.heading != blank -%}
                         <h2
-                          class="f-collage-tab--heading {{ block.settings.heading_size }}"
+                          class="m-collage-tab--heading {{ block.settings.heading_size }}"
                           {% if block.settings.heading_color != blank
                             and block.settings.heading_color != 'rgba(0,0,0,0)'
                           %}
@@ -159,7 +159,7 @@
                         <motion-element
                           data-motion="{{ animation_effect }}"
                           data-motion-delay="{{ motion_delay }}"
-                          class="block f-collage-tab--description"
+                          class="block m-collage-tab--description"
                         >
                           {{ block.settings.description }}
                         </motion-element>
@@ -169,7 +169,7 @@
                         <motion-element
                           data-motion="{{ animation_effect }}"
                           data-motion-delay="{{ motion_delay }}"
-                          class="f-collage-tab--button f-text-blocks__btn block"
+                          class="m-collage-tab--button m-text-blocks__btn block"
                         >
                           <a
                             class="btn {{ block.settings.button_style }}"

@@ -1,0 +1,58 @@
+Testing for performance Skip to main content Apps Storefronts Agents References Changelog Ask assistant / Help • Log in Storefronts Overview Themes Web API / Headless Mobile Collapse sidebar Getting started Overview Quick start Developer preview Key concepts Architecture Limits Layouts Templates Sections Section groups Blocks Snippets Settings Config Locales Best practices Overview Sections and blocks Java Script and stylesheet tags Events and actions Performance Accessibility Theme editor Design Merchant stores Version control File transformation Deceptive code Developer Tools Overview CLI Git Hub integration VS Code extension Prettier plugin Liquid Doc Theme Check Theme editor Code editor Theme Access app Dev stores Collaborator accounts Theme Inspector Lighthouse CI Theme features Overview Integrating apps Product merchandising Pricing and payments Delivery and fulfillment Customer engagement Markets Site navigation and search SEO Trust and security Migrating to Online Store 2. 0 Sign-in redirects Troubleshooting Sell themes Theme Store Full index Expand On this page Field data Lab testing Running the Shopify benchmark Lighthouse CI References
+Testing for performance Install AI Toolkit Ask about this page Copy MD Use field data to find problems, lab data to debug them, and field data again to verify fixes landed. Performance testing isn&#x27;t a single tool or single moment. It combines:
+Field data : What real users experience, captured through RUM.
+Lab data : Controlled synthetic measurements for debugging and regression detection.
+Use field data to identify what to fix. Use lab data to confirm your fixes work. See Lab vs. field data for a detailed explanation of the difference.
+Anchor to Field data Field data Anchor to Shopify Web Performance Dashboard Shopify Web Performance Dashboard The Shopify Web Performance Dashboard provides Real User Monitoring (RUM) data collected directly from your store visitors. It reports Core Web Vitals (LCP, INP, and CLS) broken down by page type, device category, and geographic region. Access the dashboard from your Shopify admin. Data is collected from Chrome users who have opted into sharing performance metrics. Key uses:
+Establish a performance baseline for your store.
+Detect regressions after deployments or app installations.
+Identify which page types or device segments have the worst metrics.
+Verify that optimizations improved the real user experience.
+For Hydrogen storefronts, analytics integration is required to send data to the dashboard. See Performance best practices for Hydrogen storefronts for setup details. Anchor to Performance data in the GraphQL Admin API Performance data in the Graph QL Admin API Warning The performanceMetrics and performanceEvents fields are available only in the unstable version of the GraphQL Admin API. They aren&#x27;t in any stable version, and they might change or be removed without notice. Don&#x27;t depend on them in production. Warning: The performanceMetrics and performanceEvents fields are available only in the unstable version of the GraphQL Admin API. They aren&#x27;t in any stable version, and they might change or be removed without notice. Don&#x27;t depend on them in production. You can query your store&#x27;s performance data programmatically with two root fields:
+performanceMetrics : Returns RUM metrics as JSON, one entry per device type. It accepts aggregationLevel , deviceTypes , maxDays , and storefrontId . There&#x27;s no page-type dimension.
+performanceEvents : Returns events that affect storefront performance, such as app installs and theme publications. It accepts maxDays .
+Copy 1 2 3 4 5 6 7 8 9 10 11 query StorefrontPerformance { performanceMetrics ( aggregationLevel : DAILY, deviceTypes : [ MOBILE ] , maxDays : 30 ) { deviceType metrics } performanceEvents ( maxDays : 30 ) { type occurrence metadata } } Both fields require access to themes and reports. They&#x27;re useful for building custom dashboards, triggering alerts on regressions, or correlating metric changes with app and theme events. Anchor to Chrome User Experience Report (CrUX) Chrome User Experience Report (Cr UX) CrUX provides public RUM data from Chrome users aggregated by origin. It&#x27;s the data source behind PageSpeed Insights and Google Search Console&#x27;s Core Web Vitals report. Tools like TREO Site Speed provide a convenient interface for exploring CrUX data for any publicly accessible domain. CrUX requires sufficient traffic to populate. Low-traffic pages might not have enough data for reliable measurements.
+Anchor to Lab testing Lab testing Anchor to When to use Lighthouse vs. RUM When to use Lighthouse vs. RUM Use RUM (field data) when:
+You want to know what real users are experiencing.
+You need to establish a baseline before and after a change.
+You&#x27;re making strategic decisions about what to optimize.
+You&#x27;re verifying that a change improved performance.
+Use Lighthouse (lab data) when:
+You want to debug a specific performance issue.
+You need repeatable, comparable measurements during development.
+You want to run automated checks in CI/CD before merging.
+RUM data is insufficient, for example, on a new store, a low-traffic store, or a development store.
+Note Lighthouse scores can differ significantly from RUM data. Lab tests run on a single device with simulated network throttling. Real users have a wide range of devices, network conditions, and geographic locations. Always validate lab improvements against field data. Note: Lighthouse scores can differ significantly from RUM data. Lab tests run on a single device with simulated network throttling. Real users have a wide range of devices, network conditions, and geographic locations. Always validate lab improvements against field data.
+Anchor to Running the Shopify benchmark Running the Shopify benchmark Shopify evaluates Theme Store submissions against a benchmark shop to produce consistent, comparable performance scores. You can run the same benchmark to evaluate your own theme. The benchmark uses a development store pre-loaded with standardized test products. This isolates theme performance from store-specific content variables. Anchor to Step 1: Create a development store Step 1: Create a development store Create a new development store in your Shopify Partner account. The store must be separate from any production store. Anchor to Step 2: Import test products Step 2: Import test products Import the standardized test product catalog using the CSV file at: Test product CSV In your Shopify admin, navigate to Products > Import and upload the CSV file. This populates the store with the same product data used in Shopify&#x27;s official evaluations. Anchor to Step 3: Get a preview link Step 3: Get a preview link In your development store, beside Online Store , click the eye icon to preview your store. In the preview bar, click the link icon to copy the preview link. This gives you a shopifypreview.com URL that performance testing tools like Lighthouse can access without a store password. Anchor to Step 4: Get URLs for home, product, and collection pages Step 4: Get URLs for home, product, and collection pages Get the URLs for the pages that you want to audit. You should test the home page, any product page, and any collection page. For example, if your preview link is https://12345678.shopifypreview.com , then the URL for a product page is https://12345678.shopifypreview.com/products/sunglasses . Anchor to Step 5: Append ,[object Object], to each URL Step 5: Append pb=0 to each URL Append pb=0 (preview bar off) to each URL to prevent the preview bar from displaying during the audit, which could skew results. For example, https://12345678.shopifypreview.com/products/sunglasses becomes https://12345678.shopifypreview.com/products/sunglasses?pb=0 . Anchor to Step 6: Run Google Lighthouse on each page Step 6: Run Google Lighthouse on each page Run Lighthouse on each of the three URLs. For consistent results:
+Use Chrome in Incognito mode to avoid extension interference.
+Run each URL at least three times and use the median score.
+Use the same device and network conditions for all runs.
+You can run Lighthouse through:
+Chrome DevTools > Lighthouse tab.
+The Lighthouse CLI: npx lighthouse {url} --output json .
+PageSpeed Insights .
+Record the Performance score (0 to 100) for each page. Anchor to Step 7: Calculate the speed score Step 7: Calculate the speed score Shopify&#x27;s speed score is a weighted average of the three page scores:
+Home page: 17 percent.
+Product page: 40 percent.
+Collection page: 43 percent.
+The weights reflect the relative importance of each page type to merchant conversions. Collection and product pages carry the most weight. The weighted score isn&#x27;t the bar the Shopify Theme Store checks. Acceptance requires a minimum average Lighthouse performance score of 60 across the product, collection, and home page, on both desktop and mobile, and that requirement is a plain average of the three page scores. Use the weighted score to see how a change moves the pages that matter most to merchants, and the plain average to check whether you clear the submission bar. See Lighthouse performance and accessibility requirements .
+Anchor to Lighthouse CI Lighthouse CI Lighthouse CI (LHCI) automates Lighthouse audits on every pull request, preventing performance regressions before they reach production. Anchor to Shopify Lighthouse CI GitHub Action Shopify Lighthouse CI Git Hub Action Shopify provides an official Lighthouse CI GitHub Action for theme development. The action:
+Runs Lighthouse against a preview of your theme on each pull request.
+Comments score changes on the pull request.
+Can fail the CI check if scores drop below a threshold.
+To set up the Shopify Lighthouse CI GitHub Action, add a workflow file to your repository at .github/workflows/lighthouse.yml . See Lighthouse CI for a full walkthrough, including store setup, and the Shopify Lighthouse CI Action documentation for the current configuration syntax and required secrets. Anchor to Interpreting CI results Interpreting CI results When Lighthouse CI reports a score drop:
+Check whether the regression is in the lab score or in real user data. Lab regressions aren&#x27;t always user-visible.
+Identify which metric changed (LCP, TBT, or CLS) to narrow down the cause.
+Use the metric gap analysis approach to diagnose the root cause.
+Revert or fix the change before merging.
+Caution A single Lighthouse run can vary by 5 to 10 points because of CPU and network variability. Always use median scores from multiple runs when comparing before and after states. Don&#x27;t make decisions based on a single run. Caution: A single Lighthouse run can vary by 5 to 10 points because of CPU and network variability. Always use median scores from multiple runs when comparing before and after states. Don&#x27;t make decisions based on a single run.
+Anchor to References References
+Shopify Web Performance Dashboard
+Lighthouse CI
+Shopify Lighthouse CI Action
+Google Lighthouse documentation
+Chrome User Experience Report (CrUX)
+Lab vs. field data
+Debugging with metric gaps
+Build a sustainable performance practice
+Was this page helpful? Yes No Field data Lab testing Running the Shopify benchmark Lighthouse CI References Updates Developer changelog Shopify Editions Business growth Shopify Partners Program Shopify App Store Shopify Academy Legal Terms of service API terms of use Privacy policy Partners Program Agreement Shopify About Shopify Shopify Plus Careers Investors Press and media

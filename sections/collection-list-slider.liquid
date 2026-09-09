@@ -87,7 +87,7 @@
 %}
 <div
   id="{{ section_id }}"
-  class="collection-list-slider f-section-padding color-{{ section.settings.color_schema }}{{ custom_class }}"
+  class="collection-list-slider m-section-padding color-{{ section.settings.color_schema }}{{ custom_class }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
   <div class="{{ container }}">
@@ -116,7 +116,7 @@
                   %}
                 {%- else -%}
                   <div
-                    class="f-image"
+                    class="m-image"
                     style="--aspect-ratio: {{ banner_image_ratio }};"
                   >
                     {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -141,8 +141,8 @@
         >
           <flickity-component
             id="collection-list-slider__collections-{{ section.id }}"
-            class="f-grid f-grid--gap-medium f-grid-1-cols flickity-enable flickity-show-controls flickity-controls-group flickity-controls-group__bottom flickity-controls-group__bottom--{{ controls_position }} flickity-pagination--{{ pagination_style }} {{ pagination_class }} flickity-button-initialized"
-            data-slider-options='{"pageDots": {{ is_page_dots }}, "prevNextButtons": true, "wrapAround": true,  "cellSelector": ".f-column","cellAlign": "left"}'
+            class="m-grid m-grid--gap-medium m-grid-1-cols flickity-enable flickity-show-controls flickity-controls-group flickity-controls-group__bottom flickity-controls-group__bottom--{{ controls_position }} flickity-pagination--{{ pagination_style }} {{ pagination_class }} flickity-button-initialized"
+            data-slider-options='{"pageDots": {{ is_page_dots }}, "prevNextButtons": true, "wrapAround": true,  "cellSelector": ".m-column","cellAlign": "left"}'
             data-enable-slider="true"
             data-slider-columns="1"
             style="--number-slides: {{ total_pages }};{{ style }}"
@@ -227,12 +227,12 @@
                 endif
               -%}
               <div
-                class="f-column w-full collection-list-slider__slide"
+                class="m-column w-full collection-list-slider__slide"
                 data-index="{{ forloop.index0 }}"
                 {{ block.shopify_attributes }}
               >
-                <div class="collection-card text-center f-image-hover-effect__{{ settings.image_hover_effect }}">
-                  <div class="collection-card__image-wrapper f-card overflow-hidden">
+                <div class="collection-card text-center m-image-hover-effect__{{ settings.image_hover_effect }}">
+                  <div class="collection-card__image-wrapper m-card overflow-hidden">
                     <a
                       {% if collection.url != blank %}
                         href="{{ collection.url }}"
@@ -247,7 +247,7 @@
                           assign image_height = collection_image.width | divided_by: collection_image.aspect_ratio
                         -%}
                         <div
-                          class="f-image collection-card__image"
+                          class="m-image collection-card__image"
                           style="--aspect-ratio: {{ image_ratio }};"
                         >
                           {{
@@ -272,7 +272,7 @@
                           {{
                             'collection-'
                             | append: current
-                            | placeholder_svg_tag: 'placeholder-svg f-image'
+                            | placeholder_svg_tag: 'placeholder-svg m-image'
                           }}
                         </div>
                       {%- endif -%}

@@ -105,7 +105,7 @@
   -%}
 
   {%- capture content_html -%}
-    <div class="collections-showcase__content f-grid f-grid-2-cols items-center{% if forloop.first %} is-active{% endif %}"{% unless forloop.first %} hidden{% endunless %}>
+    <div class="collections-showcase__content m-grid m-grid-2-cols items-center{% if forloop.first %} is-active{% endif %}"{% unless forloop.first %} hidden{% endunless %}>
       {%- liquid
         assign image_wrap_tag = 'div'
         if collection.url != blank
@@ -113,7 +113,7 @@
         endif
       -%}
       <{{image_wrap_tag}}
-        class="collections-showcase__image f-card block f-image-hover-effect__{{ settings.image_hover_effect }}{% if forloop.first %} is-active{% endif %}"
+        class="collections-showcase__image m-card block m-image-hover-effect__{{ settings.image_hover_effect }}{% if forloop.first %} is-active{% endif %}"
         style="--aspect-ratio: {{ image_aspect_ratio }}"
         {% if collection.url != blank %}
           href="{{ collection.url }}"
@@ -122,13 +122,13 @@
         {%- if collection_image != blank -%}
           {% render 'responsive-image', image: collection_image, aspect_ratio: image_aspect_ratio, section_index: section.index, index: forloop.index %}
         {%- else -%}
-          <div class="f-image" style="--aspect-ratio: {{ image_aspect_ratio }}">
+          <div class="m-image" style="--aspect-ratio: {{ image_aspect_ratio }}">
             {% capture current %}{% cycle 1, 2, 3 %}{% endcapture %}
             {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
           </div>
         {%- endif -%}
       </{{ image_wrap_tag }}>
-      <div class="collections-showcase__info f-text-blocks md:f-text-blocks--small">
+      <div class="collections-showcase__info m-text-blocks md:m-text-blocks--small">
         {%- if block.settings.subheading != blank -%}
           <h4 class="collections-showcase__subheading {{ block.settings.subheading_size }}">
             {{ block.settings.subheading }}
@@ -140,7 +140,7 @@
           </div>
         {%- endif -%}
         {% if block.settings.button_label != blank %}
-          <div class="f-text-blocks__btn block">
+          <div class="m-text-blocks__btn block">
             <a class="btn {{ block.settings.button_style }}"
               {% if collection.url != blank %}
                 href="{{ collection.url }}"
@@ -172,11 +172,11 @@
 %}
 <div
   id="{{ section_id }}"
-  class="collections-showcase f-section-padding color-{{ section.settings.color_schema }}{{ custom_class }}"
+  class="collections-showcase m-section-padding color-{{ section.settings.color_schema }}{{ custom_class }}"
 >
   <div class="{{ container }}">
     <collections-showcase
-      class="collections-showcase__grid f-grid f-grid-3-cols items-center"
+      class="collections-showcase__grid m-grid m-grid-3-cols items-center"
       data-section-id="{{ section.id }}"
     >
       <nav class="collections-showcase__nav w-full">

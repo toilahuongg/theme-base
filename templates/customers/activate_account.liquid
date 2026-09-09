@@ -1,7 +1,7 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
 
-<div class="f-section">
-  <div class="f-customer f-customer__activate">
+<div class="m-section">
+  <div class="m-customer m-customer__activate">
     <svg style="display: none">
       <symbol id="icon-error" viewBox="0 0 13 13">
         <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
@@ -18,7 +18,7 @@
     </p>
     {%- form 'activate_customer_password' -%}
       {%- if form.errors -%}
-        <h2 class="f-form-message" tabindex="-1" autofocus>
+        <h2 class="m-form-message" tabindex="-1" autofocus>
           <svg aria-hidden="true" focusable="false" role="presentation">
             <use href="#icon-error" />
           </svg>
@@ -56,7 +56,7 @@
           {{ 'customer.activate_account.password' | t }}
         </label>
         {%- if form.errors contains 'password' -%}
-          <small id="password-error" class="f-form-message">
+          <small id="password-error" class="m-form-message">
             <svg aria-hidden="true" focusable="false" role="presentation">
               <use href="#icon-error" />
             </svg>

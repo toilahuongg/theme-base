@@ -49,9 +49,9 @@ Search shopify.dev for "Theme Store requirements" and read the current page plus
 8. **Act on the verdict.** The verdict decides the pipeline:
 
    - ORIGINAL or SKELETON - proceed to `theme-feature-analyst`.
-   - DAWN or HORIZON - the theme is not eligible for a new Theme Store submission. Do not proceed to redesign. Report the verdict with evidence and stop; the project must restart from the Skeleton Theme or from original code.
-   - THIRD-PARTY - hold for licensing review; the theme may not be redistributable. Do not proceed until the license is confirmed or the code is replaced.
-   - MIXED - proceed component by component: safe concepts and clearly original parts may inform the redesign; derived or unlicensed parts must be rewritten (list them under "Code that must be rewritten").
+   - DAWN or HORIZON - the existing code is not eligible for a new Theme Store submission. Report the verdict with evidence; the orchestrator enters REFERENCE-REBUILD mode — the theme is a concept reference only and the project restarts from the Skeleton Theme or original code.
+   - THIRD-PARTY - hold for licensing review; the theme may not be redistributable. The orchestrator enters REFERENCE-REBUILD mode — concepts may inform the redesign, but all code must be replaced (from Skeleton/original) and the license findings recorded.
+   - MIXED - proceed component by component: safe concepts and clearly original parts may inform the redesign; derived or unlicensed parts must be rewritten (list them under "Code that must be rewritten"). Orchestrator records REFERENCE-REBUILD mode.
    - UNVERIFIED - block the pipeline. Do not proceed, do not silently continue. Report exactly which evidence is missing and what would resolve the audit.
 
 ## HARD RULES

@@ -4,7 +4,7 @@
   {% render 'breadcrumb', container: section.settings.brc_container, justify: section.settings.brc_text_alignment %}
 {% endif %}
 <article 
-  class="f-article-template f-section-padding" 
+  class="m-article-template m-section-padding" 
   itemscope 
   itemtype="http://schema.org/BlogPosting" 
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
@@ -17,9 +17,9 @@
         </div>
       {%- when 'featured_image' -%}
         {%- if article.image -%}
-          <div class="f-article-template__hero-container f-article-template__block-item" {{ block.shopify_attributes }}>
+          <div class="m-article-template__hero-container m-article-template__block-item" {{ block.shopify_attributes }}>
             <div class="{{ block.settings.image_width }}">
-              <div class="f-article-template__hero--{{ block.settings.image_height }}">
+              <div class="m-article-template__hero--{{ block.settings.image_height }}">
                 {% render 'responsive-image', image: article.image, section_index: section.index, index: 1 %}
               </div>
             </div>
@@ -27,14 +27,14 @@
         {%- endif -%}
       {%- when 'title' -%}
         <header
-          class="container-narrow text-{{ block.settings.title_text_align }} f-article-template__block-item"
+          class="container-narrow text-{{ block.settings.title_text_align }} m-article-template__block-item"
           {{ block.shopify_attributes }}
         >
           {%- if block.settings.blog_show_author or block.settings.blog_show_date -%}
-            <div class="f-article-template__metas">
+            <div class="m-article-template__metas">
               {%- if block.settings.blog_show_author -%}
                 <span
-                  class="f-article-template__author text-subtext circle-divider"
+                  class="m-article-template__author text-subtext circle-divider"
                   itemprop="author"
                   itemscope
                   itemtype="http://schema.org/Person"
@@ -43,32 +43,32 @@
                 </span>
               {%- endif -%}
               {%- if block.settings.blog_show_date -%}
-                <span class="f-article-template__date text-subtext" itemprop="dateCreated pubdate datePublished">
+                <span class="m-article-template__date text-subtext" itemprop="dateCreated pubdate datePublished">
                   {{- article.published_at | time_tag: format: 'date' -}}
                 </span>
               {%- endif -%}
             </div>
           {%- endif -%}
-          <h1 class="f-article-template__title {{ block.settings.heading_size }}" itemprop="headline">{{ article.title | escape }}</h1>
+          <h1 class="m-article-template__title {{ block.settings.heading_size }}" itemprop="headline">{{ article.title | escape }}</h1>
         </header>
       {%- when 'content' -%}
         <div
-          class="f-article-template__content container-narrow rte f-article-template__block-item"
+          class="m-article-template__content container-narrow rte m-article-template__block-item"
           itemprop="articleBody"
           {{ block.shopify_attributes }}
         >
           {{ article.content }}
         </div>
       {%- when 'tags-share' -%}
-        <div class="container-narrow f-article-template__block-item" {{ block.shopify_attributes }}>
-          <div class="f-article-template__tags-share">
+        <div class="container-narrow m-article-template__block-item" {{ block.shopify_attributes }}>
+          <div class="m-article-template__tags-share">
             {% if block.settings.show_tags and article.tags.size > 0 %}
-              <div class="f-article-template__tags">
+              <div class="m-article-template__tags">
                 <span>{{ 'blogs.article.tags_label' | t }}</span>
                 <ul>
                   {% for tag in article.tags %}
                     <li>
-                      <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="f-article-template__tag link--animated">
+                      <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="m-article-template__tag link--animated">
                         {{- tag -}}
                       </a>
                       {% unless forloop.last %},{% endunless %}
@@ -79,9 +79,9 @@
             {% endif %}
             {% if block.settings.show_share %}
               {% assign url = shop.url | append: article.url %}
-              <div class="f-article-template__sharing">
+              <div class="m-article-template__sharing">
                 <span>{{ 'blogs.article.share_label' | t }}</span>
-                <div class="f-article-template__sharing-list">
+                <div class="m-article-template__sharing-list">
                   <a href="https://www.facebook.com/sharer/sharer.php?u={{ url }}" target="_blank">
                     {% render 'icon-facebook', size: 'small' %}
                   </a>
@@ -97,11 +97,11 @@
           </div>
         </div>
       {%- when 'next-prev-article' -%}
-        <div class="container-narrow f-article-template__block-item" {{ block.shopify_attributes }}>
-          <div class="f-article-template__next-prev-article flex {% if blog.previous_article != nil and blog.next_article != nil %}justify-between{% elsif blog.previous_article != nil %}justify-start{% else %}justify-end{% endif %}">
+        <div class="container-narrow m-article-template__block-item" {{ block.shopify_attributes }}>
+          <div class="m-article-template__next-prev-article flex {% if blog.previous_article != nil and blog.next_article != nil %}justify-between{% elsif blog.previous_article != nil %}justify-start{% else %}justify-end{% endif %}">
             {% if blog.previous_article != null %}
-              <a href="{{ blog.previous_article.url }}" class="f-article-template__prev-article">
-                <span class="f-article-template__prev-article-icon">
+              <a href="{{ blog.previous_article.url }}" class="m-article-template__prev-article">
+                <span class="m-article-template__prev-article-icon">
                   {% comment %} theme-check-disable {% endcomment %}
                   {{ 'icon-arrow-left.svg' | inline_asset_content }}
                   {% comment %} theme-check-enable {% endcomment %}
@@ -111,13 +111,13 @@
             {% endif %}
             <a
               href="{{ blog.url }}"
-              class="f-article-template__back {% if blog.previous_article != nil and blog.next_article != nil %}items-center{% elsif blog.previous_article != nil %}items-end{% else %}items-start{% endif %}"
+              class="m-article-template__back {% if blog.previous_article != nil and blog.next_article != nil %}items-center{% elsif blog.previous_article != nil %}items-end{% else %}items-start{% endif %}"
             >
               <span class="link--animated inline-flex">{{ 'blogs.article.back_to_blog' | t: title: blog.title }}</span>
             </a>
             {% if blog.next_article != null %}
-              <a href="{{ blog.next_article.url }}" class="f-article-template__next-article text-right">
-                <span class="f-article-template__next-article-icon">
+              <a href="{{ blog.next_article.url }}" class="m-article-template__next-article text-right">
+                <span class="m-article-template__next-article-icon">
                   <span>{{ 'blogs.article.next_post' | t }}</span>
                   {% comment %} theme-check-disable {% endcomment %}
                   {{ 'icon-arrow-right.svg' | inline_asset_content }}
@@ -130,18 +130,18 @@
     {%- endcase -%}
   {%- endfor -%}
   {%- if blog.comments_enabled? -%}
-    <div class="f-article-template__comment-wrapper">
+    <div class="m-article-template__comment-wrapper">
       <div id="comments" class="container-narrow">
         {%- if article.comments_count > 0 -%}
           {%- assign anchorId = '#Comments-' | append: article.id -%}
 
-          <h2 class="f-article-template__comments-heading-top h3" id="Comments-{{ article.id }}">
+          <h2 class="m-article-template__comments-heading-top h3" id="Comments-{{ article.id }}">
             {{ 'blogs.article.comments' | t: count: article.comments_count }}
           </h2>
           {% paginate article.comments by 5 %}
-            <div class="f-article-template__comments">
+            <div class="m-article-template__comments">
               {%- if comment.status == 'pending' and comment.content -%}
-                <article id="{{ comment.id }}" class="f-article-template__comments-comment">
+                <article id="{{ comment.id }}" class="m-article-template__comments-comment">
                   {{ comment.content }}
                   <footer class="text-subtext">
                     <span class="circle-divider">{{ comment.author }}</span>
@@ -150,7 +150,7 @@
               {%- endif -%}
 
               {%- for comment in article.comments -%}
-                <article id="{{ comment.id }}" class="f-article-template__comments-comment">
+                <article id="{{ comment.id }}" class="m-article-template__comments-comment">
                   {{ comment.content }}
                   <footer class="text-subtext">
                     <span class="circle-divider">{{ comment.author }}</span
@@ -158,7 +158,7 @@
                   </footer>
                 </article>
               {%- endfor -%}
-              <div class="f-pagination__wrapper text-center">
+              <div class="m-pagination__wrapper text-center">
                 {% render 'pagination', paginate: paginate, anchor: anchorId %}
               </div>
             </div>
@@ -171,10 +171,10 @@
               assign post_message = 'blogs.article.success_moderated'
             endif
           -%}
-          <h2 class="f-article-template__comments-heading h3">{{ 'blogs.article.comment_form_title' | t }}</h2>
+          <h2 class="m-article-template__comments-heading h3">{{ 'blogs.article.comment_form_title' | t }}</h2>
           {%- if form.errors -%}
             <div class="form__message" role="alert">
-              <p class="form-status caption-large f-notification warning show" tabindex="-1" autofocus>
+              <p class="form-status caption-large m-notification warning show" tabindex="-1" autofocus>
                 {% comment %} theme-check-disable {% endcomment %}
                 {{ 'icon-alert-circle.svg' | inline_asset_content }}
                 {% comment %} theme-check-enable {% endcomment %}
@@ -199,7 +199,7 @@
             </ul>
           {%- elsif form.posted_successfully? -%}
             <div class="form-status-list form__message" role="status">
-              <p class="form-status f-notification success show" tabindex="-1" autofocus>
+              <p class="form-status m-notification success show" tabindex="-1" autofocus>
                 {% comment %} theme-check-disable {% endcomment %}
                 {{ 'icon-check-circle.svg' | inline_asset_content }}
                 {% comment %} theme-check-enable {% endcomment %}
@@ -234,7 +234,7 @@
               >
               {%- if form.errors contains 'author' -%}
                 <small id="CommentForm-author-error">
-                  <span class="form__message f-notification show warning">
+                  <span class="form__message m-notification show warning">
                     {% comment %} theme-check-disable {% endcomment %}
                     {{ 'icon-alert-circle.svg' | inline_asset_content }}
                     {% comment %} theme-check-enable {% endcomment %}
@@ -267,7 +267,7 @@
               >
               {%- if form.errors contains 'email' -%}
                 <small id="CommentForm-email-error">
-                  <span class="form__message f-notification show warning">
+                  <span class="form__message m-notification show warning">
                     {% comment %} theme-check-disable {% endcomment %}
                     {{ 'icon-alert-circle.svg' | inline_asset_content }}
                     {% comment %} theme-check-enable {% endcomment %}
@@ -297,7 +297,7 @@
             </div>
             {%- if form.errors contains 'body' -%}
               <small id="CommentForm-body-error">
-                <span class="form__message f-notification show warning">
+                <span class="form__message m-notification show warning">
                   {% comment %} theme-check-disable {% endcomment %}
                   {{ 'icon-alert-circle.svg' | inline_asset_content }}
                   {% comment %} theme-check-enable {% endcomment %}
@@ -308,7 +308,7 @@
             {%- endif -%}
             <div class="form-field">
               {%- if blog.moderated? -%}
-                <p class="f-article-template__comment-warning text-subtext">{{ 'blogs.article.moderated' | t }}</p>
+                <p class="m-article-template__comment-warning text-subtext">{{ 'blogs.article.moderated' | t }}</p>
               {%- endif -%}
               <input type="submit" class="btn btn--primary" value="{{ 'blogs.article.post' | t }}">
             </div>

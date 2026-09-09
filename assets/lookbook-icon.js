@@ -4,9 +4,9 @@ if (!customElements.get('lookbook-icon')) {
 			super();
 
 			this.selectors = {
-				cardProduct: '.f-lookbook-card__product',
-				cardInner: '.f-lookbook-card__inner',
-				cardContainer: '.f-lookbook-card'
+				cardProduct: '.m-lookbook-card__product',
+				cardInner: '.m-lookbook-card__inner',
+				cardContainer: '.m-lookbook-card'
 			}
 
 			this.domNodes = queryDomNodes(this.selectors, this)

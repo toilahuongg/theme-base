@@ -23,15 +23,15 @@
 -%}
 
 <div
-  class="f-product-single__block-inventory-status"
+  class="m-product-single__block-inventory-status"
   data-product-id="{{ product.id }}"
   {{ block.shopify_attributes }}
   id="Inventory-{{ section.id }}"
 >
-  <ul class="f-inventory-status">
-    <li class="f-inventory--point">
-      <span class="f-inventory--icon-text{% if inventory_visible == true %} f-inventory--low{% endif %}{% unless current_variant.available %} hidden{% endunless %}">
-        <span class="f-inventory--icon{% if is_show_progress %} hidden{% endif %}"></span>
+  <ul class="m-inventory-status">
+    <li class="m-inventory--point">
+      <span class="m-inventory--icon-text{% if inventory_visible == true %} m-inventory--low{% endif %}{% unless current_variant.available %} hidden{% endunless %}">
+        <span class="m-inventory--icon{% if is_show_progress %} hidden{% endif %}"></span>
         <span data-product-inventory data-threshold="{{ block.settings.inventory_threshold }}">
           {%- if inventory_visible -%}
             {{ 'products.product.stock_label' | t: count: current_variant.inventory_quantity }}
@@ -40,23 +40,23 @@
           {%- endif -%}
         </span>
       </span>
-      <f-progress-bar
+      <m-progress-bar
         data-quantity="{{ current_variant.inventory_quantity }}"
         data-show="{{ show_progress }}"
         {% if is_show_progress %}
           style="display: block;"
         {% endif %}
-      ></f-progress-bar>
+      ></m-progress-bar>
     </li>
     {%- if block.settings.enable_inventory_transfer -%}
       <li
         data-incoming-inventory
         data-show="{{ show_incoming }}"
-        class="f-inventory--point{% unless show_incoming %} hidden{% endunless %}"
+        class="m-inventory--point{% unless show_incoming %} hidden{% endunless %}"
       >
-        <span class="f-inventory--icon-text">
-          <span class="f-inventory--icon"></span>
-          <span class="f-inventory--incoming-text f-js-incoming-text">
+        <span class="m-inventory--icon-text">
+          <span class="m-inventory--icon"></span>
+          <span class="m-inventory--incoming-text m-js-incoming-text">
             {%- if current_variant.next_incoming_date -%}
               {%- assign date = current_variant.next_incoming_date | date: format: 'date' -%}
               {%- if current_variant.available -%}

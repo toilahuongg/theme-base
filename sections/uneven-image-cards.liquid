@@ -35,7 +35,7 @@
 %}
 <div
   id="{{ section_id }}"
-  class="uneven-image-cards f-section-padding color-{{ section.settings.color_schema }}{{ custom_class }}"
+  class="uneven-image-cards m-section-padding color-{{ section.settings.color_schema }}{{ custom_class }}"
 >
   <div class="container">
     {% render 'index-section-header',
@@ -69,12 +69,12 @@
         >
           {%- case block.type -%}
             {%- when 'image_card' -%}
-              <div class="relative overflow-hidden w-full f-image-hover-effect__{{ settings.image_hover_effect }} f-card">
+              <div class="relative overflow-hidden w-full m-image-hover-effect__{{ settings.image_hover_effect }} m-card">
                 {% if block.settings.image != blank %}
                   {% render 'responsive-image',
                     image: block.settings.image,
                     aspect_ratio: block.settings.image_ratio,
-                    wrapper_class: 'f-image-card__image',
+                    wrapper_class: 'm-image-card__image',
                     section_index: section.index,
                     index: forloop.index
                   %}
@@ -82,12 +82,12 @@
                   <div style="--aspect-ratio: {{ image_ratio }}">
                     {{
                       'image'
-                      | placeholder_svg_tag: 'placeholder-svg f-image-card__image'
+                      | placeholder_svg_tag: 'placeholder-svg m-image-card__image'
                     }}
                   </div>
                 {% endif %}
                 <div
-                  class="f-image-card__content f-image-card__content-{{ block.settings.layout }}{% if block.settings.layout == 'layout7' or block.settings.layout == 'layout8' %} reversed-link reversed-link--underline{% endif %}"
+                  class="m-image-card__content m-image-card__content-{{ block.settings.layout }}{% if block.settings.layout == 'layout7' or block.settings.layout == 'layout8' %} reversed-link reversed-link--underline{% endif %}"
                   style="--color-overlay-alpha: {{ block.settings.image_overlay_opacity | default: 0 }}; --vertical-content-padding: {{ block.settings.vertical_content_padding }}px; --vertical-content-padding-mobile: {{ block.settings.vertical_content_padding_mobile }}px;"
                 >
                   {%- if block.settings.button_link != blank -%}
@@ -105,18 +105,18 @@
                     </a>
                   {%- endif -%}
                   <div
-                    class="f-image-card__content-box f-text-blocks"
+                    class="m-image-card__content-box m-text-blocks"
                     style="--text-color: {{ block.settings.text_color }};"
                   >
-                    <div class="f-image-card__content-text f-text-blocks">
+                    <div class="m-image-card__content-text m-text-blocks">
                       {%- if block.settings.sub_heading != blank -%}
-                        <p class="f-image-card__subheading text-subheading{% if block.settings.layout == 'layout8' %} flex-1{% endif %}">
+                        <p class="m-image-card__subheading text-subheading{% if block.settings.layout == 'layout8' %} flex-1{% endif %}">
                           {{ block.settings.sub_heading }}
                         </p>
                       {% endif %}
                       {%- if block.settings.heading != blank -%}
                         <h3
-                          class="f-image-card__heading text-current {{ block.settings.heading_size }}"
+                          class="m-image-card__heading text-current {{ block.settings.heading_size }}"
                           {% if block.settings.heading_color != blank
                             and block.settings.heading_color != 'rgba(0,0,0,0)'
                           %}
@@ -133,14 +133,14 @@
                         </h3>
                       {%- endif -%}
                       {%- if block.settings.description != blank -%}
-                        <div class="f-image-card__description rte mobile-remove-br">
+                        <div class="m-image-card__description rte mobile-remove-br">
                           {{ block.settings.description }}
                         </div>
                       {%- endif -%}
                     </div>
                     {%- if block.settings.button_label != blank -%}
                       <a
-                        class="f-image-card__action no-color-schema btn {{ block.settings.button_style }}"
+                        class="m-image-card__action no-color-schema btn {{ block.settings.button_style }}"
                         {% if block.settings.button_link != blank %}
                           href="{{ block.settings.button_link }}"
                         {% else %}
@@ -154,12 +154,12 @@
                 </div>
               </div>
             {%- when 'image_with_text' -%}
-              <div class="f-image-hover-effect__{{ settings.image_hover_effect }} f-card">
+              <div class="m-image-hover-effect__{{ settings.image_hover_effect }} m-card">
                 {%- if block.settings.image != blank -%}
                   {% render 'responsive-image',
                     image: block.settings.image,
                     aspect_ratio: block.settings.image_ratio,
-                    wrapper_class: 'f-image-card__image',
+                    wrapper_class: 'm-image-card__image',
                     section_index: section.index,
                     index: forloop.index
                   %}
@@ -167,12 +167,12 @@
                   <div style="--aspect-ratio: {{ image_ratio }}">
                     {{
                       'image'
-                      | placeholder_svg_tag: 'placeholder-svg f-image-card__image'
+                      | placeholder_svg_tag: 'placeholder-svg m-image-card__image'
                     }}
                   </div>
                 {%- endif -%}
               </div>
-              <div class="f-text-blocks text-{{ block.settings.text_alignment }}">
+              <div class="m-text-blocks text-{{ block.settings.text_alignment }}">
                 {%- if block.settings.sub_heading != blank -%}
                   <p class="text-subheading">
                     {{ block.settings.sub_heading }}
@@ -200,7 +200,7 @@
                   </div>
                 {%- endif -%}
                 {%- if block.settings.button_label != blank -%}
-                  <div class="f-text-blocks__btn">
+                  <div class="m-text-blocks__btn">
                     <a
                       class="btn {{ block.settings.button_style }}"
                       {% if block.settings.button_link != blank %}

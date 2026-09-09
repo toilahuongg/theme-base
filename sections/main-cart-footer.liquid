@@ -28,12 +28,12 @@
       data-cart-footer
       data-id="{{ section.id }}"
     >
-      <div class="f-cart__footer">
-        <div class="f-cart__addons">
+      <div class="m-cart__footer">
+        <div class="m-cart__addons">
           {%- if gift_wrapping != null and gift_wrapping.object.available -%}
             <div>
               <gift-wrapping-component
-                class="f-gift-wrapping"
+                class="m-gift-wrapping"
                 data-gift-wrap-id="{{ gift_wrap_id }}"
                 data-gift-wrapping="{{ cart.attributes.gift-wrapping | escape }}"
                 cart-items-size="{{ cart.items.size }}"
@@ -41,7 +41,7 @@
                 items-in-cart="{{ items_in_cart }}"
               >
                 <input
-                  id="f-gift-wrapping"
+                  id="m-gift-wrapping"
                   type="checkbox"
                   name="attributes[gift-wrapping]"
                   value="yes"
@@ -50,12 +50,12 @@
                   {% endif %}
                   class="visually-hidden"
                 >
-                <label for="f-gift-wrapping" class="f-gift-wrapping--label">
-                  {%- capture gift_price -%}<strong class="f-gift-wrapping--price">{{ gift_wrapping.object.price | money }}</strong>{%- endcapture -%}
-                  <span class="f-gift-wrapping--text">
+                <label for="m-gift-wrapping" class="m-gift-wrapping--label">
+                  {%- capture gift_price -%}<strong class="m-gift-wrapping--price">{{ gift_wrapping.object.price | money }}</strong>{%- endcapture -%}
+                  <span class="m-gift-wrapping--text">
                     {{- 'general.cart.gift_wrapping_html' | t: price: gift_price -}}
                   </span>
-                  <div class="f-gift-wrapping--loading">
+                  <div class="m-gift-wrapping--loading">
                     {% comment %} theme-check-disable {% endcomment %}
                     {{ 'icon-spinner.svg' | inline_asset_content }}
                     {% comment %} theme-check-enable {% endcomment %}
@@ -66,7 +66,7 @@
                     xmlns="http://www.w3.org/2000/svg"
                     aria-hidden="true"
                     focusable="false"
-                    class="f-icon f-icon-checkmark f-gift-wrapping--icon"
+                    class="m-icon m-icon-checkmark m-gift-wrapping--icon"
                     fill="none"
                     viewBox="0 0 20 20"
                   >
@@ -75,11 +75,11 @@
                   </svg>
                 </label>
                 {%- if cart.attributes['gift-wrapping'] and gift_wraps_in_cart > 0 -%}
-                  <gift-note-component class="f-gift-wrapping--note">
+                  <gift-note-component class="m-gift-wrapping--note">
                     <textarea
                       class="form-control form-control--textarea w-full"
                       name="attributes[gift-note]"
-                      id="f-gift-note"
+                      id="m-gift-note"
                       placeholder="{{ 'general.cart.gift_note_placeholder' | t }}"
                     >{{ cart.attributes.gift-note }}</textarea>
                   </gift-note-component>
@@ -97,32 +97,32 @@
             {% endif %}
             {%- case block.type -%}
               {% when 'discount' %}
-                <div class="f-cart__block f-cart__block--{{ block.type }}" {{ block.shopify_attributes }}>
-                  {% render 'cart-block-discount', block: block, id: 'f-cart__discount', class: 'f-cart__discount' %}
+                <div class="m-cart__block m-cart__block--{{ block.type }}" {{ block.shopify_attributes }}>
+                  {% render 'cart-block-discount', block: block, id: 'm-cart__discount', class: 'm-cart__discount' %}
                 </div>
               {% when 'note' %}
-                <div class="f-cart__block f-cart__block--{{ block.type }}" {{ block.shopify_attributes }}>
-                  {% render 'cart-block-note', block: block, id: 'f-cart__note', class: 'f-cart__note-wrapper' %}
+                <div class="m-cart__block m-cart__block--{{ block.type }}" {{ block.shopify_attributes }}>
+                  {% render 'cart-block-note', block: block, id: 'm-cart__note', class: 'm-cart__note-wrapper' %}
                 </div>
               {% when 'shipping' %}
-                <div class="f-cart__block f-cart__block--{{ block.type }} no-js-hidden" {{ block.shopify_attributes }}>
+                <div class="m-cart__block m-cart__block--{{ block.type }} no-js-hidden" {{ block.shopify_attributes }}>
                   {% render 'cart-block-shipping',
                     block: block,
-                    id: 'f-cart__shipping-rates',
-                    class: 'f-cart__shipping-wrapper'
+                    id: 'm-cart__shipping-rates',
+                    class: 'm-cart__shipping-wrapper'
                   %}
                 </div>
               {%- else -%}
             {%- endcase -%}
           {% endfor %}
         </div>
-        <div class="f-cart__subtotal">
+        <div class="m-cart__subtotal">
           {% for block in section.blocks %}
             {% if block.type == 'shipping' or block.type == 'note' %}
               {% continue %}
             {% endif %}
             <div
-              class="f-cart__block f-cart__block--{{ block.type }}"
+              class="m-cart__block m-cart__block--{{ block.type }}"
               data-block-{{ block.type }}
               {{ block.shopify_attributes }}
             >
@@ -147,12 +147,11 @@
                     endif
                   %}
                   <div class="js-contents">
-                    <div data-foxkit-cart-summary></div>
                     {%- if cart.cart_level_discount_applications.size > 0 or cart_items_has_discount -%}
                       <div class="cart-discounts text-sm text-right text-red">
-                        <ul class="f-discounts list-none" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                        <ul class="m-discounts list-none" role="list" aria-label="{{ 'customer.order.discount' | t }}">
                           {%- for discount in cart.cart_level_discount_applications -%}
-                            <li class="f-discounts__discount f-discounts__discount--end" data-discount-code="{{ discount.title }}">
+                            <li class="m-discounts__discount m-discounts__discount--end" data-discount-code="{{ discount.title }}">
                               {% comment %} theme-check-disable {% endcomment %}
                               {{ 'icon-discount.svg' | inline_asset_content }}
                               {% comment %} theme-check-enable {% endcomment %}
@@ -183,7 +182,7 @@
 
                                   assign discount_codes = item.line_level_discount_allocations | slice: forloop.index0 | map: 'discount_application' | map: 'title' | concat: discount_codes
                                 -%}
-                                <li class="f-discounts__discount f-discounts__discount--end" data-discount-code="{{ discount.title }}">
+                                <li class="m-discounts__discount m-discounts__discount--end" data-discount-code="{{ discount.title }}">
                                   {% comment %} theme-check-disable {% endcomment %}
                                   {{ 'icon-discount.svg' | inline_asset_content }}
                                   {% comment %} theme-check-enable {% endcomment %}
@@ -276,7 +275,7 @@
 {% schema %}
 {
   "name": "t:sections.main-cart-footer.name",
-  "class": "cart__footer-wrapper f-section",
+  "class": "cart__footer-wrapper m-section",
   "blocks": [
     {
       "type": "@app"

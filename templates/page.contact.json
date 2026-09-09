@@ -77,7 +77,7 @@
         "tab_3wbWcU"
       ],
       "custom_css": [
-        ".f-collage-tab--content {--tab-content-px: 8rem;}"
+        ".m-collage-tab--content {--tab-content-px: 8rem;}"
       ],
       "settings": {
         "container": "container",

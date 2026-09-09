@@ -36,22 +36,22 @@
   >
     <drawer-component
       id="Drawer-Cart"
-      class="f-drawer f-drawer-cart"
+      class="m-drawer m-drawer-cart"
       role="dialog"
       aria-modal="true"
-      style="--f-drawer-width: 460px;"
+      style="--m-drawer-width: 460px;"
       hidden
       title="Drawer Cart"
     >
-      <div class="f-drawer__overlay" data-drawer-overlay></div>
-      <div class="f-drawer__content focus-inset" tabindex="-1">
+      <div class="m-drawer__overlay" data-drawer-overlay></div>
+      <div class="m-drawer__content focus-inset" tabindex="-1">
         <cart-drawer
-          class="f-cart-drawer h-full{% if cart.items.size == 0 %} is-empty{% endif %}"
+          class="m-cart-drawer h-full{% if cart.items.size == 0 %} is-empty{% endif %}"
           data-open-when-added="{{ settings.show_cart_drawer_when_added }}"
         >
-          <div data-drawer-inner="cart" class="f-cart-drawer__inner h-full flex flex-col">
-            <div class="f-drawer__header">
-              <h2 class="f-drawer__header-title h4" id="cart-drawer-title">
+          <div data-drawer-inner="cart" class="m-cart-drawer__inner h-full flex flex-col">
+            <div class="m-drawer__header">
+              <h2 class="m-drawer__header-title h4" id="cart-drawer-title">
                 {{ 'sections.cart.title' | t }}
                 {% if settings.cart_drawer_show_cart_count %}
                   (<span data-cart-count-bubble
@@ -63,7 +63,7 @@
                 {% endif %}
               </h2>
               <drawer-closer
-                class="f-drawer__close btn btn--plain"
+                class="m-drawer__close btn btn--plain"
                 aria-label="{{ 'accessibility.close' | t }}"
                 role="button"
               >
@@ -74,12 +74,10 @@
             </div>
 
             {%- render 'cart-goal', template: 'drawer' -%}
-            <foxkit-cart-goal></foxkit-cart-goal>
-            <foxkit-cart-countdown></foxkit-cart-countdown>
 
-            <div class="f-drawer__scroller scroll-container">
-              <div class="f-cart-drawer__empty flex justify-center text-center flex-col">
-                <p class="f-cart-drawer__empty-text" data-cart-empty-text>{{ 'sections.cart.empty' | t }}</p>
+            <div class="m-drawer__scroller scroll-container">
+              <div class="m-cart-drawer__empty flex justify-center text-center flex-col">
+                <p class="m-cart-drawer__empty-text" data-cart-empty-text>{{ 'sections.cart.empty' | t }}</p>
                 {%- if settings.collection_list -%}
                   {% assign collection_lists = settings.collection_list %}
                   {% for collection in collection_lists %}
@@ -87,15 +85,15 @@
                   {% endfor %}
                 {%- endif -%}
               </div>
-              <p class="f-cart-drawer__no-cookies-text">{{ 'sections.cart.cookies_required' | t }}</p>
-              <cart-drawer-items class="f-cart-drawer__items" data-cart-items>
+              <p class="m-cart-drawer__no-cookies-text">{{ 'sections.cart.cookies_required' | t }}</p>
+              <cart-drawer-items class="m-cart-drawer__items" data-cart-items>
                 {% comment %}
                   <form
                     id="CartDrawer"
                     action="{{ routes.cart_url }}"
                     method="post"
                     novalidate
-                    class="f-cart-drawer__form h-full flex flex-col"
+                    class="m-cart-drawer__form h-full flex flex-col"
                   >
                 {% endcomment %}
                 {% for item in cart.items %}
@@ -114,11 +112,11 @@
                 {% comment %} </form> {% endcomment %}
               </cart-drawer-items>
             </div>
-            <div class="f-drawer__footer" data-cart-footer>
+            <div class="m-drawer__footer" data-cart-footer>
               {%- if gift_wrapping != null and gift_wrapping.object.available -%}
-                <div class="f-drawer__gift-wrapping">
+                <div class="m-drawer__gift-wrapping">
                   <gift-wrapping-component
-                    class="f-gift-wrapping"
+                    class="m-gift-wrapping"
                     data-gift-wrap-id="{{ gift_wrap_id }}"
                     data-gift-wrapping="{{ cart.attributes.gift-wrapping | escape }}"
                     cart-items-size="{{ cart.items.size }}"
@@ -126,7 +124,7 @@
                     items-in-cart="{{ items_in_cart }}"
                   >
                     <input
-                      id="f-gift-wrapping"
+                      id="m-gift-wrapping"
                       type="checkbox"
                       name="attributes[gift-wrapping]"
                       value="yes"
@@ -135,12 +133,12 @@
                       {% endif %}
                       class="visually-hidden"
                     >
-                    <label for="f-gift-wrapping" class="f-gift-wrapping--label">
-                      {%- capture gift_price -%}<strong class="f-gift-wrapping--price font-normal">{{ gift_wrapping.object.price | money }}</strong>{%- endcapture -%}
-                      <span class="f-gift-wrapping--text">
+                    <label for="m-gift-wrapping" class="m-gift-wrapping--label">
+                      {%- capture gift_price -%}<strong class="m-gift-wrapping--price font-normal">{{ gift_wrapping.object.price | money }}</strong>{%- endcapture -%}
+                      <span class="m-gift-wrapping--text">
                         {{- 'general.cart.gift_wrapping_html' | t: price: gift_price -}}
                       </span>
-                      <div class="f-gift-wrapping--loading">
+                      <div class="m-gift-wrapping--loading">
                         {% comment %} theme-check-disable {% endcomment %}
                         {{ 'icon-spinner.svg' | inline_asset_content }}
                         {% comment %} theme-check-enable {% endcomment %}
@@ -151,7 +149,7 @@
                         xmlns="http://www.w3.org/2000/svg"
                         aria-hidden="true"
                         focusable="false"
-                        class="f-icon f-icon-checkmark f-gift-wrapping--icon"
+                        class="m-icon m-icon-checkmark m-gift-wrapping--icon"
                         fill="none"
                         viewBox="0 0 20 20"
                       >
@@ -165,21 +163,21 @@
               
               {% if settings.enable_drawer_cart_note %}
                 {% render 'cart-block-note',
-                  id: 'f-cart-drawer__note',
-                  class: 'f-cart-drawer__note-wrapper',
-                  wrapper__class: 'f-cart-drawer__note',
+                  id: 'm-cart-drawer__note',
+                  class: 'm-cart-drawer__note-wrapper',
+                  wrapper__class: 'm-cart-drawer__note',
                   index: 0
                 %}
               {% endif %}
               {% if settings.enable_drawer_shipping_rates %}
                 {% render 'cart-block-shipping',
-                  id: 'f-cart-drawer__shipping-rates',
-                  class: 'f-cart-drawer__shipping-wrapper',
+                  id: 'm-cart-drawer__shipping-rates',
+                  class: 'm-cart-drawer__shipping-wrapper',
                   index: 1
                 %}
               {% endif %}
               {% if settings.enable_drawer_cart_discount %}
-                {% render 'cart-block-discount', id: 'f-cart-drawer__discount', wrapper__class: 'f-cart-drawer__discount', class: 'f-cart-drawer__discount-wrapper', index: 2 %}
+                {% render 'cart-block-discount', id: 'm-cart-drawer__discount', wrapper__class: 'm-cart-drawer__discount', class: 'm-cart-drawer__discount-wrapper', index: 2 %}
               {% endif %}
 
               {% liquid
@@ -198,14 +196,13 @@
                   endfor
                 endfor
               %}
-              <div class="f-cart-drawer__block-subtotal" {{ block.shopify_attributes }}>
-                <div class="f-cart-drawer__discounts text-sm text-right" data-discounts>
-                  <div data-foxkit-cart-summary></div>
+              <div class="m-cart-drawer__block-subtotal" {{ block.shopify_attributes }}>
+                <div class="m-cart-drawer__discounts text-sm text-right" data-discounts>
                   {%- if cart.cart_level_discount_applications.size > 0 or cart_items_has_discount -%}
                     <div class="cart-discounts text-sm text-right text-red">
-                      <ul class="f-discounts list-none" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                      <ul class="m-discounts list-none" role="list" aria-label="{{ 'customer.order.discount' | t }}">
                         {%- for discount in cart.cart_level_discount_applications -%}
-                          <li class="f-discounts__discount f-discounts__discount--end" data-discount-code="{{ discount.title }}">
+                          <li class="m-discounts__discount m-discounts__discount--end" data-discount-code="{{ discount.title }}">
                             {% comment %} theme-check-disable {% endcomment %}
                             {{ 'icon-discount.svg' | inline_asset_content }}
                             {% comment %} theme-check-enable {% endcomment %}
@@ -236,7 +233,7 @@
 
                                 assign discount_codes = item.line_level_discount_allocations | slice: forloop.index0 | map: 'discount_application' | map: 'title' | concat: discount_codes
                               -%}
-                              <li class="f-discounts__discount f-discounts__discount--end" data-discount-code="{{ discount.title }}">
+                              <li class="m-discounts__discount m-discounts__discount--end" data-discount-code="{{ discount.title }}">
                                 {% comment %} theme-check-disable {% endcomment %}
                                 {{ 'icon-discount.svg' | inline_asset_content }}
                                 {% comment %} theme-check-enable {% endcomment %}
@@ -255,9 +252,9 @@
                     </div>
                   {%- endif -%}
                 </div>
-                <div class="f-cart-drawer__totals flex justify-between items-center">
-                  <h3 class="f-cart-drawer__subtotal h6">{{ 'sections.cart.subtotal' | t }}:</h3>
-                  <p class="f-cart-drawer__subtotal-value" data-cart-price>{{ total_price }}</p>
+                <div class="m-cart-drawer__totals flex justify-between items-center">
+                  <h3 class="m-cart-drawer__subtotal h6">{{ 'sections.cart.subtotal' | t }}:</h3>
+                  <p class="m-cart-drawer__subtotal-value" data-cart-price>{{ total_price }}</p>
                   <p class="visually-hidden" data-price-live-region aria-live="polite" role="status"></p>
                   <p
                     class="visually-hidden"
@@ -282,10 +279,10 @@
                         {%- endif -%}
                     {%- endcapture -%}
 
-                <p class="f-cart-drawer__notice text-sm rte">{{ taxes_shipping_checkout }}</p>
+                <p class="m-cart-drawer__notice text-sm rte">{{ taxes_shipping_checkout }}</p>
               </div>
               <div
-                class="f-cart-drawer__buttons"
+                class="m-cart-drawer__buttons"
                 {{ block.shopify_attributes }}
               >
                 <form
@@ -293,7 +290,7 @@
                   action="{{ routes.cart_url }}"
                   method="post"
                   novalidate
-                  class="f-cart-drawer__form flex {% if settings.cart_drawer_show_view_cart %} flex-row f-cart-drawer__view-cart justify-between{% else %} flex-col{% endif %} items-center"
+                  class="m-cart-drawer__form flex {% if settings.cart_drawer_show_view_cart %} flex-row m-cart-drawer__view-cart justify-between{% else %} flex-col{% endif %} items-center"
                 >
                   {% if settings.cart_drawer_show_view_cart %}
                     <a class="btn btn--secondary" href="{{ routes.cart_url }}">{{ 'sections.cart.view_cart' | t }}</a>

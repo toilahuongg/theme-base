@@ -1,6 +1,6 @@
-.f-drawer {
+.m-drawer {
   position: fixed;
-  width: var(--f-drawer-width, 350px);
+  width: var(--m-drawer-width, 350px);
   top: 0;
   inset-inline: auto 0;
   height: 100%;
@@ -17,20 +17,20 @@
   min-height: fill-available;
   display: block;
 }
-.f-drawer--left {
+.m-drawer--left {
   inset-inline: 0 auto;
   transform: translate3d(-100%, 0, 0);
 }
-[open] .f-drawer {
+[open] .m-drawer {
   transform: translate3d(0, 0, 0);
 }
-.f-drawer .bg-overlay {
+.m-drawer .bg-overlay {
   transition: 0.3s all;
 }
-.f-drawer[open] {
+.m-drawer[open] {
   transform: translate3d(0, 0, 0);
 }
-.f-drawer__overlay {
+.m-drawer__overlay {
   position: fixed;
   background: var(--color-overlay-bg, #000);
   opacity: 0;
@@ -40,14 +40,14 @@
   inset-inline: auto 100%;
   transition: visibility 0.45s ease-in-out, opacity 0.45s ease-in-out;
 }
-[open] .f-drawer__overlay {
+[open] .m-drawer__overlay {
   opacity: calc(var(--color-overlay-alpha, 40) * 1%);
   visibility: visible;
 }
-.f-drawer--left .f-drawer__overlay {
+.m-drawer--left .m-drawer__overlay {
   inset-inline: 100% auto;
 }
-.f-drawer__content {
+.m-drawer__content {
   display: flex;
   flex-flow: column;
   height: 100%;
@@ -57,19 +57,19 @@
   transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
 }
 @media (max-width: breakpoint-max("sm")) {
-  .f-drawer__content {
+  .m-drawer__content {
     padding-bottom: 5rem;
   }
 }
-.f-drawer__scroller {
+.m-drawer__scroller {
   padding: 2.4rem 3rem;
   overflow-x: hidden;
   overflow-y: auto;
   flex-grow: 1;
 }
-.f-drawer__header {
+.m-drawer__header {
   position: relative;
-  height: var(--f-drawer-header-height, 60px);
+  height: var(--m-drawer-header-height, 60px);
   display: flex;
   flex-flow: column;
   align-items: flex-start;
@@ -77,20 +77,20 @@
   flex: 0 0 auto;
   padding: 2.4rem 3rem 1.2rem;
 }
-.f-drawer__header-title {
+.m-drawer__header-title {
   margin: 0;
   line-height: 28px;
 }
-.f-drawer__header--no-padding {
+.m-drawer__header--no-padding {
   padding: 0;
 }
-.f-drawer__header--border-bottom {
+.m-drawer__header--border-bottom {
   border-bottom: 1px solid var(--color-border);
 }
-.f-drawer__footer {
+.m-drawer__footer {
   padding: 1.6rem 3rem;
 }
-.f-drawer__close {
+.m-drawer__close {
   position: absolute !important;
   inset-inline-end: 1.6rem;
   inset-block-start: 1.4rem;
@@ -99,7 +99,7 @@
   height: 4.4rem !important;
   padding: 0 !important;
 }
-.f-drawer__close svg {
+.m-drawer__close svg {
   width: 2.2rem;
   height: 2.2rem;
 }

@@ -33,13 +33,13 @@
     assign is_content_inside = true
   endif
 -%}
-<div class="f-column">
+<div class="m-column">
   <div class="block grid-list__column">
     <div
-      class="collection-card collection-card--style-{{ card_style }} text-{{ text_alignment | default: 'center' }} f-image-hover-effect__{{ settings.image_hover_effect }}"
+      class="collection-card collection-card--style-{{ card_style }} text-{{ text_alignment | default: 'center' }} m-image-hover-effect__{{ settings.image_hover_effect }}"
       style="--text-color: {{ text_color }};"
     >
-      <div class="collection-card__image-wrapper f-card overflow-hidden">
+      <div class="collection-card__image-wrapper m-card overflow-hidden">
         <a
           title="{{ collection.title }}"
           href="{{ collection.url | default: "#" }}"
@@ -53,7 +53,7 @@
               endif
             -%}
             <div
-              class="f-image collection-card__image"
+              class="m-image collection-card__image"
               style="--aspect-ratio: {{ aspect_ratio }};"
             >
               {{
@@ -83,7 +83,7 @@
               {{
                 'collection-'
                 | append: current
-                | placeholder_svg_tag: 'placeholder-svg f-image'
+                | placeholder_svg_tag: 'placeholder-svg m-image'
               }}
             </div>
           {% endunless %}
@@ -103,7 +103,7 @@
                 height="15"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="f-rlt-reverse-x"
+                class="m-rlt-reverse-x"
               >
                 <path fill="none" d="M0 .75h14v14H0z"/>
                 <path d="M2.188 7.75h9.624M7.875 3.813l3.938 3.937-3.938 3.938" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -132,7 +132,7 @@
             aria-label="{{ title | default: collection.title }}"
           >
             <svg
-              class="f-icon-svg f-icon-svg--small f-rlt-reverse-x"
+              class="m-icon-svg m-icon-svg--small m-rlt-reverse-x"
               xmlns="http://www.w3.org/2000/svg"
               width="14"
               height="14"

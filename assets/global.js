@@ -753,7 +753,7 @@ class SliderComponent extends HTMLElement {
       this.slider.instance &&
       this.dataset.disablePointerMove !== "false"
     ) {
-      this.classList.add("f-flickity-loaded");
+      this.classList.add("m-flickity-loaded");
       this.slider.instance.on("pointerMove", () => {
         this.classList.add("is-pointer-move");
       });
@@ -768,7 +768,7 @@ class SliderComponent extends HTMLElement {
         let classesToRemove = [],
           classesToAdd = [];
 
-        const isProductMedia = this.classList.contains("f-product__media-list");
+        const isProductMedia = this.classList.contains("m-product__media-list");
         if (isProductMedia) {
           classesToRemove.push("hidden");
           classesToAdd.push("inline-flex");
@@ -1255,7 +1255,7 @@ class Drawer extends HTMLElement {
   }
 
   onBodyClick(e) {
-    if (e.target.classList.contains("f-drawer__overlay"))
+    if (e.target.classList.contains("m-drawer__overlay"))
       this.closeDrawer(false);
   }
 
@@ -1393,7 +1393,7 @@ class CartDiscount extends HTMLElement {
   }
 
   get formEl() {
-    return this.querySelector('.f-cart-discount__form');
+    return this.querySelector('.m-cart-discount__form');
   }
 
   get submitEl() {
@@ -1420,7 +1420,7 @@ class CartDiscount extends HTMLElement {
     const discounts = [];
 
     if (this.cartDiscountsEl) {
-      const items = this.cartDiscountsEl.querySelectorAll('.f-discounts__discount');
+      const items = this.cartDiscountsEl.querySelectorAll('.m-discounts__discount');
       items &&
         items.forEach((item) => {
           discounts.push(item.dataset.discountCode);
@@ -1548,8 +1548,8 @@ class CartDiscountRemove extends HTMLButtonElement {
     super();
 
     this.selectors = {
-      list: '.f-discounts',
-      item: '.f-discounts__discount',
+      list: '.m-discounts',
+      item: '.m-discounts__discount',
     };
 
     this.cartDrawer = document.querySelector("cart-drawer");
@@ -1662,7 +1662,7 @@ customElements.define(
       this.deliveryTimeElm = this.querySelector(
         "[name='attributes[Delivery time]']"
       );
-      this.errorWrapper = this.querySelector(".f-cart-block-message-error");
+      this.errorWrapper = this.querySelector(".m-cart-block-message-error");
       this.deliveryCodeKey = "veloura-delivery-code";
       this.querySelector(".btn-cancel").addEventListener(
         "click",
@@ -1826,7 +1826,7 @@ class ProductRecommendations extends HTMLElement {
           if (html.querySelector(".product-card")) {
             this.classList.add("product-recommendations--loaded");
           } else {
-            this.classList.add("f-hidden");
+            this.classList.add("m-hidden");
           }
         })
         .catch((e) => {
@@ -1861,7 +1861,7 @@ class FProgressBar extends HTMLElement {
     });
   }
 }
-customElements.define("f-progress-bar", FProgressBar);
+customElements.define("m-progress-bar", FProgressBar);
 class VideoComponent extends HTMLElement {
   constructor() {
     super();
@@ -1872,7 +1872,7 @@ class VideoComponent extends HTMLElement {
   }
 
   init() {
-    this.parentSelector = this.dataset.parent || ".f-video-wrapper";
+    this.parentSelector = this.dataset.parent || ".m-video-wrapper";
     this.parent = this.closest(this.parentSelector);
 
     switch (this.dataset.type) {
@@ -2097,20 +2097,20 @@ class VideoComponent extends HTMLElement {
 }
 customElements.define("video-component", VideoComponent);
 
-if (!customElements.get("f-scrolling-promotion")) {
+if (!customElements.get("m-scrolling-promotion")) {
   class FScrollingPromotion extends HTMLElement {
     constructor() {
       super();
     }
 
     connectedCallback() {
-      this.promotion = this.querySelector(".f-promotion");
+      this.promotion = this.querySelector(".m-promotion");
       this.init();
     }
 
     init() {
       if (this.childElementCount === 1) {
-        this.promotion.classList.add("f-promotion--animated");
+        this.promotion.classList.add("m-promotion--animated");
 
         for (let index = 0; index < 10; index++) {
           this.clone = this.promotion.cloneNode(true);
@@ -2137,15 +2137,15 @@ if (!customElements.get("f-scrolling-promotion")) {
     }
 
     scrollingPlay() {
-      this.classList.remove("f-scrolling-promotion--paused");
+      this.classList.remove("m-scrolling-promotion--paused");
     }
 
     scrollingPause() {
-      this.classList.add("f-scrolling-promotion--paused");
+      this.classList.add("m-scrolling-promotion--paused");
     }
   }
 
-  customElements.define("f-scrolling-promotion", FScrollingPromotion);
+  customElements.define("m-scrolling-promotion", FScrollingPromotion);
 }
 
 class ImageComparisonSlider extends HTMLElement {
@@ -2154,11 +2154,11 @@ class ImageComparisonSlider extends HTMLElement {
     this.active = false;
     this.button = this.querySelector("button");
     this.horizontal = this.dataset.layout === "horizontal";
-    this.customContent = this.closest('[data-section-type="f-custom-content"]');
+    this.customContent = this.closest('[data-section-type="m-custom-content"]');
 
     if (this.hasAttribute("data-animation")) {
       intersecting({
-        element: this.querySelector(".f-image-comparison-slider__animation"),
+        element: this.querySelector(".m-image-comparison-slider__animation"),
         callback: this.animation.bind(this),
         threshold: 0,
       });
@@ -2191,9 +2191,9 @@ class ImageComparisonSlider extends HTMLElement {
     const animation = this.hasAttribute("data-animation");
     if (!animation) return;
     this.setAttribute("is-visible", "");
-    this.classList.add("f-animating");
+    this.classList.add("m-animating");
     setTimeout(() => {
-      this.classList.remove("f-animating");
+      this.classList.remove("m-animating");
     }, 1e3);
     this.init();
   }
@@ -2236,7 +2236,7 @@ class ImageComparisonSlider extends HTMLElement {
     this.style.setProperty("--percent", mousePercent + "%");
   }
 }
-customElements.define("f-image-comparison-slider", ImageComparisonSlider);
+customElements.define("m-image-comparison-slider", ImageComparisonSlider);
 
 class ProductRecentlyViewed extends HTMLElement {
   constructor() {
@@ -2323,8 +2323,8 @@ class MediaHero extends HTMLDivElement {
     super();
 
     this.selectors = {
-      contentWrapper: ".f-hero__content-wrapper",
-      content: ".f-hero__content",
+      contentWrapper: ".m-hero__content-wrapper",
+      content: ".m-hero__content",
     };
 
     this.elements = queryDomNodes(this.selectors, this);

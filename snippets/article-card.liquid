@@ -6,14 +6,14 @@
 
   assign heading_size = heading_size | default: 'h4'
 -%}
-<div class="f-article-card f-image-hover-effect__{{settings.image_hover_effect}} {{ classes }} grid-list__column">
+<div class="m-article-card m-image-hover-effect__{{settings.image_hover_effect}} {{ classes }} grid-list__column">
   {%- if article.image -%}
-    <div class="f-article-card__image block overflow-hidden relative f-card">
+    <div class="m-article-card__image block overflow-hidden relative m-card">
       <a href="{{ article.url }}" class="full-width-link"
         ><span class="visually-hidden">{{ article.title }}</span></a
       >
       <responsive-image
-        class="f-image"
+        class="m-image"
         data-image-loading
         style="--aspect-ratio: {{ aspect_ratio }}"
       >
@@ -41,19 +41,19 @@
       </responsive-image>
     </div>
   {%- endif -%}
-  <div class="f-article-card__info{% if article.image %} f-article-card__info--has-image{% endif %}">
+  <div class="m-article-card__info{% if article.image %} m-article-card__info--has-image{% endif %}">
     {%- if show_date -%}
-      <p class="f-article-card__date">
+      <p class="m-article-card__date">
         {{ article.published_at | time_tag: format: 'date' }}
       </p>
     {%- endif -%}
-    <h3 class="f-article-card__title {{ heading_size }}">
+    <h3 class="m-article-card__title {{ heading_size }}">
       <a href="{{ article.url }}" title="{{ article.title }}">
         {{- article.title | escape -}}
       </a>
     </h3>
     {%- if show_excerpt -%}
-      <div class="f-article-card__excerpt text-subtext{% unless hide_excerpt_on_mobile %} hidden md:block{% endunless %}">
+      <div class="m-article-card__excerpt text-subtext{% unless hide_excerpt_on_mobile %} hidden md:block{% endunless %}">
         <div class="text-limit-2-lines">
           {%- if article.excerpt.size > 0 -%}
             {{ article.excerpt | strip_html }}
@@ -66,7 +66,7 @@
     {%- if show_readmore -%}
       <a
         href="{{ article.url }}"
-        class="btn btn--underline f-article-card__readmore"
+        class="btn btn--underline m-article-card__readmore"
         aria-label="{{ 'blogs.article.read_more_title' | t: title: article.title }}"
       >
         {{ 'blogs.article.read_more' | t }}

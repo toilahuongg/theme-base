@@ -189,7 +189,7 @@ class Popup extends HTMLElement {
       selector: "popup-component",
       handler: (e) => {
         if (!e) return false;
-        if (e.target === this || e.target.closest(".f-popup__close")) {
+        if (e.target === this || e.target.closest(".m-popup__close")) {
           this.close(e);
         }
       },

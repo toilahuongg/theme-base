@@ -7,7 +7,7 @@ class PredictiveSearch extends HTMLElement {
 			form: 'form',
 			formStatus: '[data-predictive-search-status]',
 			predictiveSearchResults: '[data-predictive-search]',
-			closeBtn: '.f-drawer__close'
+			closeBtn: '.m-drawer__close'
 		}
 
 		this.domNodes = queryDomNodes(this.selectors, this)
@@ -48,7 +48,7 @@ class PredictiveSearch extends HTMLElement {
 		if (!this.searchTerm || !newSearchTerm.startsWith(this.searchTerm)) {
       // Remove the results when they are no longer relevant for the new search term
       // so they don't show up when the dropdown opens again
-      this.querySelector("#f-predictive-search-results")?.remove();
+      this.querySelector("#m-predictive-search-results")?.remove();
     }
 
 		// Update the term asap, don't wait for the predictive search query to finish loading

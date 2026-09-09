@@ -5,12 +5,7 @@
 
   assign wrapper_class = ''
   if media_layout == 'grid-2-cols' or media_layout == 'grid-mix'
-    assign wrapper_class = ' f-grid f-grid-2-cols'
-  endif
-
-  assign enable_variant_group_img = false
-  if product.metafields['foxecom-bs-kit']['variant-images'].value.enable and product.has_only_default_variant == false
-    assign enable_variant_group_img = true
+    assign wrapper_class = ' m-grid m-grid-2-cols'
   endif
 
   if product.media.size < 2 and media_layout == 'carousel'
@@ -69,7 +64,6 @@
     data-enable-zoom="{{ enable_image_zoom | default: false }}"
     style="--row-gap: 5px;--column-gap: 5px"
     data-media-loading
-    data-enable-variant-group-images="{{ enable_variant_group_img }}"
     data-only-image="{{ has_only_one_image }}"
     data-product-id="{{ product.id }}"
     data-section-id="{{ section.id }}"
@@ -89,17 +83,17 @@
     </a>
     <div
       id="GalleryViewer-{{ section.id }}"
-      class="f-product__media-viewer{% if has_only_one_image %} f-product__media-only--image{% endif %}{% if media_mobile_full %} f-product__media-mobile-full{% endif %} f-product__media-viewer--{{ media_layout }} f-product__media-viewer--thumbs-{{ mobile_thumbnails }}"
+      class="m-product__media-viewer{% if has_only_one_image %} m-product__media-only--image{% endif %}{% if media_mobile_full %} m-product__media-mobile-full{% endif %} m-product__media-viewer--{{ media_layout }} m-product__media-viewer--thumbs-{{ mobile_thumbnails }}"
       style="--media-aspect-ratio: {{ aspect_ratio }}"
     >
       {%- if product.media.size > 0 -%}
         <div data-media-viewer>
           <flickity-component
-            data-slider-options='{"pageDots": false, "prevNextButtons": true, "adaptiveHeight": true, "cellAlign": "center", "setGallerySize": false, "wrapAround": true, "cellSelector": ".f-product__media"}'
+            data-slider-options='{"pageDots": false, "prevNextButtons": true, "adaptiveHeight": true, "cellAlign": "center", "setGallerySize": false, "wrapAround": true, "cellSelector": ".m-product__media"}'
             data-enable-slider="{{ enable_slider }}"
             data-slider-columns="1"
             id="Media-Gallery-{{ section.id }}"
-            class="f-product__media-list {% if has_only_one_image %} f-product__media-only--image{% endif %} flickity-button-initialized flickity-nav-inner h-full overflow-hidden f-product__media-list--{{ media_layout }}{{ wrapper_class }}{{ flickity_classes }}"
+            class="m-product__media-list {% if has_only_one_image %} m-product__media-only--image{% endif %} flickity-button-initialized flickity-nav-inner h-full overflow-hidden m-product__media-list--{{ media_layout }}{{ wrapper_class }}{{ flickity_classes }}"
             data-media-layout="{{ media_layout }}"
             role="list"
             {% if product.media.size > 1 %}
@@ -132,7 +126,7 @@
           </flickity-component>
         </div>
       {%- else -%}
-        <div class="f-image" style="--aspect-ratio: 1">
+        <div class="m-image" style="--aspect-ratio: 1">
           {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
         </div>
       {%- endif -%}
@@ -152,10 +146,10 @@
             assign transition = ' disable-transition'
           endif
         -%}
-        <div class="f-product__media-thumbnails-wrapper{% if mobile_thumbnails == 'hide' %} hidden md:block{% endif %}">
+        <div class="m-product__media-thumbnails-wrapper{% if mobile_thumbnails == 'hide' %} hidden md:block{% endif %}">
           <flickity-component
             id="GalleryThumbnails-{{ section.id }}"
-            class="f-flex f-grid--gap-none no-js-hidden f-product__media-thumbnails flickity-button-initialized{{ thumb_class }}{{ transition }}"
+            class="m-flex m-grid--gap-none no-js-hidden m-product__media-thumbnails flickity-button-initialized{{ thumb_class }}{{ transition }}"
             data-slider-columns="5"
             data-enable-slider="{{ enable_slider }}"
             data-disable-pointer-move="false"
@@ -168,12 +162,12 @@
                 data-media-id="{{ media.id }}"
                 data-media-type="{{ media.media_type }}"
                 data-thumbnail-type="{{ media.media_type }}"
-                class="f-column f-product__media-thumbnails-item"
+                class="m-column m-product__media-thumbnails-item"
                 data-thumbnail-index="{{ forloop.index0 }}"
               >
-                <div class="f-product__media-thumbnails-item-wrap block w-full">
+                <div class="m-product__media-thumbnails-item-wrap block w-full">
                   {%- if media.media_type == 'model' -%}
-                    <span class="f-product__media-badge" aria-hidden="true">
+                    <span class="m-product__media-badge" aria-hidden="true">
                       {% comment %} theme-check-disable {% endcomment %}
                       {{ 'icon-3d-model.svg' | inline_asset_content }}
                       {% comment %} theme-check-enable {% endcomment %}
@@ -181,7 +175,7 @@
                   {%- elsif media.media_type == 'video'
                     or media.media_type == 'external_video'
                   -%}
-                    <span class="f-product__media-badge" aria-hidden="true">
+                    <span class="m-product__media-badge" aria-hidden="true">
                       {% comment %} theme-check-disable {% endcomment %}
                       {{ 'icon-play.svg' | inline_asset_content }}
                       {% comment %} theme-check-enable {% endcomment %}
@@ -189,7 +183,7 @@
                   {%- endif -%}
                   <responsive-image
                     data-image-id="{{ image.id }}"
-                    class="f-image"
+                    class="m-image"
                     data-image-loading
                     style="--aspect-ratio: 1"
                   >

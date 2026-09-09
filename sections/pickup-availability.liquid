@@ -55,17 +55,17 @@
 
   <drawer-component
     id="Drawer-Pickup-Availability"
-    class="f-drawer f-drawer-pickup-availability"
+    class="m-drawer m-drawer-pickup-availability"
     role="dialog"
     aria-modal="true"
     aria-labelledby="PickupAvailabilityHeading"
     hidden
-    style="--f-drawer-width: 400px; --f-drawer-header-height: auto;"
+    style="--m-drawer-width: 400px; --m-drawer-header-height: auto;"
   >
-    <div class="f-drawer__overlay" data-drawer-overlay></div>
-    <div class="f-drawer__content focus-inset" tabindex="-1">
-      <div class="f-drawer__header f-drawer__header--border-bottom">
-        <h3 class="f-drawer__header-title h5" id="PickupAvailabilityHeading">
+    <div class="m-drawer__overlay" data-drawer-overlay></div>
+    <div class="m-drawer__content focus-inset" tabindex="-1">
+      <div class="m-drawer__header m-drawer__header--border-bottom">
+        <h3 class="m-drawer__header-title h5" id="PickupAvailabilityHeading">
           {{ product_variant.product.title | escape }}
         </h3>
         {%- unless product_variant.product.has_only_default_variant -%}
@@ -82,7 +82,7 @@
           </p>
         {%- endunless -%}
         <drawer-closer
-          class="f-drawer__close btn btn--plain"
+          class="m-drawer__close btn btn--plain"
           aria-label="{{ 'accessibility.close' | t }}"
           role="button"
         >
@@ -91,7 +91,7 @@
           {% comment %} theme-check-enable {% endcomment %}
         </drawer-closer>
       </div>
-      <div class="f-drawer__scroller scroll-container">
+      <div class="m-drawer__scroller scroll-container">
         <ul class="pickup-availability-list list-none" role="list" data-store-availability-drawer-content>
           {%- for availability in pick_up_availabilities -%}
             <li class="pickup-availability-list__item">

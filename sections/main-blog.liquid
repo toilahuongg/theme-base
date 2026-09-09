@@ -10,19 +10,19 @@
 {{ 'blog.css' | asset_url | stylesheet_tag }}
 {%- paginate blog.articles by section.settings.posts_to_show -%}
   <div
-    class="f-blog container f-section-padding"
+    class="m-blog container m-section-padding"
     style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
   >
-    <h1 class="f-blog-title{% unless section.settings.show_title %} hidden{% endunless %} h2">
+    <h1 class="m-blog-title{% unless section.settings.show_title %} hidden{% endunless %} h2">
       {{ blog.title | escape }}
     </h1>
     {%- if blog.articles_count > 0 -%}
       <grid-list
         data-motion="{{ animation_effect }}"
-        class="f-blog-articles f-grid md:f-grid-{{ columns_tablet }}-cols lg:f-grid-{{ columns }}-cols f-grid--gap-{{ section.settings.column_gap }} f-grid--row-gap-{{ section.settings.row_gap }}"
+        class="m-blog-articles m-grid md:m-grid-{{ columns_tablet }}-cols lg:m-grid-{{ columns }}-cols m-grid--gap-{{ section.settings.column_gap }} m-grid--row-gap-{{ section.settings.row_gap }}"
       >
         {%- for article in blog.articles -%}
-          <div class="f-column">
+          <div class="m-column">
             {%- render 'article-card',
               article: article,
               image_aspect_ratio: section.settings.article_image_aspect_ratio,
@@ -36,12 +36,12 @@
         {%- endfor -%}
       </grid-list>
     {%- else -%}
-      <div class="f-blog-empty text-center">
+      <div class="m-blog-empty text-center">
         {{ 'blogs.article.empty_blog_post' | t }}
       </div>
     {%- endif -%}
     {%- if paginate.pages > 1 -%}
-      <div class="f-blog-pagination f-pagination__wrapper text-center">
+      <div class="m-blog-pagination m-pagination__wrapper text-center">
         {%- render 'pagination', paginate: paginate -%}
       </div>
     {%- endif -%}

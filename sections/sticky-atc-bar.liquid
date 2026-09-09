@@ -17,7 +17,7 @@
     assign class = 'sm-down:hidden'
   endif
   if show_on_mobile == false and show_on_desktop == false
-    assign class = 'f-hidden'
+    assign class = 'm-hidden'
   endif
 -%}
 <script src="{{ 'sticky-atc-bar.js' | asset_url }}" defer="defer"></script>
@@ -51,7 +51,7 @@
       </div>
       <div class="sticky-atc-bar__form">
         {%- assign product_form_id = 'product-form-' | append: section.id -%}
-        <product-form class="f-product-form" data-notification-type="toast">
+        <product-form class="m-product-form" data-notification-type="toast">
           {%- form 'product',
             product,
             id: product_form_id,
@@ -61,7 +61,7 @@
           -%}
             <select
               name="id"
-              class="sticky-atc-bar__variant-select text-sm form-control{% if product.has_only_default_variant %} f-hidden{% endif %}"
+              class="sticky-atc-bar__variant-select text-sm form-control{% if product.has_only_default_variant %} m-hidden{% endif %}"
             >
               {% for variant in product.variants %}
                 {% assign selected = false %}
@@ -80,9 +80,9 @@
             </select>
             {% if show_quantity %}
               {%- assign cart_qty = cart | item_count_for_variant: product.selected_or_first_available_variant.id -%}
-              <div class="f-quantity__wrapper hidden md:block" id="QuantitySticky-{{ section.id }}">
-                <quantity-input class="f-quantity" data-product-id="{{ product.id }}" data-section-id="{{ section.id }}">
-                <button class="f-quantity__button btn btn--plain no-js-hidden" name="minus" type="button">
+              <div class="m-quantity__wrapper hidden md:block" id="QuantitySticky-{{ section.id }}">
+                <quantity-input class="m-quantity" data-product-id="{{ product.id }}" data-section-id="{{ section.id }}">
+                <button class="m-quantity__button btn btn--plain no-js-hidden" name="minus" type="button">
                   <span class="visually-hidden">
                     {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
                   </span>
@@ -92,7 +92,7 @@
                 </button>
                 <input
                   id="Quantity-{{ section.id }}-{{ product.id }}"
-                  class="f-quantity__input quantity__input form-control"
+                  class="m-quantity__input quantity__input form-control"
                   type="number"
                   name="quantity"
                   inputmode="numeric"
@@ -109,7 +109,7 @@
                   value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
                   form="{{ product_form_id }}"
                 >
-                <button class="f-quantity__button btn btn--plain no-js-hidden" name="plus" type="button">
+                <button class="m-quantity__button btn btn--plain no-js-hidden" name="plus" type="button">
                   <span class="visually-hidden">
                     {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
                   </span>
@@ -122,12 +122,12 @@
               </div>
               
             {% endif %}
-            <div class="f-product-form__buttons flex items-center">
+            <div class="m-product-form__buttons flex items-center">
               {% if show_atc_button %}
                 <button
                   type="submit"
                   name="add"
-                  class="f-product-form__submit btn {% if show_dynamic_checkout_buttons and product.selling_plan_groups == empty %}btn--secondary{% else %}btn--primary{% endif %} w-full"
+                  class="m-product-form__submit btn {% if show_dynamic_checkout_buttons and product.selling_plan_groups == empty %}btn--secondary{% else %}btn--primary{% endif %} w-full"
                   {% if product.selected_or_first_available_variant.available == false %}
                     disabled
                   {% endif %}
@@ -145,7 +145,7 @@
                 </button>
               {% endif %}
               {%- if show_dynamic_checkout_buttons -%}
-                <div class="f-product-form__button-dynamic hidden md:block">
+                <div class="m-product-form__button-dynamic hidden md:block">
                   {{ form | payment_button }}
                 </div>
               {%- endif -%}

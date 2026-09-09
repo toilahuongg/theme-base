@@ -67,12 +67,12 @@
 %}
 <div
   id="{{ section_id }}"
-  class="f-countdown{{ custom_class }}{% if image == blank and enable_video_bg == false %} color-{{ section.settings.color_schema }}{% endif %} overflow-hidden"
-  data-section-type="f-countdown-timer"
+  class="m-countdown{{ custom_class }}{% if image == blank and enable_video_bg == false %} color-{{ section.settings.color_schema }}{% endif %} overflow-hidden"
+  data-section-type="m-countdown-timer"
   data-section-id="{{ section.id }}"
 >
   <div class="{{ container }}">
-    <div class="f-countdown__wrapper relative overflow-hidden f-section-padding{% if enable_video_bg %} color-{{ section.settings.color_schema }}{% endif %}{% if image != blank or enable_video_bg %} f-countdown__wrapper--has-bg{% endif %}">
+    <div class="m-countdown__wrapper relative overflow-hidden m-section-padding{% if enable_video_bg %} color-{{ section.settings.color_schema }}{% endif %}{% if image != blank or enable_video_bg %} m-countdown__wrapper--has-bg{% endif %}">
       {%- if image != blank and enable_video_bg == false -%}
         <motion-element
           data-motion="{% if section.settings.enable_bg_zoom_effect %}zoom-out-sm{% else %}none{% endif %}"
@@ -98,9 +98,9 @@
         </motion-element>
       {%- endif -%}
       {%- if enable_video_bg -%}
-        <div class="f-video-wrapper">
+        <div class="m-video-wrapper">
           <video-component
-            class="f-video__bg"
+            class="m-video__bg"
             data-init="false"
             data-type="{{ data_type }}"
             data-video-id="{{ video_url_id }}"
@@ -120,12 +120,12 @@
       {%- endif -%}
       {%- if image_overlay_opacity > 0 and image != blank or enable_video_bg -%}
         <div
-          class="f-countdown__overlay bg-overlay"
+          class="m-countdown__overlay bg-overlay"
           style="--color-overlay-alpha: {{ image_overlay_opacity }}"
         ></div>
       {%- endif -%}
-      <div class="f-countdown__content w-full flex justify-{{ position }} {{ content_container }}">
-        <div class="f-countdown__inner f-text-blocks text-{{ text_alignment }}{% if image != blank and enable_video_bg == false %} f-countdown__inner--boxed color-{{ section.settings.color_schema }}{% endif %}">
+      <div class="m-countdown__content w-full flex justify-{{ position }} {{ content_container }}">
+        <div class="m-countdown__inner m-text-blocks text-{{ text_alignment }}{% if image != blank and enable_video_bg == false %} m-countdown__inner--boxed color-{{ section.settings.color_schema }}{% endif %}">
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when 'heading' -%}
@@ -177,7 +177,7 @@
                   <motion-element
                     data-motion="{{ animation_effect }}"
                     data-motion-delay="{{ motion_delay }}"
-                    class="f-text-blocks__btn block"
+                    class="m-text-blocks__btn block"
                   >
                     <a
                       class="btn {{ block.settings.button_style }} {{ block.settings.button_size }}"

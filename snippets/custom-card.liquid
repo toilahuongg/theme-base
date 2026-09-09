@@ -41,27 +41,27 @@
     assign card_postion = 'inside'
   endif
 -%}
-<div class="f-column">
-  <div class="f-custom-card f-custom-card--{{ card_postion }} relative color-{{ color_scheme }} f-image-hover-effect__{{settings.image_hover_effect}}">
+<div class="m-column">
+  <div class="m-custom-card m-custom-card--{{ card_postion }} relative color-{{ color_scheme }} m-image-hover-effect__{{settings.image_hover_effect}}">
     <a
       title="{{ title | strip_html }}"
       href="{{ link }}"
       class="collection-card__wrapper"
     >
-      <div class="f-custom-card__image f-card overflow-hidden">
+      <div class="m-custom-card__image m-card overflow-hidden">
         {% render 'responsive-image',
           image: image,
           wrapper_class: 'collection-card__image'
         %}
       </div>
-      <div class="f-custom-card__info flex flex-col {{ content_info_alignment }} {{ text_alignment }}">
+      <div class="m-custom-card__info flex flex-col {{ content_info_alignment }} {{ text_alignment }}">
         {%- if title != blank -%}
-          <h3 class="f-custom-card__heading m-0 text-current {{ heading_size }}">
+          <h3 class="m-custom-card__heading m-0 text-current {{ heading_size }}">
             {{ title }}
           </h3>
         {%- endif -%}
         {%- if description != blank -%}
-          <p class="f-custom-card__description">{{ description }}</p>
+          <p class="m-custom-card__description">{{ description }}</p>
         {%- endif -%}
         {%- if button_label != blank -%}
           {%- if button_label contains '[arrow]' -%}

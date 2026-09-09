@@ -34,7 +34,7 @@
     {{ 'popup-component.css' | asset_url | stylesheet_tag }}
   </noscript>
   <popup-component
-    class="f-popup"
+    class="m-popup"
     hidden
     data-trigger-open="{{ trigger_open }}"
     data-repeat-open="{{ repeat_open }}"
@@ -43,17 +43,17 @@
       open
     {% endif %}
   >
-    <div class="f-popup__content scroll-container" aria-modal="true" role="dialog" tabindex="-1" aria-label="Popup">
-      <button class="f-popup__close btn btn--plain" aria-label="{{ 'accessibility.close' | t }}">
+    <div class="m-popup__content scroll-container" aria-modal="true" role="dialog" tabindex="-1" aria-label="Popup">
+      <button class="m-popup__close btn btn--plain" aria-label="{{ 'accessibility.close' | t }}">
         {% comment %} theme-check-disable {% endcomment %}
         {{ 'icon-close.svg' | inline_asset_content }}
         {% comment %} theme-check-enable {% endcomment %}
       </button>
-      <div class="f-popup__inner text-{{ alignment }} f-popup--image-{{- image_position -}}{% unless image_block %} f-popup__inner--no-image{% endunless %}">
+      <div class="m-popup__inner text-{{ alignment }} m-popup--image-{{- image_position -}}{% unless image_block %} m-popup__inner--no-image{% endunless %}">
         {%- if image_block != blank -%}
           {%- assign image = image_block.settings.image -%}
           {%- if image != blank -%}
-            <div class="f-popup__image" style="--aspect-ratio: {{ image.aspect_ratio }}">
+            <div class="m-popup__image" style="--aspect-ratio: {{ image.aspect_ratio }}">
               <img
                 srcset="
                   {%- if image.width >= 375 -%}{{ image | image_url: width: 375 }} 375w,{%- endif -%}
@@ -73,12 +73,12 @@
               >
             </div>
           {%- else -%}
-            <div class="f-popup__image">
+            <div class="m-popup__image">
               {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg w-full' }}
             </div>
           {%- endif -%}
         {%- endif -%}
-        <div class="f-popup__blocks">
+        <div class="m-popup__blocks">
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when 'heading' -%}
@@ -87,7 +87,7 @@
                   assign text_size = block.settings.text_size
                 -%}
                 {%- unless heading == blank -%}
-                  <div class="f-popup__title mobile-remove-br">
+                  <div class="m-popup__title mobile-remove-br">
                     <h3 class="m-0{% if text_size == 'large' %} h2{% endif %}">
                       {{- heading -}}
                     </h3>
@@ -96,12 +96,12 @@
               {%- when 'text' -%}
                 {%- assign text = block.settings.text -%}
                 {%- unless text == blank -%}
-                  <div class="f-popup__text rte">
+                  <div class="m-popup__text rte">
                     {{- text -}}
                   </div>
                 {%- endunless -%}
               {%- when 'form' -%}
-                <div class="f-popup__form">
+                <div class="m-popup__form">
                   {% render 'newsletter-form',
                     custom_id: 'Popup',
                     hide_label: true,
@@ -111,7 +111,7 @@
                 </div>
               {%- when 'button' -%}
                 {%- unless block.settings.button_label == blank -%}
-                  <div class="f-popup__cta">
+                  <div class="m-popup__cta">
                     <a
                       class="btn btn--primary"
                       {% if block.settings.button_link != blank %}
@@ -127,13 +127,13 @@
                 {%- endunless -%}
               {%- when 'social' -%}
                 {% assign content_align = 'flex-wrap' | append: ' justify-' | append: alignment %}
-                <div class="f-popup__social">
+                <div class="m-popup__social">
                   {%- render 'social-links', class: content_align -%}
                 </div>
               {% when 'code' %}
                 {%- assign discount_code = block.settings.discount_code -%}
                 {%- unless discount_code == blank -%}
-                  <div class="f-popup__code">
+                  <div class="m-popup__code">
                     <input value="{{ discount_code }}" readonly class="form-control">
                     <button class="btn btn--primary btn-apply" data-code="{{ discount_code }}">
                       <span>{{- block.settings.apply_button -}}</span>
@@ -151,7 +151,7 @@
   </popup-component>
   {%- if show_teaser and teaser_button_text != blank -%}
     <teaser-button
-      class="f-popup__teaser hidden no-js-hidden"
+      class="m-popup__teaser hidden no-js-hidden"
       style="--color-teaser-popup-bg: {{ section.settings.teaser_popup_bg }};--color-teaser-popup-text: {{ section.settings.teaser_popup_text }};"
     >
       <button class="btn btn--plain" role="button" aria-label="Open popup" aria-haspopup="dialog">

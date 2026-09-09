@@ -4,22 +4,17 @@
   assign first_3d_model = product.media | where: 'media_type', 'model' | first
   assign subtitle = product.metafields.descriptors.subtitle
 
-  assign enable_variant_group_image = false
-  if product.metafields['foxecom-bs-kit']['variant-images'].value.enable and product.has_only_default_variant == false
-    assign enable_variant_group_image = true
-  endif
-
   assign enable_sticky_info = true
 %}
 
-<modal-dialog id="QuickView-Modal" class="f-modal f-modal-quickview" style="--modal-width: 980px">
+<modal-dialog id="QuickView-Modal" class="m-modal m-modal-quickview" style="--modal-width: 980px">
   <product-recently-viewed data-product-id="{{ product.id }}" class="f:hidden"></product-recently-viewed>
-  <div class="f-modal__content" role="dialog" aria-label="Quick view" aria-modal="true" tabindex="-1">
-    <div class="f-modal__inner scroll-container">
+  <div class="m-modal__content" role="dialog" aria-label="Quick view" aria-modal="true" tabindex="-1">
+    <div class="m-modal__inner scroll-container">
       <button
         id="ModalClose-QuickView"
         type="button"
-        class="f-modal__close"
+        class="m-modal__close"
         aria-label="{{ 'accessibility.close' | t }}"
       >
         {% comment %} theme-check-disable {% endcomment %}
@@ -31,13 +26,12 @@
         data-product-id="{{ product.id }}"
         data-update-url="false"
         data-product-url="{{ product.url }}"
-        data-enable-variant-group-images="{{ enable_variant_group_image }}"
         data-section-id="{{ section.id }}"
         class="block"
       >
-        <div class="f-product-quickview flex flex-wrap">
+        <div class="m-product-quickview flex flex-wrap">
           {% if product.images.size > 0 %}
-            <div class="f-product-quickview__media w-full">
+            <div class="m-product-quickview__media w-full">
               {% render 'product-media',
                 product: product,
                 section: section,
@@ -46,10 +40,10 @@
               %}
             </div>
           {% endif %}
-          <div class="f-product-quickview__summary w-full">
-            <div class="f-product-single__blocks{% if enable_sticky_info %} sticky-element{% endif %}">
+          <div class="m-product-quickview__summary w-full">
+            <div class="m-product-single__blocks{% if enable_sticky_info %} sticky-element{% endif %}">
               {% if settings.qv_show_custom_tag %}
-                <div class="f-product-single__block f-product-single__block--badge">
+                <div class="m-product-single__block m-product-single__block--badge">
                   {%- liquid
                     assign has_tags = false
                     for tag in product.tags
@@ -59,7 +53,7 @@
                     endfor
                   -%}
                   {%- if has_tags -%}
-                    <div class="f-product__tags">
+                    <div class="m-product__tags">
                       {% for tag in product.tags %}
                         {% if tag contains 'tag__' %}
                           {%- liquid
@@ -67,7 +61,7 @@
                             assign type = tag_content | split: '_' | first
                             assign tag_name = tag_content | split: '_' | last
                           -%}
-                          <span class="f-badge f-badge--{{ type }}">
+                          <span class="m-badge m-badge--{{ type }}">
                             {{ tag_name }}
                           </span>
                         {% endif %}
@@ -76,17 +70,17 @@
                   {%- endif -%}
                 </div>
               {% endif %}
-              <div class="f-product-single__block f-product-single__block--title">
+              <div class="m-product-single__block m-product-single__block--title">
                 {% if settings.qv_show_vendor %}
-                  <p class="f-product__vendor text-upper text-subtext">
+                  <p class="m-product__vendor text-upper text-subtext">
                     {{ product.vendor }}
                   </p>
                 {% endif %}
-                <h2 class="f-product-single__title m-0 h2">
+                <h2 class="m-product-single__title m-0 h2">
                   {{ product.title | escape }}
                 </h2>
               </div>
-              <div class="f-product-single__block f-product-single__block--price">
+              <div class="m-product-single__block m-product-single__block--price">
                 <div id="Price-{{ section.id }}" role="status">
                   {%- render 'price',
                     product: product,
@@ -94,17 +88,17 @@
                     show_sale_badge: settings.qv_show_sale_badge,
                     sale_badge_type: settings.qv_sale_badge_type,
                     show_soldout_badge: settings.qv_show_soldout_badge,
-                    price_class: 'f-price--large text-lg sm:text-xl'
+                    price_class: 'm-price--large text-lg sm:text-xl'
                   -%}
                 </div>
                 {%- if shop.taxes_included -%}
-                  <div class="f-product-single__block-tax text-subtext">
+                  <div class="m-product-single__block-tax text-subtext">
                     {{- 'products.product.include_taxes' | t -}}
                   </div>
                 {%- endif -%}
               </div>
               {% unless subtitle == blank %}
-                <div class="f-product-single__block f-product-single__block--subtitle">
+                <div class="m-product-single__block m-product-single__block--subtitle">
                   <div class="rte">{{ subtitle }}</div>
                   <a href="{{ product.url }}" class="btn btn-view-details btn--underline btn--with-icon"
                     ><span>{{- 'products.product.view_full_details' | t -}}</span>
@@ -114,7 +108,7 @@
                   </a>
                 </div>
               {% endunless %}
-              <div class="f-product-single__block f-product-single__block--variant_picker">
+              <div class="m-product-single__block m-product-single__block--variant_picker">
                 {% render 'variant-picker',
                   color_schema: 'background-1',
                   product: product,
@@ -126,8 +120,8 @@
                 %}
               </div>
               {% if settings.qv_show_quantity_selector %}
-                <div class="f-product-single__block f-product-single__block--quantity_selector">
-                  <div class="f-product-single__info-quantity">
+                <div class="m-product-single__block m-product-single__block--quantity_selector">
+                  <div class="m-product-single__info-quantity">
                     {%- assign cart_qty = cart | item_count_for_variant: product.selected_or_first_available_variant.id -%}
                     {% comment %} {% render 'quantity-input',
                       section_id: section.id,
@@ -136,7 +130,7 @@
                       product_title: product.title,
                       show_label: true
                     %} {% endcomment %}
-                    <div class="f-quantity__wrapper" id="QuantityForm-{{ section.id }}">
+                    <div class="m-quantity__wrapper" id="QuantityForm-{{ section.id }}">
                       <label class="form-label font-body-bolder quantity__label" for="Quantity-{{ section.id }}-{{ product.id }}">
                         <span>{{- 'products.product.quantity.label' | t -}}</span>
                         <span id="QuantityRulesCart-{{ section.id }}" class="quantity__rules-cart{% if cart_qty == 0 %} hidden{% endif %} relative">
@@ -144,8 +138,8 @@
                         </span>
                       </label>
                       <div class="flex">
-                        <quantity-input class="f-quantity" data-product-id="{{ product.id }}" data-section-id="{{ section.id }}">
-                          <button class="f-quantity__button btn btn--plain no-js-hidden" name="minus" type="button">
+                        <quantity-input class="m-quantity" data-product-id="{{ product.id }}" data-section-id="{{ section.id }}">
+                          <button class="m-quantity__button btn btn--plain no-js-hidden" name="minus" type="button">
                             <span class="visually-hidden">
                               {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
                             </span>
@@ -155,7 +149,7 @@
                           </button>
                           <input
                             id="Quantity-{{ section.id }}-{{ product.id }}"
-                            class="f-quantity__input quantity__input form-control"
+                            class="m-quantity__input quantity__input form-control"
                             type="number"
                             name="quantity"
                             inputmode="numeric"
@@ -172,7 +166,7 @@
                             value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
                             form="{{ product_form_id }}"
                           >
-                          <button class="f-quantity__button btn btn--plain no-js-hidden" name="plus" type="button">
+                          <button class="m-quantity__button btn btn--plain no-js-hidden" name="plus" type="button">
                             <span class="visually-hidden">
                               {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
                             </span>
@@ -334,8 +328,8 @@
                   </div>
                 </div>
               {% endif %}
-              <div class="f-product-single__block f-product-single__block--buy_buttons">
-                <product-form class="f-product-form" data-notification-type="toast">
+              <div class="m-product-single__block m-product-single__block--buy_buttons">
+                <product-form class="m-product-form" data-notification-type="toast">
                   {%- form 'product',
                     product,
                     id: product_form_id,
@@ -349,12 +343,12 @@
                       value="{{ product.selected_or_first_available_variant.id }}"
                       disabled
                     >
-                    <div class="f-product-form__buttons f-product-form__buttons--show-buynow">
+                    <div class="m-product-form__buttons m-product-form__buttons--show-buynow">
                       <button
                         id="ProductSubmitButton-{{ section.id }}"
                         type="submit"
                         name="add"
-                        class="f-product-form__submit btn{% if settings.qv_show_dynamic_checkout_button %} btn--secondary{% else %} btn--primary{% endif %}"
+                        class="m-product-form__submit btn{% if settings.qv_show_dynamic_checkout_button %} btn--secondary{% else %} btn--primary{% endif %}"
                         {% if product.selected_or_first_available_variant.available == false %}
                           disabled
                         {% endif %}
@@ -371,7 +365,7 @@
                         {% comment %} theme-check-enable {% endcomment %}
                       </button>
                       {% if settings.qv_show_dynamic_checkout_button %}
-                        <div class="f-product-form__button-dynamic">
+                        <div class="m-product-form__button-dynamic">
                           {{ form | payment_button }}
                         </div>
                       {% endif %}
@@ -381,7 +375,7 @@
                 </product-form>
               </div>
               {% if subtitle == blank %}
-                <div class="f-product-single__block f-product-single__block--view-details">
+                <div class="m-product-single__block m-product-single__block--view-details">
                   <a href="{{ product.url }}" class="btn btn--underline btn-view-details btn--with-icon"
                     ><span>{{- 'products.product.view_full_details' | t -}}</span>
                     <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -394,11 +388,6 @@
             </div>
           </div>
         </div>
-        {%- if enable_variant_group_image -%}
-          <script id="VariantGroupImages" type="application/json">
-            {{ product.metafields.foxecom-bs-kit.variant-images.value | json }}
-          </script>
-        {%- endif -%}
       </product-info>
     </div>
   </div>

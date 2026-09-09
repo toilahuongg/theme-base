@@ -3,19 +3,19 @@
   --text-btn-gap: 2.4rem;
   gap: 6.4rem 0;
 }
-.promotion-banner__content > .f-column {
+.promotion-banner__content > .m-column {
   padding-inline: 1.5rem;
 }
 @media (min-width: 768px) {
-  .promotion-banner__content > .f-column {
+  .promotion-banner__content > .m-column {
     padding-inline: 2.4rem;
   }
 }
-.promotion-banner__content .f-text-blocks {
+.promotion-banner__content .m-text-blocks {
   width: var(--content-width, 100%);
   max-width: 100%;
 }
-.promotion-banner__content .f-line-block::after {
+.promotion-banner__content .m-line-block::after {
   content: "";
   display: block;
   width: 0.1rem;
@@ -27,7 +27,7 @@
   transform: translate(-50%, -50%);
 }
 @media (max-width: 767.98px) {
-  .promotion-banner__content .f-line-block::after {
+  .promotion-banner__content .m-line-block::after {
     width: auto;
     height: 0.1rem;
     top: auto;

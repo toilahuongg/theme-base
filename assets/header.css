@@ -29,13 +29,13 @@
 .site-header--transparent .mobile-nav-toggle .btn {
   color: var(--color-header-transparent-text);
 }
-.site-header--transparent .f-site-nav__item:not(:hover),
-.site-header--transparent .f-site-nav {
+.site-header--transparent .m-site-nav__item:not(:hover),
+.site-header--transparent .m-site-nav {
   color: var(--color-header-transparent-text);
 }
-.site-header--transparent .f-site-nav__item:focus-within,
-.site-header--transparent .f-site-nav__item:hover,
-.site-header--transparent .f-site-nav__item--current {
+.site-header--transparent .m-site-nav__item:focus-within,
+.site-header--transparent .m-site-nav__item:hover,
+.site-header--transparent .m-site-nav__item--current {
   color: var(--color-header-transparent-text);
 }
 .site-header--transparent .site-header__link:hover,
@@ -116,7 +116,7 @@
 .site-header__link:hover, .site-header__link.site-header__search-toggle-mobile:hover {
   color: var(--color-menu-text-hover);
 }
-.site-header__link .f-icon-svg + span:not(.tooltip), .site-header__link.site-header__search-toggle-mobile .f-icon-svg + span:not(.tooltip) {
+.site-header__link .m-icon-svg + span:not(.tooltip), .site-header__link.site-header__search-toggle-mobile .m-icon-svg + span:not(.tooltip) {
   margin-inline-start: 6px;
 }
 @media (max-width: 639.98px) {
@@ -124,13 +124,13 @@
     padding: 5px 10px !important;
   }
 }
-.site-header .f-disclosure {
+.site-header .m-disclosure {
   padding: 0 1.2rem;
 }
-.site-header .f-disclosure-list {
+.site-header .m-disclosure-list {
   background: var(--color-header-bg);
 }
-.site-header .f-disclosure-list__item {
+.site-header .m-disclosure-list__item {
   color: var(--color-header-text);
 }
 .site-header__addons {
@@ -155,14 +155,14 @@
     justify-content: center;
   }
 }
-.site-header--design-3 .site-header__left .f-site-nav {
+.site-header--design-3 .site-header__left .m-site-nav {
   justify-content: flex-end;
 }
 .site-header--design-3 .site-header__center {
   margin: 0 30px;
 }
 @media (min-width: 1024px) {
-  .site-header--design-3 .f-site-nav {
+  .site-header--design-3 .m-site-nav {
     flex: 1;
     display: flex;
   }
@@ -182,14 +182,14 @@
 .site-header--design-5 .site-header__right {
   column-gap: 4rem;
 }
-.site-header--design-5 .site-header__right .f-site-nav:not(:last-child) {
+.site-header--design-5 .site-header__right .m-site-nav:not(:last-child) {
   justify-content: flex-end;
 }
 .site-header--design-5 .site-header__center {
   margin: 0 3rem;
 }
 @media (min-width: 1024px) {
-  .site-header--design-5 .f-site-nav {
+  .site-header--design-5 .m-site-nav {
     flex: 1;
     display: flex;
   }
@@ -221,13 +221,13 @@
 .header-sticky.header-scrolled:not(.header-logo-scaling) .site-header--transparent .mobile-nav-toggle .btn {
   color: var(--color-menu-text);
 }
-.header-sticky.header-scrolled:not(.header-logo-scaling) .site-header--transparent .f-site-nav__item:not(:hover),
-.header-sticky.header-scrolled:not(.header-logo-scaling) .site-header--transparent .f-site-nav {
+.header-sticky.header-scrolled:not(.header-logo-scaling) .site-header--transparent .m-site-nav__item:not(:hover),
+.header-sticky.header-scrolled:not(.header-logo-scaling) .site-header--transparent .m-site-nav {
   color: var(--color-menu-text);
 }
-.header-sticky.header-scrolled:not(.header-logo-scaling) .site-header--transparent .f-site-nav__item:focus-within,
-.header-sticky.header-scrolled:not(.header-logo-scaling) .site-header--transparent .f-site-nav__item:hover,
-.header-sticky.header-scrolled:not(.header-logo-scaling) .site-header--transparent .f-site-nav__item--current {
+.header-sticky.header-scrolled:not(.header-logo-scaling) .site-header--transparent .m-site-nav__item:focus-within,
+.header-sticky.header-scrolled:not(.header-logo-scaling) .site-header--transparent .m-site-nav__item:hover,
+.header-sticky.header-scrolled:not(.header-logo-scaling) .site-header--transparent .m-site-nav__item--current {
   color: var(--color-menu-text) !important;
 }
 .header-sticky.header-scrolled:not(.header-logo-scaling) .site-header--transparent .site-header__link:hover,
@@ -332,12 +332,12 @@ body:not(.header-pinned) .header-scrolled .header {
   }
 }
 @media (max-width: 1023.98px) {
-  .f-tablet-hidden {
+  .m-tablet-hidden {
     display: none;
   }
 }
 @media (max-width: 640.02px) {
-  .f-mobile-hidden {
+  .m-mobile-hidden {
     display: none;
   }
   .site-header__open-search {

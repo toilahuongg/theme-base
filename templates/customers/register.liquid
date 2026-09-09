@@ -1,7 +1,7 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
 
-<div class="f-section">
-  <div class="f-customer f-customer__register">
+<div class="m-section">
+  <div class="m-customer m-customer__register">
     <h1 class="text-center">{{ 'customer.register.title' | t }}</h1>
     <p class="login-with-account">{{ 'customer.register.already_account' | t }} <a href="{{ routes.account_login_url }}" class="btn btn--underline">{{ 'customer.log_in' | t }}</a></p>
     {%- form 'create_customer', novalidate: 'novalidate', class: 'form' -%}

@@ -3,7 +3,7 @@ if (!customElements.get("collection-tabs")) {
     constructor() {
       super();
       this.selectors = {
-        images: [".f-collection-tab__image"],
+        images: [".m-collection-tab__image"],
         collapsibleTabs: ["collapsible-tab"],
       };
     }

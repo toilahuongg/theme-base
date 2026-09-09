@@ -14,11 +14,11 @@
     </div>
 {%- endif -%}
 <div
-  class="grid-list__column f-lookbook-card{% if block.type == 'lookbook-slider' %} f-lookbook-card--slider block md:flex items-center{% if block.settings.image_position == 'right' %} md:flex-row-reverse{% endif %}{% endif %} {{ custom_class }}"
+  class="grid-list__column m-lookbook-card{% if block.type == 'lookbook-slider' %} m-lookbook-card--slider block md:flex items-center{% if block.settings.image_position == 'right' %} md:flex-row-reverse{% endif %}{% endif %} {{ custom_class }}"
   data-id="{{ block.id }}"
   {{ block.shopify_attributes }}
 >
-  <div class="f-lookbook-card__inner relative f-card{% if block.type == 'lookbook-slider' %} w-full md:w-1/2{% endif %}">
+  <div class="m-lookbook-card__inner relative m-card{% if block.type == 'lookbook-slider' %} w-full md:w-1/2{% endif %}">
     {%- if block.settings.image != blank -%}
       {%- liquid
         assign image_height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio
@@ -34,7 +34,7 @@
         endif
       -%}
       <div
-        class="f-image {{ forloop.index }} {{ loading }} {{ fetchpriority }}"
+        class="m-image {{ forloop.index }} {{ loading }} {{ fetchpriority }}"
         style="--aspect-ratio: {{ image_aspect_ratio }};"
       >
         {{
@@ -78,20 +78,20 @@
       -%}
       {%- if prod != blank -%}
         <lookbook-icon
-          class="absolute f-lookbook-card__annotation{% if block.type == 'lookbook-slider' %} f-lookbook-card__annotation--slider{% endif %}"
+          class="absolute m-lookbook-card__annotation{% if block.type == 'lookbook-slider' %} m-lookbook-card__annotation--slider{% endif %}"
           style="top: {{ top }}%; left: {{ left }}%;"
           data-id="{{ block.id }}-{{ i }}"
           data-index="{{ lookbook_icon_index }}"
         >
-          <div class="f-lookbook-card__pin f-lookbook-card__pin--{{ block.settings.annotation_color }}">
-            <span class="f-lookbook-card__pin-icon"></span>
+          <div class="m-lookbook-card__pin m-lookbook-card__pin--{{ block.settings.annotation_color }}">
+            <span class="m-lookbook-card__pin-icon"></span>
           </div>
           <div
-            class="f-lookbook-card__product absolute flex color-background-1"
+            class="m-lookbook-card__product absolute flex color-background-1"
             data-id="{{ block.id }}-{{ i }}-content"
           >
             {%- unless block.type == 'lookbook-slider' -%}
-              <div class="f-lookbook-card__product-image relative f-image-hover-effect__{{settings.image_hover_effect}}">
+              <div class="m-lookbook-card__product-image relative m-image-hover-effect__{{settings.image_hover_effect}}">
                 <a class="full-width-link" href="{{ prod.url }}"
                   ><span class="visually-hidden">{{ prod.title }}</span></a
                 >
@@ -106,14 +106,14 @@
                 %}
               </div>
             {%- endunless -%}
-            <div class="f-lookbook-card__product-info flex-1">
+            <div class="m-lookbook-card__product-info flex-1">
               <a
                 href="{{ prod.url }}"
-                class="f-lookbook-card__product-title text-product-title no-color-schema h6"
+                class="m-lookbook-card__product-title text-product-title no-color-schema h6"
               >
                 {{- prod.title -}}
               </a>
-              <p class="f-lookbook-card__product-price">
+              <p class="m-lookbook-card__product-price">
                 {{ prod.price | money }}
               </p>
               {%- unless block.type == 'lookbook-slider' -%}
@@ -181,8 +181,8 @@
       assign product_card_width = product_card_width | plus: column_gap
       assign product_slider_width = product_card_width | times: product_per_slide
     -%}
-    <div class="f-lookbook__product-wrapper f-lookbook__product-wrapper--{{ block.settings.image_position }} w-full md:w-1/2">
-      <div class="f-hidden md:block">
+    <div class="m-lookbook__product-wrapper m-lookbook__product-wrapper--{{ block.settings.image_position }} w-full md:w-1/2">
+      <div class="m-hidden md:block">
         {% render 'index-section-header',
           animation_effect: animation_effect,
           section_settings: block.settings,
@@ -191,13 +191,13 @@
         %}
       </div>
       <div
-        class="f-lookbook__product-flickity-wrapper relative w-full block md:flex justify-center overflow-hidden"
+        class="m-lookbook__product-flickity-wrapper relative w-full block md:flex justify-center overflow-hidden"
         style="--slider-viewport-width: {{ product_slider_width }}px;"
       >
         <flickity-component
           id="LookbookProductsSlider-{{ block.id }}"
-          class="f-lookbook__product-slider{% if total_pages <= product_per_slide %} md:flickity-disable{% endif %} flickity-all flickity-static flickity-show-controls flickity-button-initialized flickity-controls-group flickity-controls-group__bottom flickity-controls-group__bottom--{{ controls_position }} flickity-pagination--{{ pagination_style }} {{ pagination_class }} f-grid f-grid-1-cols md:f-grid-{{ product_per_slide }}-cols f-grid--gap-{{ block.settings.column_gap }}"
-          data-slider-options='{"pageDots": {{ is_page_dots }}, "prevNextButtons": true, "wrapAround": true, "dragThreshold": 20, "cellSelector": ".f-column", "adaptiveHeight": false, "selectedAttraction": 0.02, "friction": 0.25}'
+          class="m-lookbook__product-slider{% if total_pages <= product_per_slide %} md:flickity-disable{% endif %} flickity-all flickity-static flickity-show-controls flickity-button-initialized flickity-controls-group flickity-controls-group__bottom flickity-controls-group__bottom--{{ controls_position }} flickity-pagination--{{ pagination_style }} {{ pagination_class }} m-grid m-grid-1-cols md:m-grid-{{ product_per_slide }}-cols m-grid--gap-{{ block.settings.column_gap }}"
+          data-slider-options='{"pageDots": {{ is_page_dots }}, "prevNextButtons": true, "wrapAround": true, "dragThreshold": 20, "cellSelector": ".m-column", "adaptiveHeight": false, "selectedAttraction": 0.02, "friction": 0.25}'
           data-enable-slider="true"
           data-slider-columns="{{ product_per_slide }}"
           style="--number-slides: {{ total_pages }};"
@@ -211,7 +211,7 @@
                   continue
                 endif
               -%}
-              <div class="f-column">
+              <div class="m-column">
                 {% render 'product-card',
                   color_schema: color_schema,
                   product: prod,
@@ -225,7 +225,7 @@
             {%- endfor -%}
           {%- else -%}
             {%- for i in (1..product_per_slide) -%}
-              <div class="f-column">
+              <div class="m-column">
                 {% render 'product-card-placeholder',
                   index: index,
                   image_ratio: block.settings.product_image_ratio

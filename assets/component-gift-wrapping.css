@@ -1,12 +1,12 @@
-.f-gift-wrapping {
+.m-gift-wrapping {
   display: block;
   position: relative;
 }
-.f-gift-wrapping--text {
+.m-gift-wrapping--text {
   display: inline-block;
   padding-inline-start: 2.5rem;
 }
-.f-gift-wrapping--label {
+.m-gift-wrapping--label {
   position: relative;
   cursor: pointer;
   display: inline-flex;
@@ -15,16 +15,16 @@
   padding-block-end: 1.2rem;
   margin-block-start: 0.5rem;
 }
-.f-gift-wrapping--icon {
+.m-gift-wrapping--icon {
   width: 1.8rem;
   height: 1.8rem;
   position: absolute;
   inset-inline-start: 0;
 }
-.f-gift-wrapping--icon path:last-child {
+.m-gift-wrapping--icon path:last-child {
   opacity: 0;
 }
-.f-gift-wrapping--loading {
+.m-gift-wrapping--loading {
   display: none;
   position: absolute;
   inset-block-start: 2px;
@@ -33,13 +33,13 @@
   background: #fff;
   z-index: 1;
 }
-.f-gift-wrapping--loading svg {
+.m-gift-wrapping--loading svg {
   width: 1.8rem;
   height: 1.8rem;
 }
-.f-gift-wrapping--loading.show {
+.m-gift-wrapping--loading.show {
   display: inline-flex;
 }
-.f-gift-wrapping > input:checked ~ .f-gift-wrapping--label .f-gift-wrapping--icon path:last-child {
+.m-gift-wrapping > input:checked ~ .m-gift-wrapping--label .m-gift-wrapping--icon path:last-child {
   opacity: 1;
 }

@@ -33,7 +33,9 @@ The single source of truth is `docs/pipeline-state.md` at the theme root. Create
 
 ## Gates (do not proceed on failure)
 
-- **G1 source audit**: verdict must be ORIGINAL or SKELETON-DERIVED to continue. DAWN-DERIVED, HORIZON-DERIVED, THIRD-PARTY, MIXED, or UNVERIFIED -> pipeline BLOCKED. If a rewrite path exists (source is available and the theme is eligible), record the rewrite mandate in state and only continue after the code is replaced and re-audited. Never let the pipeline "fix" provenance by renaming, reformatting, or refactoring — that is dishonest submission and the audit rule forbids it.
+- **G1 source audit**: verdict must be ORIGINAL or SKELETON-DERIVED to continue on the existing code. DAWN-DERIVED, HORIZON-DERIVED, THIRD-PARTY, or MIXED -> the existing code is ineligible; the pipeline continues in REFERENCE-REBUILD mode (below) instead of stopping. UNVERIFIED -> pipeline BLOCKED until provenance is confirmed; never proceed on an unknown base. Never let the pipeline "fix" provenance by renaming, reformatting, or refactoring — that is dishonest submission and the audit rule forbids it.
+
+  REFERENCE-REBUILD mode (ineligible source, eligible goal): the current theme is treated as a feature/concept reference ONLY. Record the mode and the provenance findings in `docs/pipeline-state.md`; proceed to feature inventory (concepts only — `keep_implementation: false` for every feature); stages 7-9 build a genuinely new theme from Shopify's Skeleton Theme or fully original code (no file, line, or asset from the ineligible theme carries over); re-run the source audit on the NEW codebase and require an ORIGINAL or SKELETON-DERIVED verdict before stages 10-12. A reskin (derived code re-styled, renamed, or refactored) never passes.
 - **G2 uniqueness review #1**: no FAIL rows in `docs/uniqueness-matrix.md`. WEAK rows must carry concrete remediation before architecture work starts.
 - **G3 compliance**: no unverified requirement areas in `docs/compliance-matrix.md`. Every mutable threshold must have an as-of date and source.
 - **G4 performance/accessibility**: measured results at or above the internal targets the skills set (which are higher than the Theme Store minimums).
@@ -57,6 +59,7 @@ A builder skill never certifies its own work:
     - Read the artifact. Evaluate the gate for that stage against the evidence in the artifact — do not trust the skill's self-assessment; verify the artifact content yourself.
     - Update `docs/pipeline-state.md` (status `passed` or `blocked`, notes).
     - Gate failed -> record blockers in state, stop, and report the blocking evidence. Do not continue to later stages.
+    - G1 exception: a verdict of DAWN/HORIZON/THIRD-PARTY/MIXED fails FORWARD into REFERENCE-REBUILD mode — record the mode and provenance findings in state, then continue at stage 2 (feature inventory, concepts only). UNVERIFIED always blocks.
 3.  Stages 10-12: run performance, accessibility, and QA after editor architecture. If any of those exposes a defect, route it back to the owning builder skill (steps 7-9) rather than patching it in the orchestrator.
 4.  Final: the `docs/readiness-report.md` verdict is the deliverable. Report the verdict, the blockers/warnings, and the evidence paths.
 
@@ -73,3 +76,4 @@ A builder skill never certifies its own work:
 - Treating "score = minimum + 1" as done (see `theme-performance-engineer` internal targets).
 - Preserving old-theme structure 1:1 (see `shopify-liquid-architect`: design a new component graph).
 - Accepting an UNVERIFIED provenance verdict and proceeding.
+- Carrying derived code from the source theme into the rebuild (REFERENCE-REBUILD mode carries concepts only; code must come from Skeleton/original).

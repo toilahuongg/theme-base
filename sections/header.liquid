@@ -25,10 +25,10 @@
     is="basic-header"
   {% endif %}
 >
-  <div class="f-header__dropdown-backdrop">
-    <div class="f-header__dropdown-overlay"></div>
+  <div class="m-header__dropdown-backdrop">
+    <div class="m-header__dropdown-overlay"></div>
     <div
-      class="f-header__dropdown-bg color-{{ section.settings.menu_dropdown_color_schema }}"
+      class="m-header__dropdown-bg color-{{ section.settings.menu_dropdown_color_schema }}"
     ></div>
   </div>
   <div class="{{ section.settings.container | default: "container" }}">
@@ -216,20 +216,20 @@
   <div class="hidden no-js-hidden xl-down:block">
     <drawer-component
       id="Drawer-MobileNav"
-      class="f-drawer f-drawer--left f-drawer-mobile-nav"
+      class="m-drawer m-drawer--left m-drawer-mobile-nav"
       hidden
       role="dialog"
       aria-modal="true"
       aria-label="{{ 'layout.navigation.menu' | t }}"
-      style="--f-drawer-width: 460px;"
+      style="--m-drawer-width: 460px;"
     >
-      <div class="f-drawer__overlay" data-drawer-overlay=""></div>
-      <div class="f-drawer__content focus-inset" tabindex="-1">
+      <div class="m-drawer__overlay" data-drawer-overlay=""></div>
+      <div class="m-drawer__content focus-inset" tabindex="-1">
         <div class="scroll-container">
-          <div id="Mobile-Nav" class="f-mobile-nav" role="navigation">
+          <div id="Mobile-Nav" class="m-mobile-nav" role="navigation">
             <button
               id="DrawerClose-Mobile-Nav"
-              class="f-drawer__close btn btn--plain"
+              class="m-drawer__close btn btn--plain"
               aria-label="{{ 'accessibility.close' | t }}"
             >
               {% comment %} theme-check-disable {% endcomment %}
@@ -237,21 +237,21 @@
               {% comment %} theme-check-enable {% endcomment %}
             </button>
             {% render 'site-logo', section: section, h1_tag: false %}
-            <div class="f-mobile-nav__inner">
+            <div class="m-mobile-nav__inner">
               <ul class="list-none">
                 {% for link in menu_links %}
                   {% liquid
-                    assign li_class = 'f-mobile-nav__item'
+                    assign li_class = 'm-mobile-nav__item'
                     if link.links != blank
                       if link.levels == 2
                       endif
                     endif
 
                     if link.active
-                      assign li_class = li_class | append: ' f-mobile-nav__item--current'
+                      assign li_class = li_class | append: ' m-mobile-nav__item--current'
                     endif
                     if link.links != blank
-                      assign li_class = li_class | append: ' f-mobile-nav__item--has-child'
+                      assign li_class = li_class | append: ' m-mobile-nav__item--has-child'
                     endif
                   %}
                   <li
@@ -261,13 +261,13 @@
                     {% endif %}
                     data-collapsible-parent
                   >
-                    <a href="{{ link.url }}" class="f-mobile-nav__link">
+                    <a href="{{ link.url }}" class="m-mobile-nav__link">
                       {{ link.title }}
                     </a>
                     {% if link.links != blank %}
                       <collapsible-tab>
-                        <span class="f-mobile-nav__arrow" data-trigger>
-                          <span class="no-js-hidden f-mobile-nav__arrow-icon">
+                        <span class="m-mobile-nav__arrow" data-trigger>
+                          <span class="no-js-hidden m-mobile-nav__arrow-icon">
                             <svg
                               width="2"
                               height="12"
@@ -286,11 +286,11 @@
                             </svg>
                           </span>
                         </span>
-                        <div class="f-mobile-nav__dropdown" data-content>
+                        <div class="m-mobile-nav__dropdown" data-content>
                           <ul class="list-none w-full">
                             {% for childlink in link.links %}
                               <li
-                                class="f-mobile-nav__subitem{% if childlink.links != blank %} f-mobile-nav__sub-item--has-child{% endif %}"
+                                class="m-mobile-nav__subitem{% if childlink.links != blank %} m-mobile-nav__sub-item--has-child{% endif %}"
                                 {% if childlink.links != blank %}
                                   data-menu-toggle-item
                                 {% endif %}
@@ -298,17 +298,17 @@
                               >
                                 <a
                                   href="{{ childlink.url }}"
-                                  class="f-mobile-nav__sub-link"
+                                  class="m-mobile-nav__sub-link"
                                 >
                                   {{- childlink.title -}}
                                 </a>
                                 {% if childlink.links != blank %}
                                   <collapsible-tab>
                                     <span
-                                      class="f-mobile-nav__arrow"
+                                      class="m-mobile-nav__arrow"
                                       data-trigger
                                     >
-                                      <span class="no-js-hidden f-mobile-nav__arrow-icon">
+                                      <span class="no-js-hidden m-mobile-nav__arrow-icon">
                                         <svg
                                           width="2"
                                           height="12"
@@ -328,15 +328,15 @@
                                       </span>
                                     </span>
                                     <div
-                                      class="f-mobile-nav__dropdown f-mobile-nav__dropdown--level3"
+                                      class="m-mobile-nav__dropdown m-mobile-nav__dropdown--level3"
                                       data-content
                                     >
                                       <ul class="list-none">
                                         {% for grandlink in childlink.links %}
-                                          <li class="f-mobile-nav__sub-item f-mobile-nav__sub-item--level3">
+                                          <li class="m-mobile-nav__sub-item m-mobile-nav__sub-item--level3">
                                             <a
                                               href="{{ grandlink.url }}"
-                                              class="f-mobile-nav__sub-link"
+                                              class="m-mobile-nav__sub-link"
                                             >
                                               {{- grandlink.title -}}
                                             </a>
@@ -356,9 +356,9 @@
                 {% endfor %}
               </ul>
             </div>
-            <div class="f-mobile-nav__addons">
+            <div class="m-mobile-nav__addons">
               {% if show_addons_switcher %}
-                <div class="f-mobile-nav__addons-switcher">
+                <div class="m-mobile-nav__addons-switcher">
                   {% if show_language_selector %}
                     {% render 'language-selector',
                       position: 'up',
@@ -379,7 +379,7 @@
               {% endif %}
               {% if shop.customer_accounts_enabled %}
                 <a
-                  class="f-mobile-nav__addons-user-link btn btn--primary w-full"
+                  class="m-mobile-nav__addons-user-link btn btn--primary w-full"
                   href="{{ account_url }}"
                 >
                   <span>{{ account_text }}</span>
@@ -441,7 +441,7 @@
 {% schema %}
 {
   "name": "t:sections.header.name",
-  "class": "f-section-header",
+  "class": "m-section-header",
   "settings": [
     {
       "type": "paragraph",

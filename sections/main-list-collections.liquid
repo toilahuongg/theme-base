@@ -15,13 +15,13 @@
   endif
 -%}
 <div class="container">
-  <h1 class="text-center f-page-title h2">
+  <h1 class="text-center m-page-title h2">
     {{ section.settings.title | escape }}
   </h1>
   {%- paginate collections by section.settings.collections_per_page -%}
     <grid-list
       data-motion="{{ animation_effect }}"
-      class="f__collection-list f-grid f-grid-2-cols md:f-grid-3-cols lg:f-grid-{{ section.settings.collections_per_row }}-cols"
+      class="f__collection-list m-grid m-grid-2-cols md:m-grid-3-cols lg:m-grid-{{ section.settings.collections_per_row }}-cols"
       role="list"
       style="--column-gap: 30px;"
     >
@@ -60,7 +60,7 @@
     {%- if paginate.pages > 1
       and section.settings.collections_to_show == 'all'
     -%}
-      <div class="f-pagination__wrapper text-center">
+      <div class="m-pagination__wrapper text-center">
         {%- render 'pagination', paginate: paginate -%}
       </div>
     {%- endif -%}
@@ -69,7 +69,7 @@
 {% schema %}
 {
   "name": "t:sections.main-list-collections.name",
-  "class": "f-section f-main-list-collection",
+  "class": "m-section m-main-list-collection",
   "settings": [
     {
       "type": "text",

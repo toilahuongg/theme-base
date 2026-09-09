@@ -36,7 +36,7 @@
 
 <section
   id="{{ section_id }}"
-  class="quick-order-list{{ custom_class }} relative f-section-padding color-{{ section.settings.color_schema }}"
+  class="quick-order-list{{ custom_class }} relative m-section-padding color-{{ section.settings.color_schema }}"
   data-section-type="quick-order-list"
   data-section-id="{{ section.id }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
@@ -238,7 +238,7 @@
                     -}}
                   </span>
                   <div
-                    class="f-grid justify-between items-center"
+                    class="m-grid justify-between items-center"
                     style="gap: 1.2rem;"
                   >
                     <quick-order-list-remove-all
@@ -270,7 +270,7 @@
       </quick-order-list-wrapper>
     </div>
     <noscript>
-      <div class="f-noscript-alert font-semibold text-upper">
+      <div class="m-noscript-alert font-semibold text-upper">
         {{ 'general.notifications.no_script' | t }}
       </div>
     </noscript>

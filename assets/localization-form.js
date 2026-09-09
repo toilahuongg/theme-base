@@ -5,7 +5,7 @@ if (!customElements.get('localization-form')) {
 			this.elements = {
 				input: this.querySelector('input[name="locale_code"], input[name="country_code"]'),
 				button: this.querySelector('button'),
-				panel: this.querySelector('.f-disclosure-list')
+				panel: this.querySelector('.m-disclosure-list')
 			};
 
 			this.elements.panel.removeAttribute('hidden')
@@ -21,7 +21,7 @@ if (!customElements.get('localization-form')) {
 		handleDropdownPos() {
 			const offsetButton = this.elements.button.getBoundingClientRect().right
 			if ((window.innerWidth - offsetButton) < 220) {
-				this.elements.button.nextElementSibling && this.elements.button.nextElementSibling.classList.add('f-disclosure-list__right')
+				this.elements.button.nextElementSibling && this.elements.button.nextElementSibling.classList.add('m-disclosure-list__right')
 			}
 		}
 
@@ -51,7 +51,7 @@ if (!customElements.get('localization-form')) {
 		}
 
 		closeSelector(event) {
-			const shouldClose = event.relatedTarget && event.relatedTarget.nodeName === 'BUTTON' || event.relatedTarget && !event.relatedTarget.classList.contains('f-disclosure-list__option')
+			const shouldClose = event.relatedTarget && event.relatedTarget.nodeName === 'BUTTON' || event.relatedTarget && !event.relatedTarget.classList.contains('m-disclosure-list__option')
 			if (event.relatedTarget === null || shouldClose) {
 				this.hidePanel(shouldClose);
 			}

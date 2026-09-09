@@ -8,14 +8,14 @@
 -%}
 <age-verifier-popup
   id="{{ section.id }}"
-  class="f-popup f-popup--age-verifier"
+  class="m-popup m-popup--age-verifier"
   data-section-id="{{ section.id }}"
   data-design-mode="{{ design_mode }}"
   data-enable="{{ enable }}"
 >
   {% if section.settings.bg_image != blank %}
     {% assign bg_height = bg_image.width | divided_by: bg_image.aspect_ratio | round %}
-    <div class="f-popup--age-verifier__bg{% if bg_blur %} f-popup--age-verifier__bg-blur{% endif %}">
+    <div class="m-popup--age-verifier__bg{% if bg_blur %} m-popup--age-verifier__bg-blur{% endif %}">
       {{
         bg_image
         | image_url: width: 2000
@@ -23,20 +23,20 @@
       }}
     </div>
   {% endif %}
-  <div class="f-popup__content text-center">
-    <div class="f-popup__inner" aria-modal="true" role="dialog" tabindex="-1" aria-label="Age verifier popup">
-      <div class="f-popup--age-verifier__wrapper">
-        <div class="f-popup--age-verifier__content f-popup--age-verifier__content-active f-text-blocks" data-age-verifier-content>
+  <div class="m-popup__content text-center">
+    <div class="m-popup__inner" aria-modal="true" role="dialog" tabindex="-1" aria-label="Age verifier popup">
+      <div class="m-popup--age-verifier__wrapper">
+        <div class="m-popup--age-verifier__content m-popup--age-verifier__content-active m-text-blocks" data-age-verifier-content>
           {%- for block in section.blocks -%}
 						{%- case block.type -%}
 							{%- when 'subheading' -%}
-								<h3 class="f-popup--age-verifier__subtitle h6">{{ block.settings.subheading }}</h3>
+								<h3 class="m-popup--age-verifier__subtitle h6">{{ block.settings.subheading }}</h3>
 							{%- when 'heading' -%}
-								<h2 class="f-popup--age-verifier__title {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
+								<h2 class="m-popup--age-verifier__title {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
 									{{ block.settings.heading }}
 								</h2>
 							{%- when 'text' -%}
-								<div class="rte f-popup--age-verifier__text" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+								<div class="rte m-popup--age-verifier__text" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
 							{%- when 'image' -%}
 								{%- if block.settings.image != blank -%}
 									<div
@@ -49,7 +49,7 @@
 									</div>
 								{%- else -%}
 									<div
-										class="f-image"
+										class="m-image"
 										{% if block.settings.use_custom_image_width %}
 											style="--image-width: {{ block.settings.custom_image_width }}px; margin-left: auto; margin-right: auto;"
 										{% endif %}
@@ -59,7 +59,7 @@
 									</div>
 								{%- endif -%}
 							{%- else -%}
-								<div class="f-popup--age-verifier__button-wrapper" {{ block.shopify_attributes }}>
+								<div class="m-popup--age-verifier__button-wrapper" {{ block.shopify_attributes }}>
 									{% if block.settings.decline_button != blank %}
 										<button class="btn btn--secondary" data-age-verifier-decline-button>
 											{{ block.settings.decline_button }}
@@ -74,15 +74,15 @@
 						{%- endcase -%}
           {%- endfor -%}
         </div>
-        <div class="f-popup--age-verifier__decline-content f-text-blocks hidden" data-age-verifier-decline-content>
+        <div class="m-popup--age-verifier__decline-content m-text-blocks hidden" data-age-verifier-decline-content>
           {% if section.settings.decline_heading != blank %}
-            <h2 class="f-popup--age-verifier__title">{{ section.settings.decline_heading }}</h2>
+            <h2 class="m-popup--age-verifier__title">{{ section.settings.decline_heading }}</h2>
           {% endif %}
           {% if section.settings.decline_content != blank %}
-            <div class="rte f-popup--age-verifier__text">{{ section.settings.decline_content }}</div>
+            <div class="rte m-popup--age-verifier__text">{{ section.settings.decline_content }}</div>
           {% endif %}
           {% if section.settings.return_button != blank %}
-            <button class="f-text-blocks__btn btn btn--secondary" data-age-verifier-return-button>
+            <button class="m-text-blocks__btn btn btn--secondary" data-age-verifier-return-button>
               {{ section.settings.return_button }}
             </button>
           {% endif %}
@@ -96,7 +96,7 @@
 {% schema %}
 {
   "name": "t:sections.age-verifier.name",
-  "class": "f-age-verifier-popup",
+  "class": "m-age-verifier-popup",
   "settings": [
     {
       "type": "paragraph",

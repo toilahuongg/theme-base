@@ -42,7 +42,7 @@
 %}
 <div
   id="{{ section_id }}"
-  class="collapsible-tabs f-section-padding color-{{ section.settings.color_schema }}{{section_class}}{{ custom_class }}"
+  class="collapsible-tabs m-section-padding color-{{ section.settings.color_schema }}{{section_class}}{{ custom_class }}"
   data-section-type="collapsible-tabs"
   data-section-id="{{ section.id }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
@@ -53,7 +53,7 @@
       animation_effect: animation_effect
     %}
     <div
-      class="collapsible-tabs__wrapper f-flex flex-wrap f-grid--gap-{{ section.settings.column_gap }}"
+      class="collapsible-tabs__wrapper m-flex flex-wrap m-grid--gap-{{ section.settings.column_gap }}"
       style="--image-col-width: {{ image_block.settings.image_width | default: 0 | append: '%' }}"
     >
       {%- if image_block != false -%}
@@ -64,41 +64,41 @@
             assign image_animation_effect = image_block.settings.animations
           endif
         -%}
-        <div class="f-column collapsible-tabs__image-col flex flex-col {{ col_alignment_class }}">
+        <div class="m-column collapsible-tabs__image-col flex flex-col {{ col_alignment_class }}">
           <motion-element
             data-motion="{{ image_animation_effect }}"
-            class="block relative overflow-hidden w-full f-image-hover-effect__{{ settings.image_hover_effect }} f-card"
+            class="block relative overflow-hidden w-full m-image-hover-effect__{{ settings.image_hover_effect }} m-card"
           >
             {%- if image_block.settings.image != blank -%}
               {% render 'responsive-image',
                 image: image_block.settings.image,
                 aspect_ratio: image_block.settings.image_ratio,
-                wrapper_class: 'f-image-card__image',
+                wrapper_class: 'm-image-card__image',
                 section_index: section.index
               %}
             {%- else -%}
               {{
                 'image'
-                | placeholder_svg_tag: 'placeholder-svg f-image-card__image'
+                | placeholder_svg_tag: 'placeholder-svg m-image-card__image'
               }}
             {%- endif -%}
             <div
-              class="f-image-card__content f-image-card__content-{{ image_block.settings.layout }}"
+              class="m-image-card__content m-image-card__content-{{ image_block.settings.layout }}"
               style="--color-overlay-alpha: {{ image_block.settings.image_overlay_opacity | default: 0 }}"
             >
               <div
-                class="f-image-card__content-box f-text-blocks"
+                class="m-image-card__content-box m-text-blocks"
                 style="--text-color: {{ image_block.settings.text_color }};"
               >
-                <div class="f-image-card__content-text f-text-blocks">
+                <div class="m-image-card__content-text m-text-blocks">
                   {%- if image_block.settings.sub_heading != blank -%}
-                    <p class="f-image-card__subheading text-subheading">
+                    <p class="m-image-card__subheading text-subheading">
                       {{ image_block.settings.sub_heading }}
                     </p>
                   {%- endif -%}
                   {%- if image_block.settings.heading != blank -%}
                     <h3
-                      class="f-image-card__heading text-current {{ image_block.settings.heading_size }}"
+                      class="m-image-card__heading text-current {{ image_block.settings.heading_size }}"
                       {% if image_block.settings.heading_color != blank
                         and image_block.settings.heading_color
                           != 'rgba(0,0,0,0)'
@@ -114,7 +114,7 @@
                     </h3>
                   {%- endif -%}
                   {%- if image_block.settings.description != blank -%}
-                    <div class="f-image-card__description rte mobile-remove-br">
+                    <div class="m-image-card__description rte mobile-remove-br">
                       {{ image_block.settings.description }}
                     </div>
                   {%- endif -%}
@@ -122,7 +122,7 @@
                 {%- if image_block.settings.button_label != blank -%}
                   <a
                     href="{{ image_block.settings.button_link | default: '#' }}"
-                    class="f-image-card__action no-color-schema btn {{ image_block.settings.button_style }}{% if image_block.settings.button_link == blank %} disabled{% endif %}"
+                    class="m-image-card__action no-color-schema btn {{ image_block.settings.button_style }}{% if image_block.settings.button_link == blank %} disabled{% endif %}"
                   >
                     {{- image_block.settings.button_label -}}
                   </a>
@@ -133,7 +133,7 @@
         </div>
       {% endif %}
       <div
-        class="f-column collapsible-tabs__content-col flex flex-col items-center {{ col_alignment_class }} collapsible-tabs__content-{{ section.settings.content_width }}"
+        class="m-column collapsible-tabs__content-col flex flex-col items-center {{ col_alignment_class }} collapsible-tabs__content-{{ section.settings.content_width }}"
         data-collapsible-parent
       >
         <div class="collapsible-tabs__conntent-wrap w-full">
@@ -164,7 +164,7 @@
                 {%- if block.settings.sub_heading != blank
                   or block.settings.text != blank
                 -%}
-                  <div class="collapsible-tabs__header f-text-blocks">
+                  <div class="collapsible-tabs__header m-text-blocks">
                     {%- if block.settings.sub_heading != blank -%}
                       <motion-element
                         data-motion="{{ animation_effect }}"

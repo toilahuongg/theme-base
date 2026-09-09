@@ -7,7 +7,7 @@ For each stage: owner skill, required inputs, produced artifact, gate evidence, 
 - Inputs: theme root (layout/, templates/, sections/, snippets/, assets/, config/, locales/), git history, any source archives (e.g. Archive.zip).
 - Artifact: docs/source-audit.md.
 - Gate evidence: provenance verdict (ORIGINAL | SKELETON | DAWN | HORIZON | THIRD-PARTY | MIXED | UNVERIFIED) and the licensing-risk section.
-- Failure: verdict other than ORIGINAL/SKELETON -> BLOCKED. Do not proceed. Provenance is never "fixed" by renaming/reformatting/refactoring.
+- Failure: UNVERIFIED -> BLOCKED, do not proceed. DAWN/HORIZON/THIRD-PARTY/MIXED -> REFERENCE-REBUILD mode: source theme is a concept reference only, all code rebuilt from Skeleton/original, G1 re-run on the new codebase before readiness. Provenance is never "fixed" by renaming/reformatting/refactoring.
 
 ## 2. Feature inventory — theme-feature-analyst
 

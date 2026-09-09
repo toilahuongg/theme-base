@@ -34,7 +34,7 @@
 %}
 <div
   id="{{ section_id }}"
-  class="f-recently-viewed f-section-padding color-{{ section.settings.color_schema }}{{ custom_class }}"
+  class="m-recently-viewed m-section-padding color-{{ section.settings.color_schema }}{{ custom_class }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px; "
 >
   <recently-viewed-products data-url="{{ routes.search_url }}?section_id={{ section.id }}&type=product&q=">
@@ -48,8 +48,8 @@
         class="block w-full"
       >
         <div
-          class="f-recently-viewed-flickity f-grid f-grid-{{ section.settings.column_mobile }}-cols md:f-grid-{{ columns_tablet }}-cols lg:f-grid-{{ columns }}-cols f-grid--gap-{{ section.settings.column_gap }} f-grid--row-gap-{{ section.settings.row_gap }} flickity-disable{% if enable_slider %} md:flickity-enable{% endif %} flickity-button-initialized{% if enable_swipe_mobile %} f-swiper f-swiper--no-scrollbar f-swiper--{{ section.settings.column_mobile }}-cols{% endif %}"
-          data-slider-options='{"pageDots": {{ show_dots }}, "prevNextButtons": {{ show_nav }}, "groupCells": true, "cellSelector": ".f-column", "wrapAround": true}'
+          class="m-recently-viewed-flickity m-grid m-grid-{{ section.settings.column_mobile }}-cols md:m-grid-{{ columns_tablet }}-cols lg:m-grid-{{ columns }}-cols m-grid--gap-{{ section.settings.column_gap }} m-grid--row-gap-{{ section.settings.row_gap }} flickity-disable{% if enable_slider %} md:flickity-enable{% endif %} flickity-button-initialized{% if enable_swipe_mobile %} m-swiper m-swiper--no-scrollbar m-swiper--{{ section.settings.column_mobile }}-cols{% endif %}"
+          data-slider-options='{"pageDots": {{ show_dots }}, "prevNextButtons": {{ show_nav }}, "groupCells": true, "cellSelector": ".m-column", "wrapAround": true}'
           data-calc-button-position="true"
           data-slider-columns="{{ columns }}"
           data-slider-columns-tablet="{{ columns_tablet }}"
@@ -62,7 +62,7 @@
             {%- assign id = parsed_term | split: 'id:' | last | times: 1 -%}
             {%- for product in search.results -%}
               {%- if product.id == id -%}
-                <div class="f-column">
+                <div class="m-column">
                   {% render 'product-card', product: product %}
                 </div>
               {%- endif -%}

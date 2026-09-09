@@ -7,10 +7,10 @@
 .uneven-image-cards__col-image_with_text:has(.btn--underline) {
   --text-blocks-gap: 1.2rem;
 }
-.uneven-image-cards__col-image_with_text:has(.btn--underline) .f-text-blocks {
+.uneven-image-cards__col-image_with_text:has(.btn--underline) .m-text-blocks {
   --text-btn-gap: 1.2rem;
 }
-.uneven-image-cards__col-image_with_text .f-text-blocks {
+.uneven-image-cards__col-image_with_text .m-text-blocks {
   --text-btn-gap: 2rem;
   margin-top: var(--text-block-top, 2rem);
 }

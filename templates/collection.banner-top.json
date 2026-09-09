@@ -44,7 +44,7 @@
     "product-grid": {
       "type": "main-collection-product-grid",
       "custom_css": [
-        ".f-facets__block-header,.btn--filter-sort {text-transform: capitalize;}"
+        ".m-facets__block-header,.btn--filter-sort {text-transform: capitalize;}"
       ],
       "settings": {
         "container": "container",

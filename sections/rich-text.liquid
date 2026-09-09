@@ -20,12 +20,12 @@
 %}
 <div
   id="{{ section_id }}"
-  class="rich-text{{ custom_class }} f-section-padding color-{{ section.settings.color_schema }}"
+  class="rich-text{{ custom_class }} m-section-padding color-{{ section.settings.color_schema }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
   <div class="{{ container }}">
     <div class="rich-text__wrapper">
-      <div class="rich-text__content f-text-blocks text-{{ section.settings.text_alignment }}">
+      <div class="rich-text__content m-text-blocks text-{{ section.settings.text_alignment }}">
         {%- for block in section.blocks -%}
           {% case block.type %}
             {%- when 'heading' -%}
@@ -81,7 +81,7 @@
                 <motion-element
                   data-motion="{{ animation_effect }}"
                   data-motion-delay="{{ motion_delay }}"
-                  class="block f-text-blocks__btn"
+                  class="block m-text-blocks__btn"
                 >
                   <a
                     class="btn {{ block.settings.button_style }} {{ block.settings.button_size }}"

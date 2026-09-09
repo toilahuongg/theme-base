@@ -8,26 +8,26 @@
 -%}
 <countdown-timer 
   id="countdown-timer-{{ id }}"
-  class="f-countdown-timer f-hidden no-js-hidden f-countdown-timer--{{ style }}"
+  class="m-countdown-timer m-hidden no-js-hidden m-countdown-timer--{{ style }}"
   data-type="{{ type }}"
   data-duration="{{ duration }}"
   data-due-date="{{ time }}"
 >
-  <div class="f-countdown-timer__inner{% if style == 'minimal' %} f-countdown-timer__spacing--{{ number_spacing | default: 'small' }}{% endif %} items-center justify-center">
-    <div class="f-countdown-timer__block">
-      <div class="f-countdown-timer__time f-countdown-timer__day {{ number_size }}" data-timer-day>00</div>
+  <div class="m-countdown-timer__inner{% if style == 'minimal' %} m-countdown-timer__spacing--{{ number_spacing | default: 'small' }}{% endif %} items-center justify-center">
+    <div class="m-countdown-timer__block">
+      <div class="m-countdown-timer__time m-countdown-timer__day {{ number_size }}" data-timer-day>00</div>
       <span class="text-subtext text-capitalize">{{ 'general.countdown-timer.days' | t }}</span>
     </div>
-    <div class="f-countdown-timer__block">
-      <div class="f-countdown-timer__time f-countdown-timer__hour {{ number_size }}" data-timer-hour>00</div>
+    <div class="m-countdown-timer__block">
+      <div class="m-countdown-timer__time m-countdown-timer__hour {{ number_size }}" data-timer-hour>00</div>
       <span class="text-subtext text-capitalize">{{ 'general.countdown-timer.hours' | t }}</span>
     </div>
-    <div class="f-countdown-timer__block">
-      <div class="f-countdown-timer__time f-countdown-timer__minute {{ number_size }}" data-timer-minute>00</div>
+    <div class="m-countdown-timer__block">
+      <div class="m-countdown-timer__time m-countdown-timer__minute {{ number_size }}" data-timer-minute>00</div>
       <span class="text-subtext text-capitalize">{{ 'general.countdown-timer.minutes' | t }}</span>
     </div>
-    <div class="f-countdown-timer__block">
-      <div class="f-countdown-timer__time f-countdown-timer__sec {{ number_size }}" data-timer-second>00</div>
+    <div class="m-countdown-timer__block">
+      <div class="m-countdown-timer__time m-countdown-timer__sec {{ number_size }}" data-timer-second>00</div>
       <span class="text-subtext text-capitalize">{{ 'general.countdown-timer.seconds' | t }}</span>
     </div>
   </div>

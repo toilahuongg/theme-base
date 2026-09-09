@@ -5,11 +5,11 @@
   assign open_first_group = section.settings.open_first_group
   assign show_results_count = section.settings.show_results_count
 -%}
-<div class="f-drawer f-drawer--left f-drawer-facets f-facets--{{ sidebar_position }}">
-  <div class="f-drawer__content w-full focus-inset" tabindex="-1">
+<div class="m-drawer m-drawer--left m-drawer-facets m-facets--{{ sidebar_position }}">
+  <div class="m-drawer__content w-full focus-inset" tabindex="-1">
     {% if results.filters != empty %}
-      <div class="f-facets__header items-center justify-between">
-        <h3 class="f-facets__heading h5">
+      <div class="m-facets__header items-center justify-between">
+        <h3 class="m-facets__heading h5">
           {{ 'products.facets.filter_by_label' | t }}
         </h3>
         <div class="collection-product-count" role="status" data-product-count>
@@ -34,10 +34,10 @@
         </div>
       </div>
     {% endif %}
-    <div class="f-drawer__inner scroll-container">
-      <div class="f-facets__container f-facets__container--{{ sidebar_position }}">
-        <div class="f-facets">
-          <form id="FacetFiltersFormNoJS" class="f-facets__form">
+    <div class="m-drawer__inner scroll-container">
+      <div class="m-facets__container m-facets__container--{{ sidebar_position }}">
+        <div class="m-facets">
+          <form id="FacetFiltersFormNoJS" class="m-facets__form">
             {%- if results.terms -%}
               <input
                 type="hidden"
@@ -47,15 +47,15 @@
               <input name="options[prefix]" type="hidden" value="last">
             {%- endif -%}
 
-            <div class="f-facets__wrapper" data-facets-wrapper>
+            <div class="m-facets__wrapper" data-facets-wrapper>
               {%- if results.filters != empty
                 and sidebar_position != 'drawer'
               -%}
-                <h3 class="f-facets__heading visually-hidden">
+                <h3 class="m-facets__heading visually-hidden">
                   {{ 'products.facets.filter_by_label' | t }}
                 </h3>
               {%- endif -%}
-              <div class="f-facets__blocks">
+              <div class="m-facets__blocks">
                 {%- for filter in results.filters -%}
                   {% liquid
                     assign isOpen = false
@@ -69,7 +69,7 @@
                     endif
                   %}
 
-                  <div class="f-facets__block" data-index="{{ forloop.index }}">
+                  <div class="m-facets__block" data-index="{{ forloop.index }}">
                     <details
                       class="collapsible__item"
                       {% if isOpen or group_collapsible == false %}
@@ -77,7 +77,7 @@
                       {% endif %}
                     >
                       <summary
-                        class="f-facets__block-header focus-inset m-0 {{ heading_size | default: 'h5' }}"
+                        class="m-facets__block-header focus-inset m-0 {{ heading_size | default: 'h5' }}"
                         data-trigger
                       >
                         <span class="font-body-bolder text-button">
@@ -104,14 +104,14 @@
                           </span>
                         {% endif %}
                       </summary>
-                      <div class="f-facets__block-content">
+                      <div class="m-facets__block-content">
                         {% case filter.type %}
                           {% when 'list' %}
-                            <ul class="list-none f-facets__list" role="list">
+                            <ul class="list-none m-facets__list" role="list">
                               {%- for value in filter.values -%}
                                 {% assign disabled = false %}
                                 {% capture label %}
-                                    {{ value.label | escape }} {% if show_results_count %}<span class="f-facets__results-count">({{ value.count }})</span>{% endif %}
+                                    {{ value.label | escape }} {% if show_results_count %}<span class="m-facets__results-count">({{ value.count }})</span>{% endif %}
                                   {% endcapture %}
                                 {% capture id %}Filter-nojs-{{ form_id }}-{{ filter.label | escape }}-{{ forloop.index }}{% endcapture %}
                                 {% if value.count == 0
@@ -119,10 +119,10 @@
                                 %}
                                   {% assign disabled = true %}
                                 {% endif %}
-                                <li class="f-facets__item">
+                                <li class="m-facets__item">
                                   <label
                                     for="{{ id }}"
-                                    class="f-checkbox{% if disabled %} f-checkbox--disabled{% endif %}"
+                                    class="m-checkbox{% if disabled %} m-checkbox--disabled{% endif %}"
                                   >
                                     <input
                                       type="checkbox"
@@ -161,13 +161,13 @@
                               assign to_value = to_value | default: max
                               assign price_gap = 5
                             %}
-                            <div class="f-facets-price">
-                              <div class="f-facets-price__inputs">
-                                <div class="f-facets-price__field">
+                            <div class="m-facets-price">
+                              <div class="m-facets-price__inputs">
+                                <div class="m-facets-price__field">
                                   <span class="visually-hidden">
                                     {{- 'products.facets.from' | t -}}
                                   </span>
-                                  <span class="f-facets-price__field-currency">
+                                  <span class="m-facets-price__field-currency">
                                     {{- cart.currency.symbol -}}
                                   </span>
                                   <input
@@ -185,14 +185,14 @@
                                     data-type="min-input"
                                   >
                                 </div>
-                                <span class="f-facets-price__to">
+                                <span class="m-facets-price__to">
                                   {{- 'products.facets.to' | t -}}
                                 </span>
-                                <div class="f-facets-price__field">
+                                <div class="m-facets-price__field">
                                   <span class="visually-hidden">
                                     {{- 'products.facets.to' | t -}}
                                   </span>
-                                  <span class="f-facets-price__field-currency">
+                                  <span class="m-facets-price__field-currency">
                                     {{- cart.currency.symbol -}}
                                   </span>
                                   <input
@@ -217,7 +217,7 @@
                     </details>
                   </div>
                 {%- endfor -%}
-                <div class="f-facets__block f-facets__block-sortby md:hidden">
+                <div class="m-facets__block m-facets__block-sortby md:hidden">
                   <div class="flex items-center">
                     <label for="facets-SortBy" class="h5 whitespace-nowrap">
                       {{- 'products.facets.sort_by_label' | t }}:</label

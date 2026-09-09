@@ -116,7 +116,7 @@
 <div
   data-section-type="collection-banner"
   data-section-id="{{ section.id }}"
-  class="f-section-padding collection-banner{% if show_collection_image %} collection-banner--{{ image_position }} collection-banner--{{ image_height }}{% else %} collection-banner--no-bg{% endif %}{% if color_schema_inherit %} color-scheme-inherit{% endif %} {{ collection.handle }}"
+  class="m-section-padding collection-banner{% if show_collection_image %} collection-banner--{{ image_position }} collection-banner--{{ image_height }}{% else %} collection-banner--no-bg{% endif %}{% if color_schema_inherit %} color-scheme-inherit{% endif %} {{ collection.handle }}"
 >
   <div class="{{ section.settings.container }}">
     <div class="collection-banner__wrapper {{ wrapper_class }} text-{{ text_alignment }} color-{{ section.settings.color_schema }}">
@@ -170,7 +170,7 @@
                     srcset="{{ image_banner_mobile | image_url: width: '400x' }} 400w, {{ image_banner_mobile | image_url: width: '600x' }} 600w, {{ image_banner_mobile | image_url: width: '800x' }} 800w, {{ image_banner_mobile | image_url: width: '1000x' }} 1000w"
                   >
                 {%- endif -%}
-                <div class="f-image w-full h-full">
+                <div class="m-image w-full h-full">
                   {{
                     image_banner
                     | image_url: width: 1500

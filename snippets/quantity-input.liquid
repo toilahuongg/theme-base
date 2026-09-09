@@ -10,15 +10,15 @@
   endif
 -%}
 <quantity-popover>
-<div class="f-quantity__wrapper {{ class }}">
+<div class="m-quantity__wrapper {{ class }}">
   <label
     class="{% if show_label %}form-label{% else %}visually-hidden{% endif %} font-body-bolder"
     for="Quantity-{{ section_id | append: index }}"
   >
     {{- 'products.product.quantity.label' | t -}}
   </label>
-  <quantity-input class="f-quantity" data-product-id="{{ product_id | default: product.id }}">
-    <button class="f-quantity__button btn btn--plain no-js-hidden" name="minus" type="button">
+  <quantity-input class="m-quantity" data-product-id="{{ product_id | default: product.id }}">
+    <button class="m-quantity__button btn btn--plain no-js-hidden" name="minus" type="button">
       <span class="visually-hidden">
         {{- 'products.product.quantity.decrease' | t: product: product_title | escape -}}
       </span>
@@ -27,7 +27,7 @@
       </svg>
     </button>
     <input
-      class="f-quantity__input quantity__input form-control"
+      class="m-quantity__input quantity__input form-control"
       type="number"
       name="{{ name | default: 'quantity' }}"
       id="Quantity-{{ section_id }}-{{ item.index | plus:1 }}"
@@ -48,7 +48,7 @@
         aria-label="{{ 'products.product.quantity.input_label' | t: product: input_label | escape }}"
       {% endif %}
     >
-    <button class="f-quantity__button btn btn--plain no-js-hidden" name="plus" type="button">
+    <button class="m-quantity__button btn btn--plain no-js-hidden" name="plus" type="button">
       <span class="visually-hidden">
         {{- 'products.product.quantity.increase' | t: product: product_title | escape -}}
       </span>

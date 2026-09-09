@@ -1,12 +1,12 @@
-if (!customElements.get("f-cart-goal")) {
+if (!customElements.get("m-cart-goal")) {
   class FCartGoal extends HTMLElement {
     constructor() {
       super();
 
       this.selectors = {
-        cartDrawer: ".f-cart-drawer__inner",
+        cartDrawer: ".m-cart-drawer__inner",
         leftToSpend: "[data-left-to-spend]",
-        cartGoalTitle: ".f-cartgoal__title",
+        cartGoalTitle: ".m-cartgoal__title",
       };
 
       this.confettiShow = false;
@@ -49,7 +49,7 @@ if (!customElements.get("f-cart-goal")) {
 
       if (this.cartTotal >= this.goal) {
         this.style.setProperty("--progress", `${this.percent}%`);
-        this.classList.add("f-cartgoal--done", "shakeY");
+        this.classList.add("m-cartgoal--done", "shakeY");
         this.dataset.total = this.cartTotal;
       } else {
         let spend = (this.goal - this.cartTotal) * 100;
@@ -57,7 +57,7 @@ if (!customElements.get("f-cart-goal")) {
           spend,
           this.money_format
         );
-        this.classList.remove("f-cartgoal--done", "shakeY");
+        this.classList.remove("m-cartgoal--done", "shakeY");
         this.style.setProperty("--progress", `${this.percent}%`);
         this.dataset.total = this.cartTotal;
       }
@@ -87,5 +87,5 @@ if (!customElements.get("f-cart-goal")) {
     }
   }
 
-  customElements.define("f-cart-goal", FCartGoal);
+  customElements.define("m-cart-goal", FCartGoal);
 }

@@ -1,24 +1,24 @@
-.f-template-search__header {
+.m-template-search__header {
   margin-bottom: 50px;
 }
-.f-template-search__search {
+.m-template-search__search {
   max-width: 480px;
   margin: 0 auto;
 }
-.f-template-search__form .form-field {
+.m-template-search__form .form-field {
   position: relative;
 }
-.f-template-search__form svg.icon {
+.m-template-search__form svg.icon {
   width: 16px;
   height: 16px;
 }
-.f-template-search__form input {
+.m-template-search__form input {
   padding-inline-end: 50px;
 }
-.f-template-search__form input::-webkit-search-decoration, .f-template-search__form input::-webkit-search-cancel-button, .f-template-search__form input::-webkit-search-results-button, .f-template-search__form input::-webkit-search-results-decoration {
+.m-template-search__form input::-webkit-search-decoration, .m-template-search__form input::-webkit-search-cancel-button, .m-template-search__form input::-webkit-search-results-button, .m-template-search__form input::-webkit-search-results-decoration {
   -webkit-appearance: none;
 }
-.f-template-search__form button {
+.m-template-search__form button {
   background: transparent;
   border: none;
   align-items: center;
@@ -34,10 +34,10 @@
   top: 0;
   width: 45px;
 }
-.f-template-search__status p:first-child {
+.m-template-search__status p:first-child {
   margin-top: 2rem;
 }
-.f-template-search__status .h5 {
+.m-template-search__status .h5 {
   letter-spacing: 1.15px;
 }
 
@@ -46,7 +46,7 @@ predictive-search {
   display: block;
   text-align: end;
 }
-predictive-search .f-predictive-search:not(.f-predictive-search--drawer) {
+predictive-search .m-predictive-search:not(.m-predictive-search--drawer) {
   position: absolute;
   top: 100%;
   inset-inline-start: 0;
@@ -62,20 +62,20 @@ predictive-search .f-predictive-search:not(.f-predictive-search--drawer) {
   margin-top: -1px;
 }
 @media (min-width: breakpoint-min("md")) {
-  predictive-search .f-predictive-search:not(.f-predictive-search--drawer) {
+  predictive-search .m-predictive-search:not(.m-predictive-search--drawer) {
     max-height: 45vh;
   }
 }
 
-main-search .f-predictive-search__result-group:first-child {
+main-search .m-predictive-search__result-group:first-child {
   border: 0;
   padding-top: 0;
 }
 
-.f-template-search__field {
+.m-template-search__field {
   position: relative;
 }
-.f-template-search__field .btn {
+.m-template-search__field .btn {
   position: absolute;
   inset-inline-end: 1.5rem;
   top: 0;

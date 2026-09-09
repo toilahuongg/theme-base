@@ -2,7 +2,7 @@ class FavoriteProducts extends HTMLElement {
 	constructor() {
 		super()
 		this.selectors = {
-			images: ['.f-favorite-products__image'],
+			images: ['.m-favorite-products__image'],
 			selected: '.is-selected',
 			flickity: 'flickity-component'
 		}

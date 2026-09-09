@@ -58,14 +58,14 @@
 %}
 <div
   id="{{ section_id }}"
-  class="image-with-text overflow-hidden {{ custom_class }} f-section-padding color-{{ section.settings.color_schema }}"
+  class="image-with-text overflow-hidden {{ custom_class }} m-section-padding color-{{ section.settings.color_schema }}"
 >
   <div class="{{ container }}">
-    <div class="f-flex items-{{ section.settings.vertical_alignment }} f-grid--gap-{{ section.settings.column_gap }} f-grid--row-gap-{{ section.settings.row_gap }} flex-wrap{% if section.settings.image_position == 'right' %} flex-row-reverse image-with-text--reverse{% endif %}">
-      <div class="block f-column {{ image_width }}">
+    <div class="m-flex items-{{ section.settings.vertical_alignment }} m-grid--gap-{{ section.settings.column_gap }} m-grid--row-gap-{{ section.settings.row_gap }} flex-wrap{% if section.settings.image_position == 'right' %} flex-row-reverse image-with-text--reverse{% endif %}">
+      <div class="block m-column {{ image_width }}">
         <motion-element
           data-motion="{{ animation_effect }}"
-          class="image-with-text__media f-card block"
+          class="image-with-text__media m-card block"
         >
           {%- if section.settings.image != blank -%}
             {% render 'responsive-image',
@@ -75,15 +75,15 @@
               index: 1
             %}
           {%- else -%}
-            <div class="f-image" style="--aspect-ratio: 1/1">
+            <div class="m-image" style="--aspect-ratio: 1/1">
               {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
             </div>
           {%- endif -%}
         </motion-element>
       </div>
-      <div class="f-column f-column__image flex-1">
+      <div class="m-column m-column__image flex-1">
         <div
-          class="image-with-text__content f-text-blocks f-blocks-padding f-align-content-container--{{ section.settings.align_content_container }}"
+          class="image-with-text__content m-text-blocks m-blocks-padding m-align-content-container--{{ section.settings.align_content_container }}"
           style="--padding-left: {{ section.settings.padding_left }}px;--padding-right: {{ section.settings.padding_right }}px;--mobile-padding-left: {{ section.settings.mobile_padding_left }}px;--mobile-padding-right: {{ section.settings.mobile_padding_right }}px;"
         >
           {%- for block in section.blocks -%}
@@ -140,7 +140,7 @@
                         role="link"
                         aria-disabled="true"
                       {% endif %}
-                      class="btn f-text-blocks__btn {{ block.settings.button_style }} {{ block.settings.button_size }}"
+                      class="btn m-text-blocks__btn {{ block.settings.button_style }} {{ block.settings.button_size }}"
                       {{ block.shopify_attributes }}
                     >
                       {{ block.settings.button_label | escape }}

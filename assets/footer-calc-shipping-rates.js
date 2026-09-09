@@ -46,7 +46,7 @@ if (!customElements.get('calc-shipping-rate-block')) {
 				zipCode: '[name="address[zip]"]',
 				province: '[name="address[province]"]',
 				country: '[name="address[country]"]',
-				shippingRates: '.f-cart-drawer__shipping-message',
+				shippingRates: '.m-cart-drawer__shipping-message',
 				countries: 'template'
 			}
 			this.initAddress = false

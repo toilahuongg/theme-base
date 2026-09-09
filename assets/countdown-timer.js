@@ -69,7 +69,7 @@ if (!customElements.get("countdown-timer")) {
             this.updateDisplay(remainingTime);
           }
         }, 1000);
-        this.classList.remove("f-hidden");
+        this.classList.remove("m-hidden");
       }
 
       updateDisplay(remainingTime) {
@@ -103,7 +103,7 @@ if (!customElements.get("countdown-timer")) {
         if (this.loop) {
           this.beginCountdown();
         } else {
-          this.classList.add("f-hidden");
+          this.classList.add("m-hidden");
         }
       }
 

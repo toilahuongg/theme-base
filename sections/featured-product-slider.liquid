@@ -65,7 +65,7 @@
 %}
 <div
   id="{{ section_id }}"
-  class="f-featured-product-slider{{ custom_class }} f-section-padding color-{{ section.settings.color_schema }} overflow-hidden"
+  class="m-featured-product-slider{{ custom_class }} m-section-padding color-{{ section.settings.color_schema }} overflow-hidden"
   data-section-type="featured-product-slider"
   data-section-id="{{ section.id }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
@@ -75,13 +75,13 @@
       animation_effect: animation_effect,
       section_settings: section.settings
     %}
-    <div class="f-featured-product-slider__wrapper relative">
+    <div class="m-featured-product-slider__wrapper relative">
       <flickity-component
-        id="f-featured-product-slider-{{ section.id }}"
+        id="m-featured-product-slider-{{ section.id }}"
         class="flickity-button-initialized flickity-controls-group flickity-controls-group__bottom flickity-controls-group__bottom--left {{ pagination_class }} flickity-static{{ flickity_classes }}"
         data-enable-slider="true"
         data-slider-columns="1"
-        data-slider-options='{"pageDots": false, "prevNextButtons": {{ show_nav }}, "autoPlay": {{ autoplay }}, "wrapAround": true, "percentPosition": true, "contain": true, "cellSelector": ".f-featured-product__slide", "adaptiveHeight": false, "dragThreshold": 20}'
+        data-slider-options='{"pageDots": false, "prevNextButtons": {{ show_nav }}, "autoPlay": {{ autoplay }}, "wrapAround": true, "percentPosition": true, "contain": true, "cellSelector": ".m-featured-product__slide", "adaptiveHeight": false, "dragThreshold": 20}'
         {% if show_dots and section.blocks.size > 1 %}
           style="{{ styles }}"
         {% endif %}
@@ -96,13 +96,13 @@
 
             assign item_motion_delay = motion_delay
           -%}
-          <div class="f-featured-product__slide">
-            <div class="f-featured-product__slide--wrapper">
-              <div class="f-featured-product__slide--images">
+          <div class="m-featured-product__slide">
+            <div class="m-featured-product__slide--wrapper">
+              <div class="m-featured-product__slide--images">
                 <motion-element
                   data-motion="{{ animation_effect }}"
                   data-motion-delay="{{ item_motion_delay }}"
-                  class="block f-featured-product__custom--image"
+                  class="block m-featured-product__custom--image"
                 >
                   {%- if custom_image -%}
                     {%- render 'responsive-image',
@@ -111,12 +111,12 @@
                       index: forloop.index
                     -%}
                   {%- else -%}
-                    <div class="f-image" style="--aspect-ratio: 3/4;">
+                    <div class="m-image" style="--aspect-ratio: 3/4;">
                       {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
                     </div>
                   {%- endif -%}
                 </motion-element>
-                <div class="f-featured-product__product--image">
+                <div class="m-featured-product__product--image">
                   {%- assign product_image_motion_delay = item_motion_delay
                     | plus: 100
                   -%}
@@ -132,7 +132,7 @@
                         index: forloop.index
                       %}
                     {%- else -%}
-                      <div class="f-image" style="--aspect-ratio: 3/4;">
+                      <div class="m-image" style="--aspect-ratio: 3/4;">
                         {{
                           'product-1'
                           | placeholder_svg_tag: 'placeholder-svg'
@@ -142,8 +142,8 @@
                   </motion-element>
                 </div>
               </div>
-              <div class="f-featured-product__slide--contents">
-                <h2 class="f-featured-product__title h1">
+              <div class="m-featured-product__slide--contents">
+                <h2 class="m-featured-product__title h1">
                   <motion-element
                     data-motion="{{ animation_effect }}"
                     data-motion-delay="{{ item_motion_delay }}"
@@ -160,17 +160,17 @@
                 <motion-element
                   data-motion="{{ animation_effect }}"
                   data-motion-delay="{{ item_motion_delay }}"
-                  class="block f-featured-product__prices h5"
+                  class="block m-featured-product__prices h5"
                 >
                   {%- if product != blank -%}
                     {%- render 'price', product: product -%}
                   {%- else -%}
-                    <span class="f-price">
-                      <div class="f-price__regular">
+                    <span class="m-price">
+                      <div class="m-price__regular">
                         <span class="visually-hidden visually-hidden--inline">
                           {{- 'products.product.price.regular_price' | t -}}
                         </span>
-                        <span class="f-price-item f-price-item--regular">
+                        <span class="m-price-item m-price-item--regular">
                           {{- 1999 | money -}}
                         </span>
                       </div>
@@ -181,7 +181,7 @@
                 <motion-element
                   data-motion="{{ animation_effect }}"
                   data-motion-delay="{{ item_motion_delay }}"
-                  class="block f-featured-product__description"
+                  class="block m-featured-product__description"
                 >
                   {%- if custom_description != blank -%}
                     {{- custom_description -}}

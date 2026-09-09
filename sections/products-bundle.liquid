@@ -1,7 +1,7 @@
 {{ 'products-bundle.css' | asset_url | stylesheet_tag }}
 {{ 'component-lookbook-card.css' | asset_url | stylesheet_tag }}
 {%- liquid
-  assign section_class = 'f-section-padding color-' | append: section.settings.color_schema
+  assign section_class = 'm-section-padding color-' | append: section.settings.color_schema
   assign main_class = 'products-bundle block ' | append: section.settings.container
   assign image_position = section.settings.image_position
   assign desktop_content_position = section.settings.desktop_content_position
@@ -36,7 +36,7 @@
     <div class="products-bundle__grid products-bundle__grid--{{ image_position }} lg:items-{{ desktop_content_position }}">
       <div class="products-bundle__grid-item">
         <div
-          class="products-bundle__content w-full f-blocks-padding{% if section.settings.container == 'container-full' %} f-align-content-container--{{ section.settings.align_content_container }}{% endif %}"
+          class="products-bundle__content w-full m-blocks-padding{% if section.settings.container == 'container-full' %} m-align-content-container--{{ section.settings.align_content_container }}{% endif %}"
           style="--padding-left: {{ section.settings.padding_left }}px;--padding-right: {{ section.settings.padding_right }}px;--mobile-padding-left: {{ section.settings.mobile_padding_left }}px;--mobile-padding-right: {{ section.settings.mobile_padding_right }}px;"
         >
           {%- if section.settings.subheading != blank -%}
@@ -88,7 +88,7 @@
                         <div class="products-bundle__image-wrapper">
                           <a href="{{ card_product.url }}">
                             <div
-                              class="f-image"
+                              class="m-image"
                               style="--aspect-ratio: {{ card_product.featured_image.aspect_ratio }};"
                             >
                               {{
@@ -210,14 +210,14 @@
           </div>
         </div>
       </div>
-      <div class="products-bundle__grid-item relative f-card">
+      <div class="products-bundle__grid-item relative m-card">
         <motion-element
           data-motion="{{ animation_effect }}"
           data-motion-delay="{{ motion_delay }}"
           class="block products-bundle__image"
         >
           <div
-            class="f-image"
+            class="m-image"
             {% if section.settings.image != blank %}
               style="--aspect-ratio: {{ section.settings.image.aspect_ratio }};"
             {% endif %}
@@ -247,16 +247,16 @@
           -%}
           <lookbook-icon
             style="top: {{ top }}%; left: {{ left }}%;"
-            class="absolute f-lookbook-card__annotation"
+            class="absolute m-lookbook-card__annotation"
           >
             <div
               data-block-id="{{ block.id }}"
-              class="f-lookbook-card__pin f-lookbook-card__pin--{{ block.settings.hotspot_color }}"
+              class="m-lookbook-card__pin m-lookbook-card__pin--{{ block.settings.hotspot_color }}"
             >
               <motion-element
                 data-motion="zoom-in-lg"
                 data-motion-delay="{{ icon_motion_delay }}"
-                class="f-lookbook-card__pin-icon flex items-center justify-center"
+                class="m-lookbook-card__pin-icon flex items-center justify-center"
               >
                 {{- forloop.index -}}
               </motion-element>

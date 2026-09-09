@@ -122,16 +122,6 @@
           {%- if is_size and show_size_chart -%}
             {{- size_chart_button -}}
           {%- endif -%}
-          {% if is_size %}
-            <button
-              class="open-size-chart open-foxkit-sizechart btn btn--with-icon btn--plain foxkit-hidden"
-              aria-label="{{ 'products.product.open_size_chart' | t }}"
-            >
-              <span
-                ><u>{{ 'products.product.open_size_chart' | t }}</u></span
-              >
-            </button>
-          {% endif %}
         </div>
       {%- endfor -%}
       <script type="application/json" data-selected-variant>
