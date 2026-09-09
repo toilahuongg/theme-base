@@ -289,7 +289,7 @@
   .m-slideshow--mobile-stack .m-slideshow__content-wrapper {
     position: static;
     display: none;
-    padding: 2rem 1.5rem 0;
+    padding: 2rem 1.5rem 2.4rem;
   }
   .m-slideshow--mobile-stack .m-slideshow__content-wrapper.m-slideshow__content--out {
     display: block;
@@ -312,6 +312,8 @@
   }
   .m-slideshow--mobile-stack .m-slideshow__content .m-slideshow__btn-group {
     margin-top: 2.4rem;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   .m-slideshow__slide-bg {
     position: static;

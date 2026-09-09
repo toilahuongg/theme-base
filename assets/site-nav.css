@@ -212,6 +212,9 @@
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
 }
+.m-site-nav__mega-addon--collection .m-site-nav__mega-addon--wrapper {
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
 .m-site-nav__mega-addon .product-card__title {
   color: currentColor;
 }

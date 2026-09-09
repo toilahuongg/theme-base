@@ -88,12 +88,12 @@
             "container": "inherit",
             "columns": 5,
             "addon_column": 100,
-            "collection_1": "bracelets",
+            "collection_1": "necklaces",
             "collection_2": "earrings",
-            "collection_3": "necklaces",
-            "collection_4": "rings",
-            "collection_5": "bridal",
-            "collection_6": "gifts"
+            "collection_3": "rings",
+            "collection_4": "bracelets",
+            "collection_5": "gifts",
+            "collection_6": ""
           }
         }
       },
