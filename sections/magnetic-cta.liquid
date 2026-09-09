@@ -1,0 +1,373 @@
+{{ 'magnetic-cta.css' | asset_url | stylesheet_tag }}
+<script
+  src="{{ 'magnetic-cta.js' | asset_url }}"
+  defer="defer"
+></script>
+{%- liquid
+  assign section_id = section.settings.custom_id | default: section.id
+  assign container = section.settings.container
+  assign custom_class = section.settings.custom_class
+
+  unless custom_class == blank
+    assign custom_class = custom_class | prepend: ' '
+  endunless
+
+  assign animation_effect = settings.animations
+  if animation_effect != 'none' and section.settings.animations != 'inherit'
+    assign animation_effect = section.settings.animations
+  endif
+-%}
+<style>
+  .section-{{ section.id }} {
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  {%- if section.settings.heading_font_size > 0 -%}
+    .section-{{ section.id }} .magnetic-cta__title {
+      font-size: min({{ section.settings.heading_font_size }}px, 17vw);
+    }
+  {%- endif -%}
+</style>
+{% render 'divider',
+  show_divider: section.settings.show_section_divider,
+  divider_width: section.settings.divider_width
+%}
+<div
+  id="{{ section_id }}"
+  class="section-{{ section.id }} magnetic-cta magnetic-cta--{{ section.settings.layout }} m-section-padding color-{{ section.settings.color_scheme }}{{ custom_class }}"
+>
+  <motion-element
+    data-motion="{{ animation_effect }}"
+    class="block {{ container }}"
+  >
+    {%- if section.settings.layout == 'magnetic' -%}
+      <magnetic-cta class="block magnetic-cta__inner">
+        {%- if section.settings.button_link != blank -%}
+          <a class="magnetic-cta__button" href="{{ section.settings.button_link }}">
+        {%- else -%}
+          <button class="magnetic-cta__button" type="button">
+        {%- endif -%}
+          <span class="magnetic-cta__label">
+            {{- section.settings.button_label | default: 'Start' -}}
+            {%- if section.settings.show_arrow -%}&nbsp;↗{%- endif -%}
+          </span>
+        {%- if section.settings.button_link != blank -%}
+          </a>
+        {%- else -%}
+          </button>
+        {%- endif -%}
+      </magnetic-cta>
+    {%- else -%}
+      <div class="magnetic-cta__minimal">
+        <div>
+          {%- if section.settings.subheading != blank -%}
+            <div class="magnetic-cta__eyebrow text-subheading">{{ section.settings.subheading }}</div>
+          {%- endif -%}
+          {%- if section.settings.heading != blank -%}
+            <h2 class="magnetic-cta__title {{ section.settings.heading_size }}">
+              {%- render 'highlight-text',
+                hl_text: section.settings.heading,
+                hl_style: section.settings.highlight_style,
+                enable_hl_text_color: section.settings.enable_highlight_text_color
+              -%}
+            </h2>
+          {%- endif -%}
+        </div>
+        <div class="magnetic-cta__row">
+          {%- if section.settings.description != blank -%}
+            <p class="magnetic-cta__text">{{ section.settings.description }}</p>
+          {%- endif -%}
+          {%- if section.settings.button_label != blank -%}
+            <a
+              class="magnetic-cta__link"
+              href="{{ section.settings.button_link | default: '#' }}"
+              {% if section.settings.button_link == blank %}
+                aria-disabled="true"
+              {% endif %}
+            >
+              {{- section.settings.button_label -}}
+              {%- if section.settings.show_arrow -%}&nbsp;↗{%- endif -%}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </motion-element>
+</div>
+{% schema %}
+{
+  "name": "Magnetic CTA",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.common.general.name"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "t:sections.common.container.label",
+      "options": [
+        {
+          "value": "container",
+          "label": "t:sections.common.container.fixed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "t:sections.common.container.stretched"
+        },
+        {
+          "value": "container-full",
+          "label": "t:sections.common.container.fullwidth"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.common.color_schema.label",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "magnetic",
+          "label": "Magnetic circle"
+        },
+        {
+          "value": "minimal",
+          "label": "Minimal headline"
+        }
+      ],
+      "default": "minimal"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Headline",
+      "info": "Highlight text with *em* tags",
+      "default": "Make it <em>memorable</em>."
+    },
+    {
+      "type": "select",
+      "id": "highlight_style",
+      "label": "Highlight style",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "drawer_line",
+          "label": "Drawer line"
+        },
+        {
+          "value": "underline",
+          "label": "Underline"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_highlight_text_color",
+      "label": "Enable highlight text color"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:sections.common.text_size.heading.label",
+      "default": "h-xl",
+      "options": [
+        {
+          "value": "h3",
+          "label": "t:sections.common.text_size.options__h3.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.common.text_size.options__h2.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.common.text_size.options__h1.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.common.text_size.options__h0.label"
+        },
+        {
+          "value": "h-xl",
+          "label": "t:sections.common.text_size.options__hd1.label"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Custom heading size",
+      "info": "Leave 0 to use the selected heading size.",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "info": "Shown beside the link in the Minimal layout."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrow",
+      "label": "Show arrow",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.common.section_padding.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:sections.common.section_padding.top_padding.label",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:sections.common.section_padding.bottom_padding.label",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.common.divider.section_heading.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_divider",
+      "label": "t:sections.common.divider.show_divider.label",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "divider_width",
+      "label": "t:sections.common.divider.width.label",
+      "options": [
+        {
+          "value": "container",
+          "label": "t:sections.common.container.fixed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "t:sections.common.container.stretched"
+        },
+        {
+          "value": "container-full",
+          "label": "t:sections.common.container.fullwidth"
+        }
+      ],
+      "default": "container",
+      "visible_if": "{{ section.settings.show_section_divider == true }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.common.custom_attr.header"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "t:sections.common.custom_attr.custom_id"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "t:sections.common.custom_attr.custom_class"
+    },
+    {
+      "type": "header",
+      "content": "t:settings_schema.animations.header.content"
+    },
+    {
+      "type": "select",
+      "id": "animations",
+      "label": "t:settings_schema.animations.header__2.content",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "t:settings_schema.animations.settings.animation.options.option_6"
+        },
+        {
+          "value": "fade-in",
+          "label": "t:settings_schema.animations.settings.animation.options.option_2"
+        },
+        {
+          "value": "fade-in-up",
+          "label": "t:settings_schema.animations.settings.animation.options.option_3"
+        },
+        {
+          "value": "fade-in-left",
+          "label": "t:settings_schema.animations.settings.animation.options.option_4"
+        },
+        {
+          "value": "fade-in-right",
+          "label": "t:settings_schema.animations.settings.animation.options.option_5"
+        }
+      ],
+      "default": "inherit"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Magnetic CTA",
+      "settings": {
+        "container": "container",
+        "color_scheme": "background-1",
+        "layout": "minimal",
+        "subheading": "Ready when you are",
+        "heading": "Make it <em>memorable</em>.",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h-xl",
+        "heading_font_size": 0,
+        "description": "<p>Slow, personal jewelry made to be lived in and passed on. Handcrafted in small batches.</p>",
+        "button_label": "Start your collection",
+        "button_link": "/collections/gifts",
+        "show_arrow": true
+      },
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

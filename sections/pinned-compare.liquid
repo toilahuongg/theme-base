@@ -1,0 +1,448 @@
+{{ 'pinned-compare.css' | asset_url | stylesheet_tag }}
+<script
+  src="{{ 'pinned-compare.js' | asset_url }}"
+  defer="defer"
+></script>
+{%- liquid
+  assign section_id = section.settings.custom_id | default: section.id
+  assign container = section.settings.container
+  assign custom_class = section.settings.custom_class
+
+  unless custom_class == blank
+    assign custom_class = custom_class | prepend: ' '
+  endunless
+
+  assign animation_effect = settings.animations
+  if animation_effect != 'none' and section.settings.animations != 'inherit'
+    assign animation_effect = section.settings.animations
+  endif
+-%}
+<style>
+  .section-{{ section.id }} {
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  {%- if section.settings.heading_font_size > 0 -%}
+    .section-{{ section.id }} .section__heading {
+      font-size: min({{ section.settings.heading_font_size }}px, 14vw);
+    }
+  {%- endif -%}
+</style>
+{% render 'divider',
+  show_divider: section.settings.show_section_divider,
+  divider_width: section.settings.divider_width
+%}
+<div
+  id="{{ section_id }}"
+  class="section-{{ section.id }} pinned-compare m-section-padding color-{{ section.settings.color_scheme }}{{ custom_class }}"
+>
+  <motion-element
+    data-motion="{{ animation_effect }}"
+    class="block {{ container }}"
+  >
+    {%- render 'index-section-header',
+      section_settings: section.settings,
+      animation_effect: animation_effect
+    -%}
+    {%- if section.blocks.size > 0 -%}
+      <pinned-compare class="block">
+        <div class="pinned-compare__grid">
+          <div class="pinned-compare__stage color-{{ section.settings.stage_color_scheme }}">
+            {%- for block in section.blocks -%}
+              <div
+                class="pinned-compare__state{% if forloop.first %} is-active{% endif %}"
+                data-compare-state="{{ forloop.index0 }}"
+              >
+                {%- if block.settings.kicker != blank -%}
+                  <small class="pinned-compare__kicker">{{ block.settings.kicker }}</small>
+                {%- endif -%}
+                {%- if block.settings.value != blank -%}
+                  <strong class="pinned-compare__value">{{ block.settings.value }}</strong>
+                {%- endif -%}
+                {%- if block.settings.meta != blank -%}
+                  <p class="pinned-compare__meta">{{ block.settings.meta }}</p>
+                {%- endif -%}
+              </div>
+            {%- endfor -%}
+          </div>
+          <div class="pinned-compare__steps">
+            {%- for block in section.blocks -%}
+              <article
+                class="pinned-compare__step{% if forloop.first %} is-active{% endif %}"
+                data-compare-step="{{ forloop.index0 }}"
+                {{ block.shopify_attributes }}
+              >
+                <small class="pinned-compare__step-kicker">STEP 0{{ forloop.index }}</small>
+                {%- if block.settings.title != blank -%}
+                  <h3 class="pinned-compare__title">{{ block.settings.title }}</h3>
+                {%- endif -%}
+                {%- if block.settings.description != blank -%}
+                  <p class="pinned-compare__text">{{ block.settings.description }}</p>
+                {%- endif -%}
+              </article>
+            {%- endfor -%}
+          </div>
+        </div>
+      </pinned-compare>
+    {%- endif -%}
+  </motion-element>
+</div>
+{% schema %}
+{
+  "name": "Pinned compare",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.common.general.name"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "t:sections.common.container.label",
+      "options": [
+        {
+          "value": "container",
+          "label": "t:sections.common.container.fixed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "t:sections.common.container.stretched"
+        },
+        {
+          "value": "container-full",
+          "label": "t:sections.common.container.fullwidth"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.common.color_schema.label",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.common.header.name"
+    },
+    {
+      "type": "select",
+      "id": "section_header_padding_bottom",
+      "label": "t:sections.common.spacing.section_header_padding_bottom.label",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.common.spacing.section_header_padding_bottom.option__1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.common.spacing.section_header_padding_bottom.option__2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.common.spacing.section_header_padding_bottom.option__3.label"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "section_header_content_spacing",
+      "label": "t:sections.common.content_spacing.label",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.common.content_spacing.options__sm.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.common.content_spacing.options__md.label"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Highlight text with *em* tags",
+      "default": "Two metals. <em>One standard.</em>"
+    },
+    {
+      "type": "select",
+      "id": "highlight_style",
+      "label": "t:sections.common.highlight_text.settings.highlight_style.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.common.highlight_text.settings.highlight_style.option__1"
+        },
+        {
+          "value": "drawer_line",
+          "label": "t:sections.common.highlight_text.settings.highlight_style.option__2"
+        },
+        {
+          "value": "underline",
+          "label": "t:sections.common.highlight_text.settings.highlight_style.option__3"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_highlight_text_color",
+      "label": "t:sections.common.highlight_text.settings.enable_highlight_text_color.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:sections.common.text_size.heading.label",
+      "options": [
+        {
+          "value": "h3",
+          "label": "t:sections.common.text_size.options__h3.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.common.text_size.options__h2.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.common.text_size.options__h1.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.common.text_size.options__h0.label"
+        },
+        {
+          "value": "h-xl",
+          "label": "t:sections.common.text_size.options__hd1.label"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Custom heading size",
+      "info": "Leave 0 to use the theme heading size.",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 72
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "t:sections.common.heading_color.label",
+      "info": "t:sections.common.heading_color.info"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:sections.common.header.subheading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "t:sections.common.header.description"
+    },
+    {
+      "type": "header",
+      "content": "Stage"
+    },
+    {
+      "type": "color_scheme",
+      "id": "stage_color_scheme",
+      "label": "Stage color scheme",
+      "default": "background-2"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.common.section_padding.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:sections.common.section_padding.top_padding.label",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:sections.common.section_padding.bottom_padding.label",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.common.divider.section_heading.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_divider",
+      "label": "t:sections.common.divider.show_divider.label",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "divider_width",
+      "label": "t:sections.common.divider.width.label",
+      "options": [
+        {
+          "value": "container",
+          "label": "t:sections.common.container.fixed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "t:sections.common.container.stretched"
+        },
+        {
+          "value": "container-full",
+          "label": "t:sections.common.container.fullwidth"
+        }
+      ],
+      "default": "container",
+      "visible_if": "{{ section.settings.show_section_divider == true }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.common.custom_attr.header"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "t:sections.common.custom_attr.custom_id"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "t:sections.common.custom_attr.custom_class"
+    },
+    {
+      "type": "header",
+      "content": "t:settings_schema.animations.header.content"
+    },
+    {
+      "type": "select",
+      "id": "animations",
+      "label": "t:settings_schema.animations.header__2.content",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "t:settings_schema.animations.settings.animation.options.option_6"
+        },
+        {
+          "value": "fade-in",
+          "label": "t:settings_schema.animations.settings.animation.options.option_2"
+        },
+        {
+          "value": "fade-in-up",
+          "label": "t:settings_schema.animations.settings.animation.options.option_3"
+        },
+        {
+          "value": "fade-in-left",
+          "label": "t:settings_schema.animations.settings.animation.options.option_4"
+        },
+        {
+          "value": "fade-in-right",
+          "label": "t:settings_schema.animations.settings.animation.options.option_5"
+        }
+      ],
+      "default": "inherit"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "kicker",
+          "label": "Kicker"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value"
+        },
+        {
+          "type": "text",
+          "id": "meta",
+          "label": "Meta"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pinned compare",
+      "settings": {
+        "container": "container",
+        "color_scheme": "background-1",
+        "stage_color_scheme": "background-2",
+        "heading": "Two metals. <em>One standard.</em>",
+        "description": "<p>Every Veloura piece is made to be worn daily and repaired for decades. Choose your metal, keep the same finish.</p>",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_font_size": 72,
+        "heading_color": "",
+        "subheading": ""
+      },
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "kicker": "01 / METAL",
+            "value": "18K gold vermeil",
+            "meta": "A thick 18K layer over recycled sterling silver — 5× the industry-standard thickness.",
+            "title": "Gold vermeil",
+            "description": "Our signature. A generous 18K gold layer over recycled sterling silver, sealed with a soft matte finish that never feels costume-y."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "kicker": "02 / OPTION",
+            "value": "14K solid gold",
+            "meta": "For pieces meant to stay on, every day, forever.",
+            "title": "14K solid gold",
+            "description": "Comfortably everyday and heirloom-solid. Our rings and chains are also available in solid 14K for those who never take them off."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "kicker": "03 / ALTERNATIVE",
+            "value": "Sterling silver",
+            "meta": "Bright, honest, and beautifully light on the wrist.",
+            "title": "Sterling silver",
+            "description": "Polished recycled sterling for a cooler tone — the same hand finish, a quieter metal. Our entry point into the atelier."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

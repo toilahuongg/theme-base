@@ -1,0 +1,114 @@
+.magnetic-cta--magnetic {
+  min-height: 80vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.magnetic-cta__inner {
+  display: grid;
+  place-items: center;
+}
+
+.magnetic-cta__button {
+  width: min(70vw, 460px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--color-foreground), 0.45);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  transition: transform 0.16s ease-out;
+  will-change: transform;
+}
+
+.magnetic-cta__label {
+  font-size: clamp(42px, 6vw, 84px);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  font-weight: 600;
+}
+
+.magnetic-cta--minimal {
+  min-height: 88vh;
+}
+
+.magnetic-cta__minimal {
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(32px, 6vw, 80px);
+}
+
+.magnetic-cta__eyebrow {
+  margin-bottom: 22px;
+}
+
+.magnetic-cta__title {
+  margin: 0;
+  max-width: 1300px;
+  font-size: clamp(64px, 12vw, 200px);
+  line-height: 0.8;
+  letter-spacing: -0.085em;
+}
+
+/* heading_size scale (the theme ships no .h0-.h-xl font rules, so map explicitly) */
+.magnetic-cta__title.h3 {
+  font-size: clamp(40px, 8vw, 64px);
+}
+
+.magnetic-cta__title.h2 {
+  font-size: clamp(48px, 9vw, 88px);
+}
+
+.magnetic-cta__title.h1 {
+  font-size: clamp(56px, 10vw, 120px);
+}
+
+.magnetic-cta__title.h0 {
+  font-size: clamp(64px, 12vw, 160px);
+}
+
+.magnetic-cta__title.h-xl {
+  font-size: clamp(72px, 13vw, 200px);
+}
+
+.magnetic-cta__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.magnetic-cta__text {
+  max-width: 520px;
+  color: rgba(var(--color-foreground), 0.7);
+  line-height: 1.65;
+}
+
+.magnetic-cta__link {
+  font-size: clamp(22px, 3vw, 40px);
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  white-space: nowrap;
+}
+
+@media (max-width: 749px) {
+  .magnetic-cta__row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .magnetic-cta--minimal,
+  .magnetic-cta__minimal {
+    min-height: 70vh;
+  }
+}
