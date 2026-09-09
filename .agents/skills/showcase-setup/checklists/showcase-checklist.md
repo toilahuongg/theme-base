@@ -30,7 +30,9 @@ Run in order. Every box must be checked or marked BLOCKED with a reason before y
 - [ ] docs/showcase-design.md written
 
 ## Images (Phase 4)
-- [ ] All assets in the design doc generated (imagen) or supplied (verify output file exists, not just exit code)
+- [ ] All assets in the design doc sourced via imagen (`--mode free` stock-style / `--mode ai` high-accuracy) or supplied by the customer; output file verified on disk, not just exit code
+- [ ] `UNSPLASH_ACCESS_KEY` set when free images are expected (else imagen falls back to AI)
+- [ ] imagen output read: `ENGINE=` recorded; `FREE_REJECT` / `FREE_REJECTED_ALL` resolved (wrong-subject photos not shipped)
 - [ ] All images uploaded to store Files (scripts/upload-images.mjs); slug → {id,url,filename} in urls-json
 - [ ] No image referenced before it exists on the store
 

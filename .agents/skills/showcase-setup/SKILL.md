@@ -1,7 +1,7 @@
 ---
 name: showcase-setup
-version: 1.1.0
-description: "Sets up a Shopify theme showcase/demo storefront — creates products, collections, pages, blog content, menus, theme settings, and template files, executing store operations via the shopify-store-manager skill (shopify-store graphql/rest/scopes), pushing the theme with the registry token, generating imagery via the imagen skill, and authoring GraphQL with shopify-admin. Use when asked to create, set up, or build a showcase or demo store for a Shopify theme. ALWAYS asks the customer which store to target before any store operation."
+version: 1.2.0
+description: "Sets up a Shopify theme showcase/demo storefront — creates products, collections, pages, blog content, menus, theme settings, and template files, executing store operations via the shopify-store-manager skill (shopify-store graphql/rest/scopes), pushing the theme with the registry token, sourcing imagery via the imagen skill (free-image-first with AI fallback), and authoring GraphQL with shopify-admin. Use when asked to create, set up, or build a showcase or demo store for a Shopify theme. ALWAYS asks the customer which store to target before any store operation."
 triggers:
   - showcase
   - showcase store
@@ -47,7 +47,7 @@ Builds a complete, presentation-ready showcase that reads as ONE real brand: a d
 | Create/update store content with the registry token | `shopify-store graphql <store> --query '...'` / `shopify-store rest <store>` | Token-driven writes go through the tool (it fills endpoint, auth header, version). `shopify store execute` does NOT accept a token — it needs OAuth auth from `shopify store auth` |
 | Push the theme | `shopify theme push --password <token>` (env `SHOPIFY_CLI_THEME_TOKEN` — token from registry) | See `shopify-use-shopify-cli` for CLI guidance |
 | Run store operations when OAuth is set up | `shopify-use-shopify-cli` (`shopify store auth` + `shopify store execute`) | Only when the customer has completed OAuth login |
-| Generate product/lifestyle/banner images | `imagen` | Use for any imagery the showcase needs that the customer has not supplied |
+| Source product/lifestyle/banner images | `imagen` | Free-first: `--mode free` (Unsplash, needs `UNSPLASH_ACCESS_KEY`) for stock-style assets; `--mode ai` (codex imagegen → gpt-image-2 relay) for high-accuracy assets (logo, mascot, exact render, text-in-image). Default `--mode auto` evaluates per prompt. Free downloads are content-verified locally with macOS Vision (gross mismatches rejected, OCR validates text asks) |
 
 Read each delegated skill's instructions (skill://name) before using it.
 
@@ -95,14 +95,22 @@ The showcase must read as ONE real brand: a name, story, voice, and visual ident
 3. **Page → sections map** — for every main page type (home, PDP, collection, blog, pages), which sections/blocks from the theme's ACTUAL section inventory (`sections/`, template JSONs), in what order, and what each block does. Never invent section names that don't exist in the theme.
 4. **Config plan** — `config/settings_data.json` targets: layout width, fonts, color scheme assignments, announcement bar, header/footer menus, section presets.
 5. **Color schema & typography** — 4+ colors (background, text, accent, surface...) with scheme-to-section assignment; font pairing (heading/body); must satisfy the Theme Store minimum (4+ colors, background paired with foreground).
-6. **Asset list** — every image/SVG the showcase needs: purpose, page, section/block, dimensions/ratio, style direction → generate with `imagen` in Phase 4. **No video assets** (theme video sections use supplied video or stay empty).
+6. **Asset list** — every image/SVG the showcase needs: purpose, page, section/block, dimensions/ratio, style direction, and sourcing mode (`free` for stock-style — heroes, banners, lifestyle, blog images; `ai` for brand/logo/mascot/exact-product/text-in-image) → source with `imagen` in Phase 4. **No video assets** (theme video sections use supplied video or stay empty).
 7. **Resource list** — every resource to create in Phases 5-7: products (handle, title, price, variants, images), collections (handle, membership, banner), pages (handle, template), blog + articles, menus — each tied to a template reference from Phase 2 and to the brand identity.
 
 ### Phase 4 — Images
 
-- For every asset in the Phase 3 asset list (product shots, collection banners, page heroes, blog images, SVG graphics): generate with the `imagen` skill (match the theme's art direction and the Phase 3 color schema).
-- Verify each generation actually produced a file (imagen may fall back to a relay when codex auth is broken; check the output directory, not the exit code). If the codex path fails, use the relay fallback explicitly: `IMAGEN_SKIP_CODEX=1 <imagen>/bin/imagen.sh "<prompt>" --count 1 --out <slug> --repo <dir>`. Use simple lowercase slugs for `--out` — do NOT derive slugs with `sed 's/.*/\L&/'` (BSD sed lacks `\L` and mangles the directory name).
-- Save generated images locally in a working dir (e.g. `/tmp/<showcase>-img/gen/<slug>/`); upload them before any template references them (Upload flow below).
+For every asset in the Phase 3 asset list (product shots, collection banners, page heroes, blog images, SVG graphics), source it with the `imagen` skill (match the theme's art direction and the Phase 3 color schema). `imagen` is free-image-first — it tries Unsplash before spending AI tokens — so pick the mode per asset:
+
+- **Stock-style assets** (heroes, banners, lifestyle/category shots, blog images, generic product photos): `--mode free` — Unsplash search + local content verification, zero AI tokens. Requires `UNSPLASH_ACCESS_KEY` in the environment (free path is skipped and AI used instead when it is missing).
+- **High-accuracy assets** (brand logo, mascot, exact product render, custom composition, text-in-image): `--mode ai` — codex imagegen, then gpt-image-2 via the ramclouds relay. Stock photos cannot deliver these; do not force free mode here.
+- Default `--mode auto` is fine for mixed lists — free first, AI only when needed.
+
+Read the imagen output, not just the exit code:
+- `ENGINE=unsplash | codex | ramclouds-gpt-image-2 | none` tells you what produced the files.
+- `FREE_REJECT` lines mean a downloaded photo failed the local content check (unrelated subject / missing required text) — that candidate was deleted; `FREE_REJECTED_ALL` means every candidate failed and the run fell through to AI.
+- Verify each run actually produced a file on disk (check the output directory). If the codex path is broken and you only want the relay: `IMAGEN_SKIP_CODEX=1 <imagen>/bin/imagen.sh "<prompt>" --count 1 --out <slug> --repo <dir>`. Use simple lowercase slugs for `--out` — do NOT derive slugs with `sed 's/.*/\L&/'` (BSD sed lacks `\L` and mangles the directory name).
+- Save sourced images locally in a working dir (e.g. `/tmp/<showcase>-img/gen/<slug>/`); upload them before any template references them (Upload flow below).
 - Never reference images that do not exist on the store.
 
 ### Upload flow (staged uploads — 2026-07 API shapes)

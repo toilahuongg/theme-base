@@ -52,10 +52,10 @@ All: English copy, correct prices/compare-at, template suffixes, 25 inventory ea
 
 ## Images
 
-- 79 files uploaded to store Files (MediaImage): 77 generated assets + logo-wordmark-2x.png + logo-wordmark.png (+logo-wordmark-view.png also exists). All URLs in `/tmp/veloura-img/image-urls.json` (79 entries, 0 missing).
+- 84 files uploaded to store Files (MediaImage): 82 generated assets + logo-wordmark-2x.png + logo-wordmark.png (+logo-wordmark-view.png also exists). All URLs in `/tmp/veloura-img/image-urls.json` (84 entries, 0 missing).
 - 14/14 products (2–3 images each, `productSet` files), 15/15 collections (covers), 8/8 articles — attached via Admin API.
 - Template refs: all image refs use the `shopify://shop_images/<filename>` scheme (customer-confirmed format, 2026-09-09) — 0 raw CDN URLs, 0 empty required refs. Header logo → logo-wordmark-2x.png; footer popup → p-pearlneck-1.png.
-- **image_picker audit** (`/tmp/veloura-img/audit-image-pickers.mjs`, schema-driven): 150 image_picker settings checked across all templates + section groups. Result: **0 required-EMPTY, 0 MISSING FILE, 0 MISSING ASSET, 0 WEIRD** — 83 flagged → 17 filled → 66 remaining empties all optional by verified liquid fallback (see below).
+- **image_picker audit** (`/tmp/veloura-img/audit-image-pickers.mjs`, schema-driven): 150 image_picker settings checked across all templates + section groups. Result: **0 required-EMPTY, 0 MISSING FILE, 0 MISSING ASSET, 0 WEIRD** — 83 flagged → 17 filled during audit; 25 testimonial avatar refs filled 2026-09-09 (see below); 54 remaining empties all optional by verified liquid fallback (see below).
 - 17 required image_picker settings filled during audit (all `shopify://shop_images/…`, 13 blocks):
   - page.about-us.json multicolumn image_hdKyy7 → about-hands.png
   - index.json image-with-text-slider slides (3) → capsule-sakura/sunset/dreamshine.png (image + mb_background)
@@ -64,8 +64,9 @@ All: English copy, correct prices/compare-at, template suffixes, 25 inventory ea
   - page.about-us-2.json multicolumn (a16d91be) 3 columns → col-traceable/lifetime-repair/gift-wrapped.png
   - password.json logo → logo-wordmark-2x.png; background_image → hero-desktop.png
 - 4 new generated assets uploaded 2026-09-09: `hero-worn-daily.png`, `col-traceable.png`, `col-lifetime-repair.png`, `col-gift-wrapped.png` (via stagedUploadsCreate → PUT → fileCreate; URLs confirmed via requery-by-filename).
+- 5 testimonial avatar assets uploaded 2026-09-09: `testimonial-avatar-{black-natural-coils,blonde-bob-silver,east-asian,latina-chestnut-waves,south-asian-low-bun}-gold.png` (codex imagegen via imagen skill, 1254×1254; files live on store, CDN URLs verified by MediaImage id query — `preview.image.url` is null right after fileCreate, patch urls json from requery-by-id).
+- 25 testimonial avatar image_pickers filled 2026-09-09 (5× `templates/index.json` + 5× each of product.json/stacked/grid-mix/thumbnails-carousel, all `shopify://shop_images/testimonial-avatar-*.png`): previously `show_image: true` + empty image rendered a visible placeholder SVG (scrolling-promotion renders `placeholder_svg_tag` when image blank — the "renders only if image != blank" note below was wrong for this section and is removed).
 - **Optional empties (left empty by design, verified in section liquid)**:
-  - 27× scrolling-promotion testimonials (5× index, 5× per product template ×4, 2× about-us-2) — avatar renders only `if image != blank`
   - 12× main-collection-banner (banner-left/right/top/as-background/without-image) — falls back to `collection.featured_image` (15/15 collections have covers)
   - 6× collection-tabs (3 blocks × image+icon) — image falls back to `collection.image` → first product image; icon renders only when `prefix_header == 'icon'` (set to `ordinal_number`)
   - 6× collection-list-slider (lookbook) — falls back to `collection.image`

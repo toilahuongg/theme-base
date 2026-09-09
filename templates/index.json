@@ -929,7 +929,8 @@
             "text": "<p>“The Double Twist is the ring I never take off. Three years in, still perfect.”</p>",
             "author": "Rosie C.",
             "product": "twist-ring-gold",
-            "show_image": true
+            "show_image": true,
+            "image": "shopify://shop_images/testimonial-avatar-latina-chestnut-waves-gold.png"
           }
         },
         "testimonial_rNCtBh": {
@@ -939,7 +940,8 @@
             "text": "<p>“I've had my hoops for a year of daily wear — no tarnish, no regrets.”</p>",
             "author": "Elise T.",
             "product": "gold-hoop-earrings",
-            "show_image": true
+            "show_image": true,
+            "image": "shopify://shop_images/testimonial-avatar-blonde-bob-silver-gold.png"
           }
         },
         "testimonial_YLFBM7": {
@@ -949,7 +951,8 @@
             "text": "<p>“The pearl drop gets me compliments every single time. Every. Single. Time.”</p>",
             "author": "Daisy K.",
             "product": "pearl-drop-necklace",
-            "show_image": true
+            "show_image": true,
+            "image": "shopify://shop_images/testimonial-avatar-east-asian-gold.png"
           }
         },
         "testimonial_mwiQ9b": {
@@ -959,7 +962,8 @@
             "text": "<p>“Bought one bracelet, came back for three more. The beadwork is unreal.”</p>",
             "author": "Nora S.",
             "product": "miyuki-bead-bracelet-rainbow",
-            "show_image": true
+            "show_image": true,
+            "image": "shopify://shop_images/testimonial-avatar-south-asian-low-bun-gold.png"
           }
         },
         "testimonial_Wp3xyy": {
@@ -969,7 +973,8 @@
             "text": "<p>“My everyday studs. Small, honest, and exactly as bright as promised.”</p>",
             "author": "Lena M.",
             "product": "diamond-studs",
-            "show_image": true
+            "show_image": true,
+            "image": "shopify://shop_images/testimonial-avatar-black-natural-coils-gold.png"
           }
         }
       },

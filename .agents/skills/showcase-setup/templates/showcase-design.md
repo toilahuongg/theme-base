@@ -85,13 +85,15 @@ Map every page type to the theme's ACTUAL sections (`sections/`, template JSONs)
 
 ## 6. Asset list (imagen — no video)
 
-| # | Asset | Page/section/block | Ratio/dimensions | Style direction | Status |
-|---|---|---|---|---|---|
-| 1 | {{hero image}} | home / slideshow slide 1 | 16:9 / 1920×1080 | {{warm, natural light, brand palette}} | to generate |
-| 2 | {{product shot: name}} | PDP + card | 1:1 / 1200×1200 | clean studio bg | to generate |
-| 3 | {{collection banner}} | collection banner | 4:3 | lifestyle | to generate |
-| 4 | {{SVG icon/pattern}} | section decorative | 512×512 | line style | to generate |
-| … |  |  |  |  |  |
+| # | Asset | Page/section/block | Ratio/dimensions | Style direction | Source | Status |
+|---|---|---|---|---|---|---|
+| 1 | {{hero image}} | home / slideshow slide 1 | 16:9 / 1920×1080 | {{warm, natural light, brand palette}} | free | to source |
+| 2 | {{product shot: name}} | PDP + card | 1:1 / 1200×1200 | clean studio bg | free | to source |
+| 3 | {{brand logo / mascot}} | header / about | 2:1 | {{brand identity}} | ai | to source |
+| 4 | {{SVG icon/pattern}} | section decorative | 512×512 | line style | ai | to source |
+| … |  |  |  |  |  |  |
+
+Source = `free` (Unsplash stock, `--mode free`), `ai` (codex imagegen / relay, `--mode ai` — brand, exact render, text-in-image), or `supplied` (customer-provided). Run `imagen` in Phase 4.
 
 Video: theme video sections stay empty unless the customer supplies video files (imagen does not generate video).
 
