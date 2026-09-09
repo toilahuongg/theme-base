@@ -1,4 +1,3 @@
-
 {
   "sections": {
     "main": {
@@ -11,25 +10,29 @@
         "1647832267f0a54935-0": {
           "type": "featured_collection",
           "settings": {
-            "title": ""
+            "title": "Necklaces",
+            "collection": "necklaces"
           }
         },
         "1647832267f0a54935-1": {
           "type": "featured_collection",
           "settings": {
-            "title": ""
+            "title": "Earrings",
+            "collection": "earrings"
           }
         },
         "1647832267f0a54935-2": {
           "type": "featured_collection",
           "settings": {
-            "title": ""
+            "title": "Best Sellers",
+            "collection": "best-sellers"
           }
         },
         "1647832267f0a54935-3": {
           "type": "featured_collection",
           "settings": {
-            "title": ""
+            "title": "Gifts",
+            "collection": "gifts"
           }
         }
       },

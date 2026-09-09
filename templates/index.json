@@ -1,4 +1,3 @@
-
 {
   "sections": {
     "slideshow_PktnWV": {
@@ -7,23 +6,23 @@
         "slide_G3A8Wg": {
           "type": "slide",
           "settings": {
-            "background": "shopify://shop_images/Portada_web-24.jpg",
-            "mb_background": "shopify://shop_images/Portada_cel-25.jpg",
+            "background": "shopify://shop_images/hero-desktop.png",
+            "mb_background": "shopify://shop_images/hero-mobile.png",
             "image_overlay_opacity": 0,
             "content_position": "center",
             "text_alignment": "center",
             "text_color": "#000000",
-            "title": "",
+            "title": "Handcrafted, <em>one bead at a time</em>",
             "heading_size": "h2",
             "heading_color": "#ffffff",
-            "subheading": "",
+            "subheading": "Japanese Miyuki beadwork and 18K gold vermeil",
             "description": "",
             "desc_size": "text-desc-base",
-            "button_text_1": "",
+            "button_text_1": "Shop Bracelets",
             "button_link_1": "",
             "button_style_1": "btn--primary",
             "button_size_1": "",
-            "button_text_2": "",
+            "button_text_2": "Our Story",
             "button_link_2": "",
             "button_style_2": "btn--primary",
             "button_size_2": ""
@@ -33,8 +32,8 @@
           "type": "slide",
           "disabled": true,
           "settings": {
-            "background": "shopify://shop_images/Portada_web_2026-13.png",
-            "mb_background": "shopify://shop_images/last-23.png",
+            "background": "",
+            "mb_background": "",
             "image_overlay_opacity": 0,
             "content_position": "right-middle",
             "text_alignment": "center",
@@ -59,8 +58,8 @@
           "type": "slide",
           "disabled": true,
           "settings": {
-            "background": "shopify://shop_images/Portada_web_2026-19.png",
-            "mb_background": "shopify://shop_images/Portada_web_cel_2026-21.png",
+            "background": "",
+            "mb_background": "",
             "image_overlay_opacity": 0,
             "content_position": "center",
             "text_alignment": "center",
@@ -85,8 +84,8 @@
           "type": "slide",
           "disabled": true,
           "settings": {
-            "background": "shopify://shop_images/Portada_web_2026-20.png",
-            "mb_background": "shopify://shop_images/Portada_web_cel_2026-22.png",
+            "background": "",
+            "mb_background": "",
             "image_overlay_opacity": 0,
             "content_position": "center",
             "text_alignment": "center",
@@ -143,17 +142,19 @@
             "content_position": "center",
             "text_alignment": "center",
             "text_alignment_mobile": "center",
-            "title": "Create Memories <em>That Sparkle</em>",
+            "title": "Sakura Bloom <em>capsule</em>",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
             "heading_size": "h-xl",
-            "subheading": "Enchanting Elegance",
-            "description": "<p>We believe in the power of jewelry, to tell a story, celebrate a moment, create or continue a tradition.</p>",
+            "subheading": "New this season",
+            "description": "<p>Blush beads, pearls, and crystal — spring's first bloom, in a limited edit.</p>",
             "desc_size": "text-desc-base",
-            "button_text_1": "Shop Now",
+            "button_text_1": "Shop the capsule",
             "button_link_1": "",
             "button_style_1": "btn--primary",
-            "button_size_1": ""
+            "button_size_1": "",
+            "background": "shopify://shop_images/capsule-sakura.png",
+            "mb_background": "shopify://shop_images/capsule-sakura.png"
           }
         },
         "slide_EiRAtU": {
@@ -163,17 +164,19 @@
             "content_position": "center",
             "text_alignment": "center",
             "text_alignment_mobile": "center",
-            "title": "Celebrate Love That <em>Shines Bright</em>",
+            "title": "Sunset Glow <em>capsule</em>",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
             "heading_size": "h-xl",
-            "subheading": "Timeless Brilliance",
-            "description": "<p>Jewelry is more than adornment, it's a keepsake of cherished times, love, and meaningful connections.</p>",
+            "subheading": "The warmest end of the palette",
+            "description": "<p>Terracotta to blush, with peridot light. A long summer evening, captured.</p>",
             "desc_size": "text-desc-base",
-            "button_text_1": "Shop Now",
+            "button_text_1": "Shop the capsule",
             "button_link_1": "",
             "button_style_1": "btn--primary",
-            "button_size_1": ""
+            "button_size_1": "",
+            "background": "shopify://shop_images/capsule-sunset.png",
+            "mb_background": "shopify://shop_images/capsule-sunset.png"
           }
         },
         "slide_PnVRig": {
@@ -183,17 +186,19 @@
             "content_position": "center",
             "text_alignment": "center",
             "text_alignment_mobile": "center",
-            "title": "Mark Your Milestones <em>With Brilliance</em>",
+            "title": "Dreamshine <em>capsule</em>",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
             "heading_size": "h-xl",
-            "subheading": "Eternal Sparkle",
-            "description": "<p>Jewelry is a symbol of love, success, and self-expression, making every occasion more special.</p>",
+            "subheading": "Crystals and evening light",
+            "description": "<p>Ocean blues, freshwater pearls, and cut glass that catches every light.</p>",
             "desc_size": "text-desc-base",
-            "button_text_1": "Shop Now",
+            "button_text_1": "Shop the capsule",
             "button_link_1": "",
             "button_style_1": "btn--primary",
-            "button_size_1": ""
+            "button_size_1": "",
+            "background": "shopify://shop_images/capsule-dreamshine.png",
+            "mb_background": "shopify://shop_images/capsule-dreamshine.png"
           }
         }
       },
@@ -202,7 +207,6 @@
         "slide_EiRAtU",
         "slide_PnVRig"
       ],
-      "disabled": true,
       "custom_css": [
         "@media (min-width: 768px) {.m-slider__content {max-width: 53rem; }}"
       ],
@@ -229,7 +233,7 @@
         "announcement_cny7Ce": {
           "type": "announcement",
           "settings": {
-            "text": "<em>Handmade jewelry</em>",
+            "text": "Handmade, <em>one bead at a time</em>",
             "font_family": "heading",
             "text_size": 28,
             "text_link": "",
@@ -254,7 +258,7 @@
         "announcement_dqpnMB": {
           "type": "announcement",
           "settings": {
-            "text": "<em>Welcome to our world</em>",
+            "text": "18K <em>gold vermeil</em>",
             "font_family": "heading",
             "text_size": 28,
             "text_link": "",
@@ -279,7 +283,7 @@
         "announcement_XzQGNw": {
           "type": "announcement",
           "settings": {
-            "text": "<em>Free shipping in November</em>",
+            "text": "Free US shipping <em>over $75</em>",
             "font_family": "heading",
             "text_size": 28,
             "text_link": "",
@@ -310,7 +314,6 @@
         "announcement_XzQGNw",
         "divider_gEjgcU"
       ],
-      "disabled": true,
       "custom_css": [],
       "settings": {
         "container": "container-full",
@@ -353,14 +356,14 @@
         "section_header_padding_bottom": "medium",
         "section_header_content_spacing": "small",
         "header_layout": "vertical",
-        "heading": "Wear jewelry that harmonizes with your <em>unique energy and style</em>",
+        "heading": "The Signature <em>Edit</em>",
         "highlight_style": "none",
         "enable_highlight_text_color": false,
         "heading_size": "h2",
         "heading_color": "",
-        "subheading": "Our Designs",
+        "subheading": "Handpicked by the atelier",
         "description": "",
-        "collection": "nuestros-disenos",
+        "collection": "signature",
         "limit": 8,
         "columns": 4,
         "column_gap": "double-extra-small",
@@ -392,18 +395,18 @@
           "settings": {
             "layout": "layout8",
             "text_color": "#ffffff",
-            "image": "shopify://shop_images/1.PulserasMiyuki.a.webp",
+            "image": "shopify://shop_images/card-bracelets.png",
             "image_ratio": "3/4",
             "image_overlay_opacity": 30,
-            "sub_heading": "Arte Colorido",
-            "heading": "Miyuki Bracelets",
+            "sub_heading": "Hand-strung colour",
+            "heading": "Bracelets",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
             "heading_size": "h-xl",
             "heading_color": "",
             "description": "",
             "button_label": "",
-            "button_link": "shopify://collections/pulseras",
+            "button_link": "",
             "button_style": "btn--white",
             "vertical_content_padding": 30,
             "vertical_content_padding_mobile": 24,
@@ -417,10 +420,10 @@
           "settings": {
             "layout": "layout8",
             "text_color": "#ffffff",
-            "image": "shopify://shop_images/2.Aretes.webp",
+            "image": "shopify://shop_images/card-earrings.png",
             "image_ratio": "3/4",
             "image_overlay_opacity": 30,
-            "sub_heading": "Elegancia Natural",
+            "sub_heading": "Quiet shine",
             "heading": "Earrings",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
@@ -428,7 +431,7 @@
             "heading_color": "",
             "description": "",
             "button_label": "",
-            "button_link": "shopify://collections/aretes",
+            "button_link": "",
             "button_style": "btn--white",
             "vertical_content_padding": 30,
             "vertical_content_padding_mobile": 24,
@@ -442,10 +445,10 @@
           "settings": {
             "layout": "layout8",
             "text_color": "#ffffff",
-            "image": "shopify://shop_images/3.Collares.c.webp",
+            "image": "shopify://shop_images/card-necklaces.png",
             "image_ratio": "3/4",
             "image_overlay_opacity": 30,
-            "sub_heading": "Estilo Radiante",
+            "sub_heading": "Everyday layers",
             "heading": "Necklaces",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
@@ -453,7 +456,7 @@
             "heading_color": "",
             "description": "",
             "button_label": "",
-            "button_link": "shopify://collections/collares",
+            "button_link": "",
             "button_style": "btn--white",
             "vertical_content_padding": 30,
             "vertical_content_padding_mobile": 24,
@@ -467,18 +470,18 @@
           "settings": {
             "layout": "layout8",
             "text_color": "#ffffff",
-            "image": "shopify://shop_images/4._Diademas.webp",
+            "image": "shopify://shop_images/card-hair.png",
             "image_ratio": "3/4",
             "image_overlay_opacity": 30,
-            "sub_heading": "Encanto Sutil",
-            "heading": "Diademas",
+            "sub_heading": "Veil & hair",
+            "heading": "The Bridal Edit",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
             "heading_size": "h-xl",
             "heading_color": "",
             "description": "",
             "button_label": "",
-            "button_link": "shopify://collections/diademas",
+            "button_link": "",
             "button_style": "btn--white",
             "vertical_content_padding": 30,
             "vertical_content_padding_mobile": 24,
@@ -492,18 +495,18 @@
           "settings": {
             "layout": "layout8",
             "text_color": "#ffffff",
-            "image": "shopify://shop_images/5.Pulseras.b.webp",
+            "image": "shopify://shop_images/card-gold.png",
             "image_ratio": "3/4",
             "image_overlay_opacity": 30,
-            "sub_heading": "Vivid Design",
-            "heading": "Bracelets",
+            "sub_heading": "Solid gold",
+            "heading": "Gold Vermeil",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
             "heading_size": "h-xl",
             "heading_color": "",
             "description": "",
             "button_label": "",
-            "button_link": "shopify://collections/pulseras-miyuki",
+            "button_link": "",
             "button_style": "btn--white",
             "vertical_content_padding": 30,
             "vertical_content_padding_mobile": 24,
@@ -517,10 +520,10 @@
           "settings": {
             "layout": "layout8",
             "text_color": "#ffffff",
-            "image": "shopify://shop_images/6.Anillos.a.webp",
+            "image": "shopify://shop_images/card-rings.png",
             "image_ratio": "3/4",
             "image_overlay_opacity": 30,
-            "sub_heading": "Brillo Eterno",
+            "sub_heading": "To stack and keep",
             "heading": "Rings",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
@@ -528,7 +531,7 @@
             "heading_color": "",
             "description": "",
             "button_label": "",
-            "button_link": "shopify://collections/anillos",
+            "button_link": "",
             "button_style": "btn--white",
             "vertical_content_padding": 30,
             "vertical_content_padding_mobile": 24,
@@ -581,14 +584,14 @@
             "image_height": "medium",
             "product": "",
             "width": "50%",
-            "before_heading": "Bracelets",
-            "before_image": "shopify://shop_images/1_abf4b0f2-48cd-4ea9-b7e6-83ef04f221b2.webp",
-            "before_image_mobile": "shopify://shop_images/1_abf4b0f2-48cd-4ea9-b7e6-83ef04f221b2.webp",
+            "before_heading": "18K gold vermeil",
+            "before_image": "shopify://shop_images/compare-gold.png",
+            "before_image_mobile": "shopify://shop_images/compare-gold.png",
             "before_color_scheme": "",
             "before_heading_plain_text": true,
-            "after_heading": "Miyuki",
-            "after_image": "shopify://shop_images/2_51593eaf-fd17-4efd-ad43-2660a81756b6.webp",
-            "after_image_mobile": "shopify://shop_images/2_51593eaf-fd17-4efd-ad43-2660a81756b6.webp",
+            "after_heading": "Sterling silver",
+            "after_image": "shopify://shop_images/compare-silver.png",
+            "after_image_mobile": "shopify://shop_images/compare-silver.png",
             "after_color_scheme": "",
             "after_heading_plain_text": true,
             "block_custom_class": ""
@@ -598,20 +601,20 @@
           "type": "text",
           "settings": {
             "color_scheme": "",
-            "title": "Bracelets woven with <em>Japanese Miyuki beads,</em> known for their precision and vibrant color.",
+            "title": "Two metals, one <em>standard of care</em>",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
             "heading_size": "h1",
             "heading_color": "",
             "subheading": "Compare",
-            "text": "<p>Each design honors artisanal tradition and celebrates the connection between cultures. Our bracelets are handmade and woven on a loom.</p>",
+            "text": "<p>Gold vermeil for warmth, sterling silver for cool — both made to be worn daily and re-polished free, for life. Same craft, different light.</p>",
             "alignment": "center",
             "align_text": "left",
             "padding_left": 0,
             "padding_right": 0,
             "align_content_container": "none",
-            "button_label": "Discover more",
-            "button_link": "shopify://collections/pulseras",
+            "button_label": "Discover the metals",
+            "button_link": "/collections/signature",
             "button_style": "btn--underline",
             "width": "50%",
             "mobile_color_scheme": "",
@@ -665,7 +668,7 @@
         "heading_dGGHmx": {
           "type": "heading",
           "settings": {
-            "heading": "Explore our collections. <em>Discover the inspiration behind every piece.</em>",
+            "heading": "Explore our collections. <em>Every piece, made by hand.</em>",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
             "heading_size": "h2",
@@ -700,23 +703,23 @@
           "type": "featured_collection",
           "settings": {
             "collection": "sakura-bloom",
-            "image": "shopify://shop_images/Sakura-60.jpg",
-            "title": ""
+            "image": "shopify://shop_images/cover-sakura.png",
+            "title": "Sakura Bloom"
           }
         },
         "featured_collection_tzNBrj": {
           "type": "featured_collection",
           "settings": {
-            "collection": "atardecer-de-verano",
-            "image": "shopify://shop_images/1_6ee5bb9b-707c-4847-b383-9b3b2e690136.webp",
-            "title": "Atardecer de Verano"
+            "collection": "sunset-glow",
+            "image": "shopify://shop_images/cover-sunset.png",
+            "title": "Sunset Glow"
           }
         },
         "featured_collection_LmP8Ee": {
           "type": "featured_collection",
           "settings": {
             "collection": "fusion",
-            "image": "shopify://shop_images/Fusion_2edit-15.jpg",
+            "image": "shopify://shop_images/cover-fusion.png",
             "title": "Fusion"
           }
         },
@@ -724,15 +727,15 @@
           "type": "featured_collection",
           "settings": {
             "collection": "dreamshine",
-            "image": "shopify://shop_images/producto-06.jpg",
-            "title": ""
+            "image": "shopify://shop_images/cover-dreamshine.png",
+            "title": "Dreamshine"
           }
         },
         "featured_collection_Dd63T9": {
           "type": "featured_collection",
           "settings": {
             "collection": "golden-forever",
-            "image": "shopify://shop_images/2_b706e1f1-5d52-4447-bbc9-b40eda7eef99.webp",
+            "image": "shopify://shop_images/cover-golden.png",
             "title": "Golden Forever"
           }
         }
@@ -795,7 +798,7 @@
         "product_7JAPWP": {
           "type": "product",
           "settings": {
-            "product": "pulsera-polaroid-natural",
+            "product": "miyuki-bead-bracelet-rainbow",
             "hotspot_color": "light",
             "horizontal": 45,
             "vertical": 58
@@ -804,7 +807,7 @@
         "product_fxqUFg": {
           "type": "product",
           "settings": {
-            "product": "pulsera-polaroid-rose",
+            "product": "miyuki-bead-bracelet-sunset",
             "hotspot_color": "light",
             "horizontal": 26,
             "vertical": 63
@@ -813,7 +816,7 @@
         "product_jwmRhg": {
           "type": "product",
           "settings": {
-            "product": "pulsera-polaroid-sky",
+            "product": "miyuki-bead-bracelet-ocean",
             "hotspot_color": "light",
             "horizontal": 45,
             "vertical": 67
@@ -829,11 +832,11 @@
       "settings": {
         "container": "container",
         "color_schema": "background-1",
-        "image": "shopify://shop_images/Bundle.jpg",
+        "image": "shopify://shop_images/p-rainbow-1.png",
         "image_position": "right",
         "desktop_content_position": "start",
         "subheading": "",
-        "heading": "<p>POLAROID Capsule Collection</p>",
+        "heading": "<p>The <em>Miyuki</em> Family</p>",
         "highlight_style": "none",
         "enable_highlight_text_color": false,
         "heading_size": "h1",
@@ -861,28 +864,28 @@
         "collection_fYKzU7": {
           "type": "collection",
           "settings": {
-            "collection": "",
-            "heading": "Make it Forever",
+            "collection": "bridal",
+            "heading": "The Bridal Edit",
             "heading_size": "h4",
-            "text": "<p>Timeless and radiant, our diamond jewelry captures brilliance and elegance, perfect for celebrating life's precious moments.</p>"
+            "text": "<p>Pearls, crystals, and gold — everything the day it was made for demands.</p>"
           }
         },
         "collection_nzAe9d": {
           "type": "collection",
           "settings": {
-            "collection": "",
-            "heading": "Better Basics Collection",
+            "collection": "new-in",
+            "heading": "New In",
             "heading_size": "h4",
-            "text": "<p>Elevate your look with our exquisite earrings, designed to add sparkle, elegance, and timeless beauty to every occasion.</p>"
+            "text": "<p>Fresh from the workbench: the latest pieces to join the collection.</p>"
           }
         },
         "collection_cV86YB": {
           "type": "collection",
           "settings": {
-            "collection": "",
-            "heading": "Curated Products",
+            "collection": "on-sale",
+            "heading": "On Sale",
             "heading_size": "h4",
-            "text": "<p>Grace your neckline with our stunning necklaces, crafted to add elegance, sparkle, and timeless charm to every moment.</p>"
+            "text": "<p>A curated handful of pieces, priced to move before they're gone.</p>"
           }
         }
       },
@@ -891,16 +894,15 @@
         "collection_nzAe9d",
         "collection_cV86YB"
       ],
-      "disabled": true,
       "settings": {
         "container": "container",
         "color_schema": "scheme-5",
-        "heading": "Revitalize your skin, <em>refresh your confidence</em>",
+        "heading": "Shop by <em>story</em>",
         "highlight_style": "none",
         "enable_highlight_text_color": false,
         "heading_size": "h1",
         "heading_color": "",
-        "subheading": "Top Collections",
+        "subheading": "Three edits",
         "description": "",
         "image_position": "right",
         "image_ratio": "1/1",
@@ -917,88 +919,6 @@
         "animations": "inherit"
       }
     },
-    "custom_content_eDwYnU": {
-      "type": "custom-content",
-      "blocks": {
-        "image_card_BiyeLK": {
-          "type": "image_card",
-          "settings": {
-            "layout": "layout1",
-            "text_color": "#ffffff",
-            "image_ratio": "adapt",
-            "image_overlay_opacity": 30,
-            "sub_heading": "Find your best",
-            "heading": "Shine Bright",
-            "highlight_style": "none",
-            "enable_highlight_text_color": false,
-            "heading_size": "h-xl",
-            "heading_color": "",
-            "description": "",
-            "button_label": "Shop Now",
-            "button_link": "",
-            "button_style": "btn--white",
-            "vertical_content_padding": 40,
-            "vertical_content_padding_mobile": 30,
-            "alignment": "center",
-            "width": "50%",
-            "animations": "inherit"
-          }
-        },
-        "image_card_MDnJWr": {
-          "type": "image_card",
-          "settings": {
-            "layout": "layout1",
-            "text_color": "#ffffff",
-            "image_ratio": "adapt",
-            "image_overlay_opacity": 30,
-            "sub_heading": "everyday basics",
-            "heading": "Bring Sparkle",
-            "highlight_style": "none",
-            "enable_highlight_text_color": false,
-            "heading_size": "h-xl",
-            "heading_color": "",
-            "description": "",
-            "button_label": "Shop Now",
-            "button_link": "",
-            "button_style": "btn--white",
-            "vertical_content_padding": 40,
-            "vertical_content_padding_mobile": 30,
-            "alignment": "center",
-            "width": "50%",
-            "animations": "inherit"
-          }
-        }
-      },
-      "block_order": [
-        "image_card_BiyeLK",
-        "image_card_MDnJWr"
-      ],
-      "disabled": true,
-      "custom_css": [],
-      "settings": {
-        "container": "container",
-        "color_schema": "background-1",
-        "section_header_padding_bottom": "medium",
-        "section_header_content_spacing": "medium",
-        "heading": "",
-        "highlight_style": "none",
-        "enable_highlight_text_color": false,
-        "heading_size": "h2",
-        "heading_color": "",
-        "subheading": "",
-        "description": "",
-        "column_gap": "double-extra-small",
-        "row_gap": "extra-small",
-        "enable_swipe_mobile": false,
-        "column_mobile": "1",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "show_section_divider": false,
-        "divider_width": "container",
-        "custom_id": "",
-        "custom_class": ""
-      }
-    },
     "scrolling_promotion_JTAcPf": {
       "type": "scrolling-promotion",
       "blocks": {
@@ -1006,9 +926,9 @@
           "type": "testimonial",
           "settings": {
             "icon": "none",
-            "text": "<p>“Absolutely stunning jewelry! The quality and sparkle are unmatched.”</p>",
+            "text": "<p>“The Double Twist is the ring I never take off. Three years in, still perfect.”</p>",
             "author": "Rosie C.",
-            "product": "",
+            "product": "twist-ring-gold",
             "show_image": true
           }
         },
@@ -1016,9 +936,9 @@
           "type": "testimonial",
           "settings": {
             "icon": "none",
-            "text": "<p>“Gorgeous designs! My new favorite piece for every special occasion.”</p>",
+            "text": "<p>“I've had my hoops for a year of daily wear — no tarnish, no regrets.”</p>",
             "author": "Elise T.",
-            "product": "",
+            "product": "gold-hoop-earrings",
             "show_image": true
           }
         },
@@ -1026,9 +946,9 @@
           "type": "testimonial",
           "settings": {
             "icon": "none",
-            "text": "<p>“The craftsmanship is incredible! So happy with my purchase.”</p>",
+            "text": "<p>“The pearl drop gets me compliments every single time. Every. Single. Time.”</p>",
             "author": "Daisy K.",
-            "product": "",
+            "product": "pearl-drop-necklace",
             "show_image": true
           }
         },
@@ -1036,9 +956,9 @@
           "type": "testimonial",
           "settings": {
             "icon": "none",
-            "text": "<p>“A perfect gift! Beautifully made and even more stunning in person.”</p>",
+            "text": "<p>“Bought one bracelet, came back for three more. The beadwork is unreal.”</p>",
             "author": "Nora S.",
-            "product": "",
+            "product": "miyuki-bead-bracelet-rainbow",
             "show_image": true
           }
         },
@@ -1046,9 +966,9 @@
           "type": "testimonial",
           "settings": {
             "icon": "none",
-            "text": "<p>“Sparkles brilliantly! The quality exceeded my expectations.”</p>",
+            "text": "<p>“My everyday studs. Small, honest, and exactly as bright as promised.”</p>",
             "author": "Lena M.",
-            "product": "",
+            "product": "diamond-studs",
             "show_image": true
           }
         }
@@ -1060,7 +980,6 @@
         "testimonial_mwiQ9b",
         "testimonial_Wp3xyy"
       ],
-      "disabled": true,
       "custom_css": [
         "@media (min-width: 768px) {.section__header--text {max-width: 54rem; margin-inline: auto; }}"
       ],
@@ -1069,12 +988,12 @@
         "color_schema": "",
         "section_header_padding_bottom": "large",
         "section_header_content_spacing": "medium",
-        "heading": "Loved by 100,000 customers unleash your <em>graceful aura!</em>",
+        "heading": "Worn and <em>loved</em> by our customers",
         "highlight_style": "none",
         "enable_highlight_text_color": false,
         "heading_size": "h2",
         "heading_color": "",
-        "subheading": "Our Reviews",
+        "subheading": "Kind Words",
         "description": "",
         "alignment": "center",
         "direction": "left",
@@ -1099,12 +1018,12 @@
         "collection_ttdYmP": {
           "type": "collection",
           "settings": {
-            "collection": "",
-            "heading": "Earring Gifts",
+            "collection": "earrings",
+            "heading": "Earrings",
             "heading_size": "h-xl",
-            "subheading": "Reveal your singular shine",
+            "subheading": "Quiet shine, loud returns",
             "subheading_size": "h1",
-            "text": "<p>Surprise someone special with dazzling earrings, beautifully crafted to add timeless beauty, elegance, charm, and sparkle to every cherished moment.</p>",
+            "text": "<p>From quiet studs to statement hoops — earrings for every ear, every day.</p>",
             "button_label": "Shop All Items",
             "button_style": "btn--underline"
           }
@@ -1112,12 +1031,12 @@
         "collection_HgPhqj": {
           "type": "collection",
           "settings": {
-            "collection": "",
-            "heading": "Shine Bright",
+            "collection": "necklaces",
+            "heading": "Necklaces",
             "heading_size": "h-xl",
-            "subheading": "Jewelry that truly sparkles & glows",
+            "subheading": "Layers for every neckline",
             "subheading_size": "h1",
-            "text": "<p>Radiate confidence with our stunning jewelry, designed to capture light, brilliance, and elegance, making every moment shine even brighter with grace.</p>",
+            "text": "<p>Pearl drops, peridot pendants, and chains made to be lived in.</p>",
             "button_label": "Shop All Items",
             "button_style": "btn--underline"
           }
@@ -1125,12 +1044,12 @@
         "collection_RhA9kU": {
           "type": "collection",
           "settings": {
-            "collection": "",
-            "heading": "Classic",
+            "collection": "rings",
+            "heading": "Rings",
             "heading_size": "h-xl",
-            "subheading": "Timeless jewelry design classics",
+            "subheading": "Twists and stacks",
             "subheading_size": "h1",
-            "text": "<p>From delicate details to bold elegance, our classic jewelry is designed to capture tradition, sophistication, artistry, and everlasting beauty with every piece.</p>",
+            "text": "<p>Rings that become part of your handwriting — worn daily, repaired for life.</p>",
             "button_label": "Shop All Items",
             "button_style": "btn--underline"
           }
@@ -1138,12 +1057,12 @@
         "collection_TxxxDH": {
           "type": "collection",
           "settings": {
-            "collection": "",
-            "heading": "Move Rings",
+            "collection": "bracelets",
+            "heading": "Bracelets",
             "heading_size": "h-xl",
-            "subheading": "Enduring beauty, charm & grace",
+            "subheading": "Hand-strung colour",
             "subheading_size": "h1",
-            "text": "<p>Experience the beauty of dynamic jewelry with our Move Rings, featuring fluid designs that symbolize love, freedom, passion, creativity, and everlasting elegance.</p>",
+            "text": "<p>Japanese Miyuki beadwork and gold bangles, made to stack.</p>",
             "button_label": "Shop All Items",
             "button_style": "btn--underline"
           }
@@ -1155,7 +1074,6 @@
         "collection_RhA9kU",
         "collection_TxxxDH"
       ],
-      "disabled": true,
       "settings": {
         "container": "container",
         "color_schema": "scheme-6",
@@ -1164,7 +1082,7 @@
         "enable_highlight_text_color": false,
         "heading_size": "h2",
         "heading_color": "",
-        "subheading": "New Collections",
+        "subheading": "Shop by category",
         "description": "",
         "image_ratio": "adapt",
         "padding_top": 100,
@@ -1178,7 +1096,6 @@
     },
     "featured_collection_Jp6jHC": {
       "type": "featured-collection",
-      "disabled": true,
       "custom_css": [],
       "settings": {
         "container": "container",
@@ -1193,7 +1110,7 @@
         "heading_color": "",
         "subheading": "",
         "description": "",
-        "collection": "",
+        "collection": "best-sellers",
         "limit": 8,
         "columns": 4,
         "column_gap": "double-extra-small",
@@ -1223,13 +1140,13 @@
         "text_h7y6Mh": {
           "type": "text",
           "settings": {
-            "title": "<p>Sale 30% OFF</p>",
+            "title": "<p>The Autumn <em>Capsule</em></p>",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
             "heading_size": "h-xl",
             "heading_color": "#f6ff94",
-            "subheading": "Special Offer",
-            "text": "<p>*Ends April 120 2025, 12:00 PST. T&C's Apply</p>",
+            "subheading": "Limited edit",
+            "text": "<p>A handful of pieces for the season's warmest looks. Once they're gone, they're gone until next year.</p>",
             "align_text": "center",
             "content_width": 500,
             "button_label": "",
@@ -1242,17 +1159,17 @@
         "text_gCDi77": {
           "type": "text",
           "settings": {
-            "title": "<p>Seasonal <em>Savings Event</em></p>",
+            "title": "<p>Warm metals, <em>warm light</em></p>",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
             "heading_size": "h1",
             "heading_color": "",
             "subheading": "",
-            "text": "<p>Up to 30% Off on Must-Have Styles !</p>",
+            "text": "<p>Gold vermeil, pearls, and hand-strung colour — the pieces of the season.</p>",
             "align_text": "center",
             "content_width": 500,
-            "button_label": "Shop The Sale",
-            "button_link": "",
+            "button_label": "Shop the Capsule",
+            "button_link": "/collections/golden-forever",
             "button_style": "btn--primary",
             "block_custom_class": "",
             "animations": "inherit"
@@ -1263,7 +1180,6 @@
         "text_h7y6Mh",
         "text_gCDi77"
       ],
-      "disabled": true,
       "settings": {
         "container": "container",
         "color_schema": "accent",
@@ -1284,13 +1200,14 @@
           "settings": {
             "show_image": true,
             "image_link": "",
-            "title": "",
+            "title": "Hand-strung",
             "heading_size": "h3",
-            "text": "<p>“Delivery were very fast. It fits really well and the quality is really good. I'm absolutely delighted with the shirt!”</p>",
+            "text": "<p>Every Miyuki bead bracelet is placed one bead at a time, in natural light, by a human who checks each bead twice.</p>",
             "text_size": "large",
             "button_text": "",
             "button_link": "",
-            "button_style": "btn--underline"
+            "button_style": "btn--underline",
+            "image": "shopify://shop_images/promise-beadwork.png"
           }
         },
         "column_YyW9TM": {
@@ -1298,13 +1215,14 @@
           "settings": {
             "show_image": true,
             "image_link": "",
-            "title": "",
+            "title": "Repaired for life",
             "heading_size": "h3",
-            "text": "<p>“Arrived faster than expected! The necklace is stunning, and the quality is exceptional. I’m so in love with it!”</p>",
+            "text": "<p>Gold vermeil is re-polished and bead bracelets re-strung free, forever. Jewelry built to be repaired, not rebought.</p>",
             "text_size": "large",
             "button_text": "",
             "button_link": "",
-            "button_style": "btn--underline"
+            "button_style": "btn--underline",
+            "image": "shopify://shop_images/promise-gold.png"
           }
         },
         "column_FPcV68": {
@@ -1312,13 +1230,14 @@
           "settings": {
             "show_image": true,
             "image_link": "",
-            "title": "",
+            "title": "Gift-ready",
             "heading_size": "h3",
-            "text": "<p>“Fast delivery! The earrings are gorgeous, lightweight, and feel premium. I’m thrilled with how they look!”</p>",
+            "text": "<p>Every order arrives in our linen gift box with a handwritten care card — ready to give, or to keep.</p>",
             "text_size": "large",
             "button_text": "",
             "button_link": "",
-            "button_style": "btn--underline"
+            "button_style": "btn--underline",
+            "image": "shopify://shop_images/promise-tools.png"
           }
         }
       },
@@ -1327,7 +1246,6 @@
         "column_YyW9TM",
         "column_FPcV68"
       ],
-      "disabled": true,
       "custom_css": [
         ".multicolumn-card__info {--image-spacing: 1.2rem; max-width: 35rem; margin-inline: auto;}"
       ],
@@ -1336,7 +1254,7 @@
         "color_schema": "",
         "section_header_padding_bottom": "large",
         "section_header_content_spacing": "medium",
-        "heading": "Quote of the week",
+        "heading": "The Veloura promise",
         "highlight_style": "none",
         "enable_highlight_text_color": false,
         "heading_size": "h2",
@@ -1375,8 +1293,8 @@
         "heading_color": "",
         "subheading": "",
         "description": "",
-        "button_label": "@epi.accesorios",
-        "button_link": "https://www.instagram.com/epi.accesorios/",
+        "button_label": "@veloura",
+        "button_link": "https://www.instagram.com/veloura",
         "button_style": "btn--secondary",
         "image_ratio": "adapt",
         "columns": 4,
@@ -1395,35 +1313,71 @@
         "custom_id": "",
         "custom_class": "mobile-remove-br",
         "animations": "inherit"
-      }
-    },
-    "video_QCxgRT": {
-      "type": "video",
-      "name": "t:sections.video.presets.name",
-      "settings": {
-        "container": "container",
-        "section_header_padding_bottom": "medium",
-        "section_header_content_spacing": "medium",
-        "heading": "",
-        "highlight_style": "none",
-        "enable_highlight_text_color": false,
-        "heading_size": "h2",
-        "heading_color": "",
-        "subheading": "",
-        "description": "",
-        "video_type": "shopify",
-        "shopify_video": "",
-        "video_url": "",
-        "video_ratio": "adapt",
-        "autoplay_video": true,
-        "padding_top": 40,
-        "padding_bottom": 40,
-        "show_section_divider": false,
-        "divider_width": "container",
-        "custom_id": "",
-        "custom_class": "",
-        "animations": "fade-in"
-      }
+      },
+      "blocks": {
+        "image_1": {
+          "type": "image",
+          "settings": {
+            "text": "",
+            "text_size": "medium",
+            "link": "",
+            "image": "shopify://shop_images/p-twist-1.png"
+          }
+        },
+        "image_2": {
+          "type": "image",
+          "settings": {
+            "text": "",
+            "text_size": "medium",
+            "link": "",
+            "image": "shopify://shop_images/p-hoops-1.png"
+          }
+        },
+        "image_3": {
+          "type": "image",
+          "settings": {
+            "text": "",
+            "text_size": "medium",
+            "link": "",
+            "image": "shopify://shop_images/p-pearlneck-1.png"
+          }
+        },
+        "image_4": {
+          "type": "image",
+          "settings": {
+            "text": "",
+            "text_size": "medium",
+            "link": "",
+            "image": "shopify://shop_images/p-rainbow-1.png"
+          }
+        },
+        "image_5": {
+          "type": "image",
+          "settings": {
+            "text": "",
+            "text_size": "medium",
+            "link": "",
+            "image": "shopify://shop_images/p-parure-1.png"
+          }
+        },
+        "image_6": {
+          "type": "image",
+          "settings": {
+            "text": "",
+            "text_size": "medium",
+            "link": "",
+            "image": "shopify://shop_images/p-bangle-1.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6"
+      ]
     }
   },
   "order": [
@@ -1437,13 +1391,11 @@
     "collection_list_EzhEC3",
     "products_bundle_akJyWk",
     "collection_tabs_MbqQEP",
-    "custom_content_eDwYnU",
     "scrolling_promotion_JTAcPf",
     "collections_showcase_zMz8Ah",
     "featured_collection_Jp6jHC",
     "promotion_banner_dUdHxr",
     "multicolumn_64LhFL",
-    "gallery_images",
-    "video_QCxgRT"
+    "gallery_images"
   ]
 }

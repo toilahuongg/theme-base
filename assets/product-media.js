@@ -87,11 +87,9 @@ if (!customElements.get("media-gallery")) {
           (variant) => variant.id === Number(selectedVariantId)
         );
 
-        if (this.onlyImage) {
-          setTimeout(() => {
-            this.removeAttribute("data-media-loading");
-          }, 100);
-        }
+        setTimeout(() => {
+          this.removeAttribute("data-media-loading");
+        }, 100);
         if (this.mediaLayout === "carousel") {
           setTimeout(() => {
             this.domNodes.thumbnails && this.domNodes.thumbnails.initSlider();

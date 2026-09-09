@@ -1,4 +1,3 @@
-
 {
   "sections": {
     "main": {
@@ -18,7 +17,7 @@
         "heading_gdLHxn": {
           "type": "heading",
           "settings": {
-            "heading": "WE ARE FLAIRY",
+            "heading": "Veloura, <em>made by hand</em>",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
             "heading_size": "h-xl"
@@ -27,7 +26,7 @@
         "text_KRQ7VA": {
           "type": "text",
           "settings": {
-            "text": "<p>Fueled by a love for fitness and a deep respect for the environment, our founder embarked on a journey to redefine the industry norms. Drawing inspiration from nature's colors and patterns, they set out to design workout wear that was not only stylish and functional but also eco-friendly. And so, our brand came to life, driven by a mission to empower women to look and feel their best while treading lightly on the planet.</p>"
+            "text": "<p>We are a small atelier making jewelry the slow way: Japanese Miyuki beads placed one at a time, gold vermeil cast over recycled sterling, pearls matched by hand for lustre. No mass production, no shortcuts — every piece is finished, checked, and wrapped by hand before it leaves the workshop.</p>"
           }
         }
       },
@@ -67,37 +66,40 @@
         "template--17157701599458__45e4c2ac-12b8-4ed1-a789-75b4dbc9c578-column-1": {
           "type": "column",
           "settings": {
-            "title": "Good Quality",
+            "title": "Hand-strung",
             "heading_size": "h4",
-            "text": "<p>Every piece is built to withstand the rigors of your active lifestyle, so you can feel confident and comfortable every time you wear it.</p>",
+            "text": "<p>Every Miyuki bead bracelet is strung one bead at a time, in natural light, by a stringer who checks each bead twice.</p>",
             "text_size": "medium",
             "button_text": "",
             "button_link": "",
-            "button_style": "btn--underline"
+            "button_style": "btn--underline",
+            "image": "shopify://shop_images/promise-beadwork.png"
           }
         },
         "23738779-93a8-4a1b-aa4a-382808fc8419": {
           "type": "column",
           "settings": {
-            "title": "Sustability",
+            "title": "Repaired for life",
             "heading_size": "h4",
-            "text": "<p>From using recycled materials to reducing energy consumption, we're constantly seeking innovative ways to make our brand sustainable.</p>",
+            "text": "<p>Gold vermeil is re-polished and bead bracelets re-strung free, forever. Jewelry built to be repaired, not rebought.</p>",
             "text_size": "medium",
             "button_text": "",
             "button_link": "",
-            "button_style": "btn--underline"
+            "button_style": "btn--underline",
+            "image": "shopify://shop_images/promise-tools.png"
           }
         },
         "62b69dd1-a1f1-4028-9f0c-bf65a341a11c": {
           "type": "column",
           "settings": {
-            "title": "Individuality",
+            "title": "Honest materials",
             "heading_size": "h4",
-            "text": "<p>Whether you prefer bold prints or classic neutrals, fitted leggings or loose-fitting tops, we've got something for everyone.</p>",
+            "text": "<p>Recycled sterling silver, pearls from family farms, lab-grown diamonds — materials we can trace and explain.</p>",
             "text_size": "medium",
             "button_text": "",
             "button_link": "",
-            "button_style": "btn--underline"
+            "button_style": "btn--underline",
+            "image": "shopify://shop_images/promise-gold.png"
           }
         }
       },
@@ -143,13 +145,13 @@
         "subtitle_pLULyW": {
           "type": "subtitle",
           "settings": {
-            "subtitle": "Sustainability"
+            "subtitle": "Materials & Craft"
           }
         },
         "title_EdmBjk": {
           "type": "title",
           "settings": {
-            "title": "We believe in considering the impact of the choices <em>we make every day</em>",
+            "title": "We believe jewelry should be <em>worn every day</em>",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
             "heading_size": "h1",
@@ -159,7 +161,7 @@
         "text_RRiRUq": {
           "type": "text",
           "settings": {
-            "text": "<p>Sustainability is the epitome of allure in modern fashion. Our workout wear collection <br/>embodies this ethos, seamlessly blending eco-consciousness with undeniable sexiness. <br/>From sleek designs to flattering cuts, each piece exudes confidence and style while leaving a <br/>minimal environmental footprint. </p>"
+            "text": "<p>Too much jewelry is made to sit in a box. We make pieces for daily life — strong enough for the everyday, honest enough about their materials to earn your trust.</p>"
           }
         }
       },
@@ -186,7 +188,8 @@
         "custom_id": "",
         "custom_class": "",
         "animations": "inherit",
-        "enable_bg_zoom_effect": true
+        "enable_bg_zoom_effect": true,
+        "image": "shopify://shop_images/hero-worn-daily.png"
       }
     },
     "73c8e618-10a0-43bf-b1d9-fa6707a4b913": {
@@ -207,7 +210,7 @@
         "c31917cb-ef90-4fe6-8c66-6d4f3a7d8874": {
           "type": "announcement",
           "settings": {
-            "text": "Made From Recycled Materials",
+            "text": "Miyuki beads, Hiroshima",
             "font_family": "body",
             "text_size": 15,
             "text_link": "",
@@ -233,7 +236,7 @@
         "8d95b262-4168-4c7f-9457-5897c7935129": {
           "type": "announcement",
           "settings": {
-            "text": "Ethically Made In Certified Factories",
+            "text": "18K gold vermeil",
             "font_family": "body",
             "text_size": 15,
             "text_link": "",
@@ -287,7 +290,7 @@
         "1654050315a020c10e-0": {
           "type": "heading",
           "settings": {
-            "heading": "Reclaimed Waste <em>Cotton Fabric</em>",
+            "heading": "The workshop, <em>by hand</em>",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
             "heading_size": "h1"
@@ -296,7 +299,7 @@
         "1654050315a020c10e-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Each piece embodies our commitment to environmental responsibility by repurposing materials that would otherwise go to waste. By utilizing reclaimed cotton, we not only reduce our carbon footprint but also contribute to a circular economy, where resources are reused and recycled. With every purchase, you're not just investing in quality activewear; you're making a conscious choice to support a greener, more sustainable future for fashion.</p>"
+            "text": "<p>Our workshop is a quiet room with a long table. Beads are sorted into gradients in natural light; gold is cast, polished, and checked twice; pearls are matched one against another until the pairing feels inevitable. It is slow work, and we intend to keep it that way.</p>"
           }
         }
       },
@@ -328,7 +331,8 @@
         "divider_width": "container-full",
         "custom_id": "",
         "custom_class": "",
-        "animations": "inherit"
+        "animations": "inherit",
+        "image": "shopify://shop_images/atelier-portrait-1.png"
       }
     },
     "16540504704fa88658": {
@@ -337,7 +341,7 @@
         "1654050470051141b0-0": {
           "type": "heading",
           "settings": {
-            "heading": "Our Community <em>& Partners</em>",
+            "heading": "Materials with <em>a story</em>",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
             "heading_size": "h1"
@@ -346,7 +350,7 @@
         "1654050470051141b0-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Through strategic alliances with sustainable suppliers and grassroots organizations, each product reflects a shared commitment to social and environmental responsibility. By wearing our workout wear, you're not only embracing a healthier lifestyle but also aligning yourself with a community dedicated to driving positive change. Together, we're building a future where fashion is synonymous with sustainability, and every purchase supports our collective journey towards a better world.</p>"
+            "text": "<p>Miyuki beads made in Japan since 1949. 18K gold vermeil — two and a half microns of gold over recycled sterling. Freshwater pearls from family-run farms. Lab-grown diamonds cut to the same standard as mined stones. We can tell you where every material comes from — because we buy direct, and we care.</p>"
           }
         }
       },
@@ -378,7 +382,8 @@
         "divider_width": "container",
         "custom_id": "",
         "custom_class": "",
-        "animations": "inherit"
+        "animations": "inherit",
+        "image": "shopify://shop_images/atelier-portrait-2.png"
       }
     },
     "a16d91be-b626-44c9-8cae-a679dc435c62": {
@@ -387,37 +392,40 @@
         "template--17157701599458__a16d91be-b626-44c9-8cae-a679dc435c62-column-1": {
           "type": "column",
           "settings": {
-            "title": "Selena Gomez",
+            "title": "Traceable",
             "heading_size": "h3",
-            "text": "<p>Fresh styles. Fresh colors.<br/>The countdown for summer has started.</p>",
+            "text": "<p>Direct from family-run pearl farms, Japanese bead makers, and certified refineries. No mystery supply chains.</p>",
             "text_size": "medium",
             "button_text": "",
             "button_link": "",
-            "button_style": "btn--underline"
+            "button_style": "btn--underline",
+            "image": "shopify://shop_images/col-traceable.png"
           }
         },
         "template--17157701599458__a16d91be-b626-44c9-8cae-a679dc435c62-column-2": {
           "type": "column",
           "settings": {
-            "title": "Jessica Jung",
+            "title": "Lifetime repair",
             "heading_size": "h3",
-            "text": "<p>The brands we feature have all paved the way for <br/>sustainability in swimwearconscious she fee</p>",
+            "text": "<p>Re-polishing, re-stringing, and small repairs are free, forever — just send the piece to the workshop.</p>",
             "text_size": "medium",
             "button_text": "",
             "button_link": "",
-            "button_style": "btn--underline"
+            "button_style": "btn--underline",
+            "image": "shopify://shop_images/col-lifetime-repair.png"
           }
         },
         "template--17157701599458__a16d91be-b626-44c9-8cae-a679dc435c62-column-3": {
           "type": "column",
           "settings": {
-            "title": "Helen Mullen",
+            "title": "Gift-wrapped",
             "heading_size": "h3",
-            "text": "<p>It’s not surprising, considering that we’re a group of eco-conscious, recycling-loving.</p>",
+            "text": "<p>Every order ships in our linen gift box with a handwritten care card. Ready to give, or to keep.</p>",
             "text_size": "medium",
             "button_text": "",
             "button_link": "",
-            "button_style": "btn--underline"
+            "button_style": "btn--underline",
+            "image": "shopify://shop_images/col-gift-wrapped.png"
           }
         }
       },

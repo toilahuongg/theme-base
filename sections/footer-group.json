@@ -1,4 +1,3 @@
-
 {
   "type": "footer",
   "name": "t:sections.footer.name",
@@ -6,51 +5,25 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "footer-3": {
+        "footer-newsletter": {
           "type": "newsletter",
-          "disabled": true,
           "settings": {
-            "heading": "ÚNETE A EPI-ACCESORIOS",
+            "heading": "The atelier newsletter",
             "heading_size": "h6",
-            "subheading": "<p>Suscríbete para recibir actualizaciones y descuentos de la tienda.</p>",
-            "description": "<p>Al suscribirte, aceptas los Términos de Uso y la Política de Privacidad.</p>",
-            "email_placeholder": "Ingresa tu correo electrónico",
+            "subheading": "<p>New pieces, craft notes, and early access — once a month, never more.</p>",
+            "description": "<p>By subscribing you agree to our Terms of Use and Privacy Policy.</p>",
+            "email_placeholder": "Email address",
             "hide_label": true,
             "form_width": 420,
-            "width": 25,
+            "width": 30,
             "open_default_collapsible_tab": true,
             "show_divider": false
           }
         },
-        "image_6Qz9nF": {
-          "type": "image",
-          "settings": {
-            "heading": "",
-            "heading_size": "h6",
-            "subheading": "",
-            "image": "shopify://shop_images/EpiAccesoriosLogo.png",
-            "image_link": "/",
-            "image_width": 200,
-            "alignment": "start",
-            "width": 20,
-            "open_default_collapsible_tab": false
-          }
-        },
-        "link_list_LNbkPn": {
+        "footer-shop": {
           "type": "link_list",
           "settings": {
-            "heading": "NOSOTROS",
-            "heading_size": "h6",
-            "menu": "main-menu",
-            "width": 15,
-            "open_default_collapsible_tab": true,
-            "show_divider": false
-          }
-        },
-        "link_list_XUPpWV": {
-          "type": "link_list",
-          "settings": {
-            "heading": "LEGAL Y POLÍTICA",
+            "heading": "Shop",
             "heading_size": "h6",
             "menu": "footer",
             "width": 20,
@@ -58,60 +31,62 @@
             "show_divider": false
           }
         },
-        "link_list_bWXCB4": {
+        "footer-care": {
           "type": "link_list",
           "settings": {
-            "heading": "REDES SOCIALES",
+            "heading": "Customer Care",
             "heading_size": "h6",
-            "menu": "redes-sociales-footer",
-            "width": 15,
+            "menu": "footer-services",
+            "width": 20,
             "open_default_collapsible_tab": true,
             "show_divider": false
           }
         },
-        "text_3mBKtf": {
+        "footer-about": {
+          "type": "link_list",
+          "settings": {
+            "heading": "About",
+            "heading_size": "h6",
+            "menu": "footer-about",
+            "width": 20,
+            "open_default_collapsible_tab": true,
+            "show_divider": false
+          }
+        },
+        "footer-contact": {
           "type": "text",
           "settings": {
-            "heading": "CONTÁCTENOS",
+            "heading": "The Atelier",
             "heading_size": "h6",
-            "subtext": "<p>Mie ken Suzuka Shi Takaokadai 1-3-12 Foresuto Paaku Takaoka 3E</p><p>C.P.: 513-0019</p><p>Tel: 08079534157</p><p>Correo: epi.accesorios@gmail.com</p>",
-            "width": 25,
+            "subtext": "<p>Veloura Studio<br>212 Crosby Street, New York</p><p>care@veloura.com<br>Mon–Sat, 10am–6pm</p>",
+            "width": 10,
             "open_default_collapsible_tab": true,
             "show_divider": false
-          }
-        },
-        "logo_pYmLz9": {
-          "type": "logo",
-          "disabled": true,
-          "settings": {
-            "logo": "shopify://shop_images/EpiAccesoriosLogo.png"
           }
         }
       },
       "block_order": [
-        "footer-3",
-        "image_6Qz9nF",
-        "link_list_LNbkPn",
-        "link_list_XUPpWV",
-        "link_list_bWXCB4",
-        "text_3mBKtf",
-        "logo_pYmLz9"
+        "footer-newsletter",
+        "footer-shop",
+        "footer-care",
+        "footer-about",
+        "footer-contact"
       ],
       "custom_css": [
         "@media (min-width: 1023.98px) {[data-column-type=\"newsletter\"] {justify-content: flex-end; order: 9; }}"
       ],
       "settings": {
         "container": "container",
-        "color_schema": "scheme-7",
+        "color_schema": "background-2",
         "show_copyright": true,
         "show_divider": true,
         "enable_follow_on_shop": true,
-        "show_social": false,
+        "show_social": true,
         "icon_size": "extra-medium",
         "enable_country_selector": true,
-        "enable_language_selector": true,
+        "enable_language_selector": false,
         "show_payments": true,
-        "bottom_menu": "main-menu",
+        "bottom_menu": "footer-about",
         "animations": "fade-in-up"
       }
     },
@@ -128,7 +103,7 @@
           "type": "products",
           "settings": {
             "text": "Products",
-            "collection": ""
+            "collection": "best-sellers"
           }
         },
         "mobile-sticky-bar-2": {
@@ -150,7 +125,6 @@
         "mobile-sticky-bar-2",
         "mobile-sticky-bar-3"
       ],
-      "disabled": true,
       "settings": {
         "enable_sticky_bar": true,
         "show_text": true
@@ -162,41 +136,36 @@
         "image": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/bruna-15_13bd8534-69bf-4233-8f0d-c7a08f3cd939.jpg",
+            "image": "shopify://shop_images/p-pearlneck-1.png",
             "image_position": "left"
           }
         },
         "popup-0": {
           "type": "heading",
           "settings": {
-            "heading": "¡Únete hoy y descubre ventajas exclusivas!",
+            "heading": "Join the atelier list",
             "text_size": "large"
           }
         },
         "popup-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Novedades, beneficios únicos y 10% OFF en tu primera compra.</p>"
+            "text": "<p>New pieces, craft notes, and early access to seasonal edits. One email a month, never more.</p>"
           }
         },
         "popup-2": {
           "type": "form",
           "settings": {
             "design": "design-2",
-            "button_label": "Únete ahora"
+            "button_label": "Subscribe"
           }
-        },
-        "social_ynFVzL": {
-          "type": "social",
-          "settings": {}
         }
       },
       "block_order": [
         "image",
         "popup-0",
         "popup-1",
-        "popup-2",
-        "social_ynFVzL"
+        "popup-2"
       ],
       "settings": {
         "design_mode": false,

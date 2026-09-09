@@ -1,4 +1,3 @@
-
 {
   "sections": {
     "breadcrumb_jXXxRQ": {
@@ -17,35 +16,35 @@
         "featured_collection_NUbBeX": {
           "type": "featured_collection",
           "settings": {
-            "collection": "",
+            "collection": "necklaces",
             "title": "Necklaces"
           }
         },
         "featured_collection_YGeAeT": {
           "type": "featured_collection",
           "settings": {
-            "collection": "",
+            "collection": "gifts",
             "title": "Gifts"
           }
         },
         "featured_collection_RHaqid": {
           "type": "featured_collection",
           "settings": {
-            "collection": "",
+            "collection": "earrings",
             "title": "Earrings"
           }
         },
         "featured_collection_Nirt7r": {
           "type": "featured_collection",
           "settings": {
-            "collection": "",
+            "collection": "on-sale",
             "title": "On Sale"
           }
         },
         "featured_collection_xKjwYb": {
           "type": "featured_collection",
           "settings": {
-            "collection": "",
+            "collection": "bracelets",
             "title": "Bracelets"
           }
         }
@@ -57,7 +56,6 @@
         "featured_collection_Nirt7r",
         "featured_collection_xKjwYb"
       ],
-      "disabled": true,
       "custom_css": [],
       "settings": {
         "container": "container",
