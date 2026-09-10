@@ -1,0 +1,74 @@
+.hero-split-reveal {
+  --hero-split-bg: #e9e3d8;
+  display: block;
+  height: var(--scroll-height, 180vh);
+  background: var(--hero-split-bg);
+}
+
+.hero-split-reveal__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-split-reveal__half {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  will-change: clip-path;
+}
+
+.hero-split-reveal__half img,
+.hero-split-reveal__half .placeholder-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-split-reveal__half--left {
+  clip-path: inset(0 calc(50% + var(--split, 0px)) 0 0);
+}
+
+.hero-split-reveal__half--left img {
+  filter: saturate(0.7);
+}
+
+.hero-split-reveal__half--right {
+  clip-path: inset(0 0 0 calc(50% + var(--split, 0px)));
+}
+
+.hero-split-reveal__half--right img {
+  filter: hue-rotate(25deg) saturate(1.1);
+}
+
+.hero-split-reveal__center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  color: #fff;
+  z-index: 3;
+  text-align: center;
+  mix-blend-mode: difference;
+}
+
+.hero-split-reveal__heading {
+  margin: 0;
+  font-size: clamp(54px, 9vw, 150px);
+  letter-spacing: -0.07em;
+  line-height: 0.85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-split-reveal {
+    height: auto;
+  }
+
+  .hero-split-reveal__sticky {
+    position: relative;
+    height: auto;
+    min-height: 100vh;
+  }
+}

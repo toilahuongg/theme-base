@@ -1,6 +1,6 @@
 .card-stack__list {
   margin-top: clamp(48px, 7vw, 90px);
-  max-width: 1200px;
+  max-width: var(--card-stack-max-width, 1200px);
   margin-left: auto;
   margin-right: auto;
 }
@@ -85,32 +85,40 @@
   opacity: 0.15;
 }
 
-/* Image covers the whole card; copy overlays the bottom-left over a scrim */
-.card-stack__card:has(.card-stack__art img) {
+/* Cover — image fills the card; copy overlays the bottom-left over a scrim */
+.card-stack__card--overlay,
+.card-stack__card--centered {
   display: block;
   padding: 0;
 }
 
-.card-stack__card:has(.card-stack__art img) .card-stack__art {
+.card-stack__card--overlay .card-stack__art,
+.card-stack__card--centered .card-stack__art {
   position: absolute;
   inset: 0;
   z-index: -1;
   min-height: 0;
-  opacity: 1;
 }
 
-.card-stack__card:has(.card-stack__art img) .card-stack__art img {
+.card-stack__card--overlay .card-stack__art img,
+.card-stack__card--centered .card-stack__art img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   border-radius: 0;
 }
 
-.card-stack__card:has(.card-stack__art img)::after {
+.card-stack__card--overlay::after,
+.card-stack__card--centered::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
+}
+
+.card-stack__card--overlay::after {
   background: linear-gradient(
     to top,
     rgba(24, 18, 14, 0.78) 0%,
@@ -120,15 +128,115 @@
   );
 }
 
-.card-stack__card:has(.card-stack__art img) .card-stack__copy {
+.card-stack__card--overlay .card-stack__copy {
   position: absolute;
   inset: auto 0 0 0;
   padding: clamp(24px, 4vw, 40px);
   color: #fff;
 }
 
-.card-stack__card:has(.card-stack__art img) .card-stack__text {
+.card-stack__card--overlay .card-stack__text {
   opacity: 0.88;
+}
+
+/* Centered — image fills the card; copy sits centered on a soft scrim */
+.card-stack__card--centered::after {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(24, 18, 14, 0.55) 0%,
+    rgba(24, 18, 14, 0.28) 60%,
+    rgba(24, 18, 14, 0.12) 100%
+  );
+}
+
+.card-stack__card--centered .card-stack__copy {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 2vw, 20px);
+  padding: clamp(24px, 4vw, 40px);
+  text-align: center;
+  color: #fff;
+}
+
+.card-stack__card--centered .card-stack__text {
+  margin: 0;
+  max-width: 640px;
+  opacity: 0.88;
+}
+
+/* Banner — wide promo card: badge, copy and button beside the artwork */
+.card-stack__card--banner {
+  min-height: clamp(320px, 36vw, 480px);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+}
+
+.card-stack__card--banner .card-stack__copy {
+  justify-content: center;
+  gap: clamp(12px, 1.6vw, 20px);
+}
+
+.card-stack__card--banner .card-stack__art {
+  min-height: 0;
+}
+
+.card-stack__card--banner .card-stack__art img {
+  width: 100%;
+  height: 100%;
+  border-radius: clamp(16px, 2vw, 24px);
+  object-fit: cover;
+}
+
+.card-stack__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--stack-badge-bg, #d9f277);
+  color: var(--stack-badge-fg, #1f1a17);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.card-stack__badge-icon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  border-radius: 0;
+}
+
+.card-stack__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  margin-top: clamp(6px, 1vw, 12px);
+  padding: 13px 22px;
+  border-radius: 999px;
+  background: var(--stack-card-fg, rgb(var(--color-foreground)));
+  color: var(--stack-card-bg, var(--color-background));
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.card-stack__button:hover {
+  opacity: 0.85;
+}
+
+.card-stack__button .m-icon-svg {
+  width: 14px;
+  height: 14px;
 }
 
 @media (max-width: 989px) {
@@ -138,11 +246,25 @@
     margin-bottom: clamp(120px, 24vw, 200px);
   }
 
-  .card-stack__art {
+  .card-stack__card--split .card-stack__art {
     position: absolute;
     right: -60px;
     bottom: -60px;
     opacity: 0.5;
+  }
+
+  .card-stack__card--banner {
+    min-height: 0;
+    gap: clamp(24px, 6vw, 40px);
+  }
+
+  .card-stack__card--banner .card-stack__art {
+    position: static;
+    opacity: 1;
+  }
+
+  .card-stack__card--banner .card-stack__art img {
+    aspect-ratio: 4 / 3;
   }
 
   .card-stack__shape {

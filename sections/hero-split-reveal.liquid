@@ -1,0 +1,202 @@
+{{ 'hero-split-reveal.css' | asset_url | stylesheet_tag }}
+<script
+  src="{{ 'hero-split-reveal.js' | asset_url }}"
+  defer="defer"
+></script>
+{%- liquid
+  assign section_id = section.settings.custom_id | default: section.id
+  assign custom_class = section.settings.custom_class
+
+  unless custom_class == blank
+    assign custom_class = custom_class | prepend: ' '
+  endunless
+
+  assign animation_effect = settings.animations
+  if animation_effect != 'none' and section.settings.animations != 'inherit'
+    assign animation_effect = section.settings.animations
+  endif
+-%}
+<style>
+  .section-{{ section.id }} {
+    --scroll-height: {{ section.settings.scroll_height_vh }}vh;
+    {%- if section.settings.background_color != blank -%}
+      --hero-split-bg: {{ section.settings.background_color }};
+    {%- endif -%}
+  }
+</style>
+{% render 'divider',
+  show_divider: section.settings.show_section_divider,
+  divider_width: section.settings.divider_width
+%}
+<hero-split-reveal
+  id="{{ section_id }}"
+  class="section-{{ section.id }} hero-split-reveal{{ custom_class }}"
+>
+  <div class="hero-split-reveal__sticky">
+    <div class="hero-split-reveal__half hero-split-reveal__half--left">
+      {%- if section.settings.image_left != blank -%}
+        {{
+          section.settings.image_left
+          | image_url: width: 2200
+          | image_tag:
+            loading: 'eager',
+            widths: '750,1100,1500,2200',
+            sizes: '100vw',
+            alt: section.settings.image_left.alt | escape
+        }}
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'hero-split-reveal__placeholder' }}
+      {%- endif -%}
+    </div>
+    <div class="hero-split-reveal__half hero-split-reveal__half--right">
+      {%- if section.settings.image_right != blank -%}
+        {{
+          section.settings.image_right
+          | image_url: width: 2200
+          | image_tag:
+            loading: 'lazy',
+            widths: '750,1100,1500,2200',
+            sizes: '100vw',
+            alt: section.settings.image_right.alt | escape
+        }}
+      {%- else -%}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'hero-split-reveal__placeholder' }}
+      {%- endif -%}
+    </div>
+    <div class="hero-split-reveal__center">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="hero-split-reveal__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+    </div>
+  </div>
+</hero-split-reveal>
+
+{% schema %}
+{
+  "name": "Hero split reveal",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.common.general.name"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Two sides.\nOne story."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_left",
+      "label": "Image left"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_right",
+      "label": "Image right"
+    },
+    {
+      "type": "range",
+      "id": "scroll_height_vh",
+      "label": "Scroll height",
+      "info": "Scroll distance (in viewport heights) before the split completes.",
+      "min": 120,
+      "max": 400,
+      "step": 10,
+      "unit": "vh",
+      "default": 180
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "info": "Leave blank to use the default split backdrop."
+    },
+    {
+      "type": "header",
+      "content": "t:sections.common.divider.section_heading.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_divider",
+      "label": "t:sections.common.divider.show_divider.label",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "divider_width",
+      "label": "t:sections.common.divider.width.label",
+      "options": [
+        {
+          "value": "container",
+          "label": "t:sections.common.container.fixed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "t:sections.common.container.stretched"
+        },
+        {
+          "value": "container-full",
+          "label": "t:sections.common.container.fullwidth"
+        }
+      ],
+      "default": "container",
+      "visible_if": "{{ section.settings.show_section_divider == true }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.common.custom_attr.header"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "t:sections.common.custom_attr.custom_id"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "t:sections.common.custom_attr.custom_class"
+    },
+    {
+      "type": "header",
+      "content": "t:settings_schema.animations.header.content"
+    },
+    {
+      "type": "select",
+      "id": "animations",
+      "label": "t:settings_schema.animations.header__2.content",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "t:settings_schema.animations.settings.animation.options.option_6"
+        },
+        {
+          "value": "fade-in",
+          "label": "t:settings_schema.animations.settings.animation.options.option_2"
+        },
+        {
+          "value": "fade-in-up",
+          "label": "t:settings_schema.animations.settings.animation.options.option_3"
+        },
+        {
+          "value": "fade-in-left",
+          "label": "t:settings_schema.animations.settings.animation.options.option_4"
+        },
+        {
+          "value": "fade-in-right",
+          "label": "t:settings_schema.animations.settings.animation.options.option_5"
+        }
+      ],
+      "default": "inherit"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero split reveal",
+      "settings": {
+        "heading": "Two sides.\nOne story."
+      }
+    }
+  ]
+}
+{% endschema %}

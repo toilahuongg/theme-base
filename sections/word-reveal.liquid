@@ -1,6 +1,6 @@
-{{ 'card-stack.css' | asset_url | stylesheet_tag }}
+{{ 'word-reveal.css' | asset_url | stylesheet_tag }}
 <script
-  src="{{ 'card-stack.js' | asset_url }}"
+  src="{{ 'word-reveal.js' | asset_url }}"
   defer="defer"
 ></script>
 {%- liquid
@@ -21,23 +21,20 @@
   .section-{{ section.id }} {
     --section-padding-top: {{ section.settings.padding_top }}px;
     --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    {%- if section.settings.heading_font_size > 0 -%}
+      .section-{{ section.id }} .section__heading {
+        font-size: min({{ section.settings.heading_font_size }}px, 14vw);
+      }
+    {%- endif -%}
   }
-  .section-{{ section.id }} .card-stack__list {
-    --card-stack-max-width: {{ section.settings.card_max_width }}px;
-  }
-  {%- if section.settings.heading_font_size > 0 -%}
-    .section-{{ section.id }} .section__heading {
-      font-size: min({{ section.settings.heading_font_size }}px, 14vw);
-    }
-  {%- endif -%}
 </style>
 {% render 'divider',
   show_divider: section.settings.show_section_divider,
   divider_width: section.settings.divider_width
 %}
-<div
+<word-reveal
   id="{{ section_id }}"
-  class="section-{{ section.id }} card-stack m-section-padding color-{{ section.settings.color_scheme }}{{ custom_class }}"
+  class="section-{{ section.id }} word-reveal m-section-padding color-{{ section.settings.color_scheme }}{{ custom_class }}"
 >
   <motion-element
     data-motion="{{ animation_effect }}"
@@ -47,76 +44,15 @@
       section_settings: section.settings,
       animation_effect: animation_effect
     -%}
-    {%- if section.blocks.size > 0 -%}
-      <card-stack class="block">
-        <div class="card-stack__list">
-          {%- for block in section.blocks -%}
-            {%- liquid
-              assign card_layout = block.settings.layout
-              if card_layout == 'auto'
-                if block.settings.image != blank
-                  assign card_layout = 'overlay'
-                else
-                  assign card_layout = 'split'
-                endif
-              endif
-            -%}
-            <article
-              class="card-stack__card card-stack__card--{{ card_layout }}"
-              style="--stack-index: {{ forloop.index0 }};{% if block.settings.background_color != blank %} --stack-card-bg: {{ block.settings.background_color }};{% endif %}{% if block.settings.text_color != blank %} --stack-card-fg: {{ block.settings.text_color }};{% endif %}"
-              {{ block.shopify_attributes }}
-            >
-              <div class="card-stack__copy">
-                {%- if card_layout == 'banner' and block.settings.badge != blank -%}
-                  <span class="card-stack__badge">
-                    {%- if block.settings.badge_icon != blank -%}
-                      {{
-                        block.settings.badge_icon
-                        | image_url: width: 48
-                        | image_tag: class: 'card-stack__badge-icon', alt: '', loading: 'lazy'
-                      }}
-                    {%- endif -%}
-                    {{ block.settings.badge }}
-                  </span>
-                {%- endif -%}
-                {%- if block.settings.title != blank -%}
-                  <h3 class="card-stack__title">{{ block.settings.title }}</h3>
-                {%- endif -%}
-                {%- if block.settings.description != blank -%}
-                  <p class="card-stack__text">{{ block.settings.description }}</p>
-                {%- endif -%}
-                {%- if card_layout == 'banner' and block.settings.button_label != blank -%}
-                  <a class="card-stack__button" href="{{ block.settings.button_link | default: '#' }}">
-                    <span>{{ block.settings.button_label }}</span>
-                    {%- render 'icon-arrow-right', size: 'small' -%}
-                  </a>
-                {%- endif -%}
-              </div>
-              <div class="card-stack__art">
-                {%- if block.settings.image != blank -%}
-                  {{
-                    block.settings.image
-                    | image_url: width: 900
-                    | image_tag:
-                      loading: 'lazy',
-                      widths: '360,533,720,900',
-                      sizes: '(min-width: 990px) 40vw, 100vw',
-                      alt: block.settings.image.alt | default: block.settings.title | escape
-                  }}
-                {%- else -%}
-                  <span class="card-stack__shape" aria-hidden="true"></span>
-                {%- endif -%}
-              </div>
-            </article>
-          {%- endfor -%}
-        </div>
-      </card-stack>
+    {%- if section.settings.text != blank -%}
+      <p class="word-reveal__text">{{ section.settings.text }}</p>
     {%- endif -%}
   </motion-element>
-</div>
+</word-reveal>
+
 {% schema %}
 {
-  "name": "Card stack",
+  "name": "Word reveal",
   "settings": [
     {
       "type": "header",
@@ -143,20 +79,17 @@
       "default": "container"
     },
     {
-      "type": "range",
-      "id": "card_max_width",
-      "label": "Card max width",
-      "min": 800,
-      "max": 1600,
-      "step": 20,
-      "unit": "px",
-      "default": 1200
-    },
-    {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:sections.common.color_schema.label",
       "default": "background-1"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "info": "Each word fades in with its own rhythm as the section enters the viewport.",
+      "default": "Every word appears at its own pace, turning static copy into a moment with rhythm."
     },
     {
       "type": "header",
@@ -203,7 +136,7 @@
       "id": "heading",
       "label": "Heading",
       "info": "Highlight text with *em* tags",
-      "default": "Build <em>your stack</em>"
+      "default": "One word <em>at a time</em>"
     },
     {
       "type": "select",
@@ -386,150 +319,15 @@
       "default": "inherit"
     }
   ],
-  "blocks": [
-    {
-      "type": "card",
-      "name": "Card",
-      "settings": [
-        {
-          "type": "select",
-          "id": "layout",
-          "label": "Card layout",
-          "options": [
-            {
-              "value": "auto",
-              "label": "Automatic — cover image, or split without one"
-            },
-            {
-              "value": "split",
-              "label": "Split — text beside round artwork"
-            },
-            {
-              "value": "overlay",
-              "label": "Cover image with overlay text"
-            },
-            {
-              "value": "banner",
-              "label": "Banner — badge, text and button"
-            },
-            {
-              "value": "centered",
-              "label": "Centered text over image"
-            }
-          ],
-          "default": "auto"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title"
-        },
-        {
-          "type": "textarea",
-          "id": "description",
-          "label": "Description"
-        },
-        {
-          "type": "text",
-          "id": "badge",
-          "label": "Badge",
-          "info": "Small pill above the title (banner layout)."
-        },
-        {
-          "type": "image_picker",
-          "id": "badge_icon",
-          "label": "Badge icon",
-          "info": "Optional icon inside the badge pill."
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "text",
-          "id": "button_label",
-          "label": "Button label",
-          "info": "Leaving this blank hides the button."
-        },
-        {
-          "type": "url",
-          "id": "button_link",
-          "label": "Button link"
-        },
-        {
-          "type": "color",
-          "id": "background_color",
-          "label": "Background color",
-          "info": "Leave blank to use the default card palette."
-        },
-        {
-          "type": "color",
-          "id": "text_color",
-          "label": "Text color"
-        }
-      ]
-    }
-  ],
   "presets": [
     {
-      "name": "Card stack",
+      "name": "Word reveal",
       "settings": {
         "container": "container",
         "color_scheme": "background-1",
-        "heading": "Build <em>your stack</em>",
-        "description": "<p>Jewelry grows with you. Start with one piece and add layers over time.</p>",
-        "section_header_padding_bottom": "medium",
-        "section_header_content_spacing": "medium",
-        "highlight_style": "none",
-        "enable_highlight_text_color": false,
-        "heading_size": "h2",
-        "heading_font_size": 72,
-        "heading_color": "",
-        "subheading": ""
-      },
-      "blocks": [
-        {
-          "type": "card",
-          "settings": {
-            "title": "Start with one.",
-            "description": "A single piece that anchors everything else — a signet ring, a pair of hoops, one perfect bracelet.",
-            "image": "shopify://shop_images/p-twist-1.png",
-            "background_color": "",
-            "text_color": ""
-          }
-        },
-        {
-          "type": "card",
-          "settings": {
-            "title": "Add a layer.",
-            "description": "Stack rings, pair chains, layer bracelets in different metals and weights.",
-            "image": "shopify://shop_images/p-stackset-1.png",
-            "background_color": "",
-            "text_color": ""
-          }
-        },
-        {
-          "type": "card",
-          "settings": {
-            "title": "Make it yours.",
-            "description": "Mix Miyuki colorways with gold vermeil for a stack that reads unmistakably yours.",
-            "image": "shopify://shop_images/p-rainbow-1.png",
-            "background_color": "",
-            "text_color": ""
-          }
-        },
-        {
-          "type": "card",
-          "settings": {
-            "title": "Pass it on.",
-            "description": "Gold vermeil is made to be repaired and re-plated — and inherited.",
-            "image": "shopify://shop_images/p-bangle-1.png",
-            "background_color": "",
-            "text_color": ""
-          }
-        }
-      ]
+        "heading": "One word <em>at a time</em>",
+        "text": "Every word appears at its own pace, turning static copy into a moment with rhythm."
+      }
     }
   ]
 }

@@ -1,0 +1,31 @@
+.word-reveal {
+  display: block;
+}
+
+.word-reveal__text {
+  max-width: 1150px;
+  margin: clamp(48px, 7vw, 70px) auto 0;
+  font-size: clamp(42px, 6vw, 88px);
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+}
+
+.word-reveal__text .word-reveal__word {
+  display: inline-block;
+  opacity: 0.12;
+  transform: translateY(18px);
+  transition: 0.45s ease;
+}
+
+.word-reveal.is-visible .word-reveal__text .word-reveal__word {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word-reveal__text .word-reveal__word {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

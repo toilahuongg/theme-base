@@ -1,0 +1,40 @@
+.text-line-reveal {
+  display: block;
+}
+
+.text-line-reveal__lines {
+  max-width: 1200px;
+  margin: clamp(48px, 7vw, 70px) auto 0;
+}
+
+.text-line-reveal__mask {
+  overflow: hidden;
+}
+
+.text-line-reveal__mask span {
+  display: block;
+  font-size: clamp(42px, 6.6vw, 96px);
+  line-height: 1;
+  letter-spacing: -0.055em;
+  transform: translateY(115%);
+  transition: transform 0.85s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.text-line-reveal.is-visible .text-line-reveal__mask span {
+  transform: translateY(0);
+}
+
+.text-line-reveal__mask:nth-child(2) span {
+  transition-delay: 0.08s;
+}
+
+.text-line-reveal__mask:nth-child(3) span {
+  transition-delay: 0.16s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-line-reveal__mask span {
+    transform: none;
+    transition: none;
+  }
+}

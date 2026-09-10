@@ -1,0 +1,360 @@
+{{ 'horizontal-cards.css' | asset_url | stylesheet_tag }}
+<script
+  src="{{ 'horizontal-cards.js' | asset_url }}"
+  defer="defer"
+></script>
+{%- liquid
+  assign section_id = section.settings.custom_id | default: section.id
+  assign custom_class = section.settings.custom_class
+
+  unless custom_class == blank
+    assign custom_class = custom_class | prepend: ' '
+  endunless
+
+  assign animation_effect = settings.animations
+  if animation_effect != 'none' and section.settings.animations != 'inherit'
+    assign animation_effect = section.settings.animations
+  endif
+-%}
+<style>
+  .section-{{ section.id }} {
+    --scroll-height: {{ section.settings.scroll_height_vh }}vh;
+    {%- if section.settings.background_color != blank -%}
+      --horizontal-cards-bg: {{ section.settings.background_color }};
+    {%- endif -%}
+    {%- if section.settings.heading_font_size > 0 -%}
+      .section-{{ section.id }} .section__heading {
+        font-size: min({{ section.settings.heading_font_size }}px, 14vw);
+      }
+    {%- endif -%}
+  }
+</style>
+{% render 'divider',
+  show_divider: section.settings.show_section_divider,
+  divider_width: section.settings.divider_width
+%}
+<horizontal-cards
+  id="{{ section_id }}"
+  class="section-{{ section.id }} horizontal-cards{{ custom_class }}"
+>
+  <div class="horizontal-cards__sticky">
+    <div class="horizontal-cards__header">
+      {%- render 'index-section-header',
+        section_settings: section.settings,
+        animation_effect: animation_effect
+      -%}
+    </div>
+    {%- if section.blocks.size > 0 -%}
+      <div class="horizontal-cards__track">
+        {%- for block in section.blocks -%}
+          <article
+            class="horizontal-cards__card"
+            {{ block.shopify_attributes }}
+          >
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 1400
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '360,533,720,940,1200,1400',
+                  sizes: '(min-width: 990px) 72vw, 100vw',
+                  alt: block.settings.image.alt | default: block.settings.title | escape
+              }}
+            {%- else -%}
+              {{ 'lifestyle-2' | placeholder_svg_tag: 'horizontal-cards__placeholder' }}
+            {%- endif -%}
+            {%- if block.settings.title != blank -%}
+              <h3 class="horizontal-cards__title">{{ block.settings.title }}</h3>
+            {%- endif -%}
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</horizontal-cards>
+
+{% schema %}
+{
+  "name": "Horizontal cards",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.common.general.name"
+    },
+    {
+      "type": "range",
+      "id": "scroll_height_vh",
+      "label": "Scroll height",
+      "info": "Scroll distance (in viewport heights) before the cards finish travelling sideways.",
+      "min": 200,
+      "max": 600,
+      "step": 10,
+      "unit": "vh",
+      "default": 430
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "info": "Leave blank to use the default dark backdrop."
+    },
+    {
+      "type": "header",
+      "content": "t:sections.common.header.name"
+    },
+    {
+      "type": "select",
+      "id": "section_header_padding_bottom",
+      "label": "t:sections.common.spacing.section_header_padding_bottom.label",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.common.spacing.section_header_padding_bottom.option__1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.common.spacing.section_header_padding_bottom.option__2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.common.spacing.section_header_padding_bottom.option__3.label"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "section_header_content_spacing",
+      "label": "t:sections.common.content_spacing.label",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.common.content_spacing.options__sm.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.common.content_spacing.options__md.label"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Highlight text with *em* tags",
+      "default": "Scroll <em>sideways</em>"
+    },
+    {
+      "type": "select",
+      "id": "highlight_style",
+      "label": "t:sections.common.highlight_text.settings.highlight_style.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.common.highlight_text.settings.highlight_style.option__1"
+        },
+        {
+          "value": "drawer_line",
+          "label": "t:sections.common.highlight_text.settings.highlight_style.option__2"
+        },
+        {
+          "value": "underline",
+          "label": "t:sections.common.highlight_text.settings.highlight_style.option__3"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_highlight_text_color",
+      "label": "t:sections.common.highlight_text.settings.enable_highlight_text_color.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:sections.common.text_size.heading.label",
+      "options": [
+        {
+          "value": "h3",
+          "label": "t:sections.common.text_size.options__h3.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.common.text_size.options__h2.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.common.text_size.options__h1.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.common.text_size.options__h0.label"
+        },
+        {
+          "value": "h-xl",
+          "label": "t:sections.common.text_size.options__hd1.label"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Custom heading size",
+      "info": "Leave 0 to use the theme heading size.",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 72
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "t:sections.common.heading_color.label",
+      "info": "t:sections.common.heading_color.info"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:sections.common.header.subheading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "t:sections.common.header.description"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.common.divider.section_heading.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_divider",
+      "label": "t:sections.common.divider.show_divider.label",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "divider_width",
+      "label": "t:sections.common.divider.width.label",
+      "options": [
+        {
+          "value": "container",
+          "label": "t:sections.common.container.fixed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "t:sections.common.container.stretched"
+        },
+        {
+          "value": "container-full",
+          "label": "t:sections.common.container.fullwidth"
+        }
+      ],
+      "default": "container",
+      "visible_if": "{{ section.settings.show_section_divider == true }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.common.custom_attr.header"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "t:sections.common.custom_attr.custom_id"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "t:sections.common.custom_attr.custom_class"
+    },
+    {
+      "type": "header",
+      "content": "t:settings_schema.animations.header.content"
+    },
+    {
+      "type": "select",
+      "id": "animations",
+      "label": "t:settings_schema.animations.header__2.content",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "t:settings_schema.animations.settings.animation.options.option_6"
+        },
+        {
+          "value": "fade-in",
+          "label": "t:settings_schema.animations.settings.animation.options.option_2"
+        },
+        {
+          "value": "fade-in-up",
+          "label": "t:settings_schema.animations.settings.animation.options.option_3"
+        },
+        {
+          "value": "fade-in-left",
+          "label": "t:settings_schema.animations.settings.animation.options.option_4"
+        },
+        {
+          "value": "fade-in-right",
+          "label": "t:settings_schema.animations.settings.animation.options.option_5"
+        }
+      ],
+      "default": "inherit"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Horizontal cards",
+      "settings": {
+        "heading": "Scroll <em>sideways</em>",
+        "scroll_height_vh": 430
+      },
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "01. Space"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "02. Light"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "03. Detail"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "04. Work"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
