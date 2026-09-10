@@ -1,0 +1,472 @@
+{{ 'ugc-story-carousel.css' | asset_url | stylesheet_tag }}
+<script
+  src="{{ 'ugc-story-carousel.js' | asset_url }}"
+  defer="defer"
+></script>
+{%- liquid
+  assign section_id = section.settings.custom_id | default: section.id
+  assign custom_class = section.settings.custom_class
+
+  unless custom_class == blank
+    assign custom_class = custom_class | prepend: ' '
+  endunless
+
+  assign animation_effect = settings.animations
+  if animation_effect != 'none' and section.settings.animations != 'inherit'
+    assign animation_effect = section.settings.animations
+  endif
+-%}
+<style>
+  .section-{{ section.id }} {
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --ugc-story-bg: {{ section.settings.background_color }};
+    --ugc-story-ink: {{ section.settings.ink_color }};
+    --ugc-story-muted: {{ section.settings.muted_color }};
+    --ugc-story-accent: {{ section.settings.accent_color }};
+    --ugc-story-card-w: {{ section.settings.card_width }}px;
+  }
+</style>
+
+{% render 'divider',
+  show_divider: section.settings.show_section_divider,
+  divider_width: section.settings.divider_width
+%}
+<ugc-story-carousel
+  id="{{ section_id }}"
+  class="section-{{ section.id }} ugc-story-carousel m-section-padding color-{{ section.settings.color_scheme }}{{ custom_class }}"
+  data-slide-duration="{{ section.settings.slide_duration }}"
+  data-autoplay="{{ section.settings.autoplay }}"
+>
+  <section class="ugc-story">
+    <!-- LEFT -->
+    <div class="ugc-copy">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <motion-element
+            data-motion="{{ animation_effect }}"
+            class="block"
+          >
+            <p class="ugc-eyebrow">{{ section.settings.eyebrow }}</p>
+          </motion-element>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <motion-element
+            data-motion="{{ animation_effect }}"
+            data-motion-delay="50"
+            class="block"
+          >
+            <h2 class="ugc-title">{{ section.settings.title }}</h2>
+          </motion-element>
+        {%- endif -%}
+        {%- assign benefits = section.settings.benefits | split: '\n' -%}
+        {%- if benefits.size > 0 -%}
+          <motion-element
+            data-motion="{{ animation_effect }}"
+            data-motion-delay="100"
+            class="block"
+          >
+            <ul class="ugc-benefits">
+              {%- for benefit in benefits -%}
+                {%- unless benefit == blank -%}
+                  <li><span class="check">{%- render 'icon-check', size: 'small' -%}</span>{{ benefit }}</li>
+                {%- endunless -%}
+              {%- endfor -%}
+            </ul>
+          </motion-element>
+        {%- endif -%}
+      </div>
+
+      <div class="ugc-pagination"></div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="ugc-window">
+      <div class="ugc-rail">
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            <article
+              class="ugc-card{% if forloop.first %} active{% endif %}"
+              data-index="{{ forloop.index0 }}"
+              data-title="{{ block.settings.title | escape }}"
+              data-bullets="{{ block.settings.bullets | replace: '\n', '|' | escape }}"
+              {{ block.shopify_attributes }}
+            >
+              <div class="media">
+                {%- if block.settings.image != blank -%}
+                  {{
+                    block.settings.image
+                    | image_url: width: 900
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '360,540,720,900',
+                      sizes: '(min-width: 990px) 30vw, 100vw',
+                      alt: block.settings.title | default: section.settings.title | escape
+                  }}
+                {%- else -%}
+                  {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </div>
+
+              <div class="media-controls">
+                <button type="button" class="icon-btn mute-btn" data-muted="true" aria-label="Unmute">
+                  <span class="icon-state-sound" hidden>{%- render 'icon-volume', size: 'medium' -%}</span>
+                  <span class="icon-state-muted">{%- render 'icon-volume-mute', size: 'medium' -%}</span>
+                </button>
+                <button type="button" class="icon-btn pause-btn" aria-label="Pause">
+                  <span class="icon-state-pause">{%- render 'icon-pause', size: 'medium' -%}</span>
+                  <span class="icon-state-play" hidden>{%- render 'icon-play', size: 'medium' -%}</span>
+                </button>
+              </div>
+
+              {%- if block.settings.product != blank -%}
+                {%- assign block_product = block.settings.product -%}
+                <div class="product-mini">
+                  {%- if block_product.featured_image != blank -%}
+                    {{
+                      block_product.featured_image
+                      | image_url: width: 250
+                      | image_tag: loading: 'lazy', alt: ''
+                    }}
+                  {%- endif -%}
+                </div>
+
+                <div class="product-full">
+                  <div class="product-thumb">
+                    {%- if block_product.featured_image != blank -%}
+                      {{
+                        block_product.featured_image
+                        | image_url: width: 250
+                        | image_tag: loading: 'lazy', alt: ''
+                      }}
+                    {%- endif -%}
+                  </div>
+                  <div class="product-info">
+                    <strong>{{ block_product.title }}</strong>
+                    <span>{{ block_product.price | money }}</span>
+                  </div>
+                  <button
+                    type="button"
+                    class="cart-btn"
+                    data-variant-id="{{ block_product.selected_or_first_available_variant.id }}"
+                    aria-label="Add to bag"
+                  >
+                    <span class="icon-state-bag">{%- render 'icon-shopping-bag', size: 'medium' -%}</span>
+                    <span class="icon-state-added" hidden>{%- render 'icon-check', size: 'medium' -%}</span>
+                  </button>
+                </div>
+              {%- endif -%}
+            </article>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+
+      <div class="story-progress-mobile" aria-hidden="true">
+        <span class="story-progress-mobile__bar"></span>
+      </div>
+    </div>
+  </section>
+</ugc-story-carousel>
+{% schema %}
+{
+  "name": "UGC story carousel",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.common.general.name"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.common.color_schema.label",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "Copy"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "LOVED BY OUR COMMUNITY"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "info": "Initial headline. It is replaced by the active card's title once the carousel runs.",
+      "default": "Everyday makeup for a dewy glow"
+    },
+    {
+      "type": "textarea",
+      "id": "benefits",
+      "label": "Benefits",
+      "info": "One benefit per line. Used as the pre-JavaScript fallback.",
+      "default": "Blends effortlessly into skin for a soft\nGlow through every look\nSmooth on skin all day long"
+    },
+    {
+      "type": "header",
+      "content": "Behavior"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Auto-advance slides",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "slide_duration",
+      "label": "Slide duration",
+      "min": 3000,
+      "max": 9500,
+      "step": 500,
+      "unit": "ms",
+      "default": 6500
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "ink_color",
+      "label": "Text color",
+      "default": "#0b0b0b"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Muted text color",
+      "default": "#a7a7a7"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#d8eaa5"
+    },
+    {
+      "type": "range",
+      "id": "card_width",
+      "label": "Card width",
+      "min": 240,
+      "max": 420,
+      "step": 4,
+      "unit": "px",
+      "default": 328
+    },
+    {
+      "type": "header",
+      "content": "t:sections.common.section_padding.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:sections.common.section_padding.top_padding.label",
+      "default": 0,
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:sections.common.section_padding.bottom_padding.label",
+      "default": 0,
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.common.divider.section_heading.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_divider",
+      "label": "t:sections.common.divider.show_divider.label",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "divider_width",
+      "label": "t:sections.common.divider.width.label",
+      "options": [
+        {
+          "value": "container",
+          "label": "t:sections.common.container.fixed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "t:sections.common.container.stretched"
+        },
+        {
+          "value": "container-full",
+          "label": "t:sections.common.container.fullwidth"
+        }
+      ],
+      "default": "container",
+      "visible_if": "{{ section.settings.show_section_divider == true }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.common.custom_attr.header"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "t:sections.common.custom_attr.custom_id"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "t:sections.common.custom_attr.custom_class"
+    },
+    {
+      "type": "header",
+      "content": "t:settings_schema.animations.header.content"
+    },
+    {
+      "type": "select",
+      "id": "animations",
+      "label": "t:settings_schema.animations.header__2.content",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "t:settings_schema.animations.settings.animation.options.option_6"
+        },
+        {
+          "value": "fade-in",
+          "label": "t:settings_schema.animations.settings.animation.options.option_2"
+        },
+        {
+          "value": "fade-in-up",
+          "label": "t:settings_schema.animations.settings.animation.options.option_3"
+        },
+        {
+          "value": "fade-in-left",
+          "label": "t:settings_schema.animations.settings.animation.options.option_4"
+        },
+        {
+          "value": "fade-in-right",
+          "label": "t:settings_schema.animations.settings.animation.options.option_5"
+        }
+      ],
+      "default": "inherit"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "story",
+      "name": "Story",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "info": "Shown in the left column while this story is active."
+        },
+        {
+          "type": "textarea",
+          "id": "bullets",
+          "label": "Benefits",
+          "info": "One benefit per line."
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product",
+          "info": "Featured on the card with a quick-add button. Leave blank to hide."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "UGC story carousel",
+      "settings": {
+        "color_scheme": "background-1",
+        "eyebrow": "LOVED BY OUR COMMUNITY",
+        "title": "Everyday makeup for a dewy glow",
+        "benefits": "Blends effortlessly into skin for a soft\nGlow through every look\nSmooth on skin all day long",
+        "autoplay": true,
+        "slide_duration": 6500,
+        "background_color": "#ffffff",
+        "ink_color": "#0b0b0b",
+        "muted_color": "#a7a7a7",
+        "accent_color": "#d8eaa5",
+        "card_width": 328,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      },
+      "blocks": [
+        {
+          "type": "story",
+          "settings": {
+            "image": "",
+            "title": "Soft skin, simple routine",
+            "bullets": "Melts into skin without feeling heavy\nLayers easily under everyday makeup\nLeaves a natural, comfortable finish",
+            "product": ""
+          }
+        },
+        {
+          "type": "story",
+          "settings": {
+            "image": "",
+            "title": "Everyday makeup for a dewy glow",
+            "bullets": "Blends effortlessly into skin for a soft\nGlow through every look\nSmooth on skin all day long",
+            "product": ""
+          }
+        },
+        {
+          "type": "story",
+          "settings": {
+            "image": "",
+            "title": "A sheer wash of everyday color",
+            "bullets": "Buildable color without a sticky feel\nSoft shine that works day to night\nComfortable on lips for hours",
+            "product": ""
+          }
+        },
+        {
+          "type": "story",
+          "settings": {
+            "image": "",
+            "title": "Hydration that still feels weightless",
+            "bullets": "Comforts dry skin without heaviness\nSits smoothly beneath makeup\nLeaves skin fresh, never greasy",
+            "product": ""
+          }
+        },
+        {
+          "type": "story",
+          "settings": {
+            "image": "",
+            "title": "Glow that looks like your own skin",
+            "bullets": "Creates a soft illuminated finish\nMixes easily with foundation or SPF\nDesigned for everyday wear",
+            "product": ""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

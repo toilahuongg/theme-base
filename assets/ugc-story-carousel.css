@@ -1,0 +1,525 @@
+.ugc-story-carousel {
+  --ugc-story-ink: #0b0b0b;
+  --ugc-story-muted: #a7a7a7;
+  --ugc-story-accent: #d8eaa5;
+  --ugc-story-card-w: 328px;
+  --ugc-story-bg: #ffffff;
+  --ugc-story-border: #ececec;
+}
+
+.ugc-story-carousel .ugc-story {
+  width: 100%;
+  min-height: 690px;
+  background: var(--ugc-story-bg);
+  color: var(--ugc-story-ink);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  border: 1px solid var(--ugc-story-border);
+}
+
+/* =========================================================
+   LEFT COPY
+   ========================================================= */
+
+.ugc-story-carousel .ugc-copy {
+  min-width: 0;
+  padding: 44px clamp(34px, 4vw, 66px) 54px clamp(36px, 7.7vw, 136px);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.ugc-story-carousel .ugc-eyebrow {
+  margin: 0 0 30px;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.ugc-story-carousel .ugc-title {
+  margin: 0;
+  max-width: 470px;
+  min-height: 132px;
+
+  font-size: clamp(42px, 3vw, 58px);
+  line-height: 0.99;
+  letter-spacing: -0.055em;
+  font-weight: 800;
+
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
+}
+
+.ugc-story-carousel .ugc-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 39px 0 0;
+
+  display: grid;
+  gap: 17px;
+
+  max-width: 510px;
+
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
+}
+
+.ugc-story-carousel .ugc-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 550;
+}
+
+.ugc-story-carousel .check {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex: none;
+
+  display: grid;
+  place-items: center;
+
+  background: var(--ugc-story-accent);
+  font-size: 13px;
+}
+
+.ugc-story-carousel .copy-changing {
+  opacity: 0;
+  transform: translateY(7px);
+}
+
+/* =========================================================
+   PAGINATION
+   current number + progress line + remaining numbers
+   ========================================================= */
+
+.ugc-story-carousel .ugc-pagination {
+  margin-top: auto;
+
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  min-height: 28px;
+}
+
+.ugc-story-carousel .page-btn {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 0;
+
+  color: var(--ugc-story-muted);
+  cursor: pointer;
+
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 800;
+
+  transition: color 0.2s ease;
+}
+
+.ugc-story-carousel .page-btn:hover {
+  color: #555;
+}
+
+.ugc-story-carousel .page-btn.active {
+  color: var(--ugc-story-ink);
+}
+
+.ugc-story-carousel .story-progress {
+  width: 120px;
+  height: 2px;
+  background: #d1d1d1;
+  overflow: hidden;
+  margin-left: -10px;
+}
+
+.ugc-story-carousel .story-progress__bar {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--ugc-story-ink);
+  transform-origin: left center;
+}
+
+/* Single-track progress bar for mobile; replaces the numbered
+   pagination on small screens. */
+.ugc-story-carousel .story-progress-mobile {
+  display: none;
+}
+
+.ugc-story-carousel .story-progress-mobile__bar {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--ugc-story-ink);
+  border-radius: 99px;
+}
+
+/* =========================================================
+   RIGHT RAIL
+   Logic:
+   - every card has same width
+   - active card becomes taller
+   - rail translates until active card is first visible item
+   ========================================================= */
+
+.ugc-story-carousel .ugc-window {
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  padding: 44px 0 42px;
+
+  /* Horizontal gestures drive the carousel; vertical stays a page scroll. */
+  touch-action: pan-y;
+}
+
+.ugc-story-carousel .ugc-window.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.ugc-story-carousel .ugc-window.is-dragging .ugc-rail {
+  transition: none;
+}
+
+.ugc-story-carousel .ugc-rail {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  will-change: transform;
+  transition: transform 0.58s cubic-bezier(0.22, 0.8, 0.2, 1);
+}
+
+.ugc-story-carousel .ugc-card {
+  position: relative;
+  flex: 0 0 var(--ugc-story-card-w);
+  width: var(--ugc-story-card-w);
+  height: 438px;
+
+  overflow: hidden;
+  border-radius: 11px;
+  background: #ddd;
+
+  cursor: pointer;
+
+  transition:
+    height 0.52s cubic-bezier(0.22, 0.8, 0.2, 1),
+    filter 0.3s ease;
+}
+
+.ugc-story-carousel .ugc-card.active {
+  height: 583px;
+  cursor: default;
+}
+
+.ugc-story-carousel .ugc-card > .media {
+  position: absolute;
+  inset: 0;
+}
+
+.ugc-story-carousel .ugc-card > .media img,
+.ugc-story-carousel .ugc-card > .media .placeholder-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ugc-story-carousel .ugc-card > .media img {
+  transition: transform 0.5s ease;
+}
+
+.ugc-story-carousel .ugc-card:not(.active):hover > .media img {
+  transform: scale(1.025);
+}
+
+/* =========================================================
+   MEDIA CONTROLS
+   ========================================================= */
+
+.ugc-story-carousel .media-controls {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 6;
+
+  display: grid;
+  gap: 8px;
+}
+
+.ugc-story-carousel .media-controls button span {
+  height: 24px;
+}
+
+.ugc-story-carousel .icon-btn {
+  width: 44px;
+  height: 44px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 0;
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  backdrop-filter: blur(7px);
+
+  color: #fff;
+  cursor: pointer;
+
+  font-size: 15px;
+
+  padding: 8px;
+}
+
+.ugc-story-carousel .icon-btn svg {
+  width: 24px;
+  height: 24px;
+}
+.ugc-story-carousel .pause-btn {
+  display: none;
+}
+
+.ugc-story-carousel .ugc-card.active .pause-btn {
+  display: grid;
+  opacity: 0;
+}
+
+.ugc-story-carousel .ugc-card.active:hover .pause-btn {
+  opacity: 1;
+}
+/* =========================================================
+   PRODUCT UI
+   inactive = mini tile
+   active   = full product card
+   ========================================================= */
+
+.ugc-story-carousel .product-mini {
+  position: absolute;
+  z-index: 5;
+  left: 16px;
+  bottom: 16px;
+
+  width: 60px;
+  height: 80px;
+  padding: 7px;
+
+  border-radius: 7px;
+  background: #fff;
+
+  display: grid;
+  place-items: center;
+
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.08);
+
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
+}
+
+.ugc-story-carousel .product-mini img {
+  object-fit: contain;
+}
+
+.ugc-story-carousel .ugc-card.active .product-mini {
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+}
+
+.ugc-story-carousel .product-full {
+  position: absolute;
+  z-index: 5;
+
+  left: 9px;
+  right: 9px;
+  bottom: 9px;
+
+  min-height: 96px;
+  padding: 9px 10px 9px 9px;
+
+  border-radius: 14px;
+  background: #fff;
+
+  display: grid;
+  grid-template-columns: 60px 1fr 44px;
+  gap: 10px;
+  align-items: center;
+
+  box-shadow: 0 9px 24px rgba(0, 0, 0, 0.11);
+
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease 0.14s,
+    transform 0.25s ease 0.14s;
+}
+
+.ugc-story-carousel .ugc-card.active .product-full {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.ugc-story-carousel .product-thumb {
+  width: 60px;
+  height: 76px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f5f5f5;
+}
+
+.ugc-story-carousel .product-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ugc-story-carousel .product-info strong {
+  display: block;
+  margin-bottom: 5px;
+
+  font-size: 16px;
+  line-height: 1.15;
+}
+
+.ugc-story-carousel .product-info span {
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.ugc-story-carousel .cart-btn {
+  width: 44px;
+  height: 44px;
+  background: var(--ugc-story-accent);
+  border: 0;
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+  padding: 0;
+  font-size: 18px;
+}
+
+.ugc-story-carousel .cart-btn span {
+  height: 24px;
+}
+.ugc-story-carousel .cart-btn svg {
+  width: 24px;
+  height: 24px;
+}
+.ugc-story-carousel .cart-btn.btn--loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .ugc-story-carousel .ugc-story {
+    display: block;
+    min-height: auto;
+  }
+
+  .ugc-story-carousel .ugc-copy {
+    padding: 44px 22px 30px;
+  }
+
+  .ugc-story-carousel .ugc-eyebrow {
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+
+  .ugc-story-carousel .ugc-title {
+    min-height: 0;
+    max-width: 650px;
+    font-size: clamp(42px, 10vw, 64px);
+  }
+
+  .ugc-story-carousel .ugc-benefits {
+    margin-top: 28px;
+  }
+
+  .ugc-story-carousel .ugc-window {
+    padding: 0 0 28px 22px;
+  }
+
+  .ugc-story-carousel {
+    --ugc-story-card-w: min(78vw, 340px);
+  }
+
+  .ugc-story-carousel .ugc-card,
+  .ugc-story-carousel .ugc-card.active {
+    height: min(105vw, 460px);
+  }
+
+  /* Numbered pagination is replaced by the single progress track. */
+  .ugc-story-carousel .ugc-pagination {
+    display: none;
+  }
+
+  .ugc-story-carousel .story-progress-mobile {
+    display: block;
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 6px;
+    height: 3px;
+    background: #e3e3e3;
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  /* Every card gets the full product panel; mini tiles are dropped. */
+  .ugc-story-carousel .ugc-card .product-mini {
+    display: none;
+  }
+
+  .ugc-story-carousel .ugc-card .product-full {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  /* Play/pause and mute stay visible on every card. */
+  .ugc-story-carousel .ugc-card .pause-btn {
+    display: grid;
+    opacity: 1;
+  }
+  .ugc-story-carousel .ugc-card.active .pause-btn {
+    opacity: 1;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ugc-story-carousel .ugc-rail,
+  .ugc-story-carousel .ugc-card,
+  .ugc-story-carousel .ugc-title,
+  .ugc-story-carousel .ugc-benefits,
+  .ugc-story-carousel .product-full,
+  .ugc-story-carousel .product-mini {
+    transition: none !important;
+  }
+}
