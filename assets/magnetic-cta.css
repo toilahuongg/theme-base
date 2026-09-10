@@ -109,6 +109,32 @@
 
   .magnetic-cta--minimal,
   .magnetic-cta__minimal {
-    min-height: 70vh;
+    min-height: clamp(340px, 54vh, 460px);
+  }
+
+  /* Let vw govern the size — the desktop clamps' minimums overflow 375px */
+  .magnetic-cta__title,
+  .magnetic-cta__title.h-xl {
+    font-size: clamp(46px, 13vw, 200px);
+  }
+
+  .magnetic-cta__title.h3 {
+    font-size: clamp(30px, 9vw, 64px);
+  }
+
+  .magnetic-cta__title.h2 {
+    font-size: clamp(34px, 10vw, 88px);
+  }
+
+  .magnetic-cta__title.h1 {
+    font-size: clamp(38px, 11vw, 120px);
+  }
+
+  .magnetic-cta__title.h0 {
+    font-size: clamp(42px, 12vw, 160px);
+  }
+
+  .magnetic-cta__label {
+    font-size: clamp(30px, 8vw, 84px);
   }
 }

@@ -135,6 +135,7 @@
   .card-stack__card {
     grid-template-columns: 1fr;
     min-height: 52vh;
+    margin-bottom: clamp(120px, 24vw, 200px);
   }
 
   .card-stack__art {
@@ -146,5 +147,16 @@
 
   .card-stack__shape {
     width: 220px;
+  }
+}
+
+/* When the sticky header is visible, pin below it (theme sets --m-header-space) */
+body.header-pinned .card-stack__card {
+  top: calc(28px + var(--stack-index, 0) * 18px + var(--m-header-space, 60px));
+}
+
+@media (min-width: 990px) {
+  body.header-pinned .card-stack__card {
+    top: calc(28px + var(--stack-index, 0) * 18px + var(--m-header-space, 70px));
   }
 }

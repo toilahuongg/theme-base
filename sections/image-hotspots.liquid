@@ -25,6 +25,23 @@
       font-size: min({{ section.settings.heading_font_size }}px, 14vw);
     }
   {%- endif -%}
+  {%- if section.blocks.size > 0 -%}
+    {%- for block in section.blocks -%}
+      .section-{{ section.id }} .image-hotspots__pin:nth-of-type({{ forloop.index }}):is(:hover, :focus-within) ~ .image-hotspots__cards .image-hotspots__card:nth-of-type({{ forloop.index }}) {
+        transform: translate(-50%, calc(-100% - 30px));
+        box-shadow: 0 20px 48px rgba(0, 0, 0, 0.18);
+      }
+    {%- endfor -%}
+    @media (max-width: 749px) {
+      {%- for block in section.blocks -%}
+        .section-{{ section.id }} .image-hotspots__pin:nth-of-type({{ forloop.index }}):is(:hover, :focus-within) ~ .image-hotspots__cards .image-hotspots__card:nth-of-type({{ forloop.index }}) {
+          display: block;
+          transform: none;
+          box-shadow: 0 14px 40px rgba(0, 0, 0, 0.14);
+        }
+      {%- endfor -%}
+    }
+  {%- endif -%}
 </style>
 {% render 'divider',
   show_divider: section.settings.show_section_divider,
@@ -66,20 +83,30 @@
           style="--x: {{ block.settings.x }}%; --y: {{ block.settings.y }}%;"
           {{ block.shopify_attributes }}
         >
-          <span class="image-hotspots__dot" aria-hidden="true"></span>
-          <div class="image-hotspots__card">
-            {%- if block.settings.title != blank -%}
-              <b class="image-hotspots__title">{{ block.settings.title }}</b>
-            {%- endif -%}
-            {%- if block.settings.description != blank -%}
-              <small class="image-hotspots__text">{{ block.settings.description }}</small>
-            {%- endif -%}
-            {%- if block.settings.url != blank -%}
-              <a class="image-hotspots__link" href="{{ block.settings.url }}">Learn more</a>
-            {%- endif -%}
-          </div>
+          <button
+            type="button"
+            class="image-hotspots__dot"
+            aria-label="{{ block.settings.title | default: 'View hotspot' | escape }}"
+          ></button>
         </div>
       {%- endfor -%}
+      {%- if section.blocks.size > 0 -%}
+        <div class="image-hotspots__cards">
+          {%- for block in section.blocks -%}
+            <div class="image-hotspots__card" style="--x: {{ block.settings.x }}%; --y: {{ block.settings.y }}%;">
+              {%- if block.settings.title != blank -%}
+                <b class="image-hotspots__title">{{ block.settings.title }}</b>
+              {%- endif -%}
+              {%- if block.settings.description != blank -%}
+                <small class="image-hotspots__text">{{ block.settings.description }}</small>
+              {%- endif -%}
+              {%- if block.settings.url != blank -%}
+                <a class="image-hotspots__link" href="{{ block.settings.url }}">Learn more</a>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
     </div>
   </motion-element>
 </div>

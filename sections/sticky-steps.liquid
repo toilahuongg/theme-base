@@ -1,6 +1,6 @@
-{{ 'sticky-story.css' | asset_url | stylesheet_tag }}
+{{ 'sticky-steps.css' | asset_url | stylesheet_tag }}
 <script
-  src="{{ 'sticky-story.js' | asset_url }}"
+  src="{{ 'sticky-steps.js' | asset_url }}"
   defer="defer"
 ></script>
 {%- liquid
@@ -34,7 +34,7 @@
 %}
 <div
   id="{{ section_id }}"
-  class="section-{{ section.id }} sticky-story m-section-padding color-{{ section.settings.color_scheme }}{{ custom_class }}"
+  class="section-{{ section.id }} sticky-steps m-section-padding color-{{ section.settings.color_scheme }}{{ custom_class }}"
 >
   <motion-element
     data-motion="{{ animation_effect }}"
@@ -45,61 +45,101 @@
       animation_effect: animation_effect
     -%}
     {%- if section.blocks.size > 0 -%}
-      <sticky-story class="block">
-        <div class="sticky-story__grid">
-          <div class="sticky-story__media sticky-story__media--{{ section.settings.media_height }}" aria-hidden="true">
-            {%- for block in section.blocks -%}
-              <div
-                class="sticky-story__media-item{% if forloop.first %} is-active{% endif %}"
-                data-story-media="{{ forloop.index0 }}"
-              >
+      <sticky-steps class="block sticky-steps--{{ section.settings.media_style }}">
+        <div class="sticky-steps__grid">
+          <div
+            class="sticky-steps__media sticky-steps__media--{{ section.settings.media_height }}{% if section.settings.media_style == 'stage' %} color-{{ section.settings.stage_color_scheme }}{% endif %}"
+            aria-hidden="true"
+          >
+            {%- if section.settings.media_style == 'image' -%}
+              {%- for block in section.blocks -%}
+                <div
+                  class="sticky-steps__media-item{% if forloop.first %} is-active{% endif %}"
+                  data-media="{{ forloop.index0 }}"
+                >
+                  {%- if block.settings.image != blank -%}
+                    {{
+                      block.settings.image
+                      | image_url: width: 1200
+                      | image_tag:
+                        loading: 'lazy',
+                        widths: '360,533,720,940,1066,1200',
+                        sizes: '(min-width: 990px) 50vw, 100vw',
+                        alt: block.settings.image.alt | default: block.settings.title | escape
+                    }}
+                  {%- else -%}
+                    {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {%- endif -%}
+                </div>
+              {%- endfor -%}
+            {%- else -%}
+              {%- for block in section.blocks -%}
                 {%- if block.settings.image != blank -%}
-                  {{
-                    block.settings.image
-                    | image_url: width: 1200
-                    | image_tag:
-                      loading: 'lazy',
-                      widths: '360,533,720,940,1066,1200',
-                      sizes: '(min-width: 990px) 50vw, 100vw',
-                      alt: block.settings.image.alt | default: block.settings.title | escape
-                  }}
-                {%- else -%}
-                  {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                  <div class="sticky-steps__stage-media" data-media="{{ forloop.index0 }}">
+                    {{
+                      block.settings.image
+                      | image_url: width: 1200
+                      | image_tag:
+                        loading: 'lazy',
+                        widths: '360,533,720,940,1066,1200',
+                        sizes: '(min-width: 990px) 50vw, 100vw',
+                        alt: block.settings.image.alt | default: block.settings.title | escape
+                    }}
+                  </div>
+                  <div class="sticky-steps__stage-overlay" data-media="{{ forloop.index0 }}"></div>
                 {%- endif -%}
-              </div>
-            {%- endfor -%}
+              {%- endfor -%}
+              {%- for block in section.blocks -%}
+                <div
+                  class="sticky-steps__state{% if forloop.first %} is-active{% endif %}"
+                  data-media="{{ forloop.index0 }}"
+                >
+                  {%- if block.settings.kicker != blank -%}
+                    <small class="sticky-steps__state-kicker">{{ block.settings.kicker }}</small>
+                  {%- endif -%}
+                  {%- if block.settings.value != blank -%}
+                    <strong class="sticky-steps__value">{{ block.settings.value }}</strong>
+                  {%- endif -%}
+                  {%- if block.settings.meta != blank -%}
+                    <p class="sticky-steps__meta">{{ block.settings.meta }}</p>
+                  {%- endif -%}
+                </div>
+              {%- endfor -%}
+            {%- endif -%}
           </div>
-          <div class="sticky-story__steps">
+          <div class="sticky-steps__steps">
             {%- for block in section.blocks -%}
               <article
-                class="sticky-story__step{% if forloop.first %} is-active{% endif %}"
-                data-story-step="{{ forloop.index0 }}"
+                class="sticky-steps__step{% if forloop.first %} is-active{% endif %}"
+                data-step="{{ forloop.index0 }}"
                 {{ block.shopify_attributes }}
               >
-                <small class="sticky-story__kicker">
+                <small class="sticky-steps__kicker">
                   {%- if block.settings.kicker != blank -%}
                     {{- block.settings.kicker -}}
+                  {%- elsif section.settings.media_style == 'stage' -%}
+                    STEP 0{{ forloop.index }}
                   {%- else -%}
                     0{{ forloop.index }}
                   {%- endif -%}
                 </small>
                 {%- if block.settings.title != blank -%}
-                  <h3 class="sticky-story__title">{{ block.settings.title }}</h3>
+                  <h3 class="sticky-steps__title">{{ block.settings.title }}</h3>
                 {%- endif -%}
                 {%- if block.settings.description != blank -%}
-                  <p class="sticky-story__text">{{ block.settings.description }}</p>
+                  <p class="sticky-steps__text">{{ block.settings.description }}</p>
                 {%- endif -%}
               </article>
             {%- endfor -%}
           </div>
         </div>
-      </sticky-story>
+      </sticky-steps>
     {%- endif -%}
   </motion-element>
 </div>
 {% schema %}
 {
-  "name": "Sticky story",
+  "name": "Sticky steps",
   "settings": [
     {
       "type": "header",
@@ -263,6 +303,22 @@
     },
     {
       "type": "select",
+      "id": "media_style",
+      "label": "Media style",
+      "options": [
+        {
+          "value": "image",
+          "label": "Image"
+        },
+        {
+          "value": "stage",
+          "label": "Image stage"
+        }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "select",
       "id": "media_height",
       "label": "Media height",
       "options": [
@@ -280,6 +336,13 @@
         }
       ],
       "default": "medium"
+    },
+    {
+      "type": "color_scheme",
+      "id": "stage_color_scheme",
+      "label": "Stage color scheme",
+      "default": "background-2",
+      "visible_if": "{{ section.settings.media_style == 'stage' }}"
     },
     {
       "type": "header",
@@ -391,7 +454,8 @@
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Image"
+          "label": "Image",
+          "info": "Image style: the sticky media image. Image stage style: the stage background behind the text."
         },
         {
           "type": "text",
@@ -407,18 +471,33 @@
           "type": "textarea",
           "id": "description",
           "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "info": "Used with the Stage panel media style.",
+          "visible_if": "{{ section.settings.media_style == 'stage' }}"
+        },
+        {
+          "type": "text",
+          "id": "meta",
+          "label": "Meta",
+          "info": "Used with the Stage panel media style.",
+          "visible_if": "{{ section.settings.media_style == 'stage' }}"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Sticky story",
+      "name": "Sticky steps — Story",
       "settings": {
         "container": "container",
         "color_scheme": "background-1",
         "heading": "From <em>bead</em> to heirloom",
         "description": "<p>Every Veloura piece begins the same way — slowly, by hand.</p>",
+        "media_style": "image",
         "media_height": "tall",
         "section_header_padding_bottom": "medium",
         "section_header_content_spacing": "medium",
@@ -455,6 +534,58 @@
             "kicker": "03",
             "title": "Wear",
             "description": "Made to be lived in — layered, stacked, passed on. That is the point."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sticky steps — Compare",
+      "settings": {
+        "container": "container",
+        "color_scheme": "background-1",
+        "heading": "Two metals. <em>One standard.</em>",
+        "description": "<p>Every Veloura piece is made to be worn daily and repaired for decades. Choose your metal, keep the same finish.</p>",
+        "media_style": "stage",
+        "media_height": "tall",
+        "stage_color_scheme": "background-2",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_font_size": 72,
+        "heading_color": "",
+        "subheading": ""
+      },
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "kicker": "01 / METAL",
+            "value": "18K gold vermeil",
+            "meta": "A thick 18K layer over recycled sterling silver — 5× the industry-standard thickness.",
+            "title": "Gold vermeil",
+            "description": "Our signature. A generous 18K gold layer over recycled sterling silver, sealed with a soft matte finish that never feels costume-y."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "kicker": "02 / OPTION",
+            "value": "14K solid gold",
+            "meta": "For pieces meant to stay on, every day, forever.",
+            "title": "14K solid gold",
+            "description": "Comfortably everyday and heirloom-solid. Our rings and chains are also available in solid 14K for those who never take them off."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "kicker": "03 / ALTERNATIVE",
+            "value": "Sterling silver",
+            "meta": "Bright, honest, and beautifully light on the wrist.",
+            "title": "Sterling silver",
+            "description": "Polished recycled sterling for a cooler tone — the same hand finish, a quieter metal. Our entry point into the atelier."
           }
         }
       ]

@@ -1,0 +1,286 @@
+.sticky-steps__grid {
+  margin-top: clamp(48px, 7vw, 90px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+  gap: clamp(32px, 7vw, 110px);
+  align-items: start;
+}
+
+.sticky-steps__media {
+  position: sticky;
+  top: 28px;
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+/* Translucent wash behind the image stack (story look); stage mode uses its color scheme */
+.sticky-steps--image .sticky-steps__media {
+  background: rgba(var(--color-foreground), 0.06);
+}
+
+/* Per-mode media heights (image = story look, stage = compare panel) */
+.sticky-steps--image {
+  --media-tall: calc(100vh - 56px);
+  --media-medium: 70vh;
+  --media-short: 55vh;
+  --media-min-tall: 480px;
+  --media-min-medium: 420px;
+  --media-min-short: 360px;
+}
+
+.sticky-steps--stage {
+  --media-tall: 70vh;
+  --media-medium: 62vh;
+  --media-short: 54vh;
+  --media-min-tall: 420px;
+  --media-min-medium: 380px;
+  --media-min-short: 340px;
+}
+
+.sticky-steps__media--tall {
+  height: var(--media-tall, calc(100vh - 56px));
+  min-height: var(--media-min-tall, 480px);
+}
+
+.sticky-steps__media--medium {
+  height: var(--media-medium, 70vh);
+  min-height: var(--media-min-medium, 420px);
+}
+
+.sticky-steps__media--short {
+  height: var(--media-short, 55vh);
+  min-height: var(--media-min-short, 360px);
+}
+
+.sticky-steps__media-item {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.sticky-steps__media-item.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.sticky-steps__media-item img,
+.sticky-steps__media-item .placeholder-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Stage panel mode */
+.sticky-steps--stage .sticky-steps__media {
+  top: 60px;
+  padding: clamp(24px, 4vw, 40px);
+}
+
+.sticky-steps__state {
+  position: absolute;
+  inset: clamp(24px, 4vw, 40px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.sticky-steps__state.is-active {
+  opacity: 1;
+  transform: none;
+}
+
+.sticky-steps__state-kicker {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 800;
+  opacity: 0.75;
+}
+
+.sticky-steps__value {
+  font-size: clamp(42px, 6vw, 90px);
+  line-height: 1;
+  letter-spacing: -0.06em;
+  font-weight: 600;
+}
+
+.sticky-steps__meta {
+  margin: 0;
+  font-size: 15px;
+  opacity: 0.75;
+  line-height: 1.6;
+  max-width: 420px;
+}
+
+/* Stage mode: block image as the stage background, tinted back into the
+   scheme via an overlay so the scheme text stays readable on top */
+.sticky-steps__stage-media {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.sticky-steps__stage-media.is-active {
+  opacity: 1;
+}
+
+.sticky-steps__stage-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sticky-steps__stage-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  background: linear-gradient(
+    to top,
+    var(--color-background) 0%,
+    color-mix(in srgb, var(--color-background) 90%, transparent) 40%,
+    color-mix(in srgb, var(--color-background) 55%, transparent) 75%,
+    color-mix(in srgb, var(--color-background) 35%, transparent) 100%
+  );
+}
+
+.sticky-steps__stage-overlay.is-active {
+  opacity: 1;
+}
+
+@supports not (color: color-mix(in srgb, red 50%, blue)) {
+  .sticky-steps__stage-overlay {
+    background: linear-gradient(to top, var(--color-background) 0%, rgba(var(--color-foreground), 0.25) 100%);
+  }
+}
+
+/* Steps (shared) */
+.sticky-steps__step {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0.25;
+  transition: opacity 0.35s ease;
+}
+
+.sticky-steps__step.is-active {
+  opacity: 1;
+}
+
+.sticky-steps__kicker {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.sticky-steps__title {
+  margin: 14px 0 24px;
+  font-size: clamp(38px, 5vw, 76px);
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+}
+
+.sticky-steps__text {
+  font-size: 18px;
+  line-height: 1.65;
+  max-width: 520px;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+/* Stage panel mode step scale (compare look) */
+.sticky-steps--stage .sticky-steps__step {
+  min-height: 65vh;
+  opacity: 0.3;
+}
+
+/* Equal specificity with the mode rule above — must come after it so the
+   active step always reaches full opacity in stage mode */
+.sticky-steps--stage .sticky-steps__step.is-active {
+  opacity: 1;
+}
+
+.sticky-steps--stage .sticky-steps__kicker {
+  opacity: 0.6;
+}
+
+.sticky-steps--stage .sticky-steps__title {
+  margin: 14px 0 18px;
+  font-size: clamp(30px, 4vw, 52px);
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.sticky-steps--stage .sticky-steps__text {
+  line-height: 1.7;
+}
+
+@media (max-width: 989px) {
+  .sticky-steps__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .sticky-steps__media,
+  .sticky-steps__media--tall,
+  .sticky-steps__media--medium,
+  .sticky-steps__media--short,
+  .sticky-steps--stage .sticky-steps__media {
+    position: sticky;
+    top: 20px;
+    height: 55vh;
+    min-height: 320px;
+    z-index: 2;
+  }
+
+  .sticky-steps--stage .sticky-steps__media,
+  .sticky-steps--stage .sticky-steps__media--tall,
+  .sticky-steps--stage .sticky-steps__media--medium,
+  .sticky-steps--stage .sticky-steps__media--short {
+    min-height: 360px;
+  }
+
+  .sticky-steps__step {
+    min-height: 50vh;
+    opacity: 0.45;
+  }
+
+  .sticky-steps--stage .sticky-steps__step {
+    min-height: 50vh;
+    opacity: 0.45;
+  }
+
+  /* Steps that scrolled fully above the sticky media fade out entirely
+     (must sit after the is-active rules so a past step never ghosts through
+     the top edge, even while still carrying is-active) */
+  .sticky-steps__step.is-past,
+  .sticky-steps--stage .sticky-steps__step.is-past {
+    opacity: 0;
+  }
+}
+
+/* When the sticky header is visible, pin below it (theme sets --m-header-space) */
+body.header-pinned .sticky-steps__media {
+  top: calc(20px + var(--m-header-space, 60px));
+}
+
+body.header-pinned .sticky-steps--stage .sticky-steps__media {
+  top: calc(20px + var(--m-header-space, 60px));
+}
+
+@media (min-width: 990px) {
+  body.header-pinned .sticky-steps__media {
+    top: calc(28px + var(--m-header-space, 70px));
+  }
+
+  body.header-pinned .sticky-steps--stage .sticky-steps__media {
+    top: calc(60px + var(--m-header-space, 70px));
+  }
+}

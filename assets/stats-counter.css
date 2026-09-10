@@ -55,8 +55,11 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .stats-counter__grid--2,
-  .stats-counter__grid--4 {
+  .stats-counter__grid--2 {
     grid-template-columns: 1fr;
+  }
+
+  .stats-counter__value-wrap {
+    font-size: clamp(38px, 11vw, 64px);
   }
 }

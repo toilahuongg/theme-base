@@ -39,9 +39,9 @@ Every page type uses ONLY sections that exist in `sections/`. Template JSONs are
 | 5 | custom-content | 6 image cards (3/4 portraits) | shop-by-mood grid |
 | 6 | image-hotspots | twist-ring macro (`p-twist-1.png`) + 3 hotspots: 18K recycled gold / hand-set stones / comfort-fit band | craft details |
 | 7 | custom-content | image comparison (gold vs silver) + text | material story |
-| 8 | pinned-compare | 3 metal steps (18K vermeil / 14K solid / sterling), stage `background-2` | metal standard |
+| 8 | sticky-steps (stage) | compare mode — 3 metal steps (18K vermeil / 14K solid / sterling), stage `background-2` | metal standard |
 | 9 | rich-text | section heading | editorial break |
-| 10 | sticky-story | 3 steps (Design / Bead / Wear) + sticky media (`about-hands`, `about-workshop`, `atelier-portrait-1`), tall | atelier story |
+| 10 | sticky-steps (image) | story mode — 3 steps (Design / Bead / Wear) + sticky media (`about-hands`, `about-workshop`, `atelier-portrait-1`), tall | atelier story |
 | 11 | collection-list | 5 capsule collections w/ covers | capsule navigation |
 | 12 | products-bundle | 3 bracelets (rainbow/sunset/ocean) | bundle slider |
 | 13 | card-stack | 4 sticky cards (Start / Add a layer / Make it yours / Pass it on), nth-child ivory/sage/blush/dark palette | build-your-stack |
@@ -56,7 +56,7 @@ Every page type uses ONLY sections that exist in `sections/`. Template JSONs are
 | 22 | magnetic-cta | minimal layout: "Make it <em>memorable</em>." + "Start your collection" → `/collections/gifts` | closing CTA |
 | 23 | video | disabled (no video assets — G4) | — |
 
-New section types 2026-09-10 (built for this task): `image-hotspots` (#6), `pinned-compare` (#8), `sticky-story` (#10), `card-stack` (#13), `stats-counter` (#20), `magnetic-cta` (#22).
+New section types (built 2026-09-10): `image-hotspots` (#6), `sticky-steps` (#8 stage / #10 image — one section, two media styles; merges the former `pinned-compare` + `sticky-story`), `card-stack` (#13), `stats-counter` (#20), `magnetic-cta` (#22).
 
 ### Product / PDP (`templates/product*.json` — 4 variants: default, stacked, thumbnails-carousel, grid-mix)
 
@@ -200,4 +200,4 @@ Gallery images (home + lookbook) reuse product/lifestyle shots above. No video a
 - [ ] Copy tone matches §1 voice everywhere (Spanish/workout-brand remnants rewritten in Phase 8)
 - [ ] Every image has a style direction matching §5 palette
 - [x] ≥ 4 colors, background/foreground paired (Theme Store minimum) — §5
-- [x] 6 new sections built 2026-09-10 (stats-counter, sticky-story, pinned-compare, image-hotspots, card-stack, magnetic-cta) — customer-approved code change, supersedes the earlier no-code-change constraint for this task; wired into the home page (§3 table)
+- [x] 5 new section types built 2026-09-10 (stats-counter, sticky-steps — merged from sticky-story + pinned-compare, image-hotspots, card-stack, magnetic-cta) — customer-approved code change, supersedes the earlier no-code-change constraint for this task; wired into the home page (§3 table)
