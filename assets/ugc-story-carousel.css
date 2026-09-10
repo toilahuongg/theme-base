@@ -47,10 +47,6 @@
   line-height: 0.99;
   letter-spacing: -0.055em;
   font-weight: 800;
-
-  transition:
-    opacity 0.22s ease,
-    transform 0.22s ease;
 }
 
 .ugc-story-carousel .ugc-benefits {
@@ -62,10 +58,6 @@
   gap: 17px;
 
   max-width: 510px;
-
-  transition:
-    opacity 0.22s ease,
-    transform 0.22s ease;
 }
 
 .ugc-story-carousel .ugc-benefits li {
@@ -89,11 +81,6 @@
 
   background: var(--ugc-story-accent);
   font-size: 13px;
-}
-
-.ugc-story-carousel .copy-changing {
-  opacity: 0;
-  transform: translateY(7px);
 }
 
 /* =========================================================
@@ -192,18 +179,14 @@
   user-select: none;
 }
 
-.ugc-story-carousel .ugc-window.is-dragging .ugc-rail {
-  transition: none;
-}
-
 .ugc-story-carousel .ugc-rail {
   width: max-content;
   display: flex;
   align-items: center;
   gap: 10px;
 
+  /* transform is owned by GSAP (x tween) — no CSS transition here */
   will-change: transform;
-  transition: transform 0.58s cubic-bezier(0.22, 0.8, 0.2, 1);
 }
 
 .ugc-story-carousel .ugc-card {

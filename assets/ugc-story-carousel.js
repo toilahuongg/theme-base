@@ -4,6 +4,8 @@ const CHECK_ICON =
   '<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="m-icon-svg m-icon--small m-icon-check"><polyline points="20 6 9 17 4 12"></polyline></svg>';
 
 if (!customElements.get('ugc-story-carousel')) {
+  const gsap = window.gsap;
+
   class UgcStoryCarousel extends HTMLElement {
     connectedCallback() {
       this.rail = this.querySelector('.ugc-rail');
@@ -20,35 +22,38 @@ if (!customElements.get('ugc-story-carousel')) {
       this.autoplay = this.dataset.autoplay !== 'false';
       this.paused = false;
       this.elapsed = 0;
-      this.lastTime = performance.now();
-      this.frameId = 0;
       this.activeIndex = 0;
       this.isDragging = false;
       this.awaitingReset = false;
       this.reanchorTimer = 0;
 
+      // Respect the theme's reduced-motion setting: skip autoplay and
+      // collapse every animation to an instant jump.
+      const motionReduced =
+        window.VelouraSettings && window.VelouraSettings.motionReduced;
+      this.motionReduced = !!motionReduced;
+      this.dur = motionReduced ? 0 : 0.58;
+
       this.renderPagination();
-      this.updateCopy(this.cards[this.activeIndex]);
+      this.updateCopy(this.cards[this.activeIndex], true);
       // Clones must exist before the rail is positioned: prepending a
       // clone shifts the rail's layout origin, so position after cloning.
       this.createClones();
-      this.translateRailToActive();
+      this.translateRailToActive(undefined, false);
       this.syncPauseButtons();
       this.bindControls();
       this.bindSwipe();
 
-      // Respect the theme's reduced-motion setting: skip autoplay,
-      // manual navigation still works.
-      const motionReduced =
-        window.VelouraSettings && window.VelouraSettings.motionReduced;
-
       if (this.autoplay && !motionReduced) {
-        this.frameId = requestAnimationFrame((now) => this.tick(now));
+        // GSAP's ticker drives the story clock so autoplay and the
+        // rail tweens share a single frame loop.
+        this.tickBound = (time, delta) => this.tick(delta);
+        gsap.ticker.add(this.tickBound);
       }
     }
 
     disconnectedCallback() {
-      if (this.frameId) cancelAnimationFrame(this.frameId);
+      if (this.tickBound) gsap.ticker.remove(this.tickBound);
       clearTimeout(this.reanchorTimer);
     }
 
@@ -94,13 +99,13 @@ if (!customElements.get('ugc-story-carousel')) {
       });
     }
 
-    updateCopy(card) {
+    updateCopy(card, instant = false) {
       if (!card.dataset.title && !card.dataset.bullets) return;
 
-      if (this.copyTitle) this.copyTitle.classList.add('copy-changing');
-      if (this.benefits) this.benefits.classList.add('copy-changing');
+      const targets = [this.copyTitle, this.benefits].filter(Boolean);
+      if (!targets.length) return;
 
-      window.setTimeout(() => {
+      const swap = () => {
         if (card.dataset.title && this.copyTitle) {
           this.copyTitle.textContent = card.dataset.title;
         }
@@ -115,13 +120,49 @@ if (!customElements.get('ugc-story-carousel')) {
             )
             .join('');
         }
+      };
 
-        if (this.copyTitle) this.copyTitle.classList.remove('copy-changing');
-        if (this.benefits) this.benefits.classList.remove('copy-changing');
-      }, 150);
+      // Initial render and reduced motion skip the fade entirely.
+      if (instant || this.motionReduced) {
+        swap();
+        return;
+      }
+
+      gsap.killTweensOf(targets);
+      gsap
+        .timeline()
+        .to(targets, {
+          autoAlpha: 0,
+          y: 10,
+          duration: this.dur,
+          ease: 'power2.in',
+        })
+        .add(swap)
+        .to(targets, {
+          autoAlpha: 1,
+          y: 0,
+          duration: this.dur,
+          ease: 'power2.out',
+        });
     }
 
-    translateRailToActive(target) {
+    // Single place that moves the rail. GSAP owns the transform (x
+    // alias), so the CSS transition on .ugc-rail is removed and nothing
+    // fights the tween.
+    moveRail(x, animate) {
+      if (animate) {
+        gsap.to(this.rail, {
+          x: -x,
+          duration: this.dur,
+          ease: 'power2.inOut',
+          overwrite: 'auto',
+        });
+      } else {
+        gsap.set(this.rail, { x: -x });
+      }
+    }
+
+    translateRailToActive(target, animate = true) {
       const active = this.cards[this.activeIndex];
 
       // Viewport-relative difference: the rail's own page offset cancels
@@ -132,7 +173,7 @@ if (!customElements.get('ugc-story-carousel')) {
           : active.getBoundingClientRect().left -
             this.rail.getBoundingClientRect().left;
 
-      this.rail.style.transform = `translateX(${-x}px)`;
+      this.moveRail(x, animate);
     }
 
     // Infinite scroll: a twin of the last card is prepended and a full
@@ -223,11 +264,10 @@ if (!customElements.get('ugc-story-carousel')) {
         clone.classList.remove('active');
       });
 
-      const rail = this.rail;
-      rail.style.transition = 'none';
-      this.translateRailToActive();
-      void rail.offsetWidth;
-      rail.style.transition = '';
+      // Snap onto the real card instantly. Kill the landing tween first
+      // so no stale animation writes over the jump.
+      gsap.killTweensOf(this.rail);
+      this.translateRailToActive(undefined, false);
     }
 
     syncPauseButtons() {
@@ -278,8 +318,9 @@ if (!customElements.get('ugc-story-carousel')) {
       this.syncPauseButtons();
       this.updateMobileProgress();
 
-      // Wait one frame so height/state CSS has been applied.
-      requestAnimationFrame(() => this.translateRailToActive(railTarget));
+      // Card lefts are height-independent, so the rail target can be
+      // measured and tweened synchronously — no frame wait needed.
+      this.translateRailToActive(railTarget);
     }
 
     bindControls() {
@@ -432,6 +473,9 @@ if (!customElements.get('ugc-story-carousel')) {
         // the drag starts from the real card positions.
         if (this.awaitingReset) this.silentReanchor();
 
+        // Grabbing mid-slide: stop the tween so the finger owns the rail.
+        gsap.killTweensOf(this.rail);
+
         pointerId = event.pointerId;
         startX = event.clientX;
         startY = event.clientY;
@@ -462,7 +506,7 @@ if (!customElements.get('ugc-story-carousel')) {
           surface.classList.add('is-dragging');
         }
 
-        this.rail.style.transform = `translateX(${-(baseX - dx)}px)`;
+        gsap.set(this.rail, { x: -(baseX - dx) });
       };
 
       const onPointerEnd = (event) => {
@@ -548,10 +592,9 @@ if (!customElements.get('ugc-story-carousel')) {
       );
     }
 
-    tick(now) {
-      const delta = now - this.lastTime;
-      this.lastTime = now;
-
+    // Driven by gsap.ticker (delta in ms), so the story clock shares the
+    // GSAP frame loop instead of a second requestAnimationFrame.
+    tick(delta) {
       if (!this.paused && !document.hidden) {
         this.elapsed += delta;
 
@@ -577,8 +620,6 @@ if (!customElements.get('ugc-story-carousel')) {
       }
 
       this.updateMobileProgress();
-
-      this.frameId = requestAnimationFrame((t) => this.tick(t));
     }
 
     updateMobileProgress() {
