@@ -10,38 +10,44 @@ if (!customElements.get('word-reveal')) {
       this.text.innerHTML = sourceText
         .split(/\s+/)
         .map(
-          (word, i) =>
-            `<span class="word-reveal__word" style="transition-delay:${i * 45}ms">${word}&nbsp;</span>`
+          (word) => `<span class="word-reveal__word">${word}&nbsp;</span>`
         )
         .join('');
+      this.words = [...this.text.querySelectorAll('.word-reveal__word')];
 
       // Respect the theme's reduced-motion setting: words show immediately
-      // (transitions are disabled in CSS).
+      // (the media query overrides the hidden state).
       if (window.VelouraSettings && window.VelouraSettings.motionReduced) {
-        this.classList.add('is-visible');
         return;
       }
 
-      if (!('IntersectionObserver' in window)) {
-        this.classList.add('is-visible');
+      if (!window.gsap || !window.ScrollTrigger) {
+        // Fallback: never leave the words hidden.
+        this.words.forEach((word) => {
+          word.style.opacity = '1';
+          word.style.transform = 'none';
+        });
         return;
       }
 
-      this.observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            this.classList.add('is-visible');
-            this.observer.unobserve(this);
-          });
-        },
-        { threshold: 0.25 }
+      gsap.registerPlugin(ScrollTrigger);
+
+      // GSAP owns opacity/transform now — neutralize the CSS transition so
+      // it never fights the tween.
+      this.words.forEach((word) => (word.style.transition = 'none'));
+
+      gsap.fromTo(
+        this.words,
+        { y: 18, opacity: 0.12 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.45,
+          ease: 'power2.out',
+          stagger: 0.045,
+          scrollTrigger: { trigger: this, start: 'top 80%', once: true },
+        }
       );
-      this.observer.observe(this);
-    }
-
-    disconnectedCallback() {
-      if (this.observer) this.observer.disconnect();
     }
   }
 

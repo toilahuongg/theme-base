@@ -17,20 +17,9 @@
   line-height: 1;
   letter-spacing: -0.055em;
   transform: translateY(115%);
-  transition: transform 0.85s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.text-line-reveal.is-visible .text-line-reveal__mask span {
-  transform: translateY(0);
-}
-
-.text-line-reveal__mask:nth-child(2) span {
-  transition-delay: 0.08s;
-}
-
-.text-line-reveal__mask:nth-child(3) span {
-  transition-delay: 0.16s;
-}
+/* The reveal itself is driven by GSAP (text-line-reveal.js). */
 
 @media (prefers-reduced-motion: reduce) {
   .text-line-reveal__mask span {

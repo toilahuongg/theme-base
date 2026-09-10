@@ -8,39 +8,27 @@ if (!customElements.get('image-mask-reveal')) {
         return;
       }
 
-      this.ticking = false;
-      this.boundRequestUpdate = this.requestUpdate.bind(this);
-      window.addEventListener('scroll', this.boundRequestUpdate, {
-        passive: true,
+      if (!window.gsap || !window.ScrollTrigger) return;
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Scroll-linked reveal: ScrollTrigger owns the scroll mapping and
+      // ticker; --mp still drives the clip-path in CSS.
+      this.trigger = ScrollTrigger.create({
+        trigger: this,
+        start: 'top top',
+        end: 'bottom bottom',
+        onUpdate: (self) => {
+          // Slightly overshoots the reveal so the mask finishes opening
+          // before the section leaves the viewport.
+          const p = Math.min(Math.max(self.progress * 1.35, 0), 1);
+          this.style.setProperty('--mp', p.toFixed(4));
+        },
       });
-      window.addEventListener('resize', this.boundRequestUpdate);
-      this.requestUpdate();
     }
 
     disconnectedCallback() {
-      window.removeEventListener('scroll', this.boundRequestUpdate);
-      window.removeEventListener('resize', this.boundRequestUpdate);
-    }
-
-    requestUpdate() {
-      if (this.ticking) return;
-      this.ticking = true;
-      requestAnimationFrame(() => {
-        this.ticking = false;
-        this.update();
-      });
-    }
-
-    update() {
-      const rect = this.getBoundingClientRect();
-      const progress = Math.min(
-        Math.max(-rect.top / (rect.height - innerHeight || 1), 0),
-        1
-      );
-      // Slightly overshoots the reveal so the mask finishes opening before
-      // the section leaves the viewport.
-      const p = Math.min(Math.max(progress * 1.35, 0), 1);
-      this.style.setProperty('--mp', p.toFixed(4));
+      if (this.trigger) this.trigger.kill();
     }
   }
 

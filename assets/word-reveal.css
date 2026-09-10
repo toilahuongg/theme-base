@@ -14,13 +14,9 @@
   display: inline-block;
   opacity: 0.12;
   transform: translateY(18px);
-  transition: 0.45s ease;
 }
 
-.word-reveal.is-visible .word-reveal__text .word-reveal__word {
-  opacity: 1;
-  transform: none;
-}
+/* The reveal itself is driven by GSAP (word-reveal.js). */
 
 @media (prefers-reduced-motion: reduce) {
   .word-reveal__text .word-reveal__word {

@@ -1,33 +1,38 @@
 if (!customElements.get('text-line-reveal')) {
   class TextLineReveal extends HTMLElement {
     connectedCallback() {
+      const spans = [...this.querySelectorAll('.text-line-reveal__mask span')];
+      if (!spans.length) return;
+
       // Respect the theme's reduced-motion setting: lines show immediately
-      // (transitions are disabled in CSS).
+      // (the media query already removes the hidden transform).
       if (window.VelouraSettings && window.VelouraSettings.motionReduced) {
-        this.classList.add('is-visible');
         return;
       }
 
-      if (!('IntersectionObserver' in window)) {
-        this.classList.add('is-visible');
+      if (!window.gsap || !window.ScrollTrigger) {
+        // Fallback: never leave the lines hidden.
+        spans.forEach((span) => (span.style.transform = 'none'));
         return;
       }
 
-      this.observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            this.classList.add('is-visible');
-            this.observer.unobserve(this);
-          });
-        },
-        { threshold: 0.25 }
+      gsap.registerPlugin(ScrollTrigger);
+
+      // GSAP owns the transform now — neutralize the CSS transition so it
+      // never fights the tween.
+      spans.forEach((span) => (span.style.transition = 'none'));
+
+      gsap.fromTo(
+        spans,
+        { yPercent: 115 },
+        {
+          yPercent: 0,
+          duration: 0.85,
+          ease: 'power3.out',
+          stagger: 0.08,
+          scrollTrigger: { trigger: this, start: 'top 80%', once: true },
+        }
       );
-      this.observer.observe(this);
-    }
-
-    disconnectedCallback() {
-      if (this.observer) this.observer.disconnect();
     }
   }
 

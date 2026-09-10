@@ -7,40 +7,28 @@ if (!customElements.get('hero-split-reveal')) {
         return;
       }
 
-      this.ticking = false;
-      this.boundRequestUpdate = this.requestUpdate.bind(this);
-      window.addEventListener('scroll', this.boundRequestUpdate, {
-        passive: true,
+      if (!window.gsap || !window.ScrollTrigger) return;
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Scroll-linked split: ScrollTrigger owns the scroll mapping; --split
+      // still drives the clip-paths in CSS.
+      this.trigger = ScrollTrigger.create({
+        trigger: this,
+        start: 'top top',
+        end: 'bottom bottom',
+        onUpdate: (self) => {
+          // Grows from 0 to half the viewport, pushing the halves apart.
+          this.style.setProperty(
+            '--split',
+            (self.progress * innerWidth * 0.5).toFixed(1) + 'px'
+          );
+        },
       });
-      window.addEventListener('resize', this.boundRequestUpdate);
-      this.requestUpdate();
     }
 
     disconnectedCallback() {
-      window.removeEventListener('scroll', this.boundRequestUpdate);
-      window.removeEventListener('resize', this.boundRequestUpdate);
-    }
-
-    requestUpdate() {
-      if (this.ticking) return;
-      this.ticking = true;
-      requestAnimationFrame(() => {
-        this.ticking = false;
-        this.update();
-      });
-    }
-
-    update() {
-      const rect = this.getBoundingClientRect();
-      const progress = Math.min(
-        Math.max(-rect.top / (rect.height - innerHeight || 1), 0),
-        1
-      );
-      // Grows from 0 to half the viewport, pushing the halves apart.
-      this.style.setProperty(
-        '--split',
-        (progress * innerWidth * 0.5).toFixed(1) + 'px'
-      );
+      if (this.trigger) this.trigger.kill();
     }
   }
 

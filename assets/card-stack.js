@@ -10,29 +10,30 @@ if (!customElements.get('card-stack')) {
         return;
       }
 
-      this.ticking = false;
-      window.addEventListener('scroll', this.requestUpdate.bind(this), {
-        passive: true,
+      if (!window.gsap || !window.ScrollTrigger) return;
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      this.triggers = this.cards.map((card) => {
+        const trigger = ScrollTrigger.create({
+          trigger: card,
+          start: 'top 60',
+          end: 'top -100',
+          onUpdate: () => this.updateCard(card),
+        });
+        this.updateCard(card);
+        return trigger;
       });
-      window.addEventListener('resize', this.requestUpdate.bind(this));
-      this.requestUpdate();
     }
 
-    requestUpdate() {
-      if (this.ticking) return;
-      this.ticking = true;
-      requestAnimationFrame(() => {
-        this.ticking = false;
-        this.update();
-      });
+    disconnectedCallback() {
+      if (this.triggers) this.triggers.forEach((trigger) => trigger.kill());
     }
 
-    update() {
-      this.cards.forEach((card) => {
-        const rect = card.getBoundingClientRect();
-        const progress = Math.min(Math.max((60 - rect.top) / 160, 0), 1);
-        card.style.setProperty('--stack-progress', progress.toFixed(3));
-      });
+    updateCard(card) {
+      const rect = card.getBoundingClientRect();
+      const progress = Math.min(Math.max((60 - rect.top) / 160, 0), 1);
+      card.style.setProperty('--stack-progress', progress.toFixed(3));
     }
   }
 

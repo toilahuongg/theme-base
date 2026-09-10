@@ -10,46 +10,37 @@ if (!customElements.get('scroll-scrub-video')) {
         return;
       }
 
-      this.ticking = false;
-      this.boundRequestUpdate = this.requestUpdate.bind(this);
-      this.boundMetadata = () => this.requestUpdate();
-      window.addEventListener('scroll', this.boundRequestUpdate, {
-        passive: true,
+      if (!window.gsap || !window.ScrollTrigger) return;
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      this.trigger = ScrollTrigger.create({
+        trigger: this,
+        start: 'top top',
+        end: 'bottom bottom',
+        onUpdate: () => this.update(),
       });
-      window.addEventListener('resize', this.boundRequestUpdate);
+
+      this.boundMetadata = () => this.update();
       this.video.addEventListener('loadedmetadata', this.boundMetadata);
-      this.requestUpdate();
+      this.update();
     }
 
     disconnectedCallback() {
-      window.removeEventListener('scroll', this.boundRequestUpdate);
-      window.removeEventListener('resize', this.boundRequestUpdate);
-      if (this.video) {
+      if (this.trigger) this.trigger.kill();
+      if (this.boundMetadata && this.video) {
         this.video.removeEventListener('loadedmetadata', this.boundMetadata);
       }
     }
 
-    requestUpdate() {
-      if (this.ticking) return;
-      this.ticking = true;
-      requestAnimationFrame(() => {
-        this.ticking = false;
-        this.update();
-      });
-    }
-
     update() {
-      const rect = this.getBoundingClientRect();
-      const progress = Math.min(
-        Math.max(-rect.top / (rect.height - innerHeight || 1), 0),
-        1
-      );
+      if (!this.video || !this.trigger) return;
 
       if (!this.video.duration || !Number.isFinite(this.video.duration)) {
         return;
       }
 
-      const target = progress * Math.max(0, this.video.duration - 0.05);
+      const target = (this.trigger.progress || 0) * Math.max(0, this.video.duration - 0.05);
       if (Math.abs(this.video.currentTime - target) > 0.03) {
         this.video.currentTime = target;
       }

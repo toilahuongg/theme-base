@@ -31,7 +31,6 @@
   gap: 22px;
   width: max-content;
   padding: clamp(32px, 5vw, 56px) var(--fluid-offset, 5rem) 0;
-  transform: translateX(calc(var(--hp, 0) * -1px));
   will-change: transform;
 }
 
