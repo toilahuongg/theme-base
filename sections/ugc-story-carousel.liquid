@@ -21,10 +21,18 @@
   .section-{{ section.id }} {
     --section-padding-top: {{ section.settings.padding_top }}px;
     --section-padding-bottom: {{ section.settings.padding_bottom }}px;
-    --ugc-story-bg: {{ section.settings.background_color }};
-    --ugc-story-ink: {{ section.settings.ink_color }};
-    --ugc-story-muted: {{ section.settings.muted_color }};
-    --ugc-story-accent: {{ section.settings.accent_color }};
+    {%- if section.settings.background_color != blank -%}
+      --ugc-story-bg: {{ section.settings.background_color }};
+    {%- endif -%}
+    {%- if section.settings.ink_color != blank -%}
+      --ugc-story-ink: {{ section.settings.ink_color }};
+    {%- endif -%}
+    {%- if section.settings.muted_color != blank -%}
+      --ugc-story-muted: {{ section.settings.muted_color }};
+    {%- endif -%}
+    {%- if section.settings.accent_color != blank -%}
+      --ugc-story-accent: {{ section.settings.accent_color }};
+    {%- endif -%}
     --ugc-story-card-w: {{ section.settings.card_width }}px;
   }
 </style>
@@ -248,25 +256,29 @@
       "type": "color",
       "id": "background_color",
       "label": "Background color",
-      "default": "#ffffff"
+      "info": "Leave blank to use the color scheme.",
+      "default": ""
     },
     {
       "type": "color",
       "id": "ink_color",
       "label": "Text color",
-      "default": "#0b0b0b"
+      "info": "Leave blank to use the color scheme.",
+      "default": ""
     },
     {
       "type": "color",
       "id": "muted_color",
       "label": "Muted text color",
-      "default": "#a7a7a7"
+      "info": "Leave blank to use the color scheme.",
+      "default": ""
     },
     {
       "type": "color",
       "id": "accent_color",
       "label": "Accent color",
-      "default": "#d8eaa5"
+      "info": "Leave blank to use the color scheme.",
+      "default": ""
     },
     {
       "type": "range",

@@ -1,10 +1,10 @@
 .ugc-story-carousel {
-  --ugc-story-ink: #0b0b0b;
-  --ugc-story-muted: #a7a7a7;
-  --ugc-story-accent: #d8eaa5;
+  --ugc-story-ink: var(--color-text-body);
+  --ugc-story-muted: rgba(var(--color-foreground), 0.6);
+  --ugc-story-accent: var(--color-highlight);
   --ugc-story-card-w: 328px;
-  --ugc-story-bg: #ffffff;
-  --ugc-story-border: #ececec;
+  --ugc-story-bg: var(--color-background);
+  --ugc-story-border: var(--color-border);
 }
 
 .ugc-story-carousel .ugc-story {
@@ -34,7 +34,7 @@
   margin: 0 0 30px;
   font-size: 16px;
   line-height: 1;
-  font-weight: 800;
+  font-weight: var(--font-body-weight-bolder, 800);
   letter-spacing: 0.01em;
 }
 
@@ -46,7 +46,7 @@
   font-size: clamp(42px, 3vw, 58px);
   line-height: 0.99;
   letter-spacing: -0.055em;
-  font-weight: 800;
+  font-weight: var(--font-heading-weight, 800);
 }
 
 .ugc-story-carousel .ugc-benefits {
@@ -67,7 +67,7 @@
 
   font-size: 16px;
   line-height: 1.25;
-  font-weight: 550;
+  font-weight: var(--font-body-weight-bolder, 550);
 }
 
 .ugc-story-carousel .check {
@@ -109,13 +109,13 @@
 
   font-size: 18px;
   line-height: 1;
-  font-weight: 800;
+  font-weight: var(--font-body-weight-bolder, 800);
 
   transition: color 0.2s ease;
 }
 
 .ugc-story-carousel .page-btn:hover {
-  color: #555;
+  color: var(--ugc-story-ink);
 }
 
 .ugc-story-carousel .page-btn.active {
@@ -125,7 +125,7 @@
 .ugc-story-carousel .story-progress {
   width: 120px;
   height: 2px;
-  background: #d1d1d1;
+  background: var(--ugc-story-border);
   overflow: hidden;
   margin-left: -10px;
 }
@@ -196,8 +196,8 @@
   height: 438px;
 
   overflow: hidden;
-  border-radius: 11px;
-  background: #ddd;
+  border-radius: var(--btn-rounded, 11px);
+  background: var(--color-bg-2);
 
   cursor: pointer;
 
@@ -302,8 +302,8 @@
   height: 80px;
   padding: 7px;
 
-  border-radius: 7px;
-  background: #fff;
+  border-radius: var(--btn-rounded, 7px);
+  background: var(--color-background);
 
   display: grid;
   place-items: center;
@@ -338,8 +338,8 @@
   min-height: 96px;
   padding: 9px 10px 9px 9px;
 
-  border-radius: 14px;
-  background: #fff;
+  border-radius: var(--btn-rounded, 14px);
+  background: var(--color-background);
 
   display: grid;
   grid-template-columns: 60px 1fr 44px;
@@ -367,8 +367,8 @@
   width: 60px;
   height: 76px;
   overflow: hidden;
-  border-radius: 8px;
-  background: #f5f5f5;
+  border-radius: var(--btn-rounded, 8px);
+  background: var(--color-bg-2);
 }
 
 .ugc-story-carousel .product-thumb img {
@@ -387,7 +387,7 @@
 
 .ugc-story-carousel .product-info span {
   font-size: 14px;
-  font-weight: 750;
+  font-weight: var(--font-body-weight-bolder, 750);
 }
 
 .ugc-story-carousel .cart-btn {
@@ -495,7 +495,7 @@
     right: 22px;
     bottom: 6px;
     height: 3px;
-    background: #e3e3e3;
+    background: var(--ugc-story-border);
     border-radius: 99px;
     overflow: hidden;
   }

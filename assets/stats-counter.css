@@ -29,7 +29,7 @@
   font-size: clamp(48px, 6vw, 92px);
   line-height: 1;
   letter-spacing: -0.06em;
-  font-weight: 600;
+  font-weight: var(--font-heading-weight, 600);
   font-variant-numeric: tabular-nums;
 }
 
@@ -41,7 +41,7 @@
 
 .stats-counter__label {
   margin: 16px 0 0;
-  font-weight: 700;
+  font-weight: var(--font-body-weight-bolder, 700);
 }
 
 .stats-counter__description {

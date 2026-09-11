@@ -31,7 +31,7 @@
   font-size: clamp(42px, 6vw, 84px);
   line-height: 0.9;
   letter-spacing: -0.06em;
-  font-weight: 600;
+  font-weight: var(--font-heading-weight, 600);
 }
 
 .magnetic-cta--minimal {

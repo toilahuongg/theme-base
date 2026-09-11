@@ -39,7 +39,7 @@
   width: min(72vw, 680px);
   height: 62vh;
   min-height: 420px;
-  border-radius: 30px;
+  border-radius: var(--btn-rounded, 30px);
   overflow: hidden;
   flex: none;
   background: #222;

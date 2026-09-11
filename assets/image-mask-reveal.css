@@ -11,10 +11,10 @@
 
 .image-mask-reveal__media {
   height: 100%;
-  border-radius: 30px;
+  border-radius: var(--btn-rounded, 30px);
   overflow: hidden;
-  background: #ddd;
-  clip-path: inset(calc((1 - var(--mp, 0)) * 38%) calc((1 - var(--mp, 0)) * 28%) round 30px);
+  background: var(--color-bg-2);
+  clip-path: inset(calc((1 - var(--mp, 0)) * 38%) calc((1 - var(--mp, 0)) * 28%) round var(--btn-rounded, 30px));
   will-change: clip-path;
 }
 
