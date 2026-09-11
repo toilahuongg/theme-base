@@ -316,6 +316,8 @@
 }
 
 .ugc-story-carousel .product-mini img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
@@ -372,7 +374,7 @@
 .ugc-story-carousel .product-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .ugc-story-carousel .product-info strong {
@@ -401,6 +403,30 @@
   cursor: pointer;
   padding: 0;
   font-size: 18px;
+}
+
+/* The cart button is a theme <product-form> submit. The form wrappers
+   stay out of the grid (the button is the grid item), and the theme's
+   spinner icon is hidden until the add runs — this button is not a
+   theme .btn, so its spinner needs its own rules. */
+.ugc-story-carousel .product-full product-form,
+.ugc-story-carousel .product-full product-form form {
+  display: contents;
+}
+
+.ugc-story-carousel .cart-btn .m-spinner-icon {
+  position: absolute;
+  display: none;
+  width: 22px;
+  height: 22px;
+}
+
+.ugc-story-carousel .cart-btn.btn--loading > span:not(.m-spinner-icon) {
+  opacity: 0;
+}
+
+.ugc-story-carousel .cart-btn.btn--loading .m-spinner-icon {
+  display: block;
 }
 
 .ugc-story-carousel .cart-btn span {

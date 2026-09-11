@@ -23,9 +23,8 @@ if (!customElements.get('ugc-story-carousel')) {
       this.paused = false;
       this.elapsed = 0;
       this.activeIndex = 0;
+      this.activePos = 0;
       this.isDragging = false;
-      this.awaitingReset = false;
-      this.reanchorTimer = 0;
 
       // Respect the theme's reduced-motion setting: skip autoplay and
       // collapse every animation to an instant jump.
@@ -34,12 +33,15 @@ if (!customElements.get('ugc-story-carousel')) {
       this.motionReduced = !!motionReduced;
       this.dur = motionReduced ? 0 : 0.58;
 
-      this.renderPagination();
-      this.updateCopy(this.cards[this.activeIndex], true);
-      // Clones must exist before the rail is positioned: prepending a
-      // clone shifts the rail's layout origin, so position after cloning.
-      this.createClones();
-      this.translateRailToActive(undefined, false);
+      // Ring model: the rail holds several copies of the card cycle. The
+      // active card always settles at the window's left edge (slot 0);
+      // stepping just animates to the next copy and the ring rotates
+      // in-frame at each settle. The content is periodic, so rotation
+      // (DOM move + compensating x) is invisible — and because the rail
+      // transform is always canonical, there is no deferred "re-anchor"
+      // teleport when a new gesture starts.
+      this.buildRing();
+      this.setActive(0, true, false);
       this.syncPauseButtons();
       this.bindControls();
       this.bindSwipe();
@@ -54,7 +56,6 @@ if (!customElements.get('ugc-story-carousel')) {
 
     disconnectedCallback() {
       if (this.tickBound) gsap.ticker.remove(this.tickBound);
-      clearTimeout(this.reanchorTimer);
     }
 
     formatNumber(index) {
@@ -146,147 +147,155 @@ if (!customElements.get('ugc-story-carousel')) {
         });
     }
 
+    // Rail geometry: one slot = card width + gap. Adjacent children share
+    // the rail transform, so the difference is transform-independent.
+    step() {
+      const a = this.rail.children[0].getBoundingClientRect();
+      const b = this.rail.children[1].getBoundingClientRect();
+      return b.left - a.left;
+    }
+
     // Single place that moves the rail. GSAP owns the transform (x
     // alias), so the CSS transition on .ugc-rail is removed and nothing
     // fights the tween.
-    moveRail(x, animate) {
+    setRailX(x, animate, onComplete) {
       if (animate) {
         gsap.to(this.rail, {
-          x: -x,
+          x,
           duration: this.dur,
           ease: 'power2.inOut',
           overwrite: 'auto',
+          onComplete,
         });
       } else {
-        gsap.set(this.rail, { x: -x });
+        gsap.set(this.rail, { x });
+        if (onComplete) onComplete();
       }
     }
 
-    translateRailToActive(target, animate = true) {
-      const active = this.cards[this.activeIndex];
-
-      // Viewport-relative difference: the rail's own page offset cancels
-      // out, so this stays correct inside any theme layout.
-      const x =
-        target !== undefined
-          ? target
-          : active.getBoundingClientRect().left -
-            this.rail.getBoundingClientRect().left;
-
-      this.moveRail(x, animate);
+    // Position the active card at slot 0 (window's left edge). Animate
+    // unless the caller wants an instant jump.
+    goTo(pos, animate = true) {
+      this.setRailX(-pos * this.step(), animate, () => this.rotateIfNeeded());
     }
 
-    // Infinite scroll: a twin of the last card is prepended and a full
-    // duplicate set is appended. Scrolling past an edge lands on the
-    // identical twin — with real-looking cards following it, so no blank
-    // strip ever appears — then the rail is silently re-anchored to the
-    // real card. No jump, no pop.
-    createClones() {
-      if (this.cards.length < 2) return;
-      if (this.rail.querySelector('[data-clone]')) return;
+    // Build the ring: several full copies of the card cycle, enough that
+    // both drag directions always have content beyond the window.
+    buildRing() {
+      const n = this.cards.length;
+      const step = this.step();
+      const windowW = this.querySelector('.ugc-window').getBoundingClientRect()
+        .width;
+      const segments = Math.max(
+        3,
+        Math.ceil((windowW + step) / (n * step)) + 2
+      );
 
-      const last = this.cards[this.cards.length - 1].cloneNode(true);
-      last.dataset.clone = 'last';
-      last.removeAttribute('data-index');
-
-      const fragment = document.createDocumentFragment();
-      this.cards.forEach((card, i) => {
-        const twin = card.cloneNode(true);
-        twin.dataset.clone = i === 0 ? 'first' : 'dup';
-        twin.removeAttribute('data-index');
-        fragment.appendChild(twin);
-      });
-
-      this.rail.appendChild(fragment);
-      this.rail.prepend(last);
-
-      // Tapping the visible twin promotes the real card it mirrors.
-      const promote = (index) => (event) => {
-        if (event.target.closest('button, a')) return;
-        this.setActive(index);
-      };
-      this.rail
-        .querySelector('[data-clone="first"]')
-        .addEventListener('click', promote(0));
-      last.addEventListener('click', promote(this.cards.length - 1));
-    }
-
-    // Scroll onto the twin of the first card (state becomes card 0),
-    // then re-anchor the rail so scrolling continues seamlessly.
-    goPastEnd() {
-      const clone = this.rail.querySelector('[data-clone="first"]');
-      if (!clone) {
-        this.setActive(0);
-        return;
+      this.rail.innerHTML = '';
+      for (let s = 0; s < segments; s++) {
+        this.cards.forEach((card, i) => {
+          const node = s === 0 ? card : card.cloneNode(true);
+          if (s > 0) {
+            node.dataset.clone = String(s);
+            node.removeAttribute('data-index');
+          }
+          this.rail.appendChild(node);
+        });
       }
-      // The landing card must look exactly like the active card it
-      // mirrors (height, panels, controls) or the re-anchor pops.
-      clone.classList.add('active');
-      const cloneX =
-        clone.getBoundingClientRect().left -
-        this.rail.getBoundingClientRect().left;
-      this.setActive(0, true, cloneX);
-      this.scheduleReanchor();
+      this.ring = [...this.rail.children];
+      this.activePos = n; // start in the middle segment
     }
 
-    goPastStart() {
-      const clone = this.rail.querySelector('[data-clone="last"]');
-      if (!clone) {
-        this.setActive(this.cards.length - 1);
-        return;
+    // The active card's node is ring[activePos]; keep the .active styling
+    // on exactly that visible node.
+    applyActiveClasses() {
+      this.ring.forEach((card) => card.classList.remove('active'));
+      this.ring[this.activePos].classList.add('active');
+    }
+
+    // Keep the ring periodic around the active slot. Called at every
+    // settle, so the rail transform is always canonical when a new
+    // gesture starts — nothing to re-anchor, no jump.
+    rotateIfNeeded() {
+      const n = this.cards.length;
+      const step = this.step();
+      let x = gsap.getProperty(this.rail, 'x');
+      let pos = this.activePos;
+
+      // The ring recycles exactly the cards that just passed: one per
+      // slot the active card moved (the while loops make this a batch
+      // only when a single gesture crossed several cards at once).
+      // Backward: move one card from the tail to the front (a −1 shift
+      // of the periodic ring, so compensate x by −1 slot).
+      while (pos < n) {
+        this.rail.insertBefore(
+          this.rail.lastElementChild,
+          this.rail.firstElementChild
+        );
+        this.ring = [...this.rail.children];
+        pos += 1;
+        x -= step;
+        gsap.set(this.rail, { x });
       }
-      clone.classList.add('active');
-      const cloneX =
-        clone.getBoundingClientRect().left -
-        this.rail.getBoundingClientRect().left;
-      this.setActive(this.cards.length - 1, true, cloneX);
-      this.scheduleReanchor();
+
+      // Forward: move the passed card to the tail (+1 shift of the
+      // periodic ring, compensate x by +1 slot — pixels stay identical).
+      while (pos >= n + 1) {
+        this.rail.appendChild(this.rail.children[0]);
+        this.ring = [...this.rail.children];
+        pos -= 1;
+        x += step;
+        gsap.set(this.rail, { x });
+      }
+
+      this.activePos = pos;
     }
 
-    // After the animated landing on the twin, reposition the rail onto
-    // the real card it mirrors. Identical pixels, no transition, so the
-    // reset is invisible. Deferred so a mid-animation interaction wins.
-    scheduleReanchor() {
-      this.awaitingReset = true;
-      clearTimeout(this.reanchorTimer);
-      this.reanchorTimer = setTimeout(() => {
-        if (this.isDragging) return;
-        this.silentReanchor();
-      }, 700);
-    }
+    setActive(index, resetProgress = true, animate = true) {
+      const n = this.cards.length;
+      const target = ((index % n) + n) % n;
 
-    silentReanchor() {
-      if (!this.awaitingReset) return;
-      this.awaitingReset = false;
+      // Shortest rotation around the ring (ties go forward).
+      let delta = target - this.activeIndex;
+      if (delta > n / 2) delta -= n;
+      if (delta < -n / 2) delta += n;
 
-      // Twins keep active styling only while they are on screen.
-      this.rail.querySelectorAll('[data-clone].active').forEach((clone) => {
-        clone.classList.remove('active');
-      });
+      // Eager bookkeeping: consecutive setActive calls (rapid clicks,
+      // autoplay ticks) chain off the latest position, even mid-tween.
+      this.activeIndex = target;
+      this.activePos =
+        (((this.activePos + delta) % this.ring.length) + this.ring.length) %
+        this.ring.length;
 
-      // Snap onto the real card instantly. Kill the landing tween first
-      // so no stale animation writes over the jump.
-      gsap.killTweensOf(this.rail);
-      this.translateRailToActive(undefined, false);
+      if (resetProgress) this.elapsed = 0;
+
+      // Styling flips immediately: the incoming card grows as it slides in.
+      this.applyActiveClasses();
+      this.renderPagination();
+      this.updateCopy(this.cards[target], !animate);
+      this.syncPauseButtons();
+      this.updateMobileProgress();
+
+      this.goTo(this.activePos, animate);
     }
 
     syncPauseButtons() {
+      const playing = !this.paused;
+
       this.cards.forEach((card, index) => {
         const pauseButton = card.querySelector('.pause-btn');
-        if (!pauseButton) return;
-
-        // Only the active card can be "playing" (autoplay in progress);
-        // every other card shows the play affordance.
-        this.setPauseIcons(
-          pauseButton,
-          index === this.activeIndex && !this.paused
-        );
+        if (pauseButton) {
+          this.setPauseIcons(
+            pauseButton,
+            index === this.activeIndex && playing
+          );
+        }
       });
 
-      // The twin that is currently on screen mirrors the active card.
-      this.rail
-        .querySelectorAll('.ugc-card[data-clone].active .pause-btn')
-        .forEach((pauseButton) => this.setPauseIcons(pauseButton, !this.paused));
+      // The visible card may be a ring copy; mirror the playing state on
+      // its pause button too.
+      const activeButton = this.ring[this.activePos].querySelector('.pause-btn');
+      if (activeButton) this.setPauseIcons(activeButton, playing);
     }
 
     setPauseIcons(pauseButton, isPlaying) {
@@ -298,159 +307,52 @@ if (!customElements.get('ugc-story-carousel')) {
       pauseButton.setAttribute('aria-label', isPlaying ? 'Pause' : 'Play');
     }
 
-    setActive(index, resetProgress = true, railTarget) {
-      // If the rail still sits on a twin (mid-cycle), re-anchor it first
-      // so every navigation target is computed from real positions.
-      if (this.awaitingReset) this.silentReanchor();
-
-      this.activeIndex = (index + this.cards.length) % this.cards.length;
-
-      this.cards.forEach((card, i) => {
-        card.classList.toggle('active', i === this.activeIndex);
-      });
-
-      if (resetProgress) {
-        this.elapsed = 0;
-      }
-
-      this.renderPagination();
-      this.updateCopy(this.cards[this.activeIndex]);
-      this.syncPauseButtons();
-      this.updateMobileProgress();
-
-      // Card lefts are height-independent, so the rail target can be
-      // measured and tweened synchronously — no frame wait needed.
-      this.translateRailToActive(railTarget);
-    }
-
     bindControls() {
-      // Clicking a small card promotes it to active.
-      this.cards.forEach((card, index) => {
-        card.addEventListener('click', (event) => {
-          if (event.target.closest('button')) return;
+      // One delegated handler for card buttons — mute, pause, cart.
+      // Ring copies are covered too; their positions change as the ring
+      // rotates, so resolve the node against the live ring on every
+      // click. Clicking a card background does nothing (navigation is
+      // drag/swipe, autoplay, and pagination only).
+      this.rail.addEventListener('click', (event) => {
+        // Resolve against what the pointer pressed (within the last
+        // 750ms), not the computed click target. Mid-slide the rail
+        // drifts between pointerdown and pointerup, so the click can
+        // land on the common ancestor of both targets — e.g. a card
+        // whose content moved under the pointer. Without this, a press
+        // on a mute/pause button could hit the wrong element.
+        // Keyboard clicks have no press — fall back to the event.
+        const recent =
+          this._pressEl && performance.now() - this._pressAt < 750;
+        const pressed = recent ? this._pressEl : event.target;
+        const card = pressed.closest('.ugc-card');
+        if (!card || !this.ring.includes(card)) return;
 
-          if (index !== this.activeIndex) {
-            this.setActive(index);
-          }
-        });
-      });
+        const button = pressed.closest('button');
 
-      // Mute is independent per UGC card.
-      this.cards.forEach((card) => {
-        const mute = card.querySelector('.mute-btn');
-
-        if (!mute) return;
-
-        mute.addEventListener('click', (event) => {
+        // Mute is independent per card.
+        if (button && button.classList.contains('mute-btn')) {
           event.stopPropagation();
-
-          const isMuted = mute.dataset.muted !== 'false';
-          mute.dataset.muted = isMuted ? 'false' : 'true';
-          const soundState = mute.querySelector('.icon-state-sound');
-          const mutedState = mute.querySelector('.icon-state-muted');
-
-          // The attribute now holds the post-click state; the icons and
-          // label describe it (muted -> show the muted speaker).
+          const isMuted = button.dataset.muted !== 'false';
+          button.dataset.muted = isMuted ? 'false' : 'true';
+          const soundState = button.querySelector('.icon-state-sound');
+          const mutedState = button.querySelector('.icon-state-muted');
           if (soundState) soundState.hidden = !isMuted;
           if (mutedState) mutedState.hidden = isMuted;
-          mute.setAttribute('aria-label', isMuted ? 'Mute' : 'Unmute');
-        });
-      });
+          button.setAttribute('aria-label', isMuted ? 'Mute' : 'Unmute');
+          return;
+        }
 
-      // Pause controls the autoplay/progress of the active story.
-      this.cards.forEach((card, index) => {
-        const pauseButton = card.querySelector('.pause-btn');
-
-        if (!pauseButton) return;
-
-        pauseButton.addEventListener('click', (event) => {
+        // Pause controls the autoplay/progress of the active story.
+        if (button && button.classList.contains('pause-btn')) {
           event.stopPropagation();
-
-          if (index !== this.activeIndex) return;
-
+          if (this.ring.indexOf(card) !== this.activePos) return;
           this.paused = !this.paused;
           this.syncPauseButtons();
-        });
+          return;
+        }
+        // Cart is a theme <product-form> submit button now — it owns its
+        // own click-to-add (spinner, cart drawer events); nothing to do.
       });
-
-      // Quick add for the active card's product.
-      this.querySelectorAll('.cart-btn').forEach((button) => {
-        button.addEventListener('click', (event) => {
-          event.stopPropagation();
-          this.addToCart(button);
-        });
-      });
-    }
-
-    addToCart(button) {
-      const variantId = button.dataset.variantId;
-
-      if (!variantId) return;
-
-      // Only attempt the add when the theme's cart endpoints are present.
-      if (!window.VelouraSettings || !window.VelouraSettings.routes) return;
-
-      button.classList.add('btn--loading');
-
-      const config = {
-        method: 'POST',
-        headers: {
-          Accept: 'application/javascript',
-          'X-Requested-With': 'XMLHttpRequest',
-        },
-      };
-
-      const formData = new FormData();
-      formData.append('id', variantId);
-      formData.append('quantity', 1);
-
-      const cartDrawer = document.querySelector('cart-drawer');
-      if (
-        cartDrawer &&
-        typeof cartDrawer.getSectionsToRender === 'function'
-      ) {
-        formData.append(
-          'sections',
-          cartDrawer.getSectionsToRender().map((section) => section.id)
-        );
-        formData.append('sections_url', window.location.pathname);
-      }
-
-      config.body = formData;
-
-      fetch(`${VelouraSettings.routes.cart_add_url}`, config)
-        .then((response) => response.json())
-        .then((response) => {
-          if (response.status) return;
-
-          if (window.VelouraEvents && window.PUB_SUB_EVENTS) {
-            window.VelouraEvents.emit(
-              window.PUB_SUB_EVENTS.cartUpdate,
-              response
-            );
-          }
-
-          const bagState = button.querySelector('.icon-state-bag');
-          const addedState = button.querySelector('.icon-state-added');
-
-          if (bagState) bagState.hidden = true;
-          if (addedState) addedState.hidden = false;
-          button.setAttribute('aria-label', 'Added to bag');
-        })
-        .catch((error) => {
-          console.error(error);
-        })
-        .finally(() => {
-          button.classList.remove('btn--loading');
-          window.setTimeout(() => {
-            const bagState = button.querySelector('.icon-state-bag');
-            const addedState = button.querySelector('.icon-state-added');
-
-            if (bagState) bagState.hidden = false;
-            if (addedState) addedState.hidden = true;
-            button.setAttribute('aria-label', 'Add to bag');
-          }, 1200);
-        });
     }
 
     bindSwipe() {
@@ -466,12 +368,16 @@ if (!customElements.get('ugc-story-carousel')) {
 
       const onPointerDown = (event) => {
         if (pointerId !== null) return;
+
+        // Remember what the pointer pressed. The browser fires the click
+        // on the common ancestor of the down/up targets, which mid-slide
+        // can be a card whose content drifted — the click handler needs
+        // this to resolve against the pressed element, not the drift.
+        this._pressEl = event.target;
+        this._pressAt = performance.now();
+
         if (event.pointerType === 'mouse' && event.button !== 0) return;
         if (event.target.closest('button, a')) return;
-
-        // If the rail still sits on a twin, re-anchor before measuring so
-        // the drag starts from the real card positions.
-        if (this.awaitingReset) this.silentReanchor();
 
         // Grabbing mid-slide: stop the tween so the finger owns the rail.
         gsap.killTweensOf(this.rail);
@@ -479,10 +385,10 @@ if (!customElements.get('ugc-story-carousel')) {
         pointerId = event.pointerId;
         startX = event.clientX;
         startY = event.clientY;
-        // Measured live: self-correcting even with clones in the rail.
-        baseX =
-          this.cards[this.activeIndex].getBoundingClientRect().left -
-          this.rail.getBoundingClientRect().left;
+        // The rail is always in its canonical position at rest (rotation
+        // is in-frame at every settle), so the drag continues straight
+        // from the current transform — no re-anchor, no jump.
+        baseX = gsap.getProperty(this.rail, 'x');
         dragging = false;
       };
 
@@ -506,7 +412,7 @@ if (!customElements.get('ugc-story-carousel')) {
           surface.classList.add('is-dragging');
         }
 
-        gsap.set(this.rail, { x: -(baseX - dx) });
+        gsap.set(this.rail, { x: baseX + dx });
       };
 
       const onPointerEnd = (event) => {
@@ -523,45 +429,35 @@ if (!customElements.get('ugc-story-carousel')) {
         if (!wasDragging) return;
 
         if (Math.abs(dx) >= threshold) {
+          // Advance one slot per full card dragged (min one).
+          const steps = Math.max(
+            1,
+            Math.round(Math.abs(dx) / this.step())
+          );
           const direction = dx < 0 ? 1 : -1;
-          const next = this.activeIndex + direction;
+          const next = this.activeIndex + direction * steps;
 
-          if (next < 0) {
-            // Mobile: snap back at the ends. Desktop: scroll onto the
-            // twin of the last card — seamless infinite scroll.
-            if (window.matchMedia('(max-width: 900px)').matches) {
-              this.translateRailToActive();
+          if (
+            window.matchMedia('(max-width: 900px)').matches &&
+            (next < 0 || next >= this.cards.length)
+          ) {
+            // Mobile keeps the old hard-stop feel: the ends are the ends —
+            // travel as far as they allow, then snap back to the edge card.
+            const clamped = Math.min(
+              this.cards.length - 1,
+              Math.max(0, next)
+            );
+            if (clamped === this.activeIndex) {
+              this.goTo(this.activePos);
             } else {
-              this.goPastStart();
-            }
-          } else if (next >= this.cards.length) {
-            if (window.matchMedia('(max-width: 900px)').matches) {
-              this.translateRailToActive();
-            } else {
-              this.goPastEnd();
+              this.setActive(clamped);
             }
           } else {
             this.setActive(next);
           }
         } else {
-          this.translateRailToActive();
+          this.goTo(this.activePos);
         }
-
-        // The gesture settled; drop a pending twin re-anchor from an
-        // earlier cycle. Never the one just scheduled by goPast* — that
-        // must keep the rail on the twin until the animation lands.
-        const edgeSwipe =
-          Math.abs(dx) >= threshold &&
-          (next < 0 || next >= this.cards.length) &&
-          !window.matchMedia('(max-width: 900px)').matches;
-
-        if (this.awaitingReset && !edgeSwipe) this.silentReanchor();
-
-        // A completed drag fires a click on the card/button; ignore it.
-        this.suppressClick = true;
-        setTimeout(() => {
-          this.suppressClick = false;
-        }, 400);
       };
 
       const onPointerCancel = () => {
@@ -570,26 +466,13 @@ if (!customElements.get('ugc-story-carousel')) {
         dragging = false;
         this.isDragging = false;
         surface.classList.remove('is-dragging');
-        this.translateRailToActive();
-        if (this.awaitingReset) this.silentReanchor();
+        this.goTo(this.activePos);
       };
 
       surface.addEventListener('pointerdown', onPointerDown);
       surface.addEventListener('pointermove', onPointerMove);
       surface.addEventListener('pointerup', onPointerEnd);
       surface.addEventListener('pointercancel', onPointerCancel);
-
-      // Swallow the click that immediately follows a completed drag.
-      surface.addEventListener(
-        'click',
-        (event) => {
-          if (!this.suppressClick) return;
-          event.stopPropagation();
-          event.preventDefault();
-          this.suppressClick = false;
-        },
-        true
-      );
     }
 
     // Driven by gsap.ticker (delta in ms), so the story clock shares the
@@ -600,15 +483,7 @@ if (!customElements.get('ugc-story-carousel')) {
 
         if (this.elapsed >= this.slideDuration) {
           this.elapsed = 0;
-          const next = this.activeIndex + 1;
-
-          // Past the last card, keep scrolling onto the twin instead of
-          // jumping back to the first — seamless infinite loop.
-          if (next >= this.cards.length) {
-            this.goPastEnd();
-          } else {
-            this.setActive(next, false);
-          }
+          this.setActive(this.activeIndex + 1, false);
         }
       }
 

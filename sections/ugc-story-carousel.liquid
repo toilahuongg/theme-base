@@ -122,15 +122,15 @@
 
               {%- if block.settings.product != blank -%}
                 {%- assign block_product = block.settings.product -%}
+                {%- if block_product.featured_image != blank -%}
                 <div class="product-mini">
-                  {%- if block_product.featured_image != blank -%}
-                    {{
-                      block_product.featured_image
-                      | image_url: width: 250
-                      | image_tag: loading: 'lazy', alt: ''
-                    }}
-                  {%- endif -%}
+                  {{
+                    block_product.featured_image
+                    | image_url: width: 250
+                    | image_tag: loading: 'lazy', alt: ''
+                  }}
                 </div>
+                {%- endif -%}
 
                 <div class="product-full">
                   <div class="product-thumb">
@@ -146,15 +146,29 @@
                     <strong>{{ block_product.title }}</strong>
                     <span>{{ block_product.price | money }}</span>
                   </div>
-                  <button
-                    type="button"
-                    class="cart-btn"
-                    data-variant-id="{{ block_product.selected_or_first_available_variant.id }}"
-                    aria-label="Add to bag"
+                  <product-form
+                    data-type="product-card"
+                    data-notification-type="toast"
                   >
-                    <span class="icon-state-bag">{%- render 'icon-shopping-bag', size: 'medium' -%}</span>
-                    <span class="icon-state-added" hidden>{%- render 'icon-check', size: 'medium' -%}</span>
-                  </button>
+                    {%- form 'product', block_product, novalidate: 'novalidate' -%}
+                      <input
+                        type="hidden"
+                        name="id"
+                        value="{{ block_product.selected_or_first_available_variant.id }}"
+                      >
+                      <button
+                        type="submit"
+                        name="add"
+                        class="cart-btn"
+                        aria-label="Add to bag"
+                      >
+                        <span class="icon-state-bag">{%- render 'icon-shopping-bag', size: 'medium' -%}</span>
+                        {% comment %} theme-check-disable {% endcomment %}
+                        {{- 'icon-spinner.svg' | inline_asset_content -}}
+                        {% comment %} theme-check-enable {% endcomment %}
+                      </button>
+                    {%- endform -%}
+                  </product-form>
                 </div>
               {%- endif -%}
             </article>
