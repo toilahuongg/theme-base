@@ -181,10 +181,10 @@
     {{ shop.metafields.veloura.code_body.value }}
     {%- if settings.page_transition -%}
       <div class="m-page-transition no-js-hidden">
-        <div class="m-page-transition__spinner">
-          <div class="m-page-transition__spinner-content">
-            <div></div>
-          </div>
+        <div class="m-page-transition__spinner" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
       </div>
     {%- endif -%}
