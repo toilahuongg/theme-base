@@ -142,6 +142,16 @@
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
+    {% comment %}
+      GSAP + ScrollTrigger are used by several scroll-animation sections.
+      They load once here — each section that needs them includes only its
+      own logic file. Loading them per-section re-executes the UMD bundles
+      and replaces window.gsap/window.ScrollTrigger with fresh instances,
+      which breaks ScrollTrigger-managed tweens.
+    {% endcomment %}
+    <script src="{{ 'gsap.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'ScrollTrigger.js' | asset_url }}" defer="defer"></script>
+
     <script>
       document.documentElement.className =
         document.documentElement.className.replace('no-js', 'js');

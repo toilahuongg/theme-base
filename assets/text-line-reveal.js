@@ -4,22 +4,20 @@ if (!customElements.get('text-line-reveal')) {
       const spans = [...this.querySelectorAll('.text-line-reveal__mask span')];
       if (!spans.length) return;
 
-      // Respect the theme's reduced-motion setting: lines show immediately
-      // (the media query already removes the hidden transform).
-      if (window.VelouraSettings && window.VelouraSettings.motionReduced) {
-        return;
-      }
+      const settings = window.VelouraSettings || {};
 
-      if (!window.gsap || !window.ScrollTrigger) {
-        // Fallback: never leave the lines hidden.
-        spans.forEach((span) => (span.style.transform = 'none'));
-        return;
-      }
+      // Theme editor: render the final state so the section never shows as
+      // empty boxes while configuring. Reduced motion: lines show
+      // immediately (lines are visible by default).
+      if (settings.designMode || settings.motionReduced) return;
+
+      if (!window.gsap || !window.ScrollTrigger) return;
 
       gsap.registerPlugin(ScrollTrigger);
 
-      // GSAP owns the transform now — neutralize the CSS transition so it
-      // never fights the tween.
+      // GSAP owns the whole transform — the from state (yPercent 115)
+      // hides the lines, so no CSS transform may be involved. Neutralize
+      // the CSS transition so it never fights the tween.
       spans.forEach((span) => (span.style.transition = 'none'));
 
       gsap.fromTo(

@@ -1,5 +1,4 @@
 {{ 'ugc-story-carousel.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'gsap.js' | asset_url }}" defer="defer"></script>
 <script
   src="{{ 'ugc-story-carousel.js' | asset_url }}"
   defer="defer"
@@ -68,22 +67,13 @@
             <h2 class="ugc-title">{{ section.settings.title }}</h2>
           </motion-element>
         {%- endif -%}
-        {%- assign benefits = section.settings.benefits | split: '\n' -%}
-        {%- if benefits.size > 0 -%}
           <motion-element
             data-motion="{{ animation_effect }}"
             data-motion-delay="100"
             class="block"
           >
-            <ul class="ugc-benefits">
-              {%- for benefit in benefits -%}
-                {%- unless benefit == blank -%}
-                  <li><span class="check">{%- render 'icon-check', size: 'small' -%}</span>{{ benefit }}</li>
-                {%- endunless -%}
-              {%- endfor -%}
-            </ul>
+            <ul class="ugc-benefits"></ul>
           </motion-element>
-        {%- endif -%}
       </div>
 
       <div class="ugc-pagination"></div>
@@ -94,15 +84,45 @@
       <div class="ugc-rail">
         {%- if section.blocks.size > 0 -%}
           {%- for block in section.blocks -%}
+            {%- assign benefit_fields = 'benefit_1,benefit_2,benefit_3' | split: ',' -%}
+            {%- assign card_bullets = '' -%}
+            {%- for field in benefit_fields -%}
+              {%- if block.settings[field] != blank -%}
+                {%- assign card_bullets = card_bullets | append: block.settings[field] | append: '|' -%}
+              {%- endif -%}
+            {%- endfor -%}
             <article
               class="ugc-card{% if forloop.first %} active{% endif %}"
               data-index="{{ forloop.index0 }}"
               data-title="{{ block.settings.title | escape }}"
-              data-bullets="{{ block.settings.bullets | replace: '\n', '|' | escape }}"
+              data-bullets="{{ card_bullets | escape }}"
               {{ block.shopify_attributes }}
             >
               <div class="media">
-                {%- if block.settings.image != blank -%}
+                {%- liquid
+                  assign story_video = block.settings.video
+                  assign story_poster = block.settings.image
+                  if story_video != blank
+                    if story_poster != blank
+                      assign story_poster_url = story_poster | image_url: width: 900
+                    endif
+                  endif
+                -%}
+                {%- if story_video != blank -%}
+                  {{
+                    story_video
+                    | video_tag:
+                      autoplay: true,
+                      loop: true,
+                      muted: true,
+                      playsinline: true,
+                      controls: false,
+                      preload: 'metadata',
+                      class: 'ugc-media-video',
+                      poster: story_poster_url,
+                      image_size: '900x'
+                  }}
+                {%- elsif block.settings.image != blank -%}
                   {{
                     block.settings.image
                     | image_url: width: 900
@@ -118,10 +138,12 @@
               </div>
 
               <div class="media-controls">
+                {%- if story_video != blank -%}
                 <button type="button" class="icon-btn mute-btn" data-muted="true" aria-label="Unmute">
                   <span class="icon-state-sound" hidden>{%- render 'icon-volume', size: 'medium' -%}</span>
                   <span class="icon-state-muted">{%- render 'icon-volume-mute', size: 'medium' -%}</span>
                 </button>
+                {%- endif -%}
                 <button type="button" class="icon-btn pause-btn" aria-label="Pause">
                   <span class="icon-state-pause">{%- render 'icon-pause', size: 'medium' -%}</span>
                   <span class="icon-state-play" hidden>{%- render 'icon-play', size: 'medium' -%}</span>
@@ -219,14 +241,7 @@
       "id": "title",
       "label": "Title",
       "info": "Initial headline. It is replaced by the active card's title once the carousel runs.",
-      "default": "Everyday makeup for a dewy glow"
-    },
-    {
-      "type": "textarea",
-      "id": "benefits",
-      "label": "Benefits",
-      "info": "One benefit per line. Used as the pre-JavaScript fallback.",
-      "default": "Blends effortlessly into skin for a soft\nGlow through every look\nSmooth on skin all day long"
+      "default": "Worn by you, every day"
     },
     {
       "type": "header",
@@ -256,29 +271,25 @@
       "type": "color",
       "id": "background_color",
       "label": "Background color",
-      "info": "Leave blank to use the color scheme.",
-      "default": ""
+      "info": "Leave blank to use the color scheme."
     },
     {
       "type": "color",
       "id": "ink_color",
       "label": "Text color",
-      "info": "Leave blank to use the color scheme.",
-      "default": ""
+      "info": "Leave blank to use the color scheme."
     },
     {
       "type": "color",
       "id": "muted_color",
       "label": "Muted text color",
-      "info": "Leave blank to use the color scheme.",
-      "default": ""
+      "info": "Leave blank to use the color scheme."
     },
     {
       "type": "color",
       "id": "accent_color",
       "label": "Accent color",
-      "info": "Leave blank to use the color scheme.",
-      "default": ""
+      "info": "Leave blank to use the color scheme."
     },
     {
       "type": "range",
@@ -400,7 +411,14 @@
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Image"
+          "label": "Image",
+          "info": "Photo story, or the poster shown until the video plays."
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video",
+          "info": "Optional customer video. Plays muted on loop while the story is active; leave blank for a photo story."
         },
         {
           "type": "text",
@@ -409,10 +427,19 @@
           "info": "Shown in the left column while this story is active."
         },
         {
-          "type": "textarea",
-          "id": "bullets",
-          "label": "Benefits",
-          "info": "One benefit per line."
+          "type": "text",
+          "id": "benefit_1",
+          "label": "Benefit 1"
+        },
+        {
+          "type": "text",
+          "id": "benefit_2",
+          "label": "Benefit 2"
+        },
+        {
+          "type": "text",
+          "id": "benefit_3",
+          "label": "Benefit 3"
         },
         {
           "type": "product",
@@ -429,17 +456,13 @@
       "settings": {
         "color_scheme": "background-1",
         "eyebrow": "LOVED BY OUR COMMUNITY",
-        "title": "Everyday makeup for a dewy glow",
-        "benefits": "Blends effortlessly into skin for a soft\nGlow through every look\nSmooth on skin all day long",
+        "title": "Worn by you, every day",
         "autoplay": true,
         "slide_duration": 6500,
-        "background_color": "#ffffff",
-        "ink_color": "#0b0b0b",
-        "muted_color": "#a7a7a7",
-        "accent_color": "#d8eaa5",
+        "accent_color": "#b0573b",
         "card_width": 328,
-        "padding_top": 0,
-        "padding_bottom": 0,
+        "padding_top": 48,
+        "padding_bottom": 48,
         "show_section_divider": false,
         "divider_width": "container",
         "custom_id": "",
@@ -450,46 +473,61 @@
         {
           "type": "story",
           "settings": {
-            "image": "",
-            "title": "Soft skin, simple routine",
-            "bullets": "Melts into skin without feeling heavy\nLayers easily under everyday makeup\nLeaves a natural, comfortable finish",
-            "product": ""
+            "image": "shopify://shop_images/hero-worn-daily.png",
+            "video": "",
+            "title": "The ring that never comes off",
+            "benefit_1": "Doubles as my everyday signature",
+            "benefit_2": "Pairs with everything I own",
+            "benefit_3": "Still perfect after three years",
+            "product": "twist-ring-gold"
           }
         },
         {
           "type": "story",
           "settings": {
-            "image": "",
-            "title": "Everyday makeup for a dewy glow",
-            "bullets": "Blends effortlessly into skin for a soft\nGlow through every look\nSmooth on skin all day long",
-            "product": ""
+            "image": "shopify://shop_images/card-earrings.png",
+            "video": "",
+            "title": "Hoops for every day",
+            "benefit_1": "Quiet shine from morning to night",
+            "benefit_2": "No tarnish after a full year",
+            "benefit_3": "The pair I reach for first",
+            "product": "gold-hoop-earrings"
           }
         },
         {
           "type": "story",
           "settings": {
-            "image": "",
-            "title": "A sheer wash of everyday color",
-            "bullets": "Buildable color without a sticky feel\nSoft shine that works day to night\nComfortable on lips for hours",
-            "product": ""
+            "image": "shopify://shop_images/p-pearlneck-1.png",
+            "video": "",
+            "title": "The compliment magnet",
+            "benefit_1": "Elevates even a plain tee",
+            "benefit_2": "The comment I get most often",
+            "benefit_3": "Bought a second as a gift",
+            "product": "pearl-drop-necklace"
           }
         },
         {
           "type": "story",
           "settings": {
-            "image": "",
-            "title": "Hydration that still feels weightless",
-            "bullets": "Comforts dry skin without heaviness\nSits smoothly beneath makeup\nLeaves skin fresh, never greasy",
-            "product": ""
+            "image": "shopify://shop_images/p-rainbow-1.png",
+            "video": "",
+            "title": "Three bracelets, one stack",
+            "benefit_1": "Layers perfectly with gold",
+            "benefit_2": "Hand-strung colour that lasts",
+            "benefit_3": "Came back for three more",
+            "product": "miyuki-bead-bracelet-rainbow"
           }
         },
         {
           "type": "story",
           "settings": {
-            "image": "",
-            "title": "Glow that looks like your own skin",
-            "bullets": "Creates a soft illuminated finish\nMixes easily with foundation or SPF\nDesigned for everyday wear",
-            "product": ""
+            "image": "shopify://shop_images/p-parure-1.png",
+            "video": "",
+            "title": "Said yes in Veloura",
+            "benefit_1": "Wore it from morning to night",
+            "benefit_2": "The bridal edit carried the day",
+            "benefit_3": "Kept every piece after",
+            "product": "bridal-parure-set"
           }
         }
       ]

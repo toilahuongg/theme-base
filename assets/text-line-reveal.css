@@ -16,14 +16,10 @@
   font-size: clamp(42px, 6.6vw, 96px);
   line-height: 1;
   letter-spacing: -0.055em;
-  transform: translateY(115%);
 }
 
-/* The reveal itself is driven by GSAP (text-line-reveal.js). */
-
-@media (prefers-reduced-motion: reduce) {
-  .text-line-reveal__mask span {
-    transform: none;
-    transition: none;
-  }
-}
+/* The reveal is driven entirely by GSAP (text-line-reveal.js): lines are
+   visible by default and GSAP sets the hidden from-state via yPercent.
+   Never set a CSS transform here — GSAP bakes an existing CSS transform
+   into its cache as a px offset that the yPercent tween leaves behind,
+   which would keep the line stuck off-screen after the reveal. */

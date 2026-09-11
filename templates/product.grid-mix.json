@@ -148,6 +148,77 @@
         "show_featured_media": false
       }
     },
+    "stats_counter": {
+      "type": "stats-counter",
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "value": "100",
+            "prefix": "",
+            "suffix": "%",
+            "label": "Handcrafted",
+            "description": "Every piece assembled by hand, never machine-made."
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "value": "48",
+            "prefix": "",
+            "suffix": "hr",
+            "label": "Per piece",
+            "description": "Average time for a single Miyuki-bead bracelet."
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "value": "5",
+            "prefix": "",
+            "suffix": "yr",
+            "label": "Warranty",
+            "description": "On materials and craftsmanship, for every piece."
+          }
+        },
+        "stat_4": {
+          "type": "stat",
+          "settings": {
+            "value": "3",
+            "prefix": "",
+            "suffix": "",
+            "label": "Ateliers",
+            "description": "New York, Paris, and Tokyo."
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4"
+      ],
+      "settings": {
+        "container": "container",
+        "color_scheme": "background-1",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "heading": "Made by hand, <em>counted with care</em>",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "description": "The numbers behind the atelier.",
+        "columns": 4,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
     "scrolling_promotion_JTAcPf": {
       "type": "scrolling-promotion",
       "blocks": {
@@ -236,6 +307,76 @@
         "custom_class": ""
       }
     },
+    "card_stack": {
+      "type": "card-stack",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "title": "Start with one.",
+            "description": "A single piece that anchors everything else — a signet ring, a pair of hoops, one perfect bracelet.",
+            "image": "shopify://shop_images/p-twist-1.png",
+            "background_color": "",
+            "text_color": ""
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "title": "Add a layer.",
+            "description": "Stack rings, pair chains, layer bracelets in different metals and weights.",
+            "image": "shopify://shop_images/p-stackset-1.png",
+            "background_color": "",
+            "text_color": ""
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "title": "Make it yours.",
+            "description": "Mix Miyuki colorways with gold vermeil for a stack that reads unmistakably yours.",
+            "image": "shopify://shop_images/p-rainbow-1.png",
+            "background_color": "",
+            "text_color": ""
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "title": "Pass it on.",
+            "description": "Gold vermeil is made to be repaired and re-plated — and inherited.",
+            "image": "shopify://shop_images/p-bangle-1.png",
+            "background_color": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
+      ],
+      "settings": {
+        "container": "container",
+        "color_scheme": "background-1",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "heading": "Build <em>your stack</em>",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "description": "Jewelry grows with you. Start with one piece and add layers over time.",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
     "product-recommendations": {
       "type": "product-recommendations",
       "custom_css": [],
@@ -266,11 +407,38 @@
         "divider_width": "container",
         "animations": "inherit"
       }
+    },
+    "magnetic_cta": {
+      "type": "magnetic-cta",
+      "settings": {
+        "container": "container",
+        "color_scheme": "background-1",
+        "layout": "minimal",
+        "subheading": "Ready when you are",
+        "heading": "Make it <em>memorable</em>.",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "description": "Slow, personal jewelry made to be lived in and passed on. Handcrafted in small batches.",
+        "button_label": "Start your collection",
+        "button_link": "/collections/gifts",
+        "show_arrow": true,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
     }
+
   },
   "order": [
     "main",
+    "stats_counter",
     "scrolling_promotion_JTAcPf",
-    "product-recommendations"
+    "card_stack",
+    "product-recommendations",
+    "magnetic_cta"
   ]
 }

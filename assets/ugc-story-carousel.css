@@ -217,6 +217,7 @@
 }
 
 .ugc-story-carousel .ugc-card > .media img,
+.ugc-story-carousel .ugc-card > .media video,
 .ugc-story-carousel .ugc-card > .media .placeholder-svg {
   display: block;
   width: 100%;
@@ -224,11 +225,13 @@
   object-fit: cover;
 }
 
-.ugc-story-carousel .ugc-card > .media img {
+.ugc-story-carousel .ugc-card > .media img,
+.ugc-story-carousel .ugc-card > .media video {
   transition: transform 0.5s ease;
 }
 
-.ugc-story-carousel .ugc-card:not(.active):hover > .media img {
+.ugc-story-carousel .ugc-card:not(.active):hover > .media img,
+.ugc-story-carousel .ugc-card:not(.active):hover > .media video {
   transform: scale(1.025);
 }
 

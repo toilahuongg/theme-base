@@ -1696,7 +1696,7 @@
         "heading_size": "h2",
         "heading_color": "",
         "description": "The numbers behind the atelier.",
-        "columns": "4",
+        "columns": 4,
         "padding_top": 40,
         "padding_bottom": 40,
         "show_section_divider": false,
@@ -1729,157 +1729,52 @@
         "animations": "inherit"
       }
     },
-    "ugc_grid": {
-      "type": "ugc-grid",
-      "blocks": {
-        "card_1": {
-          "type": "card",
-          "settings": {
-            "image": "",
-            "media_type": "photo",
-            "user": "@linh.daily",
-            "caption": "Weekend uniform.",
-            "product": "Boxy Jacket — Sand",
-            "badge": "CUSTOMER PHOTO",
-            "product_link": ""
-          }
-        },
-        "card_2": {
-          "type": "card",
-          "settings": {
-            "image": "",
-            "media_type": "photo",
-            "user": "@mai.studio",
-            "caption": "Everyday stack.",
-            "product": "Signet Ring — Gold",
-            "badge": "",
-            "product_link": ""
-          }
-        },
-        "card_3": {
-          "type": "card",
-          "settings": {
-            "image": "",
-            "media_type": "video",
-            "user": "@khoa.moves",
-            "caption": "24L for the city.",
-            "product": "Everyday Pack — Black",
-            "badge": "VIDEO",
-            "product_link": ""
-          }
-        },
-        "card_4": {
-          "type": "card",
-          "settings": {
-            "image": "",
-            "media_type": "photo",
-            "user": "@vy.skin",
-            "caption": "Morning routine.",
-            "product": "Barrier Cream",
-            "badge": "",
-            "product_link": ""
-          }
-        },
-        "card_5": {
-          "type": "card",
-          "settings": {
-            "image": "",
-            "media_type": "photo",
-            "user": "@an.archive",
-            "caption": "Soft tailoring, daily.",
-            "product": "Relaxed Trouser",
-            "badge": "",
-            "product_link": ""
-          }
-        },
-        "card_6": {
-          "type": "card",
-          "settings": {
-            "image": "",
-            "media_type": "photo",
-            "user": "@minh.goods",
-            "caption": "Travel light.",
-            "product": "32L Travel Pack",
-            "badge": "",
-            "product_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "card_1",
-        "card_2",
-        "card_3",
-        "card_4",
-        "card_5",
-        "card_6"
-      ],
-      "settings": {
-        "color_scheme": "background-1",
-        "background_color": "#f6f3ed",
-        "text_color": "#151515",
-        "muted_color": "#777168",
-        "line_color": "rgba(20, 20, 20, 0.12)",
-        "subheading": "UGC / Community",
-        "heading": "Worn by you.",
-        "heading_font_size": 0,
-        "description": "Real customer photos give your products context, scale and everyday feeling — especially effective for fashion, jewelry, bags and beauty.",
-        "button_label": "View community →",
-        "button_link": "",
-        "padding_top": 84,
-        "padding_bottom": 84,
-        "show_section_divider": false,
-        "divider_width": "container",
-        "custom_id": "",
-        "custom_class": "",
-        "animations": "inherit"
-      }
-    },
     "ugc_story_carousel": {
       "type": "ugc-story-carousel",
       "blocks": {
         "story_1": {
           "type": "story",
           "settings": {
-            "image": "",
-            "title": "Soft skin, simple routine",
-            "bullets": "Melts into skin without feeling heavy\nLayers easily under everyday makeup\nLeaves a natural, comfortable finish",
-            "product": ""
+            "image": "shopify://shop_images/hero-worn-daily.png",
+            "title": "The ring that never comes off",
+            "bullets": "Doubles as my everyday signature\nPairs with everything I own\nStill perfect after three years",
+            "product": "twist-ring-gold"
           }
         },
         "story_2": {
           "type": "story",
           "settings": {
-            "image": "",
-            "title": "Everyday makeup for a dewy glow",
-            "bullets": "Blends effortlessly into skin for a soft\nGlow through every look\nSmooth on skin all day long",
-            "product": ""
+            "image": "shopify://shop_images/card-earrings.png",
+            "title": "Hoops for every day",
+            "bullets": "Quiet shine from morning to night\nNo tarnish after a full year\nThe pair I reach for first",
+            "product": "gold-hoop-earrings"
           }
         },
         "story_3": {
           "type": "story",
           "settings": {
-            "image": "",
-            "title": "A sheer wash of everyday color",
-            "bullets": "Buildable color without a sticky feel\nSoft shine that works day to night\nComfortable on lips for hours",
-            "product": ""
+            "image": "shopify://shop_images/p-pearlneck-1.png",
+            "title": "The compliment magnet",
+            "bullets": "Elevates even a plain tee\nThe comment I get most often\nBought a second as a gift",
+            "product": "pearl-drop-necklace"
           }
         },
         "story_4": {
           "type": "story",
           "settings": {
-            "image": "",
-            "title": "Hydration that still feels weightless",
-            "bullets": "Comforts dry skin without heaviness\nSits smoothly beneath makeup\nLeaves skin fresh, never greasy",
-            "product": ""
+            "image": "shopify://shop_images/p-rainbow-1.png",
+            "title": "Three bracelets, one stack",
+            "bullets": "Layers perfectly with gold\nHand-strung colour that lasts\nCame back for three more",
+            "product": "miyuki-bead-bracelet-rainbow"
           }
         },
         "story_5": {
           "type": "story",
           "settings": {
-            "image": "",
-            "title": "Glow that looks like your own skin",
-            "bullets": "Creates a soft illuminated finish\nMixes easily with foundation or SPF\nDesigned for everyday wear",
-            "product": ""
+            "image": "shopify://shop_images/p-parure-1.png",
+            "title": "Said yes in Veloura",
+            "bullets": "Wore it from morning to night\nThe bridal edit carried the day\nKept every piece after",
+            "product": "bridal-parure-set"
           }
         }
       },
@@ -1893,17 +1788,17 @@
       "settings": {
         "color_scheme": "background-1",
         "eyebrow": "LOVED BY OUR COMMUNITY",
-        "title": "Everyday makeup for a dewy glow",
-        "benefits": "Blends effortlessly into skin for a soft\nGlow through every look\nSmooth on skin all day long",
+        "title": "Worn by you, every day",
+        "benefits": "Three years of daily wear and counting\nOne year in — no tarnish, no regrets\nBought one, came back for three more",
         "autoplay": true,
         "slide_duration": 6500,
-        "background_color": "#ffffff",
-        "ink_color": "#0b0b0b",
-        "muted_color": "#a7a7a7",
-        "accent_color": "#d8eaa5",
+        "background_color": "",
+        "ink_color": "",
+        "muted_color": "",
+        "accent_color": "#b0573b",
         "card_width": 328,
-        "padding_top": 0,
-        "padding_bottom": 0,
+        "padding_top": 48,
+        "padding_bottom": 48,
         "show_section_divider": false,
         "divider_width": "container",
         "custom_id": "",
@@ -1934,8 +1829,7 @@
     "multicolumn_64LhFL",
     "stats_counter",
     "gallery_images",
-    "magnetic_cta",
-    "ugc_grid",
-    "ugc_story_carousel"
+    "ugc_story_carousel",
+    "magnetic_cta"
   ]
 }

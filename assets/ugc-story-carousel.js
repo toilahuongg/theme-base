@@ -274,9 +274,28 @@ if (!customElements.get('ugc-story-carousel')) {
       this.renderPagination();
       this.updateCopy(this.cards[target], !animate);
       this.syncPauseButtons();
+      this.syncMedia();
       this.updateMobileProgress();
 
       this.goTo(this.activePos, animate);
+    }
+
+    // One video plays at a time: pause every media element in the rail,
+    // then play the active card's video (unless the story is paused or
+    // reduced motion is set — the poster stays up in both cases).
+    syncMedia() {
+      if (!this.rail) return;
+
+      this.rail.querySelectorAll('video').forEach((video) => video.pause());
+
+      if (this.paused || this.motionReduced) return;
+
+      const activeCard = this.ring[this.activePos];
+      const video = activeCard ? activeCard.querySelector('video') : null;
+      if (!video) return;
+
+      const playPromise = video.play();
+      if (playPromise && playPromise.catch) playPromise.catch(() => {});
     }
 
     syncPauseButtons() {
@@ -329,7 +348,8 @@ if (!customElements.get('ugc-story-carousel')) {
 
         const button = pressed.closest('button');
 
-        // Mute is independent per card.
+        // Mute is independent per card. With a video, mirror the toggle
+        // onto the media element so the button actually controls sound.
         if (button && button.classList.contains('mute-btn')) {
           event.stopPropagation();
           const isMuted = button.dataset.muted !== 'false';
@@ -339,15 +359,19 @@ if (!customElements.get('ugc-story-carousel')) {
           if (soundState) soundState.hidden = !isMuted;
           if (mutedState) mutedState.hidden = isMuted;
           button.setAttribute('aria-label', isMuted ? 'Mute' : 'Unmute');
+          const cardVideo = card.querySelector('video');
+          if (cardVideo) cardVideo.muted = !isMuted;
           return;
         }
 
-        // Pause controls the autoplay/progress of the active story.
+        // Pause controls the autoplay/progress of the active story — and
+        // the active video, when the card has one.
         if (button && button.classList.contains('pause-btn')) {
           event.stopPropagation();
           if (this.ring.indexOf(card) !== this.activePos) return;
           this.paused = !this.paused;
           this.syncPauseButtons();
+          this.syncMedia();
           return;
         }
         // Cart is a theme <product-form> submit button now — it owns its
